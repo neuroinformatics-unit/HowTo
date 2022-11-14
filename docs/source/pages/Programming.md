@@ -1,9 +1,10 @@
 # Programming
+
 ## Ubuntu
 Here a list of problems I encountered in Linux and how I was able to fix them.
 
-### Installations
-#### Software update error
+### Installation
+#### Distribution update error
 This is an error that appeared when updating to a new Ubuntu distribution.
 Error msg: Software Updater - Not all updates can be installed.   
 Solution: `sudo apt-get dist-upgrade`

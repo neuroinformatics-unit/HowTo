@@ -3,14 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to troubleshooting's documentation!
-===========================================
+Neuroinformatics Unit troubleshooting page
+=========================================================
+Here we will keep track of software issues and how to solve them.
+It could be problems that we encounter during our work, or questions that are frequently asked by other researchers.
+If you troubleshoot an issue for yourself or someone else, remember to document it here!
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   pages/Home.md
    pages/Behaviour.md
    pages/Electrophysiology.md
    pages/Imaging.md

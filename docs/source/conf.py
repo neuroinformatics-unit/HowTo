@@ -58,7 +58,7 @@ myst_enable_extensions = [
     "tasklist",
 ]
 # Automatically add achors to markdown headings
-myst_heading_anchors = 3
+myst_heading_anchors = 4
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
