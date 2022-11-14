@@ -10,11 +10,15 @@ Welcome to troubleshooting's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   pages/Home.md
+   pages/Behaviour.md
+   pages/Electrophysiology.md
+   pages/Imaging.md
+   pages/Histology.md
+   pages/Programming.md
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
