@@ -33,7 +33,8 @@ release = '0.0.1'
 extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.numpydoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
     'myst_parser'
