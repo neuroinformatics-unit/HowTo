@@ -1,4 +1,4 @@
 pydata-sphinx-theme
 myst-parser
 numpydoc
-nbconvert
+nbsphinx
