@@ -4,13 +4,13 @@
    contain the root `toctree` directive.
 
 Neuroinformatics Unit troubleshooting page
-=========================================================
+==========================================
 Here we will keep track of software issues and how to solve them.
 It could be problems that we encounter during our work, or questions that are frequently asked by other researchers.
 If you troubleshoot an issue for yourself or someone else, remember to document it here!
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    pages/Behaviour.md
@@ -19,8 +19,9 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
    pages/Histology.md
    pages/Programming.md
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
