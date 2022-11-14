@@ -4,9 +4,10 @@ Here we will keep track of software issues and how to solve them. It could be pr
 
 # Sections
 Use the side-bar navigation menu to easily jump between sections
-* [Imaging](Imaging): e.g. brainglobe, 2-photon calcium imaging
 * [Electrophysiology](Electrophysiology): e.g. SpikeInterface, SpikeGLX, Phy
 * [Behaviour](Behaviour): e.g. DeepLabCut, SLEAP
+* [Imaging](Imaging): e.g. suite2p, CaImAn, ScanImage
+* [Histology](Histology): e.g. BrainGlobe
 * [Programming](Programming): general issues with python, conda, etc.
 
 # How to contribute
