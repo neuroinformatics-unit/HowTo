@@ -34,10 +34,10 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.numpydoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
     'myst_parser',
+    'numpydoc',
     'nbsphinx',
 ]
 
