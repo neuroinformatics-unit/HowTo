@@ -37,7 +37,8 @@ extensions = [
     'sphinx.ext.numpydoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
-    'myst_parser'
+    'myst_parser',
+    'nbsphinx',
 ]
 
 # Configure the myst parser to enable cool markdown features
@@ -65,7 +66,12 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = [
+    "**.ipynb_checkpoints",
+    # to ensure that include files (partial pages) aren't built, exclude them
+    # https://github.com/sphinx-doc/sphinx/issues/1965#issuecomment-124732907
+    "**/includes/**",
+]
 
 
 # -- Options for HTML output -------------------------------------------------
