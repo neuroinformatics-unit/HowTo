@@ -10,7 +10,7 @@ It could be problems that we encounter during our work, or questions that are fr
 If you troubleshoot an issue for yourself or someone else, remember to document it here!
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
    Behaviour.md
