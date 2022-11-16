@@ -36,10 +36,10 @@ On Sundays you should be pre-occupied with sleeping, **NOT** SLEAPing
 * The website should be available at [troubleshooting.neuroinformatics.dev](https://troubleshooting.neuroinformatics.dev)
 
 > **_NOTE:_**
-> 
 > If you wish to view the website locally, before you push it, you can do so by running the following commands from the root of the repository:
 > 
 > `pip install -r docs/requirements.txt`
+> 
 > `sphinx-build docs/source docs/build`
 > 
 > You can view the local build at `docs/build/index.html`
