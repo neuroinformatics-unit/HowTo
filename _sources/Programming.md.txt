@@ -1,7 +1,6 @@
 # Programming
 
 ## Ubuntu
-Here a list of problems I encountered in Linux and how I was able to fix them.
 
 ### Distro update error
 This is an error that appeared when updating to a new Ubuntu distribution.
