@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Neuroinformatics Unit troubleshooting page &#8212; Troubleshooting</title>
+    <title>Neuroinformatics Unit Troubleshooting &#8212; Troubleshooting</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -39,6 +39,7 @@
     <script src="_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="canonical" href="https://troubleshooting.neuroinformatics.dev/index.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Behaviour" href="Behaviour.html" />
@@ -168,6 +169,17 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/neuroinformatics-unit/troubleshooting" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
       </ul>
       </div>
       
@@ -265,6 +277,17 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/neuroinformatics-unit/troubleshooting" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
       </ul>
       </div>
       
@@ -294,13 +317,14 @@
             
             <article class="bd-article" role="main">
               
-  <section id="neuroinformatics-unit-troubleshooting-page">
-<h1>Neuroinformatics Unit troubleshooting page<a class="headerlink" href="#neuroinformatics-unit-troubleshooting-page" title="Permalink to this heading">#</a></h1>
-<p>Here we will keep track of software issues and how to solve them.
-It could be problems that we encounter during our work, or questions that are frequently asked by other researchers.
+  <section id="neuroinformatics-unit-troubleshooting">
+<h1>Neuroinformatics Unit Troubleshooting<a class="headerlink" href="#neuroinformatics-unit-troubleshooting" title="Permalink to this heading">#</a></h1>
+<p>On this website we keep track of software issues and how to solve them.
+It could be problems that we encounter during our work,
+or questions that are frequently asked by others.
 If you troubleshoot an issue for yourself or someone else, remember to document it here!</p>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sections:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Behaviour.html">Behaviour</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Behaviour.html#sleap">SLEAP</a></li>
@@ -316,6 +340,69 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
 </li>
 </ul>
 </div>
+<section class="tex2jax_ignore mathjax_ignore" id="how-to-contribute-to-this-website">
+<h2>How to contribute to this website<a class="headerlink" href="#how-to-contribute-to-this-website" title="Permalink to this heading">#</a></h2>
+<section id="website-structure">
+<h3>Website structure<a class="headerlink" href="#website-structure" title="Permalink to this heading">#</a></h3>
+<p>The webiste is structured in sections, each one corresponding to a different experimental <strong>modality</strong>, and sub-sections, each corresponding to a different <code class="docutils literal notranslate"><span class="pre">tool</span></code>.</p>
+<p>Examples of <code class="docutils literal notranslate"><span class="pre">tools</span></code> that belong in each <strong>modality:</strong></p>
+<ul class="simple">
+<li><p><strong>Behaviour:</strong> <code class="docutils literal notranslate"><span class="pre">SLEAP</span></code>, <code class="docutils literal notranslate"><span class="pre">DeepLabCut</span></code></p></li>
+<li><p><strong>Electrophysiology:</strong>  <code class="docutils literal notranslate"><span class="pre">Kilosort</span></code>, <code class="docutils literal notranslate"><span class="pre">Phy</span></code>, <code class="docutils literal notranslate"><span class="pre">SpikeInterface</span></code></p></li>
+<li><p><strong>Imaging:</strong> <code class="docutils literal notranslate"><span class="pre">Suite2p</span></code>, <code class="docutils literal notranslate"><span class="pre">CaImAn</span></code></p></li>
+<li><p><strong>Histology:</strong> <code class="docutils literal notranslate"><span class="pre">AllenSDK</span></code>, <code class="docutils literal notranslate"><span class="pre">brainreg</span></code>, <code class="docutils literal notranslate"><span class="pre">cellfinder</span></code></p></li>
+<li><p><strong>Programming:</strong> <code class="docutils literal notranslate"><span class="pre">Spyder</span></code>, <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>, <code class="docutils literal notranslate"><span class="pre">VSCode</span></code>, <code class="docutils literal notranslate"><span class="pre">Shell</span></code></p></li>
+</ul>
+<p>Each <strong>modality</strong> is represented by a homonymous markdown file, e.g. <code class="docutils literal notranslate"><span class="pre">docs/source/Behaviour.md</span></code>.</p>
+<ul class="simple">
+<li><p>The H1 heading of each markdown file is the title of the section</p></li>
+<li><p>The H2 headings are <code class="docutils literal notranslate"><span class="pre">tool</span></code>-specific sub-sections.</p></li>
+<li><p>The H3 headings should provide a succint description of an issue with a particular <code class="docutils literal notranslate"><span class="pre">tool</span></code></p></li>
+<li><p>The text below the corresponding H3 headings should elaborate on the issue and provide a solution.</p></li>
+</ul>
+<p>An dummy example is given below:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gh"># Behaviour</span>
+
+<span class="gu">## SLEAP</span>
+
+<span class="gu">### SLEAP is slow on Sundays</span>
+On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</span> SLEAPing
+</pre></div>
+</div>
+</section>
+<section id="editing-the-website">
+<h3>Editing the website<a class="headerlink" href="#editing-the-website" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Clone the GitHub repository</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/neuroinformatics-unit/troubleshooting.git
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create a new branch</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b my_new_branch
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Edit the website and commit your changes</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add .
+git commit -m <span class="s2">&quot;My new changes&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Push your changes to GitHub</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push --set-upstream origin my_new_branch
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create a pull request on GitHub. This will automatically trigger a GitHub Action that checks if the website still builds correctly.</p></li>
+<li><p>If the checks pass, assign someone to review your changes. The reviewer will merge your changes into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, which will trigger a new GitHub Action that will build the website and publish it to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch. The website should be available at <a class="reference external" href="https://troubleshooting.neuroinformatics.dev">troubleshooting.neuroinformatics.dev</a></p></li>
+</ul>
+</section>
+</section>
 </section>
 
 
@@ -342,6 +429,35 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-contribute-to-this-website">
+   How to contribute to this website
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#website-structure">
+     Website structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#editing-the-website">
+     Editing the website
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 <div id="searchbox"></div>
