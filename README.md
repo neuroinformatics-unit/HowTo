@@ -28,23 +28,18 @@ On Sundays you should be pre-occupied with sleeping, **NOT** SLEAPing
 ```
   
 ## Editing the website
-* Clone the GitHub repository
-```bash
-git clone https://github.com/neuroinformatics-unit/troubleshooting.git
-```
-* Create a new branch
-```bash
-git checkout -b my_new_branch
-```
-* Edit the website and commit your changes
-```bash
-git add .
-git commit -m "My new changes"
-```
-* Push your changes to GitHub
-```bash
-git push --set-upstream origin my_new_branch
-```
-* Create a pull request on GitHub. This will automatically trigger a GitHub Action that checks if the website still builds correctly.
+* Clone the GitHub repository, and create your `new_branch`.
+* Edit the website and commit your changes to the `new_branch`.
+* Push the `new_branch` to GitHub and create a pull request. This will automatically trigger a [GitHub Action](https://github.com/ammaraskar/sphinx-action) that checks if the website still builds correctly.
+* If the checks pass, assign someone to review your changes. 
+* When the reviewer merges your changes into the `main` branch, a different [GitHub Action](https://github.com/peaceiris/actions-gh-pages) will be triggered, that will build the website and publish it to the `gh-pages` branch.
+* The website should be available at [troubleshooting.neuroinformatics.dev](https://troubleshooting.neuroinformatics.dev)
 
-* If the checks pass, assign someone to review your changes. The reviewer will merge your changes into the `main` branch, which will trigger a new GitHub Action that will build the website and publish it to the `gh-pages` branch. The website should be available at [troubleshooting.neuroinformatics.dev](https://troubleshooting.neuroinformatics.dev)
+> **_NOTE:_**
+> 
+> If you wish to view the website locally, before you push it, you can do so by running the following commands from the root of the repository:
+> 
+> `pip install -r docs/requirements.txt`
+> `sphinx-build docs/source docs/build`
+> 
+> You can view the local build at `docs/build/index.html`
