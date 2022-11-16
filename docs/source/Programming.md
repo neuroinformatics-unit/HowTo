@@ -37,11 +37,12 @@ On ubuntu, you can find the IP address in this way:
 * Got to `Settings` then `Network`
 * Clik on the cogwheel next to your connections (usually `Wired`)
 * The `IPv4` is the address you are looking for
+
 If you do not have a config file in your .ssh folder, create one:
-```bash
-If you do not have a config file in your .ssh folder, create one:
+
 ```bash
 cd .ssh/
 touch config
 ```
+
 Connect to VPN, then use the `Open a remote window` (Remote - SSH extension) tool of vscode and connect to remote host. You will be asked for your SWC and linux passwords. 
