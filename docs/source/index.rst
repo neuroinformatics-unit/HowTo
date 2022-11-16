@@ -13,11 +13,11 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
    :maxdepth: 3
    :caption: Contents:
 
-   pages/Behaviour.md
-   pages/Electrophysiology.md
-   pages/Imaging.md
-   pages/Histology.md
-   pages/Programming.md
+   Behaviour.md
+   Electrophysiology.md
+   Imaging.md
+   Histology.md
+   Programming.md
 
 .. Indices and tables
 .. ==================
