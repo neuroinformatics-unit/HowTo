@@ -10,14 +10,14 @@ It could be problems that we encounter during our work, or questions that are fr
 If you troubleshoot an issue for yourself or someone else, remember to document it here!
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
-   pages/Behaviour.md
-   pages/Electrophysiology.md
-   pages/Imaging.md
-   pages/Histology.md
-   pages/Programming.md
+   Behaviour.md
+   Electrophysiology.md
+   Imaging.md
+   Histology.md
+   Programming.md
 
 .. Indices and tables
 .. ==================
