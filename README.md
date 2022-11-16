@@ -35,7 +35,8 @@ On Sundays you should be pre-occupied with sleeping, **NOT** SLEAPing
 * When the reviewer merges your changes into the `main` branch, a different [GitHub Action](https://github.com/peaceiris/actions-gh-pages) will be triggered, that will build the website and publish it to the `gh-pages` branch.
 * The website should be available at [troubleshooting.neuroinformatics.dev](https://troubleshooting.neuroinformatics.dev)
 
-> **_NOTE:_**
+> **_TIP:_**
+> 
 > If you wish to view the website locally, before you push it, you can do so by running the following commands from the root of the repository:
 > 
 > `pip install -r docs/requirements.txt`
