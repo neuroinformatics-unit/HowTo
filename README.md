@@ -1,7 +1,7 @@
 # How to contribute to this website
 
 ## Website structure
-The webiste is structured in sections, each one corresponding to a different experimental __modality__, and sub-sections, each corresponding to a different `tool`.
+The website is structured in sections, each one corresponding to a different experimental __modality__, and sub-sections, each corresponding to a different `tool`.
 
 Examples of `tools` that belong in each __modality:__
 * __Behaviour:__ `SLEAP`, `DeepLabCut`
@@ -13,18 +13,17 @@ Examples of `tools` that belong in each __modality:__
 Each __modality__ is represented by a homonymous markdown file, e.g. `docs/source/Behaviour.md`.
 * The H1 heading of each markdown file is the title of the section
 * The H2 headings are `tool`-specific sub-sections.
-* The H3 headings should provide a succint description of an issue with a particular `tool`
+* The H3 headings should provide a succinct description of an issue with a particular `tool`
 * The text below the corresponding H3 headings should elaborate on the issue and provide a solution.
 
-An dummy example is given below:
-
+A dummy example is given below:
 ```md
 # Behaviour
 
 ## SLEAP
 
 ### SLEAP is slow on Sundays
-On Sundays you should be pre-occupied with sleeping, **NOT** SLEAPing
+On Sundays you should be pre-occupied with sleeping, **NOT** SLEAPing.
 ```
   
 ## Editing the website
@@ -32,7 +31,7 @@ On Sundays you should be pre-occupied with sleeping, **NOT** SLEAPing
 * Edit the website and commit your changes to the `new_branch`.
 * Push the `new_branch` to GitHub and create a pull request. This will automatically trigger a [GitHub Action](https://github.com/ammaraskar/sphinx-action) that checks if the website still builds correctly.
 * If the checks pass, assign someone to review your changes. 
-* When the reviewer merges your changes into the `main` branch, a different [GitHub Action](https://github.com/peaceiris/actions-gh-pages) will be triggered, that will build the website and publish it to the `gh-pages` branch.
+* When the reviewer merges your changes into the `main` branch, a different [GitHub Action](https://github.com/peaceiris/actions-gh-pages) will be triggered, which will build the website and publish it to the `gh-pages` branch.
 * The website should be available at [troubleshooting.neuroinformatics.dev](https://troubleshooting.neuroinformatics.dev)
 
 > **_TIP:_**
