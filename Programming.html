@@ -7,29 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Programming &#8212; Troubleshooting</title>
-  <script>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
   
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/6.1.2/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -49,6 +50,10 @@
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   
   <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
@@ -111,39 +116,39 @@
     </p>
     <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="Behaviour.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Behaviour.html">
                         Behaviour
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Electrophysiology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Electrophysiology.html">
                         Electrophysiology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Imaging.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Imaging.html">
                         Imaging
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Histology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Histology.html">
                         Histology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item current active">
-                    <a class="nav-link" href="#">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
                         Programming
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
     </ul>
 </nav>
@@ -152,19 +157,21 @@
     </div>
 
     <div id="navbar-end">
-      <div class="navbar-end-item navbar-end__search-button-container">
-        
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
   <i class="fa-solid fa-magnifying-glass"></i>
 </button>
-      </div>
+        </div>
+      
       
       <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
       </div>
       
       <div class="navbar-end-item">
@@ -188,11 +195,13 @@
 
 
   
-  <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
   <i class="fa-solid fa-magnifying-glass"></i>
 </button>
-  </div>
+    </div>
+  
 
   
   <label class="sidebar-toggle secondary-toggle" for="__secondary">
@@ -222,39 +231,39 @@
     </p>
     <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="Behaviour.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Behaviour.html">
                         Behaviour
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Electrophysiology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Electrophysiology.html">
                         Electrophysiology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Imaging.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Imaging.html">
                         Imaging
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Histology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Histology.html">
                         Histology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item current active">
-                    <a class="nav-link" href="#">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
                         Programming
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
     </ul>
 </nav>
@@ -268,11 +277,11 @@
     <div class="sidebar-header-items__end">
       
       <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
       </div>
       
       <div class="navbar-end-item">
@@ -303,8 +312,11 @@
     </div>
   </div>
 
+  
+  <div id="rtd-footer-container"></div>
+
       </div>
-      <main class="bd-main">
+      <main id="main-content" class="bd-main">
         
         
         <div class="bd-content">
@@ -329,16 +341,16 @@ Solution: <code class="docutils literal notranslate"><span class="pre">sudo</spa
 </section>
 <section id="terminal-is-not-opening-after-installing-a-new-python-version">
 <h3>Terminal is not opening after installing a new Python version<a class="headerlink" href="#terminal-is-not-opening-after-installing-a-new-python-version" title="Permalink to this heading">#</a></h3>
-<p>If you installed a new Python version without the use of conda, there might be a mismatch in the python naming in a bin file.<br />
-If it’s possible open terminal through vscode or use a virtual terminal (VT) with CTRL + ALT + F3 and run <code class="docutils literal notranslate"><span class="pre">gnome-ternimal</span></code>.
+<p>If you installed a new Python version without the use of <code class="docutils literal notranslate"><span class="pre">conda</span></code>, there might be a mismatch in the python naming in a bin file.<br />
+If it’s possible open terminal through vscode or open a virtual terminal (VT) with CTRL + ALT + F3 and run <code class="docutils literal notranslate"><span class="pre">gnome-ternimal</span></code>.
 Does it throw a Python error? If yes run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/usr/bin/gnome-terminal</span></code> and change <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/python3</span></code> to <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/python3.10</span></code> if the version you’re currently using is 3.10.<br />
 Exit the VT via CTRL + ALT + F2.</p>
 </section>
 </section>
 <section id="vscode">
 <h2>VSCode<a class="headerlink" href="#vscode" title="Permalink to this heading">#</a></h2>
-<section id="ssh-into-a-unmanaged-machine-from-remote">
-<h3>SSH into a unmanaged machine from remote<a class="headerlink" href="#ssh-into-a-unmanaged-machine-from-remote" title="Permalink to this heading">#</a></h3>
+<section id="ssh-into-an-unmanaged-machine-from-remote">
+<h3>SSH into an unmanaged machine from remote<a class="headerlink" href="#ssh-into-an-unmanaged-machine-from-remote" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><strong><em>Example Usecase:</em></strong>  When working from home, connect from you local Mac to the SWC office Linux machine</p>
 </div></blockquote>
@@ -357,10 +369,10 @@ Exit the VT via CTRL + ALT + F2.</p>
 </pre></div>
 </div>
 <p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">172.24.243.000</span></code> with the IP address of your remote machine.
-On ubuntu, you can find the IP address in this way:</p>
+On Ubuntu, you can find the IP address in this way:</p>
 <ul class="simple">
 <li><p>Got to <code class="docutils literal notranslate"><span class="pre">Settings</span></code> then <code class="docutils literal notranslate"><span class="pre">Network</span></code></p></li>
-<li><p>Clik on the cogwheel next to your connections (usually <code class="docutils literal notranslate"><span class="pre">Wired</span></code>)</p></li>
+<li><p>Click on the cogwheel next to your connections (usually <code class="docutils literal notranslate"><span class="pre">Wired</span></code>)</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">IPv4</span></code> is the address you are looking for</p></li>
 </ul>
 <p>If you do not have a config file in your .ssh folder, create one:</p>
@@ -368,7 +380,7 @@ On ubuntu, you can find the IP address in this way:</p>
 touch config
 </pre></div>
 </div>
-<p>Connect to VPN, then use the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">a</span> <span class="pre">remote</span> <span class="pre">window</span></code> (Remote - SSH extension) tool of vscode and connect to remote host. You will be asked for your SWC and linux passwords.</p>
+<p>Connect to VPN, then use the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">a</span> <span class="pre">remote</span> <span class="pre">window</span></code> (Remote - SSH extension) tool of vscode and connect to <code class="docutils literal notranslate"><span class="pre">remote-host</span></code>. You will be asked for your SWC and Linux passwords.</p>
 </section>
 </section>
 </section>
@@ -427,8 +439,8 @@ touch config
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ssh-into-a-unmanaged-machine-from-remote">
-     SSH into a unmanaged machine from remote
+    <a class="reference internal nav-link" href="#ssh-into-an-unmanaged-machine-from-remote">
+     SSH into an unmanaged machine from remote
     </a>
    </li>
   </ul>
@@ -474,7 +486,8 @@ touch config
   
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   <footer class="bd-footer"><div class="bd-footer__inner container">
   
@@ -486,6 +499,16 @@ touch config
 
 </p>
 
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
   </div>
   
   <div class="footer-item">

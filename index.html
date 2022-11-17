@@ -7,29 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Neuroinformatics Unit Troubleshooting &#8212; Troubleshooting</title>
-  <script>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
   
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/6.1.2/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -49,6 +50,10 @@
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   
   <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
@@ -111,39 +116,39 @@
     </p>
     <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="Behaviour.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Behaviour.html">
                         Behaviour
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Electrophysiology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Electrophysiology.html">
                         Electrophysiology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Imaging.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Imaging.html">
                         Imaging
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Histology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Histology.html">
                         Histology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Programming.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Programming.html">
                         Programming
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
     </ul>
 </nav>
@@ -152,19 +157,21 @@
     </div>
 
     <div id="navbar-end">
-      <div class="navbar-end-item navbar-end__search-button-container">
-        
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
   <i class="fa-solid fa-magnifying-glass"></i>
 </button>
-      </div>
+        </div>
+      
       
       <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
       </div>
       
       <div class="navbar-end-item">
@@ -188,11 +195,13 @@
 
 
   
-  <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
   <i class="fa-solid fa-magnifying-glass"></i>
 </button>
-  </div>
+    </div>
+  
 
   
   <label class="sidebar-toggle secondary-toggle" for="__secondary">
@@ -222,39 +231,39 @@
     </p>
     <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="Behaviour.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Behaviour.html">
                         Behaviour
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Electrophysiology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Electrophysiology.html">
                         Electrophysiology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Imaging.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Imaging.html">
                         Imaging
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Histology.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Histology.html">
                         Histology
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Programming.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Programming.html">
                         Programming
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
     </ul>
 </nav>
@@ -268,11 +277,11 @@
     <div class="sidebar-header-items__end">
       
       <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
       </div>
       
       <div class="navbar-end-item">
@@ -303,8 +312,11 @@
     </div>
   </div>
 
+  
+  <div id="rtd-footer-container"></div>
+
       </div>
-      <main class="bd-main">
+      <main id="main-content" class="bd-main">
         
         
         <div class="bd-content">
@@ -319,9 +331,8 @@
               
   <section id="neuroinformatics-unit-troubleshooting">
 <h1>Neuroinformatics Unit Troubleshooting<a class="headerlink" href="#neuroinformatics-unit-troubleshooting" title="Permalink to this heading">#</a></h1>
-<p>On this website we keep track of software issues and how to solve them.
-It could be problems that we encounter during our work,
-or questions that are frequently asked by others.
+<p>On this website, you can find solutions to common problems that you may encounter when using the Neuroinformatics Unit services,
+other common software, hardware issues, and other useful information and FAQs.
 If you troubleshoot an issue for yourself or someone else, remember to document it here!</p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sections:</span></p>
@@ -344,7 +355,7 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
 <h2>How to contribute to this website<a class="headerlink" href="#how-to-contribute-to-this-website" title="Permalink to this heading">#</a></h2>
 <section id="website-structure">
 <h3>Website structure<a class="headerlink" href="#website-structure" title="Permalink to this heading">#</a></h3>
-<p>The webiste is structured in sections, each one corresponding to a different experimental <strong>modality</strong>, and sub-sections, each corresponding to a different <code class="docutils literal notranslate"><span class="pre">tool</span></code>.</p>
+<p>The website is structured in sections, each one corresponding to a different experimental <strong>modality</strong>, and sub-sections, each corresponding to a different <code class="docutils literal notranslate"><span class="pre">tool</span></code>.</p>
 <p>Examples of <code class="docutils literal notranslate"><span class="pre">tools</span></code> that belong in each <strong>modality:</strong></p>
 <ul class="simple">
 <li><p><strong>Behaviour:</strong> <code class="docutils literal notranslate"><span class="pre">SLEAP</span></code>, <code class="docutils literal notranslate"><span class="pre">DeepLabCut</span></code></p></li>
@@ -357,16 +368,16 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
 <ul class="simple">
 <li><p>The H1 heading of each markdown file is the title of the section</p></li>
 <li><p>The H2 headings are <code class="docutils literal notranslate"><span class="pre">tool</span></code>-specific sub-sections.</p></li>
-<li><p>The H3 headings should provide a succint description of an issue with a particular <code class="docutils literal notranslate"><span class="pre">tool</span></code></p></li>
+<li><p>The H3 headings should provide a succinct description of an issue with a particular <code class="docutils literal notranslate"><span class="pre">tool</span></code></p></li>
 <li><p>The text below the corresponding H3 headings should elaborate on the issue and provide a solution.</p></li>
 </ul>
-<p>An dummy example is given below:</p>
+<p>A dummy example is given below:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gh"># Behaviour</span>
 
 <span class="gu">## SLEAP</span>
 
 <span class="gu">### SLEAP is slow on Sundays</span>
-On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</span> SLEAPing
+On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</span> SLEAPing.
 </pre></div>
 </div>
 </section>
@@ -377,7 +388,7 @@ On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</s
 <li><p>Edit the website and commit your changes to the <code class="docutils literal notranslate"><span class="pre">new_branch</span></code>.</p></li>
 <li><p>Push the <code class="docutils literal notranslate"><span class="pre">new_branch</span></code> to GitHub and create a pull request. This will automatically trigger a <a class="reference external" href="https://github.com/ammaraskar/sphinx-action">GitHub Action</a> that checks if the website still builds correctly.</p></li>
 <li><p>If the checks pass, assign someone to review your changes.</p></li>
-<li><p>When the reviewer merges your changes into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, a different <a class="reference external" href="https://github.com/peaceiris/actions-gh-pages">GitHub Action</a> will be triggered, that will build the website and publish it to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch.</p></li>
+<li><p>When the reviewer merges your changes into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, a different <a class="reference external" href="https://github.com/peaceiris/actions-gh-pages">GitHub Action</a> will be triggered, which will build the website and publish it to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch.</p></li>
 <li><p>The website should be available at <a class="reference external" href="https://troubleshooting.neuroinformatics.dev">troubleshooting.neuroinformatics.dev</a></p></li>
 </ul>
 <blockquote>
@@ -480,7 +491,8 @@ On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</s
   
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   <footer class="bd-footer"><div class="bd-footer__inner container">
   
@@ -492,6 +504,16 @@ On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</s
 
 </p>
 
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
   </div>
   
   <div class="footer-item">
