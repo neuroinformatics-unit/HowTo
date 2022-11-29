@@ -391,13 +391,17 @@ On Sundays you should be pre-occupied with sleeping, <span class="gs">**NOT**</s
 <li><p>When the reviewer merges your changes into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, a different <a class="reference external" href="https://github.com/peaceiris/actions-gh-pages">GitHub Action</a> will be triggered, which will build the website and publish it to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch.</p></li>
 <li><p>The website should be available at <a class="reference external" href="https://troubleshooting.neuroinformatics.dev">troubleshooting.neuroinformatics.dev</a></p></li>
 </ul>
-<blockquote>
-<div><p><strong><em>TIP:</em></strong></p>
-<p>If you wish to view the website locally, before you push it, you can do so by running the following commands from the root of the repository:</p>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">docs/requirements.txt</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">docs/source</span> <span class="pre">docs/build</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you wish to view the website locally, before you push it,
+you can do so by running the following commands from the
+root of the repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r docs/requirements.txt
+sphinx-build docs/source docs/build
+</pre></div>
+</div>
 <p>You can view the local build at <code class="docutils literal notranslate"><span class="pre">docs/build/index.html</span></code></p>
-</div></blockquote>
+</div>
 </section>
 </section>
 </section>
