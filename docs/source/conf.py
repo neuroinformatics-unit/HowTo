@@ -83,22 +83,6 @@ exclude_patterns = [
 html_theme = 'pydata_sphinx_theme'
 html_title = 'Troubleshooting'
 
-## Cutomize the theme
-html_theme_options = {
-    "icon_links": [
-        {
-            # Label for this link
-            "name": "GitHub",
-            # URL where the link will redirect
-            "url": "https://github.com/neuroinformatics-unit/troubleshooting",  # required
-            # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
-            "icon": "fa-brands fa-github",
-            # The type of image to be used (see below for details)
-            "type": "fontawesome",
-        }
-   ]
-}
-
 # Redirect the webpage to another URL
 # Sphinx will create the appropriate CNAME file in the build directory
 # https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
@@ -113,5 +97,25 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_logo = "logo.png"
-html_favicon = "logo.png"
+html_favicon = "logo_light.png"
+
+## Cutomize the theme
+html_theme_options = {
+    "icon_links": [
+        {
+            # Label for this link
+            "name": "GitHub",
+            # URL where the link will redirect
+            "url": "https://github.com/neuroinformatics-unit/troubleshooting",  # required
+            # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
+            "icon": "fa-brands fa-github",
+            # The type of image to be used (see below for details)
+            "type": "fontawesome",
+        }
+   ],
+   "logo": {
+        "text": "Troubleshooting",
+        "image_light": "logo_light.png",
+        "image_dark": "logo_dark.png",
+    }
+}
