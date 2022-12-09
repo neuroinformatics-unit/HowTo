@@ -1,17 +1,11 @@
 
 html[data-theme=dark] {
-    --pst-color-primary: #0FFA9C;
-    --pst-color-secondary: #33CFFF;
-    --pst-color-inline-code: #FE9D0B;
+    --pst-color-primary: #04B46D;
     --pst-color-link: var(--pst-color-primary);
-    --pst-color-link-hover: var(--pst-color-secondary);
   }
   
   html[data-theme=light] {
     --pst-color-primary: #03A062;
-    --pst-color-secondary: #006E90;
-    --pst-color-inline-code: #F18F01;
     --pst-color-link: var(--pst-color-primary);
-    --pst-color-link-hover: var(--pst-color-secondary);
   }
   
