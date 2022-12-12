@@ -83,6 +83,22 @@ exclude_patterns = [
 html_theme = 'pydata_sphinx_theme'
 html_title = 'Troubleshooting'
 
+# Redirect the webpage to another URL
+# Sphinx will create the appropriate CNAME file in the build directory
+# https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
+html_baseurl = 'https://troubleshooting.neuroinformatics.dev/'
+
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+
+html_css_files = [
+    'css/custom.css',
+]
+
+html_favicon = "_static/logo_light.png"
+
 ## Cutomize the theme
 html_theme_options = {
     "icon_links": [
@@ -96,15 +112,10 @@ html_theme_options = {
             # The type of image to be used (see below for details)
             "type": "fontawesome",
         }
-   ]
+   ],
+   "logo": {
+        "text": "Troubleshooting",
+        "image_light": "logo_light.png",
+        "image_dark": "logo_dark.png",
+    }
 }
-
-# Redirect the webpage to another URL
-# Sphinx will create the appropriate CNAME file in the build directory
-# https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
-html_baseurl = 'https://troubleshooting.neuroinformatics.dev/'
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
