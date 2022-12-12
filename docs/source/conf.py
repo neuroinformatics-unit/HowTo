@@ -97,7 +97,7 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_favicon = "logo_light.png"
+html_favicon = "_static/logo_light.png"
 
 ## Cutomize the theme
 html_theme_options = {
