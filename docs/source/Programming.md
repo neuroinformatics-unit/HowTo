@@ -51,4 +51,4 @@ Follow the instructions and wait for the response.
 
 
 ## Licensing
-For information about choosing a software license, see the [Licensing page](licensing.md).
+For information about choosing a software license, see the [Licensing page](Licensing.md).
