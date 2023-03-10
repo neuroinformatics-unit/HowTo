@@ -21,7 +21,7 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
    Imaging.md
    Histology.md
    Programming.md
-   licensing.md
+   Licensing.md
 
 .. include:: readme_link.md
    :parser: myst_parser.sphinx_
