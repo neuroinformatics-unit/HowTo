@@ -67,7 +67,9 @@ I have found that although the link to the repo is correct (`github_repository_u
 
 `cruft check` will check if your repo is up to date with the template, and basically will just give you a boolean response.
 
-Once you are satisfied, commit the changes to a new branch and open a PR to merge it into `main`. 🎉
+Once you are satisfied, commit the changes to a new branch and open a PR to merge it into `main`. 
+
+Now, check if your GitHub actions fail... 🤦🏻‍♀️ If everything is fine, you can merge the PR. 🎉 If not, you will have to fix the errors and repeat the process. 😱
 
 ## Licensing
 For information about choosing a software license, see the [Licensing page](Licensing.md).
