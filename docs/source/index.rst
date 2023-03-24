@@ -1,11 +1,9 @@
 ===========================
 Neuroinformatics Unit HowTo
 ===========================
-.. write a description of a HowTo website
 
-On this website, you can find solutions to common problems that you may encounter when using the Neuroinformatics Unit services, 
-other common software, hardware issues, and other useful information and FAQs.
-If you troubleshoot an issue for yourself or someone else, remember to document it here!
+On this website, you can find solutions to common issues that you may encounter when 
+using software tools for neuroscience research (whether made by the Neuroinformatics Unit or not).
 
 .. toctree::
    :maxdepth: 2
@@ -17,13 +15,3 @@ If you troubleshoot an issue for yourself or someone else, remember to document 
    Histology.md
    Programming.md
    Licensing.md
-
-.. include:: readme_link.md
-   :parser: myst_parser.sphinx_
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
