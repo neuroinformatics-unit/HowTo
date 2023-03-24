@@ -8,10 +8,7 @@ The information is primarily aimed at researchers at the [Sainsbury Wellcome Cen
 :maxdepth: 2
 :caption: Sections
 
-Behaviour
-Electrophysiology
-Imaging
-Histology
-Programming
-Licensing
+data_analysis/index
+programming/index
+guides/index
 ```
