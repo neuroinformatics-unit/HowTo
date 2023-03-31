@@ -117,5 +117,7 @@ html_theme_options = {
         "text": "HowTo",
         "image_light": "logo_light.png",
         "image_dark": "logo_dark.png",
-    }
+    },
+    "footer_start": ["footer_start"],
+    "footer_end": ["footer_end"],
 }
