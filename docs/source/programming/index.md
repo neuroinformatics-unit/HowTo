@@ -8,4 +8,5 @@ General programming and software development issues, tips and tricks.
 Linux
 IDEs
 VersionControl
+Python
 ```
