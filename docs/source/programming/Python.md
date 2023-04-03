@@ -1,6 +1,6 @@
 # Python
 
-### Update cookiecutter-generated files with cruft
+## Update cookiecutter-generated files with cruft
 
 Ref: [original docs](https://cruft.github.io/cruft/) and [github repo](https://github.com/cruft/cruft).
 
