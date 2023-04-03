@@ -1,4 +1,4 @@
-## Python
+# Python
 
 ### Update cookiecutter-generated files with cruft
 
