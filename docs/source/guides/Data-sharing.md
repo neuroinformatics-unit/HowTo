@@ -2,7 +2,7 @@
 
 ## Background
 
-Data is key to neuroscience, and it should be shared for maximal utility. There is increasing pressure from funders and publishers to do so alongside publications:
+Data is key to neuroscience, and it should be shared for maximal utility. There is increasing pressure from funders and publishers to share data alongside publications:
 
 **Wellcome:**
 
