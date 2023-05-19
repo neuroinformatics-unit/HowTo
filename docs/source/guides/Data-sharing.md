@@ -38,8 +38,8 @@ Create a GIN repository, ideally within the [SWC organisation](https://gin.g-nod
 **Specific modalities:**
 In some cases, there may be a modality or field-specific repository that would be best suited for the data (or mandated by the publisher), some examples include:
 - [Brain Image Library](http://www.brainimagelibrary.org/) - Large brain image datasets
-- [DANDI](http://www.brainimagelibrary.org/) - Electrophysiology, optophysiology, behavioural time-series (must be in NWB format)
-- [BioImage Archive](http://www.brainimagelibrary.org/) - Biological images
+- [DANDI](https://dandiarchive.org/) - Electrophysiology, optophysiology, behavioural time-series (must be in NWB format)
+- [BioImage Archive](https://www.ebi.ac.uk/bioimage-archive/) - Biological images
 
 In all cases, using a repository that can create a [DOI](https://www.doi.org/) will help increase citations.
 
