@@ -6,13 +6,13 @@ Data is key to neuroscience, and it should be shared for maximal utility. There 
 
 **Wellcome:**
 
-_“We expect our researchers to maximise the availability of research data, software and materials with as few restrictions as possible. As a minimum, the data underpinning research papers should be made available to other researchers at the time of publication, as well as any original software that is required to view datasets or to replicate analyses.”_
+> “We expect our researchers to maximise the availability of research data, software and materials with as few restrictions as possible. As a minimum, the data underpinning research papers should be made available to other researchers at the time of publication, as well as any original software that is required to view datasets or to replicate analyses.”
 
 **Cell Press:**
 
-_“All datasets that are composed of standardized datatypes and reported in Cell Press papers must be deposited in a datatype-specific, Cell-Press-recommended repository before a paper is accepted for publication.”_
+> “All datasets that are composed of standardized datatypes and reported in Cell Press papers must be deposited in a datatype-specific, Cell-Press-recommended repository before a paper is accepted for publication.”
 
-_“All original code must be either deposited in a repository that mints DOIs or included in the supplemental information before a paper is accepted for publication.”_
+> “All original code must be either deposited in a repository that mints DOIs or included in the supplemental information before a paper is accepted for publication.”
 
 
 ## Requirements
@@ -23,7 +23,9 @@ Currently, SWC does not have any specific code and data sharing requirements, bu
 
 
 ## Code
-Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. Code should include an [appropriate license](https://howto.neuroinformatics.dev/guides/Licensing.html), and may include a [DOI](https://www.doi.org/) (e.g. using [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)). 
+Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. To enable re-use, code should include an [appropriate license](https://howto.neuroinformatics.dev/guides/Licensing.html).
+
+To ensure a permanent archive of the code associated with a publication a [DOI](https://www.doi.org/) should be created (e.g. using [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)). 
 
 ## Data
 ### Repository
