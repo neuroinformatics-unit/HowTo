@@ -6,4 +6,5 @@ A collection of long-form guides on specific topics.
 :maxdepth: 2
 
 Licensing
+Data-sharing
 ```
