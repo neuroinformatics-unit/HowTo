@@ -395,6 +395,68 @@ If it’s possible open terminal through vscode or open a virtual terminal (VT) 
 Does it throw a Python error? If yes run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/usr/bin/gnome-terminal</span></code> and change <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/python3</span></code> to <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/python3.10</span></code> if the version you’re currently using is 3.10.<br />
 Exit the VT via CTRL + ALT + F2.</p>
 </section>
+<section id="how-to-mount-ceph-storage-on-ubuntu">
+<h3>How to mount ceph storage on Ubuntu<a class="headerlink" href="#how-to-mount-ceph-storage-on-ubuntu" title="Permalink to this heading">#</a></h3>
+<p>In this example, we will <strong>permanently</strong> mount the <code class="docutils literal notranslate"><span class="pre">neuroinformatics</span></code> partition of <code class="docutils literal notranslate"><span class="pre">ceph</span></code>. The same procedure can be used to mount other partitions, such as those belonging to particular labs or projects.</p>
+<p>The following instructions have been tested on <strong>Ubuntu 20.04 LTS</strong>.</p>
+<section id="prerequisites">
+<h4>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Administrator rights (<code class="docutils literal notranslate"><span class="pre">sudo</span></code>) on the local Ubuntu machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cifs-utils</span></code> installed via <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">cifs-utils</span></code></p></li>
+</ul>
+</section>
+<section id="store-your-swc-credentials">
+<h4>Store your SWC credentials<a class="headerlink" href="#store-your-swc-credentials" title="Permalink to this heading">#</a></h4>
+<p>First, create a file to store your SWC login credentials and save it in your home directory.
+You can do that on the terminal via <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">~/.smb_swc</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.smb_swc</span></code> file contents should look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">user</span><span class="o">=</span>&lt;SWC-USERNAME&gt;
+<span class="nv">password</span><span class="o">=</span>&lt;SWC-PASSWORD&gt;
+<span class="nv">domain</span><span class="o">=</span>AD.SWC.UCL.AC.UK
+</pre></div>
+</div>
+<p>Save the file and exit.</p>
+</section>
+<section id="create-a-mount-point">
+<h4>Create a mount point<a class="headerlink" href="#create-a-mount-point" title="Permalink to this heading">#</a></h4>
+<p>Create a directory to mount the storage to. Sensible places to do this on Ubuntu would be in <code class="docutils literal notranslate"><span class="pre">/mnt</span></code> or <code class="docutils literal notranslate"><span class="pre">/media</span></code>. In the example below, we will use <code class="docutils literal notranslate"><span class="pre">/media/ceph-neuroinformatics</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/media/ceph-neuroinformatics
+</pre></div>
+</div>
+</section>
+<section id="edit-the-fstab-file">
+<h4>Edit the fstab file<a class="headerlink" href="#edit-the-fstab-file" title="Permalink to this heading">#</a></h4>
+<p>This will allow you to mount the storage automatically on boot. Before editing the file, make a backup of it, just in case.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/fstab<span class="w"> </span>/etc/fstab.bak
+</pre></div>
+</div>
+<p>Now, open the file with your favourite editor (e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/fstab</span></code>) and add new lines at the end of the file.</p>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mount ceph/neuroinformatics</span>
+//ceph-gw02.hpc.swc.ucl.ac.uk/neuroinformatics<span class="w"> </span>/media/ceph-neuroinformatics<span class="w"> </span>cifs<span class="w"> </span><span class="nv">uid</span><span class="o">=</span><span class="m">1002</span>,gid<span class="o">=</span><span class="m">1002</span>,credentials<span class="o">=</span>/home/&lt;LOCAL-USERNAME&gt;/.smb_swc<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>Make sure to replace the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">//ceph-gw02.hpc.swc.ucl.ac.uk/neuroinformatics</span></code> with the path to your desired partition, e.g. <code class="docutils literal notranslate"><span class="pre">//ceph-gw02.hpc.swc.ucl.ac.uk/&lt;LAB-NAME&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/media/ceph-neuroinformatics</span></code> with the path to the local mount point you created in the previous step.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uid=1002,gid=1002</span></code> with your local user ID and group ID. You can find these out by running <code class="docutils literal notranslate"><span class="pre">id</span></code> on the terminal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;LOCAL-USERNAME&gt;</span></code> with your username on the local Ubuntu machine on which you are mounting the storage</p></li>
+</ul>
+<p>Save the file and exit.</p>
+</section>
+<section id="mount-the-storage">
+<h4>Mount the storage<a class="headerlink" href="#mount-the-storage" title="Permalink to this heading">#</a></h4>
+<p>You can now mount the storage by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">-a</span></code>. If you get an error, check the <code class="docutils literal notranslate"><span class="pre">fstab</span></code> file for typos. If you get no error, you should be able to see the mounted storage by running <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">-h</span></code>.</p>
+<p>The next time you reboot your machine, the storage should be mounted automatically.</p>
+</section>
+<section id="unmount-the-storage">
+<h4>Unmount the storage<a class="headerlink" href="#unmount-the-storage" title="Permalink to this heading">#</a></h4>
+<p>To unmount the storage, run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">/media/ceph-neuroinformatics</span></code> (or whatever your mount point is).</p>
+<p>To permanently unmount the storage, remove the lines you added to the <code class="docutils literal notranslate"><span class="pre">fstab</span></code> file and run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">-a</span></code> again.</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -448,6 +510,15 @@ Exit the VT via CTRL + ALT + F2.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu">Ubuntu</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distro-update-error">Distro update error</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-is-not-opening-after-installing-a-new-python-version">Terminal is not opening after installing a new Python version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-mount-ceph-storage-on-ubuntu">How to mount ceph storage on Ubuntu</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store-your-swc-credentials">Store your SWC credentials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-mount-point">Create a mount point</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-fstab-file">Edit the fstab file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-the-storage">Mount the storage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unmount-the-storage">Unmount the storage</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
