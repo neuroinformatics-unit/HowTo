@@ -417,6 +417,17 @@ You can do that on the terminal via <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 <p>Save the file and exit.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Storing the password in plain-text format as done above constitutes a security risk.
+If someone gets access to your machine, they will be able to see your SWC password.</p>
+<p>You can harden the security a bit by changing the permissions of the file. Run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.smb_swc
+</pre></div>
+</div>
+<p>This will ensure the file is readable and writable only by the owner (you).
+However, if someone gets access to your machine with your user logged in, they will still be able to read the SWC password.</p>
+</div>
 </section>
 <section id="create-a-mount-point">
 <h4>Create a mount point<a class="headerlink" href="#create-a-mount-point" title="Permalink to this heading">#</a></h4>
