@@ -34,6 +34,19 @@ domain=AD.SWC.UCL.AC.UK
 ```
 Save the file and exit.
 
+:::{warning}
+Storing the password in plain-text format as done above constitutes a security risk.
+If someone gets access to your machine, they will be able to see your SWC password.
+
+You can harden the security a bit by changing the permissions of the file. Run the following command:
+
+```bash
+chmod 600 ~/.smb_swc
+```
+This will ensure the file is readable and writable only by the owner (you).
+However, if someone gets access to your machine with your user logged in, they will still be able to read the SWC password.
+:::
+
 #### Create a mount point
 Create a directory to mount the storage to. Sensible places to do this on Ubuntu would be in `/mnt` or `/media`. In the example below, we will use `/media/ceph-neuroinformatics`.
 
