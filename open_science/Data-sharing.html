@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Guides &#8212; HowTo</title>
+    <title>Data Sharing &#8212; HowTo</title>
   
   
   
@@ -39,13 +39,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'guides/index';</script>
-    <link rel="canonical" href="https://howto.neuroinformatics.dev/guides/index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'open_science/Data-sharing';</script>
+    <link rel="canonical" href="https://howto.neuroinformatics.dev/open_science/Data-sharing.html" />
     <link rel="icon" href="../_static/logo_light.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Software licensing" href="Licensing.html" />
-    <link rel="prev" title="Python" href="../programming/Python.html" />
+    <link rel="prev" title="Software licensing" href="Licensing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,8 +149,8 @@
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Guides
+                      <a class="nav-link nav-internal" href="index.html">
+                        Open Science
                       </a>
                     </li>
                 
@@ -263,8 +262,8 @@ document.write(`
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Guides
+                      <a class="nav-link nav-internal" href="index.html">
+                        Open Science
                       </a>
                     </li>
                 
@@ -312,9 +311,9 @@ document.write(`
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Licensing.html">Software licensing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data-sharing.html">Data Sharing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Sharing</a></li>
 </ul>
 </div>
 </nav></div>
@@ -352,7 +351,10 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Guides</li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Open Science</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Data Sharing</li>
   </ul>
 </nav>
 </div>
@@ -369,33 +371,146 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="guides">
-<h1>Guides<a class="headerlink" href="#guides" title="Permalink to this heading">#</a></h1>
-<p>A collection of long-form guides on specific topics.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Licensing.html">Software licensing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#disclaimer">Disclaimer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#why-license-your-software">Why license your software?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#choosing-a-license">Choosing a license</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#to-choose-a-license">To choose a license:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#adding-a-license">Adding a license</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#frequently-asked-questions">Frequently asked questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Licensing.html#acknowledgements">Acknowledgements</a></li>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-sharing">
+<h1>Data Sharing<a class="headerlink" href="#data-sharing" title="Permalink to this heading">#</a></h1>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>Data is key to neuroscience, and it should be shared for maximal utility. There is increasing pressure from funders and publishers to share data alongside publications:</p>
+<p><strong>Wellcome:</strong></p>
+<blockquote>
+<div><p>“We expect our researchers to maximise the availability of research data, software and materials with as few restrictions as possible. As a minimum, the data underpinning research papers should be made available to other researchers at the time of publication, as well as any original software that is required to view datasets or to replicate analyses.”</p>
+</div></blockquote>
+<p><strong>Cell Press:</strong></p>
+<blockquote>
+<div><p>“All datasets that are composed of standardized datatypes and reported in Cell Press papers must be deposited in a datatype-specific, Cell-Press-recommended repository before a paper is accepted for publication.”</p>
+</div></blockquote>
+<blockquote>
+<div><p>“All original code must be either deposited in a repository that mints DOIs or included in the supplemental information before a paper is accepted for publication.”</p>
+</div></blockquote>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
+<p>Currently, SWC does not have any specific code and data sharing requirements, but your funder or publisher may do.</p>
+<p><strong>Ideally, all data and code will be shared in such a way that any other researcher could easily reproduce key figures from a publication, and build on those data and software in their own research.</strong></p>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<p>Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the <a class="reference external" href="https://github.com/SainsburyWellcomeCentre">SWC organisation</a>, or that of a particular team, lab or collaboration. To enable re-use, code should include an <a class="reference external" href="https://howto.neuroinformatics.dev/guides/Licensing.html">appropriate license</a>.</p>
+<p>To ensure a permanent archive of the code associated with a publication a <a class="reference external" href="https://www.doi.org/">DOI</a> should be created (e.g. using <a class="reference external" href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">Zenodo</a>).</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<section id="repository">
+<h3>Repository<a class="headerlink" href="#repository" title="Permalink to this heading">#</a></h3>
+<p>There are <a class="reference internal" href="#repo-table"><span class="std std-ref">many repositories</span></a> that will accept the types of data generated by SWC. They come into three categories, general, neuroscience-specific and modality-specific.  If you do not have a preference, we recommended:</p>
+<p><strong>For small (&lt;20GB) datasets:</strong>
+Use the existing <a class="reference external" href="https://rdr.ucl.ac.uk/The_Sainsbury_Wellcome_Centre">SWC section of the UCL FigShare instance</a>. This is easy to use, and is supported centrally by UCL</p>
+<p><strong>For larger datasets:</strong>
+Create a GIN repository, ideally within the <a class="reference external" href="https://gin.g-node.org/SainsburyWellcomeCentre">SWC organisation</a>. GIN uses Git and provides a versioning system, making it particularly well suited for ongoing research projects.</p>
+<p><strong>Specific modalities:</strong>
+In some cases, there may be a modality or field-specific repository that would be best suited for the data (or mandated by the publisher), some examples include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.brainimagelibrary.org/">Brain Image Library</a> - Large brain image datasets</p></li>
+<li><p><a class="reference external" href="https://dandiarchive.org/">DANDI</a> - Electrophysiology, optophysiology, behavioural time-series (must be in NWB format)</p></li>
+<li><p><a class="reference external" href="https://www.ebi.ac.uk/bioimage-archive/">BioImage Archive</a> - Biological images</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Data-sharing.html">Data Sharing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Data-sharing.html#background">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data-sharing.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data-sharing.html#code">Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data-sharing.html#data">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data-sharing.html#assistance">Assistance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data-sharing.html#reference-of-potential-repositories-for-neuroscience-data">Reference of potential repositories for neuroscience data</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<p>In all cases, using a repository that can create a <a class="reference external" href="https://www.doi.org/">DOI</a> will help increase citations.</p>
+</section>
+<section id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Permalink to this heading">#</a></h3>
+<p>There is no single best way to structure your data, but it must be in a form that allows users to easily re-use it for their own purposes. This may be by adopting specific file formats (such as <a class="reference external" href="https://www.nwb.org/">NeuroData Without Borders</a>). Alternatively the data could be organised within a standardised project folder structure. Many labs have their own system, but those starting from scratch may wish to use the <a class="reference external" href="https://swc-blueprint.neuroinformatics.dev/">SWC-Blueprint data structure</a>.</p>
+<p><strong>However the data is structured, all relevant metadata must be included with the raw data.</strong></p>
+</section>
+</section>
+<section id="assistance">
+<h2>Assistance<a class="headerlink" href="#assistance" title="Permalink to this heading">#</a></h2>
+<p>If you have any technical questions about sharing data or code, please contact <a class="reference external" href="mailto:adam&#46;tyson&#37;&#52;&#48;ucl&#46;ac&#46;uk">adam<span>&#46;</span>tyson<span>&#64;</span>ucl<span>&#46;</span>ac<span>&#46;</span>uk</a>.</p>
+</section>
+<section id="reference-of-potential-repositories-for-neuroscience-data">
+<span id="repo-table"></span><h2>Reference of potential repositories for neuroscience data<a class="headerlink" href="#reference-of-potential-repositories-for-neuroscience-data" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Repository</p></th>
+<th class="head"><p>URL</p></th>
+<th class="head"><p>Domain</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Globus</p></td>
+<td><p></p></td>
+<td><p>Anything</p></td>
+</tr>
+<tr class="row-odd"><td><p>figshare</p></td>
+<td><p><a class="reference external" href="https://rdr.ucl.ac.uk/The_Sainsbury_Wellcome_Centre">https://rdr.ucl.ac.uk/The_Sainsbury_Wellcome_Centre</a></p></td>
+<td><p>Anything</p></td>
+</tr>
+<tr class="row-even"><td><p>Zenodo</p></td>
+<td><p><a class="reference external" href="https://zenodo.org/">https://zenodo.org/</a></p></td>
+<td><p>Anything</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dryad</p></td>
+<td><p><a class="reference external" href="https://datadryad.org">https://datadryad.org</a></p></td>
+<td><p>Anything</p></td>
+</tr>
+<tr class="row-even"><td><p>GIN (German Neuroinformatics Node)</p></td>
+<td><p><a class="reference external" href="https://gin.g-node.org/">https://gin.g-node.org/</a></p></td>
+<td><p>Neuroscience</p></td>
+</tr>
+<tr class="row-odd"><td><p>EBRAINS</p></td>
+<td><p><a class="reference external" href="https://ebrains.eu/service/share-data">https://ebrains.eu/service/share-data</a></p></td>
+<td><p>Neuroscience</p></td>
+</tr>
+<tr class="row-even"><td><p>Open Source Brain</p></td>
+<td><p><a class="reference external" href="https://www.v2.opensourcebrain.org/">https://www.v2.opensourcebrain.org/</a></p></td>
+<td><p>Any neuroscience data (data must be hosted elsewhere)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Brain Image Library</p></td>
+<td><p><a class="reference external" href="http://www.brainimagelibrary.org/">http://www.brainimagelibrary.org/</a></p></td>
+<td><p>Large brain image datasets</p></td>
+</tr>
+<tr class="row-even"><td><p>Image data resource</p></td>
+<td><p><a class="reference external" href="https://idr.openmicroscopy.org/">https://idr.openmicroscopy.org/</a></p></td>
+<td><p>Reference image datasets</p></td>
+</tr>
+<tr class="row-odd"><td><p>BioImage Archive</p></td>
+<td><p><a class="reference external" href="https://www.ebi.ac.uk/bioimage-archive/">https://www.ebi.ac.uk/bioimage-archive/</a></p></td>
+<td><p>Biological images</p></td>
+</tr>
+<tr class="row-even"><td><p>DANDI</p></td>
+<td><p><a class="reference external" href="https://dandiarchive.org/">https://dandiarchive.org/</a></p></td>
+<td><p>Electrophysiology, optophysiology, behavioural time-series and images from immunostaining experiments</p></td>
+</tr>
+<tr class="row-odd"><td><p>NeMO</p></td>
+<td><p><a class="reference external" href="https://nemoarchive.org/">https://nemoarchive.org/</a></p></td>
+<td><p>Omic data from the BRAIN Initiative (&amp; others)</p></td>
+</tr>
+<tr class="row-even"><td><p>Openneuro</p></td>
+<td><p><a class="reference external" href="https://openneuro.org/">https://openneuro.org/</a></p></td>
+<td><p>BIDS-compliant MRI, PET, EEG etc</p></td>
+</tr>
+<tr class="row-odd"><td><p>CRCNS</p></td>
+<td><p><a class="reference external" href="https://crcns.org/">https://crcns.org/</a></p></td>
+<td><p>Computational neuroscience</p></td>
+</tr>
+<tr class="row-even"><td><p>BrainGlobe</p></td>
+<td><p><a class="reference external" href="https://gin.g-node.org/BrainGlobe/atlases">https://gin.g-node.org/BrainGlobe/atlases</a></p></td>
+<td><p>Brain Atlases</p></td>
+</tr>
+<tr class="row-odd"><td><p>NeuroMorpho</p></td>
+<td><p><a class="reference external" href="https://neuromorpho.org/">https://neuromorpho.org/</a></p></td>
+<td><p>Neuronal morphologies</p></td>
+</tr>
+<tr class="row-even"><td><p>Cell Image Library</p></td>
+<td><p><a class="reference external" href="http://ccdb.ucsd.edu/home">http://ccdb.ucsd.edu/home</a></p></td>
+<td><p>Cell images</p></td>
+</tr>
+<tr class="row-odd"><td><p>ModelDB</p></td>
+<td><p><a class="reference external" href="https://senselab.med.yale.edu/ModelDB/">https://senselab.med.yale.edu/ModelDB/</a></p></td>
+<td><p>Computational neuroscience models</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 
@@ -410,22 +525,13 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../programming/Python.html"
+       href="Licensing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Licensing.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Software licensing</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -440,8 +546,27 @@ document.write(`
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository">Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assistance">Assistance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-of-potential-repositories-for-neuroscience-data">Reference of potential repositories for neuroscience data</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/guides/index.md.txt">
+    <a href="../_sources/open_science/Data-sharing.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
