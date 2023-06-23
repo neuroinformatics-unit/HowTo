@@ -13,6 +13,11 @@ To add a new guide, create a new markdown file in the appropriate section direct
 
 ## Adding a small tip
 If the content you want to add is not long enough to warrant a full guide, for example a small tip or a quick solution to a common problem, you can add it to a `Troubleshooting.md` file in the appropriate section directory. For an example see `docs/source/programming/Troubleshooting.md`. Each small tip should start with a level-2 heading.
+
+> **warning**
+> 
+> Since the website is already named "HowTo", please avoid starting your guides/tips with "How to ...".
+> For example, instead of "How to detach a forked repo on GitHub", use "Detach a forked repo on GitHub".
   
 ## GitHub workflow
 * Clone the GitHub repository, and create your `new_branch`.

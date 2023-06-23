@@ -12,6 +12,6 @@ If it's possible open terminal through vscode or open a virtual terminal (VT) wi
 Does it throw a Python error? If yes run `sudo nano /usr/bin/gnome-terminal` and change `#!/usr/bin/python3` to `#!/usr/bin/python3.10` if the version you're currently using is 3.10.  
 Exit the VT via CTRL + ALT + F2.
 
-## How to detach a forked repo on GitHub
+## Detach a forked repo on GitHub
 If you forked a repo and want to detach it from the original repo, use the [Github chatbot-virtual-assistant](https://support.github.com/contact?tags=rr-forks&subject=Detach%20Fork&flow=detach_fork).
 Follow the instructions and wait for the response.
