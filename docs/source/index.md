@@ -10,5 +10,5 @@ The information is primarily aimed at researchers at the [Sainsbury Wellcome Cen
 
 data_analysis/index
 programming/index
-guides/index
+open_science/index
 ```
