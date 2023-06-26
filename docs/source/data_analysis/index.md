@@ -1,15 +1,10 @@
 # Data Analysis
 
-Issues relating to data analysis in neuroscience are grouped into sections corresponding to data *modalities*.
-Each *modality* is further subdivided into subsections corresponding to specific *tools*.
+Guides related to the analysis of neuroscientific data, spanning a wide range of data types such as electrophysiology, behaviour, calcium imaging, histology, etc. The focus may be on the use of specific software tools, or on more general analysis tasks and concepts.
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 1
 
-Behaviour
-Electrophysiology
-Imaging
-Histology
 ```
   
 

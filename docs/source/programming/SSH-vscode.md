@@ -1,9 +1,4 @@
-# IDEs
-*Integrated Development Environments*
-
-## VSCode
-
-### SSH into an unmanaged machine from remote
+# SSH into an unmanaged machine using VSCode
 > **_Example Usecase:_**  When working from home, connect from you local Mac to the SWC office Linux machine
 
 In your local machine `cd` and ` open .ssh/config` and append the following configurations:

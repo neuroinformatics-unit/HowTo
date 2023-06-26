@@ -1,12 +1,14 @@
 # Programming
 
-General programming and software development issues, tips and tricks.
+Guides related to general coding and software development issue, such as version control, programming environments, IDEs, Linux, the command line, etc.
+
+Small tips and tricks that do not warrant a long-form guide can be found in the [Troubleshooting](Troubleshooting.md) section.
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 1
 
-Linux
-IDEs
-VersionControl
-Python
+SSH-vscode
+Mount-ceph-ubuntu
+Cookiecutter-cruft
+Troubleshooting
 ```

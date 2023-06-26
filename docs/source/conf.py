@@ -37,6 +37,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
+    'sphinx_design',
     'myst_parser',
     'numpydoc',
     'nbsphinx',
@@ -121,3 +122,6 @@ html_theme_options = {
     "footer_start": ["footer_start"],
     "footer_end": ["footer_end"],
 }
+
+# Hide the "Show Source" button
+html_show_sourcelink = False
