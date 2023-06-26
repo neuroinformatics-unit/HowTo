@@ -5,7 +5,6 @@ Guides related to the analysis of neuroscientific data, spanning a wide range of
 ```{toctree}
 :maxdepth: 2
 
-HPC-SLEAP
 ```
   
 
