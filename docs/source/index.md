@@ -34,9 +34,10 @@ How to effectively share your code and data.
 
 ::::
 
-## Table of contents
+
 ```{toctree}
 :maxdepth: 2
+:hidden:
 
 data_analysis/index
 programming/index
