@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,9 +7,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Behaviour &#8212; HowTo</title>
+    <title>Mount ceph storage on Ubuntu &#8212; HowTo</title>
   
   
   
@@ -29,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,14 +40,15 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data_analysis/Behaviour';</script>
-    <link rel="canonical" href="https://howto.neuroinformatics.dev/data_analysis/Behaviour.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming/Mount-ceph-ubuntu';</script>
+    <link rel="canonical" href="https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu.html" />
     <link rel="icon" href="../_static/logo_light.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Electrophysiology" href="Electrophysiology.html" />
-    <link rel="prev" title="Data Analysis" href="index.html" />
+    <link rel="next" title="Update cookiecutter-generated files with cruft" href="Cookiecutter-cruft.html" />
+    <link rel="prev" title="SSH into an unmanaged machine using VSCode" href="SSH-vscode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -135,15 +138,15 @@
   </p>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="index.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../data_analysis/index.html">
                         Data Analysis
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../programming/index.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
                         Programming
                       </a>
                     </li>
@@ -248,15 +251,15 @@ document.write(`
   </p>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="index.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../data_analysis/index.html">
                         Data Analysis
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../programming/index.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
                         Programming
                       </a>
                     </li>
@@ -313,10 +316,10 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Behaviour</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Electrophysiology.html">Electrophysiology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Imaging.html">Imaging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Histology.html">Histology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH-vscode.html">SSH into an unmanaged machine using VSCode</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mount ceph storage on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cookiecutter-cruft.html">Update cookiecutter-generated files with cruft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </div>
 </nav></div>
@@ -355,9 +358,9 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Data Analysis</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Programming</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Behaviour</li>
+    <li class="breadcrumb-item active" aria-current="page">Mount ceph storage on Ubuntu</li>
   </ul>
 </nav>
 </div>
@@ -374,14 +377,77 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="behaviour">
-<h1>Behaviour<a class="headerlink" href="#behaviour" title="Permalink to this heading">#</a></h1>
-<section id="sleap">
-<h2>SLEAP<a class="headerlink" href="#sleap" title="Permalink to this heading">#</a></h2>
-<section id="pip-install-fails-for-sleap-on-windows-10">
-<h3>Pip install fails for SLEAP on Windows 10<a class="headerlink" href="#pip-install-fails-for-sleap-on-windows-10" title="Permalink to this heading">#</a></h3>
-<p>SLEAP lists several <a class="reference external" href="https://sleap.ai/develop/installation.html#installation-methods">installation methods</a>. People have reported problems with the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> method on windows. The <code class="docutils literal notranslate"><span class="pre">conda</span></code> method - <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-y</span> <span class="pre">-n</span> <span class="pre">sleap</span> <span class="pre">-c</span> <span class="pre">sleap</span> <span class="pre">-c</span> <span class="pre">nvidia</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">sleap=1.2.8</span></code> - works well on Linux and Windows (as of October 2022). For ARM64 silicon Macs, follow the <a class="reference external" href="https://sleap.ai/develop/installation.html#m1-macs">M1-specific installation instructions</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="mount-ceph-storage-on-ubuntu">
+<h1>Mount ceph storage on Ubuntu<a class="headerlink" href="#mount-ceph-storage-on-ubuntu" title="Permalink to this heading">#</a></h1>
+<p>In this example, we will <strong>permanently</strong> mount the <code class="docutils literal notranslate"><span class="pre">neuroinformatics</span></code> partition of <code class="docutils literal notranslate"><span class="pre">ceph</span></code>. The same procedure can be used to mount other partitions, such as those belonging to particular labs or projects.</p>
+<p>The following instructions have been tested on <strong>Ubuntu 20.04 LTS</strong>.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Administrator rights (<code class="docutils literal notranslate"><span class="pre">sudo</span></code>) on the local Ubuntu machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cifs-utils</span></code> installed via <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">cifs-utils</span></code></p></li>
+</ul>
 </section>
+<section id="store-your-swc-credentials">
+<h2>Store your SWC credentials<a class="headerlink" href="#store-your-swc-credentials" title="Permalink to this heading">#</a></h2>
+<p>First, create a file to store your SWC login credentials and save it in your home directory.
+You can do that on the terminal via <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">~/.smb_swc</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.smb_swc</span></code> file contents should look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">user</span><span class="o">=</span>&lt;SWC-USERNAME&gt;
+<span class="nv">password</span><span class="o">=</span>&lt;SWC-PASSWORD&gt;
+<span class="nv">domain</span><span class="o">=</span>AD.SWC.UCL.AC.UK
+</pre></div>
+</div>
+<p>Save the file and exit.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Storing the password in plain-text format as done above constitutes a security risk.
+If someone gets access to your machine, they will be able to see your SWC password.</p>
+<p>You can harden the security a bit by changing the permissions of the file. Run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.smb_swc
+</pre></div>
+</div>
+<p>This will ensure the file is readable and writable only by the owner (you).
+However, if someone gets access to your machine with your user logged in, they will still be able to read the SWC password.</p>
+</div>
+</section>
+<section id="create-a-mount-point">
+<h2>Create a mount point<a class="headerlink" href="#create-a-mount-point" title="Permalink to this heading">#</a></h2>
+<p>Create a directory to mount the storage to. Sensible places to do this on Ubuntu would be in <code class="docutils literal notranslate"><span class="pre">/mnt</span></code> or <code class="docutils literal notranslate"><span class="pre">/media</span></code>. In the example below, we will use <code class="docutils literal notranslate"><span class="pre">/media/ceph-neuroinformatics</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/media/ceph-neuroinformatics
+</pre></div>
+</div>
+</section>
+<section id="edit-the-fstab-file">
+<h2>Edit the fstab file<a class="headerlink" href="#edit-the-fstab-file" title="Permalink to this heading">#</a></h2>
+<p>This will allow you to mount the storage automatically on boot. Before editing the file, make a backup of it, just in case.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/fstab<span class="w"> </span>/etc/fstab.bak
+</pre></div>
+</div>
+<p>Now, open the file with your favourite editor (e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/fstab</span></code>) and add new lines at the end of the file.</p>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mount ceph/neuroinformatics</span>
+//ceph-gw02.hpc.swc.ucl.ac.uk/neuroinformatics<span class="w"> </span>/media/ceph-neuroinformatics<span class="w"> </span>cifs<span class="w"> </span><span class="nv">uid</span><span class="o">=</span><span class="m">1002</span>,gid<span class="o">=</span><span class="m">1002</span>,credentials<span class="o">=</span>/home/&lt;LOCAL-USERNAME&gt;/.smb_swc<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>Make sure to replace the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">//ceph-gw02.hpc.swc.ucl.ac.uk/neuroinformatics</span></code> with the path to your desired partition, e.g. <code class="docutils literal notranslate"><span class="pre">//ceph-gw02.hpc.swc.ucl.ac.uk/&lt;LAB-NAME&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/media/ceph-neuroinformatics</span></code> with the path to the local mount point you created in the previous step.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uid=1002,gid=1002</span></code> with your local user ID and group ID. You can find these out by running <code class="docutils literal notranslate"><span class="pre">id</span></code> on the terminal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;LOCAL-USERNAME&gt;</span></code> with your username on the local Ubuntu machine on which you are mounting the storage</p></li>
+</ul>
+<p>Save the file and exit.</p>
+</section>
+<section id="mount-the-storage">
+<h2>Mount the storage<a class="headerlink" href="#mount-the-storage" title="Permalink to this heading">#</a></h2>
+<p>You can now mount the storage by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">-a</span></code>. If you get an error, check the <code class="docutils literal notranslate"><span class="pre">fstab</span></code> file for typos. If you get no error, you should be able to see the mounted storage by running <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">-h</span></code>.</p>
+<p>The next time you reboot your machine, the storage should be mounted automatically.</p>
+</section>
+<section id="unmount-the-storage">
+<h2>Unmount the storage<a class="headerlink" href="#unmount-the-storage" title="Permalink to this heading">#</a></h2>
+<p>To unmount the storage, run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">/media/ceph-neuroinformatics</span></code> (or whatever your mount point is).</p>
+<p>To permanently unmount the storage, remove the lines you added to the <code class="docutils literal notranslate"><span class="pre">fstab</span></code> file and run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">-a</span></code> again.</p>
 </section>
 </section>
 
@@ -397,20 +463,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="SSH-vscode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Analysis</p>
+        <p class="prev-next-title">SSH into an unmanaged machine using VSCode</p>
       </div>
     </a>
     <a class="right-next"
-       href="Electrophysiology.html"
+       href="Cookiecutter-cruft.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Electrophysiology</p>
+        <p class="prev-next-title">Update cookiecutter-generated files with cruft</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -432,20 +498,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sleap">SLEAP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-fails-for-sleap-on-windows-10">Pip install fails for SLEAP on Windows 10</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#store-your-swc-credentials">Store your SWC credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-mount-point">Create a mount point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-fstab-file">Edit the fstab file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-the-storage">Mount the storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unmount-the-storage">Unmount the storage</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../_sources/data_analysis/Behaviour.md.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
@@ -469,7 +529,7 @@ document.write(`
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="sphinx-version">
-Created using <a href="https://sphinx-doc.org/">Sphinx</a> 7.0.1.
+Created using <a href="https://sphinx-doc.org/">Sphinx</a> 6.2.1.
 <br/>
 </p>
 <p class="theme-version">
