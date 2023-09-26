@@ -5,3 +5,4 @@ numpydoc
 pydata-sphinx-theme
 sphinx
 sphinx-design
+sphinx-copybutton
