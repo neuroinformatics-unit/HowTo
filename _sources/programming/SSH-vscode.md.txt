@@ -28,4 +28,4 @@ cd .ssh/
 touch config
 ```
 
-Connect to VPN, then use the `Open a remote window` (Remote - SSH extension) tool of vscode and connect to `remote-host`. You will be asked for your SWC and Linux passwords. 
+Connect to VPN, then use the `Open a remote window` (Remote - SSH extension) tool of vscode and connect to `remote-host`. You will be asked for your SWC and Linux passwords.

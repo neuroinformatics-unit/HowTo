@@ -9,7 +9,7 @@ The following instructions have been tested on **Ubuntu 20.04 LTS**.
 
 ## Store your SWC credentials
 First, create a file to store your SWC login credentials and save it in your home directory.
-You can do that on the terminal via `nano ~/.smb_swc`. 
+You can do that on the terminal via `nano ~/.smb_swc`.
 
 The ``.smb_swc`` file contents should look like this:
 ```bash
@@ -35,7 +35,7 @@ However, if someone gets access to your machine with your user logged in, they w
 ## Create a mount point
 Create a directory to mount the storage to. Sensible places to do this on Ubuntu would be in `/mnt` or `/media`. In the example below, we will use `/media/ceph-neuroinformatics`.
 
-```bash 
+```bash
 sudo mkdir /media/ceph-neuroinformatics
 ```
 
@@ -44,7 +44,7 @@ This will allow you to mount the storage automatically on boot. Before editing t
 ```bash
 sudo cp /etc/fstab /etc/fstab.bak
 ```
-Now, open the file with your favourite editor (e.g. `sudo nano /etc/fstab`) and add new lines at the end of the file. 
+Now, open the file with your favourite editor (e.g. `sudo nano /etc/fstab`) and add new lines at the end of the file.
 
 For example:
 ```bash
