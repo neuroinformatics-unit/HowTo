@@ -21,7 +21,7 @@ This guide explains how to connect to the SWC's HPC cluster via SSH.
 ## Prerequisites
 - You have a SWC account and know your username and password.
 - You have read the [SWC wiki's section on High Performance Computing (HPC)](https://wiki.ucl.ac.uk/display/SSC/High+Performance+Computing), especially the [Logging into the Cluster page](https://wiki.ucl.ac.uk/display/SSC/Logging+into+the+Cluster).
-- You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS, but not on Windows. If you are using Windows, we recommend intalling [Git Bash](https://gitforwindows.org/).
+- You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS, but not on Windows. If you are using Windows, we recommend installing [Git Bash](https://gitforwindows.org/).
 - You know the basics of using the command line, i.e. using the terminal (Git Bash on Windows) to navigate the file system and run commands.
 
 ## Log into the cluster
@@ -37,7 +37,7 @@ You have now successfully logged into the cluster 🎉. You may stop reading her
 
 If you want to learn more about why we had to SSH twice, read the [next section](#why-do-we-ssh-twice).
 
-If you want to make you life easier, you can set yourself up with an [SSH config file](#ssh-config-file) 
+If you want to make you life easier, you can set yourself up with an [SSH config file](#ssh-config-file)
 and some [SSH keys](#ssh-keys). Trust us, it's worth the effort. For example, one
 benefit is that you will be able to use [Visual Studio Code](https://code.visualstudio.com/)
 on your PC/laptop to edit files on the cluster. See the [last section](#remote-development) for details.
@@ -62,7 +62,7 @@ The *compute* nodes should only be accessed via the SLURM `srun` or `sbatch` com
 
 ## SSH config file
 If you find yourself typing the above commands over and over again, you can make
-your life easier by editing the SSH config file. 
+your life easier by editing the SSH config file.
 This is a text file that lives in your home directory and contains a list of aliases
 for SSH connections.
 
@@ -84,7 +84,7 @@ using the terminal text editor `nano`:
 ```{code-block} console
 $ nano config
 ```
-If the file doesn't exist yet, it will be created. 
+If the file doesn't exist yet, it will be created.
 Add the following lines to the file:
 
 ```{code-block} bash
@@ -124,7 +124,7 @@ upfront, but it will save you tons of time in the long run. Plus, it's more secu
 ::: {dropdown} How does SSH key authentication work?
 :color: info
 :icon: info
-You generate a pair of keys locally - a public and a private one - 
+You generate a pair of keys locally - a public and a private one -
 and then copy the public key to the remote machine.
 When you try to SSH into the remote machine, the SSH client on your local machine
 will use the private key to generate a signature, which the SSH server on the
@@ -133,7 +133,7 @@ you will be granted access.
 
 There are several cryptographic algorithms that can be used to generate the keys.
 They can be selected using the `-t` argument of the `ssh-keygen` command.
-In the following example, we use `ed25519`, as it strikes a good balance between 
+In the following example, we use `ed25519`, as it strikes a good balance between
 security and speed for most use cases.
 :::
 
@@ -142,7 +142,7 @@ To generate a pair of SSH keys, run the following command on your local machine:
 $ ssh-keygen -t ed25519
 ```
 
-You will be prompted to enter a file path for the key. You may accept the 
+You will be prompted to enter a file path for the key. You may accept the
 default - `~/.ssh/id_ed25519` - or choose another path/name.
 
 Next, you will be prompted to enter a passphrase.
@@ -171,7 +171,7 @@ $ ssh-copy-id -i id_ed25519.pub swc-gateway
 ```
 
 The above commands will copy your public key both to the *bastion* and *gateway* nodes.
-The key will be added to the `.ssh/authorized_keys` file on each node. The 
+The key will be added to the `.ssh/authorized_keys` file on each node. The
 `ssh-copy-id` command uses the configuration we previously set up
 in the `config` file to figure out how to reach the two remote machines.
 
@@ -185,13 +185,13 @@ $ ssh swc-bastion
 ```
 
 ::: {warning}
-In most cases, you don't need to explicitly specify the location of the private key 
-in your `~/.ssh/config` file because SSH will automatically look for the default key names 
+In most cases, you don't need to explicitly specify the location of the private key
+in your `~/.ssh/config` file because SSH will automatically look for the default key names
 (like `id_rsa`, `id_ed25519`, etc.) in the `~/.ssh` directory.
 
-However, if you're using a non-default name or location for your private key, 
-or if you have multiple keys and want to specify which one to use for a particular host, 
-then you can use the `IdentityFile` directive in your `~/.ssh/config` to 
+However, if you're using a non-default name or location for your private key,
+or if you have multiple keys and want to specify which one to use for a particular host,
+then you can use the `IdentityFile` directive in your `~/.ssh/config` to
 point to the private key.
 
 For example, if you have a private key with a custom name `<MY-SPECIAL-KEY>`
@@ -224,12 +224,12 @@ One benefit of setting your SSH config and SSH keys is that you can now easily u
 This is especially useful for editing scripts on the *gateway* node that you want to
 run on the *compute* nodes of the cluster.
 
-To do this, you need to install the [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension in VS Code. Then, when you 
+To do this, you need to install the [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension in VS Code. Then, when you
 click on the "Open a Remote Window" button in the bottom left corner of the VS Code window,
 you will see a list of the SSH hosts you have configured in your `~/.ssh/config` file.
-You can then select the host you want to connect to - e.g. `swc-gateway` - and VS Code 
+You can then select the host you want to connect to - e.g. `swc-gateway` - and VS Code
 will open a new window with a terminal connected to that host. You can then use the
 VS Code GUI to navigate the file system and edit files on the remote machine.
 
-Other IDEs like [PyCharm](https://www.jetbrains.com/pycharm/) also offer 
+Other IDEs like [PyCharm](https://www.jetbrains.com/pycharm/) also offer
 [similar functionality](https://www.jetbrains.com/help/pycharm/remote-development-overview.html).
