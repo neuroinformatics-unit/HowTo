@@ -17,7 +17,7 @@ Data is key to neuroscience, and it should be shared for maximal utility. There 
 
 ## Requirements
 
-Currently, SWC does not have any specific code and data sharing requirements, but your funder or publisher may do. 
+Currently, SWC does not have any specific code and data sharing requirements, but your funder or publisher may do.
 
 **Ideally, all data and code will be shared in such a way that any other researcher could easily reproduce key figures from a publication, and build on those data and software in their own research.**
 
@@ -25,7 +25,7 @@ Currently, SWC does not have any specific code and data sharing requirements, bu
 ## Code
 Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. To enable re-use, code should include an [appropriate license](https://howto.neuroinformatics.dev/guides/Licensing.html).
 
-To ensure a permanent archive of the code associated with a publication a [DOI](https://www.doi.org/) should be created (e.g. using [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)). 
+To ensure a permanent archive of the code associated with a publication a [DOI](https://www.doi.org/) should be created (e.g. using [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)).
 
 ## Data
 ### Repository
@@ -75,4 +75,3 @@ If you have any technical questions about sharing data or code, please contact a
 | NeuroMorpho                        |https://neuromorpho.org/                           |Neuronal morphologies                                                                                |
 | Cell Image Library                 |http://ccdb.ucsd.edu/home                          |Cell images                                                                                          |
 | ModelDB                            |https://senselab.med.yale.edu/ModelDB/             |Computational neuroscience models                                                                    |
-

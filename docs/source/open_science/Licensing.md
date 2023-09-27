@@ -3,9 +3,9 @@
 ## Disclaimer
 **This document was not written by lawyers, and does not represent legal advice.**
 
-This guide was written by the [Neuroinformatics Unit](https://neuroinformatics.dev/) to help researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/) and [Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit) at [University College London (UCL)](https://www.ucl.ac.uk/) choose a license for their software. 
+This guide was written by the [Neuroinformatics Unit](https://neuroinformatics.dev/) to help researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/) and [Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit) at [University College London (UCL)](https://www.ucl.ac.uk/) choose a license for their software.
 It does not represent official guidance by SWC, GCNU or UCL.
-In particular this is not advice about intellectual property, but rather the practicalities of adding a license to your software. 
+In particular this is not advice about intellectual property, but rather the practicalities of adding a license to your software.
 For more information, SWC/GCNU researchers should consult the SWC/GCNU and UCL documentation about intellectual property or contact [UCL Business](https://www.uclb.com/) if you think your software may have commercial potential (before release).
 
 ## Summary

@@ -3,7 +3,7 @@
 Ref: [original docs](https://cruft.github.io/cruft/) and [github repo](https://github.com/cruft/cruft).
 
 ## Setup: `cruft link`
-Install: `pip install cruft`.   
+Install: `pip install cruft`.
 
 If this is your first time using `cruft`, you have to set it up using the `cruft link` command. You have to specify the URL of your cookiecutter on GitHub.
 
@@ -38,6 +38,6 @@ When `cruft update` is done, you will notice that the `.cruft.json` file has bee
 `cruft check` will check if your repo is up to date with the template and just give you a boolean response.
 
 ## Commit
-Once you are satisfied, commit the changes to a new branch and open a PR to merge it into `main`. 
+Once you are satisfied, commit the changes to a new branch and open a PR to merge it into `main`.
 
 Now, check if your GitHub actions fail... 🤦🏻‍♀️ If everything is fine, you can merge the PR. 🎉 If not, you will have to fix the errors and repeat the process. 😱
