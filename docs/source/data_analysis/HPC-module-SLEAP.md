@@ -7,25 +7,25 @@
 :language: python
 ```
 
-This guide explains how to use the [SLEAP](https://sleap.ai/) module that is 
+This guide explains how to use the [SLEAP](https://sleap.ai/) module that is
 installed on the SWC's HPC cluster to run training and/or inference jobs.
 
 :::{warning}
-Some links withing this document point to the 
+Some links within this document point to the
 [SWC internal wiki](https://wiki.ucl.ac.uk/display/SI/SWC+Intranet),
 which is only accessible from within the SWC network.
 :::
 
-:::{dropdown} Intepreting code blocks wihin this document
+:::{dropdown} Interpreting code blocks wihin this document
 :color: info
 :icon: info
 
-Shell commands will be shown in code blocks like this 
+Shell commands will be shown in code blocks like this
 (with the `$` sign indicating the shell prompt):
 ```{code-block} console
 $ echo "Hello world!"
 ```
- 
+
 Similarly, Python code blocks will appear with the `>>>` sign indicating the
 Python interpreter prompt:
 ```{code-block} pycon
@@ -57,7 +57,7 @@ $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
 $ ssh hpc-gw1
 ```
 
-If you are wondering about the two SSH commands, see the Appendix for 
+If you are wondering about the two SSH commands, see the Appendix for
 [Why do we SSH twice?](#why-do-we-ssh-twice).
 
 
@@ -77,7 +77,7 @@ You can load the latest version by running:
 ```{code-block} console
 $ module load SLEAP
 ```
-If you want to load a specific version, you can do so by typing the full module name, 
+If you want to load a specific version, you can do so by typing the full module name,
 including the date e.g. `module load SLEAP/2023-03-13`
 
 If a module has been successfully loaded, it will be listed when you run `module list`,
@@ -86,38 +86,38 @@ along with other modules it may depend on:
 ```{code-block} console
 $ module list
 Currently Loaded Modulefiles:
- 1) cuda/11.8   2) SLEAP/2023-08-01 
+ 1) cuda/11.8   2) SLEAP/2023-08-01
 ```
 
-If you have troubles with loading the SLEAP module, see the 
+If you have troubles with loading the SLEAP module, see the
 [Troubleshooting section](#problems-with-the-sleap-module).
 
 
 ### Install SLEAP on your local PC/laptop
-While you can delegate the GPU-intensive work to the HPC cluster, 
-you will still need to do some steps, such as labelling frames, via the SLEAP GUI. 
+While you can delegate the GPU-intensive work to the HPC cluster,
+you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.
 
 We recommend following the official [SLEAP installation guide](https://sleap.ai/installation.html).
 To be on the safe side, ensure that the local installation version matches the one on the cluster.
 
 ### Mount the SWC filesystem on your local PC/laptop
-The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop. 
-If you have not done so, please follow the relevant instructions on the 
+The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop.
+If you have not done so, please follow the relevant instructions on the
 [SWC internal wiki](https://wiki.ucl.ac.uk/display/SSC/SWC+Storage+Platform+Overview).
 
-We will also assume that the data you are working with are stored in a `ceph` or `winstor` 
-directory to which you have access to. In the rest of this guide, we will use the path 
-`/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data` which contains a SLEAP project 
+We will also assume that the data you are working with are stored in a `ceph` or `winstor`
+directory to which you have access to. In the rest of this guide, we will use the path
+`/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data` which contains a SLEAP project
 for test purposes. You should replace this with the path to your own data.
 
 :::{dropdown} Data storage location matters
 :color: warning
 :icon: alert-fill
 
-The cluster has fast acess to data stored on the `ceph` and `winstor` filesystems.
-If your data is stored elsewhere, make sure to transfer it to `ceph` or `winstor` 
-before running the job. You can use tools such as [`rsync`](https://linux.die.net/man/1/rsync) 
+The cluster has fast access to data stored on the `ceph` and `winstor` filesystems.
+If your data is stored elsewhere, make sure to transfer it to `ceph` or `winstor`
+before running the job. You can use tools such as [`rsync`](https://linux.die.net/man/1/rsync)
 to copy data from your local machine to `ceph` via an ssh connection. For example:
 
 ```{code-block} console
@@ -126,23 +126,23 @@ $ rsync -avz <LOCAL-DIR> <SWC-USERNAME>@ssh.swc.ucl.ac.uk:/ceph/scratch/neuroinf
 :::
 
 ## Model training
-This will consist of two parts - [preparing a training job](#prepare-the-training-job) 
-(on your local SLEAP installation) and [running a training job](#run-the-training-job) 
-(on the HPC cluster's SLEAP module). Some evaluation metrics for the trained models 
+This will consist of two parts - [preparing a training job](#prepare-the-training-job)
+(on your local SLEAP installation) and [running a training job](#run-the-training-job)
+(on the HPC cluster's SLEAP module). Some evaluation metrics for the trained models
 can be [viewed via the SLEAP GUI](#evaluate-the-trained-models) on your local SLEAP installation.
 
 ### Prepare the training job
-Follow the SLEAP instructions for [Creating a Project](https://sleap.ai/tutorials/new-project.html) 
-and [Initial Labelling](https://sleap.ai/tutorials/initial-labeling.html). 
-Ensure that the project file (e.g. `labels.v001.slp`) is saved in the mounted SWC filesystem 
+Follow the SLEAP instructions for [Creating a Project](https://sleap.ai/tutorials/new-project.html)
+and [Initial Labelling](https://sleap.ai/tutorials/initial-labeling.html).
+Ensure that the project file (e.g. `labels.v001.slp`) is saved in the mounted SWC filesystem
 (as opposed to your local filesystem).
 
-Next, follow the instructions in [Remote Training](https://sleap.ai/guides/remote.html#remote-training), 
+Next, follow the instructions in [Remote Training](https://sleap.ai/guides/remote.html#remote-training),
 i.e. "Predict" -> "Run Training…" -> "Export Training Job Package…".
 - For selecting the right configuration parameters, see [Configuring Models](https://sleap.ai/guides/choosing-models.html#) and [Troubleshooting Workflows](https://sleap.ai/guides/troubleshooting-workflows.html)
 - Set the "Predict On" parameter to "nothing". Remote training and inference (prediction) are easiest to run separately on the HPC Cluster. Also unselect "visualize predictions" in training settings, if it's enabled by default.
 - If you are working with a top-down camera view, set the "Rotation Min Angle" and "Rotation Max Angle" to -180 and 180 respectively in the "Augmentation" section.
-- Make sure to save the exported training job package (e.g. `labels.v001.slp.training_job.zip`) in the mounted SWC filesystem, ideally in the same directory as the project file.
+- Make sure to save the exported training job package (e.g. `labels.v001.slp.training_job.zip`) in the mounted SWC filesystem, for example, in the same directory as the project file.
 - Unzip the training job package. This will create a folder with the same name (minus the `.zip` extension). This folder contains everything needed to run the training job on the HPC cluster.
 
 ### Run the training job
@@ -162,24 +162,26 @@ inference-script.sh
 jobs.yaml
 labels.v001.pkg.slp
 labels.v001.slp.predictions.slp
-slurm_train_script.sh
+slurm-train-script.sh
 swc-hpc-pose-estimation
 train-script.sh
 ```
-There should be a `train-script.sh` file created by SLEAP, which already contains the 
+There should be a `train-script.sh` file created by SLEAP, which already contains the
 commands to run the training. You can see the contents of the file by running `cat train-script.sh`:
 ```{code-block} bash
 :caption: train-script.sh
+:name: train-script-sh
+:linenos:
 #!/bin/bash
 sleap-train centroid.json labels.v001.pkg.slp
 sleap-train centered_instance.json labels.v001.pkg.slp
 ```
 The precise commands will depend on the model configuration you chose in SLEAP.
-Here we see two separate training calls, one for the "centroid" and another for 
-the "centered_instance" model. That's because in this example we have chosen 
-the ["Top-Down"](https://sleap.ai/tutorials/initial-training.html#training-options) 
-configuration, which consists of two neural networks - the first for isolating 
-the animal instances (by finding their centroids) and the second for predicting 
+Here we see two separate training calls, one for the "centroid" and another for
+the "centered_instance" model. That's because in this example we have chosen
+the ["Top-Down"](https://sleap.ai/tutorials/initial-training.html#training-options)
+configuration, which consists of two neural networks - the first for isolating
+the animal instances (by finding their centroids) and the second for predicting
 all the body parts per instance.
 
 ![Top-Down model configuration](https://sleap.ai/_images/topdown_approach.jpg)
@@ -188,26 +190,28 @@ all the body parts per instance.
 :color: info
 :icon: info
 
-Although the "Top-Down" configuration was designed with multiple animals in mind, 
-it can also be used for single-animal videos. It makes sense to use it for videos 
-where the animal occupies a relatively small portion of the frame - see 
+Although the "Top-Down" configuration was designed with multiple animals in mind,
+it can also be used for single-animal videos. It makes sense to use it for videos
+where the animal occupies a relatively small portion of the frame - see
 [Troubleshooting Workflows](https://sleap.ai/guides/troubleshooting-workflows.html) for more info.
 :::
 
-Next you need to create a SLURM batch script, which will schedule the training job 
-on the HPC cluster. Create a new file called `slurm_train_script.sh` 
-(You can do this in the terminal with `nano`/`vim` or in a text editor of 
-your choice on your local PC/laptop). Here we create the script in the same folder 
+Next you need to create a SLURM batch script, which will schedule the training job
+on the HPC cluster. Create a new file called `slurm-train-script.sh`
+(You can do this in the terminal with `nano`/`vim` or in a text editor of
+your choice on your local PC/laptop). Here we create the script in the same folder
 as the training job, but you can save it anywhere you want, or even keep track of it with `git`.
 
 ```{code-block} console
-$ nano slurm_train_script.sh
+$ nano slurm-train-script.sh
 ```
 
 An example is provided below, followed by explanations.
 ```{code-block} bash
-:caption: slurm_train_script.sh
-#!/bin/bash 
+:caption: slurm-train-script.sh
+:name: slurm-train-script-sh
+:linenos:
+#!/bin/bash
 
 #SBATCH -p gpu # partition
 #SBATCH -N 1   # number of nodes
@@ -218,7 +222,7 @@ An example is provided below, followed by explanations.
 #SBATCH -o slurm.%N.%j.out # write STDOUT
 #SBATCH -e slurm.%N.%j.err # write STDERR
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=name@domain.com 
+#SBATCH --mail-user=name@domain.com
 
 # Load the SLEAP module
 module load SLEAP
@@ -227,7 +231,7 @@ module load SLEAP
 DATA_DIR=/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
 JOB_DIR=$DATA_DIR/labels.v001.slp.training_job
 # Go to the job directory
-cd $JOB_DIR 
+cd $JOB_DIR
 
 # Run the training script generated by SLEAP
 ./train-script.sh
@@ -238,40 +242,40 @@ In `nano`, you can save the file by pressing `Ctrl+O` and exit by pressing `Ctrl
 :::{dropdown} Explanation of the batch script
 :color: info
 :icon: info
-- The `#SBATCH` lines are SLURM directives. They specify the resources needed 
-for the job, such as the number of nodes, CPUs, memory, etc. 
+- The `#SBATCH` lines are SLURM directives. They specify the resources needed
+for the job, such as the number of nodes, CPUs, memory, etc.
 A primer on the most useful SLURM arguments is provided in the [appendix](#slurm-arguments-primer).
 For more information  see the [SLURM documentation](https://slurm.schedmd.com/sbatch.html).
 
-- The `#` lines are comments. They are not executed by SLURM, but they are useful 
+- The `#` lines are comments. They are not executed by SLURM, but they are useful
 for explaining the script to your future self and others.
- 
+
 - The `module load SLEAP` line loads the latest SLEAP module and any other modules
 it may depend on.
-   
+
 - The `cd` line changes the working directory to the training job folder.
 This is necessary because the `train-script.sh` file contains relative paths
 to the  model configuration and the project file.
-  
+
 - The `./train-script.sh` line runs the training job (executes the contained commands).
 :::
 
-Now you can submit the batch script via running the following command 
+Now you can submit the batch script via running the following command
 (in the same directory as the script):
 ```{code-block} console
-$ sbatch slurm_train_script.sh
+$ sbatch slurm-train-script.sh
 Submitted batch job 3445652
 ```
 :::{warning}
-If you are getting a permission error, make the script files executable 
+If you are getting a permission error, make the script files executable
 by running in the terminal:
 
 ```{code-block} console
 $ chmod +x train-script.sh
-$ chmod +x slurm_train_script.sh
+$ chmod +x slurm-train-script.sh
 ```
 
-If the scripts are not in the same folder, you will need to specify the full path: 
+If the scripts are not in the same folder, you will need to specify the full path:
 `chmod +x /path/to/script.sh`
 :::
 
@@ -281,7 +285,7 @@ You may monitor the progress of the job in various ways:
 
 :::{tab-item} squeue
 
-View the status of the queued/running jobs with [`squeue`](https://slurm.schedmd.com/squeue.html): 
+View the status of the queued/running jobs with [`squeue`](https://slurm.schedmd.com/squeue.html):
 
 ```{code-block} console
 $ squeue -u <SWC-USERNAME>
@@ -296,12 +300,12 @@ View status of running/completed jobs with [`sacct`](https://slurm.schedmd.com/s
 
 ```{code-block} console
 $ sacct -u <SWC-USERNAME>
-JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
------------- ---------- ---------- ---------- ---------- ---------- -------- 
-3445652      slurm_bat+        gpu     swc-ac          2  COMPLETED      0:0 
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+3445652      slurm_bat+        gpu     swc-ac          2  COMPLETED      0:0
 3445652.bat+      batch                swc-ac          2  COMPLETED      0:0
 ```
-Run `sacct` with some more helpful arguments 
+Run `sacct` with some more helpful arguments
 (view jobs from the last 24 hours, including the time elapsed):
 
 ```{code-block} console
@@ -314,7 +318,7 @@ $ sacct -u nstest \
 
 :::{tab-item} view the logs
 
-View the contents of standard output and error 
+View the contents of standard output and error
 (the node name and job ID will differ in each case):
 ```{code-block} console
 $ cat slurm.gpu-sr670-20.3445652.out
@@ -325,9 +329,9 @@ $ cat slurm.gpu-sr670-20.3445652.err
 ::::
 
 ### Evaluate the trained models
-Upon successful completion of the training job, a `models` folder will have 
-been created in the training job directory. It contains one subfolder per 
-training run (by defalut prefixed with the date and time of the run). 
+Upon successful completion of the training job, a `models` folder will have
+been created in the training job directory. It contains one subfolder per
+training run (by default prefixed with the date and time of the run).
 
 ```{code-block} console
 $ cd /ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
@@ -338,7 +342,7 @@ $ ls -1
 230509_141357.centroid
 ```
 
-Each subfolder holds the trained model files (e.g. `best_model.h5`), 
+Each subfolder holds the trained model files (e.g. `best_model.h5`),
 their configurations (`training_config.json`) and some evaluation metrics.
 
 ```{code-block} console
@@ -363,13 +367,15 @@ The SLEAP GUI on your local machine can be used to quickly evaluate the trained 
 
 ## Model inference
 By inference, we mean using a trained model to predict the labels on new frames/videos.
-SLEAP provides the `sleap-track` command line utility for running inference 
+SLEAP provides the `sleap-track` command line utility for running inference
 on a single video or a folder of videos.
 
 Below is an example SLURM batch script that contains a `sleap-track` call.
 ```{code-block} bash
-:caption: slurm_infer_script.sh
-#!/bin/bash 
+:caption: slurm-infer-script.sh
+:name: slurm-infer-script-sh
+:linenos:
+#!/bin/bash
 
 #SBATCH -p gpu # partition
 #SBATCH -N 1   # number of nodes
@@ -380,7 +386,7 @@ Below is an example SLURM batch script that contains a `sleap-track` call.
 #SBATCH -o slurm.%N.%j.out # write STDOUT
 #SBATCH -e slurm.%N.%j.err # write STDERR
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=name@domain.com  
+#SBATCH --mail-user=name@domain.com
 
 # Load the SLEAP module
 module load SLEAP
@@ -389,7 +395,7 @@ module load SLEAP
 DATA_DIR=/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
 JOB_DIR=$DATA_DIR/labels.v001.slp.training_job
 # Go to the job directory
-cd $JOB_DIR 
+cd $JOB_DIR
 
 # Run the inference command
 sleap-track $DATA_DIR/videos/M708149_EPM_20200317_165049331-converted.mp4 \
@@ -410,11 +416,11 @@ The script is very similar to the training script, with the following difference
 :color: info
 :icon: info
 
- Some important command line arguments are explained below. 
+ Some important command line arguments are explained below.
  You can view a full list of the available arguments by running `sleap-track --help`.
 - The first argument is the path to the video file to be processed.
 - The `-m` option is used to specify the path to the model configuration file(s) to be used for inference. In this example we use the two models that were trained above.
-- The `--gpu` option is used to specify the GPU to be used for inference. The `auto` value will automatically select the GPU with the highes percentage of available memory (of the GPUs that are available on the machine/node)
+- The `--gpu` option is used to specify the GPU to be used for inference. The `auto` value will automatically select the GPU with the highest percentage of available memory (of the GPUs that are available on the machine/node)
 - The `--tracking.tracker` option is used to specify the tracker for inference. Since in this example we only have one animal, we set it to "none".
 - The `-o` option is used to specify the path to the output file containing the predictions.
 - The above script will predict all the frames in the video. You may select specific frames via the `--frames` option. For example: `--frames 1-50` or `--frames 1,3,5,7,9`.
@@ -422,16 +428,16 @@ The script is very similar to the training script, with the following difference
 
 You can submit and monitor the inference job in the same way as the training job.
 ```{code-block} console
-$ sbatch slurm_infer_script.sh
+$ sbatch slurm-infer-script.sh
 $ squeue -u <SWC-USERNAME>
 ```
-Upon completion, a `labels.v001.slp.predictions.slp` file will have been created in the job directory. 
+Upon completion, a `labels.v001.slp.predictions.slp` file will have been created in the job directory.
 
-You can use the SLEAP GUI on your local machine to load and view the predictions: 
+You can use the SLEAP GUI on your local machine to load and view the predictions:
 "File" -> "Open Project..." -> select the `labels.v001.slp.predictions.slp` file.
 
 ## The training-inference cycle
-Now that you have some predictions, you can keep improving your models by repeating 
+Now that you have some predictions, you can keep improving your models by repeating
 the training-inference cycle. The basic steps are:
 - Manually correct some of the predictions: see [Prediction-assisted labeling](https://sleap.ai/tutorials/assisted-labeling.html)
 - Merge corrected labels into the initial training set: see [Merging guide](https://sleap.ai/guides/merging.html)
@@ -443,7 +449,7 @@ the training-inference cycle. The basic steps are:
 
 ### Problems with the SLEAP module
 
-In this section, we will describe how to test that the SLEAP module is loaded 
+In this section, we will describe how to test that the SLEAP module is loaded
 correctly for you and that it can use the available GPUs.
 
 Login to the HPC cluster as described [above](#access-to-the-hpc-cluster-and-sleap-module).
@@ -457,14 +463,49 @@ $ srun -p fast --gres=gpu:1 --pty bash -i
 :color: info
 :icon: info
 
-The `-i` stands for "interactive", while `--pty` is short for "pseudo-terminal".
-Taken together, the above command will start an interactive bash terminal session 
+* `-p fast` requests a node from the "fast" partition. This refers to the queue of nodes with a 3-hour time limit. They are meant for short jobs, such as testing.
+* `--gres=gpu:1` requests 1 GPU of any kind
+*  `--pty` is short for "pseudo-terminal".
+*  The `-i` stands for "interactive"
+
+Taken together, the above command will start an interactive bash terminal session
 on a node of the "fast" partition, equipped with 1 GPU.
 :::
 
-Load the SLEAP module. 
+First, let's verify that you are indeed on a node equipped with a functional
+GPU, by typing `nvidia-smi`:
+```{code-block} console
+$ nvidia-smi
+Wed Sep 27 10:34:35 2023
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.125.06   Driver Version: 525.125.06   CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:41:00.0 Off |                  N/A |
+|  0%   42C    P8    22W / 240W |      1MiB /  8192MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+```
+Your output should look similar to the above. You will be able to see the GPU
+name, temperature, memory usage, etc. If you see an error message instead,
+(even though you are on a GPU node) please contact the SWC Scientific Computing team.
+
+Next, load the SLEAP module.
 ```{code-block} console
 $ module load SLEAP
+Loading SLEAP/2023-08-01
+  Loading requirement: cuda/11.8
 ```
 
 To verify that the module was loaded successfully:
@@ -482,14 +523,20 @@ $ which python
 /ceph/apps/ubuntu-20/packages/SLEAP/2023-08-01/bin/python
 ```
 
-Finally we will verify that the `sleap` python package can be imported and can 
-"see" the GPU. We will mostly just follow the 
+Finally we will verify that the `sleap` python package can be imported and can
+"see" the GPU. We will mostly just follow the
 [relevant SLEAP instructions](https://sleap.ai/installation.html#testing-that-things-are-working).
 First, start a Python interpreter:
 ```{code-block} console
 $ python
 ```
 Next, run the following Python commands:
+
+::: {warning}
+The {python}`import sleap` command may take some time to run (more than a minute).
+This is normal. Subsequent imports should be faster.
+:::
+
 ```{code-block} pycon
 >>> import sleap
 
@@ -504,10 +551,10 @@ OS: Linux-5.4.0-109-generic-x86_64-with-debian-bullseye-sid
 GPUs: 1/1 available
   Device: /physical_device:GPU:0
          Available: True
-        Initalized: False
+        Initialized: False
      Memory growth: None
 
->>> import tensorflow as tf 
+>>> import tensorflow as tf
 
 >>> print(tf.config.list_physical_devices('GPU'))
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
@@ -516,11 +563,6 @@ GPUs: 1/1 available
 <tf.Tensor: shape=(), dtype=string, numpy=b'Hello world!'>
 ```
 
-::: {warning}
-The `import sleap` command may take some time to run (more than a minute).
-This is normal. Subsequent imports should be faster.
-:::
-
 If all is as expected, you can exit the Python interpreter, and then exit the GPU node
 ```{code-block} pycon
 >>> exit()
@@ -528,6 +570,9 @@ If all is as expected, you can exit the Python interpreter, and then exit the GP
 ```{code-block} console
 $ exit()
 ```
+If you encounter troubles with using the SLEAP module, contact the
+Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
+
 To completely exit the HPC cluster, you will need to logout of the SSH session  twice:
 ```bash
 $ logout
@@ -545,7 +590,7 @@ in conjunction with `sbatch` or `srun`.
 **Partition (Queue)**
 - Name: `--partition`
 - Alias: `-p`
-- Description: Specifies the partition (or queue) to submit the job to. In this case, the job will be submitted to the "gpu" partition.
+- Description: Specifies the partition (or queue) to submit the job to. In this case, the job will be submitted to the "gpu" partition. To see a list of all partitions/queues, the nodes they contain and their respective time limits, type `sinfo` when logged in to the HPC cluster.
 - Example values: `gpu`, `cpu`, `fast`, `medium`
 
 **Job Name**
@@ -558,7 +603,7 @@ in conjunction with `sbatch` or `srun`.
 - Name: `--nodes`
 - Alias: `-N`
 - Description: Defines the number of nodes required for the job.
-- Example values: `1` 
+- Example values: `1`
 - Note: This should always be `1`, unless you really know what you're doing
 
 **Number of Cores**
@@ -576,7 +621,7 @@ in conjunction with `sbatch` or `srun`.
 - Name: `--time`
 - Alias: `-t`
 - Description: Sets the maximum time the job is allowed to run. The format is D-HH:MM, where D is days, HH is hours, and MM is minutes.
-- Example values: `0-01:00` (1 hour), `0-04:00` (4 hours), `1-00:00` (1 day). 
+- Example values: `0-01:00` (1 hour), `0-04:00` (4 hours), `1-00:00` (1 day).
 - Note: If the job exceeds the time limit, it will be terminated by SLURM. On the other hand, avoid requesting way more time than what your job needs, as this may delay its scheduling (depending on resource availability).
 
 **Generic Resources (GPUs)**
