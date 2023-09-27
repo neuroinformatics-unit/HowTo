@@ -1,4 +1,4 @@
-:::{dropdown} Interpreting code blocks within this document
+:::{dropdown} Interpreting code blocks
 :color: info
 :icon: info
 
@@ -14,7 +14,7 @@ Python interpreter prompt:
 >>> print("Hello world!")
 ```
 
-The expected outputs of both shell and Python commands will be shown without
+The expected outputs of both Shell and Python commands will be shown without
 any prompt:
 ```{code-block} console
 Hello world!
