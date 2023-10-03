@@ -32,7 +32,7 @@ You have two options on how to proceed:
 
 1. Install [Git Bash](https://gitforwindows.org/), which emulates a Linux terminal on Windows and includes tools that are not available on Windows by default, such as `nano`, and `ssh-copy-id`. This is the recommended option, as it will allow you to follow along with all commands in this guide, as they are presented. Just assume that all commands are run in Git Bash.
 
-2. If you are using Windows 10 or newer,you can follow this guide (except for the section on [SSH keys](#ssh-keys)) using native Windows functionalities as described here.
+2. If you are using Windows 10 or newer, you can follow this guide (except for the section on [SSH keys](#ssh-keys)) using native Windows functionalities as described here.
 
 
     To [Log into the cluster](#log-into-the-cluster), you can use the same commands as in the guide below, but typed in the Windows `cmd`:
@@ -44,7 +44,7 @@ You have two options on how to proceed:
 
     The [SSH config file](#ssh-config-file) section can be followed using the file browser and Notepad, instead of the terminal and `nano`.
     Create the `.ssh` folder in you home directory, i.e. `C:\Users\<USERNAME>\.ssh`,
-    if it does not already exist (don't forget the `.` at the start).
+    if it does not already exist (don't forget the `.` at the start of `.ssh`).
 
     You may create and edit the `config` file with Notepad but beware that the file must not have an extension.
     To create a file without an extension in Windows, you need to make the file extensions visible
