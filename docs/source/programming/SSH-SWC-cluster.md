@@ -19,28 +19,59 @@ This guide explains how to connect to the SWC's HPC cluster via SSH.
 | GUI | Graphical User Interface |
 
 ## Prerequisites
-- You have a SWC account and know your username and password.
+- You have an SWC account and know your username and password.
 - You have read the [SWC wiki's section on High Performance Computing (HPC)](https://wiki.ucl.ac.uk/display/SSC/High+Performance+Computing), especially the [Logging into the Cluster page](https://wiki.ucl.ac.uk/display/SSC/Logging+into+the+Cluster).
-- You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS, but not on Windows. If you are using Windows, we recommend installing [Git Bash](https://gitforwindows.org/).
-- You know the basics of using the command line, i.e. using the terminal (Git Bash on Windows) to navigate the file system and run commands.
+- You know the basics of using the command line, i.e. using the terminal to navigate the file system and run commands.
+- You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS. SSH is also available on Windows (since Windows 10), however some steps will differ. If you are a Windows user, read the note below before proceeding. 
+
+::: {dropdown} Note for Windows users
+:color: info
+:icon: info
+
+You have two options on how to proceed:
+
+1. Install [Git Bash](https://gitforwindows.org/), which emulates a Linux terminal on Windows and includes tools that are not available on Windows by default, such as `nano`, and `ssh-copy-id`. This is the recommended option, as it will allow you to follow along with all commands in this guide, as they are presented. Just assume that all commands are run in Git Bash.
+
+2. If you are using Windows 10 or newer,you can follow this guide (except for the section on [SSH keys](#ssh-keys)) using native Windows functionalities as described here.
+
+
+    To [Log into the cluster](#log-into-the-cluster), you can use the same commands as in the guide below, but typed in the Windows `cmd`:
+    ```{code-block} console
+    :caption: cmd
+    ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
+    ssh hpc-gw1
+    ```
+
+    The [SSH config file](#ssh-config-file) section can be followed using the file browser and Notepad, instead of the terminal and `nano`.
+    Create the `.ssh` folder in you home directory, i.e. `C:\Users\<USERNAME>\.ssh`, 
+    if it does not already exist (don't forget the `.` at the start). 
+
+    You may create and edit the `config` file with Notepad but beware that the file must not have an extension. 
+    To create a file without an extension in Windows, you need to make the file extensions visible 
+    (click 'View' in the file browser and check the box 'File name extensions').
+    The `config` file contents should be the same as in the guide below.
+
+    In day-to-day use, you can use the `ssh swc-gateway` and `ssh swc-bastion` commands natively in Windows `cmd`,
+    provided that you have defined those aliases in your `config` file, as this guide describes.
+:::
 
 ## Log into the cluster
-Run the following commands on the terminal (typing your `<SWC-PASSWORD>` both times when prompted):
+Run the following commands on the terminal, typing your `<SWC-PASSWORD>` both times when prompted
+(your password will not be displayed on the screen):
+
 ```{code-block} console
 $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
 $ ssh hpc-gw1
 ```
+You have now successfully logged into the cluster 🎉. You may stop reading here, but...
+
 ::: {note}
-You have now successfully logged into the cluster 🎉. You may stop reading here.
-
-{bdg-warning}`BUT`
-
 If you want to learn more about why we had to SSH twice, read the [next section](#why-do-we-ssh-twice).
 
 If you want to make you life easier, you can set yourself up with an [SSH config file](#ssh-config-file)
 and some [SSH keys](#ssh-keys). Trust us, it's worth the effort. For example, one
 benefit is that you will be able to use [Visual Studio Code](https://code.visualstudio.com/)
-on your PC/laptop to edit files on the cluster. See the [last section](#remote-development) for details.
+on your PC/laptop to edit files on the cluster (see the [last section](#remote-development)).
 :::
 
 ## Why do we SSH twice?
@@ -66,8 +97,7 @@ your life easier by editing the SSH config file.
 This is a text file that lives in your home directory and contains a list of aliases
 for SSH connections.
 
-On your local PC/Laptop, open a terminal (Git Bash on Windows) and navigate to the
-`.ssh` folder in your user's home `~` directory:
+On your local PC/Laptop, navigate to the `.ssh` folder in your user's home `~` directory:
 ```{code-block} console
 $ cd ~/.ssh
 ```
@@ -89,6 +119,7 @@ Add the following lines to the file:
 
 ```{code-block} bash
 :caption: config
+:name: config-content
 
 # Specify our intermediate jump host, aka the bastion node
 Host swc-bastion
@@ -114,7 +145,7 @@ You can also use the same syntax to SSH into the *bastion* node:
 ```{code-block} console
 $ ssh swc-bastion
 ```
-In both cases, one `logout` command will return you to your local machine.
+In both cases, typing the `logout` command once will return you to your local machine.
 
 ## SSH keys
 If you are bored of typing your password every time you SSH into the cluster,
@@ -159,30 +190,9 @@ id_ed25519
 id_ed25519.pub
 known_hosts
 ```
+The `id_ed25519` file is your private key and **it should never be shared with anyone**.
 
-The `id_ed25519` file is your private key - {bdg-warning}`It should never be shared with anyone`.
-
-The `id_ed25519.pub` file is your public key. This is the one you will copy to
-the remote machines. Le'ts do that now:
-
-```{code-block} console
-$ ssh-copy-id -i id_ed25519.pub swc-bastion
-$ ssh-copy-id -i id_ed25519.pub swc-gateway
-```
-
-The above commands will copy your public key both to the *bastion* and *gateway* nodes.
-The key will be added to the `.ssh/authorized_keys` file on each node. The
-`ssh-copy-id` command uses the configuration we previously set up
-in the `config` file to figure out how to reach the two remote machines.
-
-🎉 Congrats! You can now directly SSH into the *gateway* node without typing your password:
-```{code-block} console
-$ ssh swc-gateway
-```
-In case you want to SSH into the *bastion* node, you can do so by typing:
-```{code-block} console
-$ ssh swc-bastion
-```
+The `id_ed25519.pub` file is your public key.
 
 ::: {warning}
 In most cases, you don't need to explicitly specify the location of the private key
@@ -191,7 +201,7 @@ in your `~/.ssh/config` file because SSH will automatically look for the default
 
 However, if you're using a non-default name or location for your private key,
 or if you have multiple keys and want to specify which one to use for a particular host,
-then you can use the `IdentityFile` directive in your `~/.ssh/config` to
+then you can add the `IdentityFile` directive in your `~/.ssh/config` to
 point to the private key.
 
 For example, if you have a private key with a custom name `<MY-SPECIAL-KEY>`
@@ -217,6 +227,34 @@ Host swc-gateway
     IdentityFile ~/.ssh/<MY-SPECIAL-KEY>
 ```
 :::
+
+Next, let's copy the public key you just generated to the remote machines.
+
+```{code-block} console
+$ ssh-copy-id -i id_ed25519.pub swc-gateway
+```
+
+::: {dropdown} Explain the above command
+:color: info
+:icon: info
+The `ssh-copy-id` command uses the configuration we previously set up
+in the `config` file to figure out how to reach the remote machine.
+
+It copies the specified public key to your home directory on the target machine (in this case `swc-gateway`) and adds it to the `.ssh/authorized_keys` file there.
+
+Since your SWC home directory is shared across all HPC nodes, the public 
+key will be available on all of them. That's why you only need to run the above command once, with either `swc-bastion` or `swc-gateway` as the target.
+:::
+
+
+🎉 Congrats! You can now directly SSH into the *gateway* node without typing your password:
+```{code-block} console
+$ ssh swc-gateway
+```
+In case you want to SSH into the *bastion* node, you can do so by typing:
+```{code-block} console
+$ ssh swc-bastion
+```
 
 ## Remote development
 One benefit of setting your SSH config and SSH keys is that you can now easily use
