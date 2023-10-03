@@ -22,7 +22,7 @@ This guide explains how to connect to the SWC's HPC cluster via SSH.
 - You have an SWC account and know your username and password.
 - You have read the [SWC wiki's section on High Performance Computing (HPC)](https://wiki.ucl.ac.uk/display/SSC/High+Performance+Computing), especially the [Logging into the Cluster page](https://wiki.ucl.ac.uk/display/SSC/Logging+into+the+Cluster).
 - You know the basics of using the command line, i.e. using the terminal to navigate the file system and run commands.
-- You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS. SSH is also available on Windows (since Windows 10), however some steps will differ. If you are a Windows user, read the note below before proceeding. 
+- You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS. SSH is also available on Windows (since Windows 10), however some steps will differ. If you are a Windows user, read the note below before proceeding.
 
 ::: {dropdown} Note for Windows users
 :color: info
@@ -43,11 +43,11 @@ You have two options on how to proceed:
     ```
 
     The [SSH config file](#ssh-config-file) section can be followed using the file browser and Notepad, instead of the terminal and `nano`.
-    Create the `.ssh` folder in you home directory, i.e. `C:\Users\<USERNAME>\.ssh`, 
-    if it does not already exist (don't forget the `.` at the start). 
+    Create the `.ssh` folder in you home directory, i.e. `C:\Users\<USERNAME>\.ssh`,
+    if it does not already exist (don't forget the `.` at the start).
 
-    You may create and edit the `config` file with Notepad but beware that the file must not have an extension. 
-    To create a file without an extension in Windows, you need to make the file extensions visible 
+    You may create and edit the `config` file with Notepad but beware that the file must not have an extension.
+    To create a file without an extension in Windows, you need to make the file extensions visible
     (click 'View' in the file browser and check the box 'File name extensions').
     The `config` file contents should be the same as in the guide below.
 
@@ -242,7 +242,7 @@ in the `config` file to figure out how to reach the remote machine.
 
 It copies the specified public key to your home directory on the target machine (in this case `swc-gateway`) and adds it to the `.ssh/authorized_keys` file there.
 
-Since your SWC home directory is shared across all HPC nodes, the public 
+Since your SWC home directory is shared across all HPC nodes, the public
 key will be available on all of them. That's why you only need to run the above command once, with either `swc-bastion` or `swc-gateway` as the target.
 :::
 
