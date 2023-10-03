@@ -23,7 +23,7 @@ Currently, SWC does not have any specific code and data sharing requirements, bu
 
 
 ## Code
-Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. To enable re-use, code should include an [appropriate license](https://howto.neuroinformatics.dev/guides/Licensing.html).
+Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. To enable reuse, code should include an [appropriate license](https://howto.neuroinformatics.dev/guides/Licensing.html).
 
 To ensure a permanent archive of the code associated with a publication a [DOI](https://www.doi.org/) should be created (e.g. using [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)).
 
@@ -46,7 +46,7 @@ In some cases, there may be a modality or field-specific repository that would b
 In all cases, using a repository that can create a [DOI](https://www.doi.org/) will help increase citations.
 
 ### Structure
-There is no single best way to structure your data, but it must be in a form that allows users to easily re-use it for their own purposes. This may be by adopting specific file formats (such as [NeuroData Without Borders](https://www.nwb.org/)). Alternatively the data could be organised within a standardised project folder structure. Many labs have their own system, but those starting from scratch may wish to use the [SWC-Blueprint data structure](https://swc-blueprint.neuroinformatics.dev/).
+There is no single best way to structure your data, but it must be in a form that allows users to easily reuse it for their own purposes. This may be by adopting specific file formats (such as [NeuroData Without Borders](https://www.nwb.org/)). Alternatively the data could be organised within a standardised project folder structure. Many labs have their own system, but those starting from scratch may wish to use the [SWC-Blueprint data structure](https://swc-blueprint.neuroinformatics.dev/).
 
 **However the data is structured, all relevant metadata must be included with the raw data.**
 
