@@ -131,7 +131,7 @@ Host swc-bastion
 Host swc-gateway
     HostName hpc-gw1
     User <SWC-USERNAME>
-    ProxyCommand ssh -W %h:%p swc-bastion
+    ProxyJump swc-bastion
 ```
 
 Save the file by pressing `Ctrl+O`, then `Enter`.
@@ -223,7 +223,7 @@ Host swc-bastion
 Host swc-gateway
     HostName hpc-gw1
     User <SWC-USERNAME>
-    ProxyCommand ssh -W %h:%p swc-bastion
+    ProxyJump swc-bastion
     IdentityFile ~/.ssh/<MY-SPECIAL-KEY>
 ```
 :::
