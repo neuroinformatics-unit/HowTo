@@ -29,7 +29,6 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=b0449be5" />
   
@@ -41,8 +40,6 @@
     <script src="../_static/documentation_options.js?v=f539c95a"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'programming/SSH-vscode';</script>
@@ -406,7 +403,7 @@ document.write(`
 <span class="n">Host</span> <span class="n">remote</span><span class="o">-</span><span class="n">host</span>
     <span class="n">User</span> <span class="n">remoteMachineUsername</span>
     <span class="n">HostName</span> <span class="mf">172.24.243.000</span>
-    <span class="n">ProxyCommand</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">W</span> <span class="o">%</span><span class="n">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span> <span class="n">jump</span><span class="o">-</span><span class="n">host</span>
+    <span class="n">ProxyJump</span> <span class="n">jump</span><span class="o">-</span><span class="n">host</span>
 </pre></div>
 </div>
 <p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">172.24.243.000</span></code> with the IP address of your remote machine.

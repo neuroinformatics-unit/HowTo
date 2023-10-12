@@ -29,7 +29,6 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=b0449be5" />
   
@@ -41,8 +40,6 @@
     <script src="../_static/documentation_options.js?v=f539c95a"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'programming/SSH-SWC-cluster';</script>
@@ -564,7 +561,7 @@ Host<span class="w"> </span>swc-bastion
 Host<span class="w"> </span>swc-gateway
 <span class="w">    </span>HostName<span class="w"> </span>hpc-gw1
 <span class="w">    </span>User<span class="w"> </span>&lt;SWC-USERNAME&gt;
-<span class="w">    </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>-W<span class="w"> </span>%h:%p<span class="w"> </span>swc-bastion
+<span class="w">    </span>ProxyJump<span class="w"> </span>swc-bastion
 </pre></div>
 </div>
 </div>
@@ -647,7 +644,7 @@ Host<span class="w"> </span>swc-bastion
 Host<span class="w"> </span>swc-gateway
 <span class="w">    </span>HostName<span class="w"> </span>hpc-gw1
 <span class="w">    </span>User<span class="w"> </span>&lt;SWC-USERNAME&gt;
-<span class="w">    </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>-W<span class="w"> </span>%h:%p<span class="w"> </span>swc-bastion
+<span class="w">    </span>ProxyJump<span class="w"> </span>swc-bastion
 <span class="hll"><span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/&lt;MY-SPECIAL-KEY&gt;
 </span></pre></div>
 </div>
