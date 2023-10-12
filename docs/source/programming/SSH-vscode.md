@@ -13,7 +13,7 @@ Host jump-host
 Host remote-host
     User remoteMachineUsername
     HostName 172.24.243.000
-    ProxyCommand ssh -W %h:%p jump-host
+    ProxyJump jump-host
 ```
 
 Make sure to replace `172.24.243.000` with the IP address of your remote machine.
