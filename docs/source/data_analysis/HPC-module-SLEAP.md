@@ -237,7 +237,7 @@ In `nano`, you can save the file by pressing `Ctrl+O` and exit by pressing `Ctrl
 :icon: info
 - The `#SBATCH` lines are SLURM directives. They specify the resources needed
 for the job, such as the number of nodes, CPUs, memory, etc.
-A primer on the most useful SLURM arguments is provided in the [appendix](#slurm-arguments-primer).
+A primer on the most useful SLURM arguments is provided in this [how-to guide](slurm-arguments-target).
 For more information  see the [SLURM documentation](https://slurm.schedmd.com/sbatch.html).
 
 - The `#` lines are comments. They are not executed by SLURM, but they are useful
@@ -589,83 +589,3 @@ $ logout
 ```
 See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
 for more information.
-
-## Appendix
-
-### SLURM arguments primer
-
-Here are the most important SLURM arguments used in the above examples
-in conjunction with `sbatch` or `srun`.
-
-**Partition (Queue)**
-- Name: `--partition`
-- Alias: `-p`
-- Description: Specifies the partition (or queue) to submit the job to. To see a list of all partitions/queues, the nodes they contain and their respective time limits, type `sinfo` when logged in to the HPC cluster.
-- Example values: `gpu`, `cpu`, `fast`, `medium`
-
-**Job Name**
-- Name: `--job-name`
-- Alias: `-J`
-- Description: Specifies a name for the job, which will appear in various SLURM commands and logs, making it easier to identify the job (especially when you have multiple jobs queued up)
-- Example values: `training_run_24`
-
-**Number of Nodes**
-- Name: `--nodes`
-- Alias: `-N`
-- Description: Defines the number of nodes required for the job.
-- Example values: `1`
-- Note: This should always be `1`, unless you really know what you're doing
-
-**Number of Cores**
-- Name: `--ntasks`
-- Alias: `-n`
-- Description: Defines the number of cores (or tasks) required for the job.
-- Example values: `1`, `4`, `8`
-
-**Memory Pool for All Cores**
-- Name: `--mem`
-- Description: Specifies the total amount of memory (RAM) required for the job across all cores (per node)
-- Example values: `8G`, `16G`, `32G`
-
-**Time Limit**
-- Name: `--time`
-- Alias: `-t`
-- Description: Sets the maximum time the job is allowed to run. The format is D-HH:MM, where D is days, HH is hours, and MM is minutes.
-- Example values: `0-01:00` (1 hour), `0-04:00` (4 hours), `1-00:00` (1 day).
-- Note: If the job exceeds the time limit, it will be terminated by SLURM. On the other hand, avoid requesting way more time than what your job needs, as this may delay its scheduling (depending on resource availability).
-
-**Generic Resources (GPUs)**
-* Name: `--gres`
-* Description: Requests generic resources, such as GPUs.
-* Example values: `gpu:1`, `gpu:rtx2080:1`, `gpu:rtx5000:1`, `gpu:a100_2g.10gb:1`
-* Note: No GPU will be allocated to you unless you specify it via the `--gres` argument (even if you are on the 'gpu' partition). To request 1 GPU of any kind, use `--gres gpu:1`. To request a specific GPU type, you have to include its name, e.g. `--gres gpu:rtx2080:1`. You can view the available GPU types on the [SWC internal wiki](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
-
-**Standard Output File**
-- Name: `--output`
-- Alias: `-o`
-- Description: Defines the file where the standard output (STDOUT) will be written. In the examples scripts, it's set to slurm.%N.%j.out, where %N is the node name and %j is the job ID.
-- Example values: `slurm.%N.%j.out`, `slurm.MyAwesomeJob.out`
-- Note: this file contains the output of the commands executed by the job (i.e. the messages that normally gets printed on the terminal).
-
-**Standard Error File**
-- Name: `--error`
-- Alias: `-e`
-- Description: Specifies the file where the standard error (STDERR) will be written. In the examples, it's set to slurm.%N.%j.err, where %N is the node name and %j is the job ID.
-- Example values: `slurm.%N.%j.err`, `slurm.MyAwesomeJob.err`
-- Note: this file is very useful for debugging, as it contains all the error messages produced by the commands executed by the job.
-
-**Email Notifications**
-- Name: `--mail-type`
-- Description: Defines the conditions under which the user will be notified by email.
-- Example values: `ALL`, `BEGIN`, `END`, `FAIL`
-
-**Email Address**
-- Name: `--mail-user`
-- Description: Specifies the email address to which notifications will be sent.
-- Example values: `user@domain.com`
-
-**Array jobs**
-- Name: `--array`
-- Description: Job array index values (a list of integers in increasing order). The task index can be accessed via the `SLURM_ARRAY_TASK_ID` environment variable.
-- Example values: `--array=1-10` (10 jobs), `--array=1-100%5` (100 jobs, but only 5 of them will be allowed to run in parallel at any given time).
-- Note: if an array consists of many jobs, using the `%` syntax to limit the maximum number of parallel jobs is recommended to prevent overloading the cluster.
