@@ -210,8 +210,8 @@ An example is provided below, followed by explanations.
 #SBATCH -n 4 # number of cores
 #SBATCH -t 0-06:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
-#SBATCH -o slurm.%N.%j.out # STDOUT
-#SBATCH -e slurm.%N.%j.err # STDERR
+#SBATCH -o slurm.%x.%N.%j.out # STDOUT
+#SBATCH -e slurm.%x.%N.%j.err # STDERR
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
 
@@ -370,7 +370,7 @@ training_log.csv
 The SLEAP GUI on your local machine can be used to quickly evaluate the trained models.
 
 - Select *Predict* -> *Evaluation Metrics for Trained Models...*
-- Click on *Add Trained Models(s)* and select the subfolder(s) containing the model(s) you want to evaluate (e.g. `230509_141357.centered_instance`).
+- Click on *Add Trained Models(s)* and select the folder containing the model(s) you want to evaluate.
 - You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking *View Metrics*.
 
 ## Model inference
@@ -392,8 +392,8 @@ Below is an example SLURM batch script that contains a `sleap-track` call.
 #SBATCH -n 4 # number of cores
 #SBATCH -t 0-02:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
-#SBATCH -o slurm.%N.%j.out # write STDOUT
-#SBATCH -e slurm.%N.%j.err # write STDERR
+#SBATCH -o slurm.%x.%N.%j.out # write STDOUT
+#SBATCH -e slurm.%x.%N.%j.err # write STDERR
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
 
@@ -412,11 +412,12 @@ cd $SLP_JOB_DIR
 mkdir -p predictions
 
 # Run the inference command
-sleap-track $VIDEO_DIR/videos/M708149_EPM_20200317_165049331-converted.mp4 \
+sleap-track $VIDEO_DIR/M708149_EPM_20200317_165049331-converted.mp4 \
     -m $SLP_JOB_DIR/models/231010_164307.centroid/training_config.json \
     -m $SLP_JOB_DIR/models/231010_164307.centered_instance/training_config.json \
     --gpu auto \
     --tracking.tracker simple \
+    --tracking.similarity centroid \
     --tracking.post_connect_single_breaks 1 \
     -o predictions/labels.v001.slp.predictions.slp \
     --verbosity json \

@@ -32,8 +32,8 @@ e.g. the lines that start with `#SBATCH` in the following example:
 #SBATCH -n 4 # number of cores
 #SBATCH -t 0-06:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
-#SBATCH -o slurm.%N.%j.out # STDOUT
-#SBATCH -e slurm.%N.%j.err # STDERR
+#SBATCH -o slurm.%x.%N.%j.out # STDOUT
+#SBATCH -e slurm.%x.%N.%j.err # STDERR
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
 #SBATCH --array=1-12%4 # job array index values
@@ -110,8 +110,8 @@ You can view the available GPU types on the [SWC internal wiki](https://wiki.ucl
 ### Standard Output File
 - *Name:* `--output`
 - *Alias:* `-o`
-- *Description:* Defines the file where the standard output (STDOUT) will be written. In the examples scripts, it's set to slurm.%N.%j.out, where %N is the node name and %j is the job ID.
-- *Example values:* `slurm.%N.%j.out`, `slurm.MyAwesomeJob.out`
+- *Description:* Defines the file where the standard output (STDOUT) will be written. In the example script above, it's set to slurm.%x.%N.%j.out, where %x is the job name, %N is the node name and %j is the job ID.
+- *Example values:* `slurm.%x.%N.%j.out`, `slurm.MyAwesomeJob.out`
 
 :::{note}
 This file contains the output of the commands executed by the job (i.e. the messages that normally gets printed on the terminal).
@@ -120,7 +120,7 @@ This file contains the output of the commands executed by the job (i.e. the mess
 ### Standard Error File
 - *Name:* `--error`
 - *Alias:* `-e`
-- *Description:* Specifies the file where the standard error (STDERR) will be written. In the examples, it's set to slurm.%N.%j.err, where %N is the node name and %j is the job ID.
+- *Description:* Specifies the file where the standard error (STDERR) will be written. In the example script above, it's set to slurm.%x.%N.%j.out, where %x is the job name, %N is the node name and %j is the job ID.
 - *Example values:* `slurm.%N.%j.err`, `slurm.MyAwesomeJob.err`
 
 :::{note}

@@ -639,8 +639,8 @@ as the training job, but you can save it anywhere you want, or even keep track o
 <span class="linenos"> 7</span><span class="c1">#SBATCH -n 4 # number of cores</span>
 <span class="linenos"> 8</span><span class="c1">#SBATCH -t 0-06:00 # time (D-HH:MM)</span>
 <span class="linenos"> 9</span><span class="c1">#SBATCH --gres gpu:1 # request 1 GPU (of any kind)</span>
-<span class="linenos">10</span><span class="c1">#SBATCH -o slurm.%N.%j.out # STDOUT</span>
-<span class="linenos">11</span><span class="c1">#SBATCH -e slurm.%N.%j.err # STDERR</span>
+<span class="linenos">10</span><span class="c1">#SBATCH -o slurm.%x.%N.%j.out # STDOUT</span>
+<span class="linenos">11</span><span class="c1">#SBATCH -e slurm.%x.%N.%j.err # STDERR</span>
 <span class="linenos">12</span><span class="c1">#SBATCH --mail-type=ALL</span>
 <span class="linenos">13</span><span class="c1">#SBATCH --mail-user=user@domain.com</span>
 <span class="linenos">14</span>
@@ -789,7 +789,7 @@ their configurations (<code class="docutils literal notranslate"><span class="pr
 <p>The SLEAP GUI on your local machine can be used to quickly evaluate the trained models.</p>
 <ul class="simple">
 <li><p>Select <em>Predict</em> -&gt; <em>Evaluation Metrics for Trained Models…</em></p></li>
-<li><p>Click on <em>Add Trained Models(s)</em> and select the subfolder(s) containing the model(s) you want to evaluate (e.g. <code class="docutils literal notranslate"><span class="pre">230509_141357.centered_instance</span></code>).</p></li>
+<li><p>Click on <em>Add Trained Models(s)</em> and select the folder containing the model(s) you want to evaluate.</p></li>
 <li><p>You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking <em>View Metrics</em>.</p></li>
 </ul>
 </section>
@@ -811,8 +811,8 @@ on a single video or a folder of videos.</p>
 <span class="linenos"> 7</span><span class="c1">#SBATCH -n 4 # number of cores</span>
 <span class="linenos"> 8</span><span class="c1">#SBATCH -t 0-02:00 # time (D-HH:MM)</span>
 <span class="linenos"> 9</span><span class="c1">#SBATCH --gres gpu:1 # request 1 GPU (of any kind)</span>
-<span class="linenos">10</span><span class="c1">#SBATCH -o slurm.%N.%j.out # write STDOUT</span>
-<span class="linenos">11</span><span class="c1">#SBATCH -e slurm.%N.%j.err # write STDERR</span>
+<span class="linenos">10</span><span class="c1">#SBATCH -o slurm.%x.%N.%j.out # write STDOUT</span>
+<span class="linenos">11</span><span class="c1">#SBATCH -e slurm.%x.%N.%j.err # write STDERR</span>
 <span class="linenos">12</span><span class="c1">#SBATCH --mail-type=ALL</span>
 <span class="linenos">13</span><span class="c1">#SBATCH --mail-user=user@domain.com</span>
 <span class="linenos">14</span>
@@ -831,15 +831,16 @@ on a single video or a folder of videos.</p>
 <span class="linenos">27</span>mkdir<span class="w"> </span>-p<span class="w"> </span>predictions
 <span class="linenos">28</span>
 <span class="linenos">29</span><span class="c1"># Run the inference command</span>
-<span class="linenos">30</span>sleap-track<span class="w"> </span><span class="nv">$VIDEO_DIR</span>/videos/M708149_EPM_20200317_165049331-converted.mp4<span class="w"> </span><span class="se">\</span>
+<span class="linenos">30</span>sleap-track<span class="w"> </span><span class="nv">$VIDEO_DIR</span>/M708149_EPM_20200317_165049331-converted.mp4<span class="w"> </span><span class="se">\</span>
 <span class="linenos">31</span><span class="w">    </span>-m<span class="w"> </span><span class="nv">$SLP_JOB_DIR</span>/models/231010_164307.centroid/training_config.json<span class="w"> </span><span class="se">\</span>
 <span class="linenos">32</span><span class="w">    </span>-m<span class="w"> </span><span class="nv">$SLP_JOB_DIR</span>/models/231010_164307.centered_instance/training_config.json<span class="w"> </span><span class="se">\</span>
 <span class="linenos">33</span><span class="w">    </span>--gpu<span class="w"> </span>auto<span class="w"> </span><span class="se">\</span>
 <span class="linenos">34</span><span class="w">    </span>--tracking.tracker<span class="w"> </span>simple<span class="w"> </span><span class="se">\</span>
-<span class="linenos">35</span><span class="w">    </span>--tracking.post_connect_single_breaks<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="linenos">36</span><span class="w">    </span>-o<span class="w"> </span>predictions/labels.v001.slp.predictions.slp<span class="w"> </span><span class="se">\</span>
-<span class="linenos">37</span><span class="w">    </span>--verbosity<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
-<span class="linenos">38</span><span class="w">    </span>--no-empty-frames
+<span class="linenos">35</span><span class="w">    </span>--tracking.similarity<span class="w"> </span>centroid<span class="w"> </span><span class="se">\</span>
+<span class="linenos">36</span><span class="w">    </span>--tracking.post_connect_single_breaks<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">37</span><span class="w">    </span>-o<span class="w"> </span>predictions/labels.v001.slp.predictions.slp<span class="w"> </span><span class="se">\</span>
+<span class="linenos">38</span><span class="w">    </span>--verbosity<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<span class="linenos">39</span><span class="w">    </span>--no-empty-frames
 </pre></div>
 </div>
 </div>
