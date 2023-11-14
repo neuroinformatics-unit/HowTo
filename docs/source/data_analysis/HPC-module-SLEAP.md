@@ -206,7 +206,7 @@ An example is provided below, followed by explanations.
 #SBATCH -J slp_train # job name
 #SBATCH -p gpu # partition (queue)
 #SBATCH -N 1   # number of nodes
-#SBATCH --mem 12G # memory pool for all cores
+#SBATCH --mem 16G # memory pool for all cores
 #SBATCH -n 4 # number of cores
 #SBATCH -t 0-06:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
@@ -382,8 +382,8 @@ Below is an example SLURM batch script that contains a `sleap-track` call.
 #SBATCH -J slp_infer # job name
 #SBATCH -p gpu # partition
 #SBATCH -N 1   # number of nodes
-#SBATCH --mem 12G # memory pool for all cores
-#SBATCH -n 2 # number of cores
+#SBATCH --mem 16G # memory pool for all cores
+#SBATCH -n 4 # number of cores
 #SBATCH -t 0-02:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
 #SBATCH -o slurm.%N.%j.out # write STDOUT
