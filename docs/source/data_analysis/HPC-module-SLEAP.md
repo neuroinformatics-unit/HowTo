@@ -210,8 +210,8 @@ An example is provided below, followed by explanations.
 #SBATCH -n 4 # number of cores
 #SBATCH -t 0-06:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
-#SBATCH -o slurm.%N.%j.out # STDOUT
-#SBATCH -e slurm.%N.%j.err # STDERR
+#SBATCH -o slurm.%x.%N.%j.out # STDOUT
+#SBATCH -e slurm.%x.%N.%j.err # STDERR
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
 
@@ -392,8 +392,8 @@ Below is an example SLURM batch script that contains a `sleap-track` call.
 #SBATCH -n 4 # number of cores
 #SBATCH -t 0-02:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
-#SBATCH -o slurm.%N.%j.out # write STDOUT
-#SBATCH -e slurm.%N.%j.err # write STDERR
+#SBATCH -o slurm.%x.%N.%j.out # write STDOUT
+#SBATCH -e slurm.%x.%N.%j.err # write STDERR
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
 
