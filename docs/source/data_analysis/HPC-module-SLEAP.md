@@ -412,11 +412,12 @@ cd $SLP_JOB_DIR
 mkdir -p predictions
 
 # Run the inference command
-sleap-track $VIDEO_DIR/videos/M708149_EPM_20200317_165049331-converted.mp4 \
+sleap-track $VIDEO_DIR/M708149_EPM_20200317_165049331-converted.mp4 \
     -m $SLP_JOB_DIR/models/231010_164307.centroid/training_config.json \
     -m $SLP_JOB_DIR/models/231010_164307.centered_instance/training_config.json \
     --gpu auto \
     --tracking.tracker simple \
+    --tracking.similarity centroid \
     --tracking.post_connect_single_breaks 1 \
     -o predictions/labels.v001.slp.predictions.slp \
     --verbosity json \
