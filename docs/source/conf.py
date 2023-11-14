@@ -76,7 +76,13 @@ exclude_patterns = [
 ]
 
 # Ignore certain URLs from being checked
-linkcheck_ignore = ["https://neuromorpho.org/"]
+linkcheck_ignore = [
+    "https://neuromorpho.org/",
+    "https://wiki.ucl.ac.uk/",  # ignore everything on the internal wiki
+    "https://linux.die.net/man/1/rsync",
+    "https://www.uclb.com/",
+]
+linkcheck_retries = 2
 
 # -- Options for HTML output -------------------------------------------------
 
