@@ -370,7 +370,7 @@ training_log.csv
 The SLEAP GUI on your local machine can be used to quickly evaluate the trained models.
 
 - Select *Predict* -> *Evaluation Metrics for Trained Models...*
-- Click on *Add Trained Models(s)* and select the subfolder(s) containing the model(s) you want to evaluate (e.g. `230509_141357.centered_instance`).
+- Click on *Add Trained Models(s)* and select the folder containing the model(s) you want to evaluate.
 - You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking *View Metrics*.
 
 ## Model inference
