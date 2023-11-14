@@ -31,17 +31,17 @@ release = "0.0.1"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.githubpages',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.napoleon',
-    'sphinx_design',
-    'sphinx_copybutton',
-    'myst_parser',
-    'numpydoc',
-    'nbsphinx',
+    "sphinx.ext.githubpages",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
+    "sphinx_design",
+    "sphinx_copybutton",
+    "myst_parser",
+    "numpydoc",
+    "nbsphinx",
 ]
 
 # Configure the myst parser to enable cool markdown features
@@ -93,18 +93,23 @@ linkcheck_retries = 2
 #
 html_theme = "pydata_sphinx_theme"
 html_title = "HowTo"
+html_theme = "pydata_sphinx_theme"
+html_title = "HowTo"
 
 # Redirect the webpage to another URL
 # Sphinx will create the appropriate CNAME file in the build directory
 # https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
+html_baseurl = "https://howto.neuroinformatics.dev/"
 html_baseurl = "https://howto.neuroinformatics.dev/"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+html_static_path = ["_static"]
 
 html_css_files = [
+    "css/custom.css",
     "css/custom.css",
 ]
 
@@ -123,6 +128,8 @@ html_theme_options = {
             # The type of image to be used (see below for details)
             "type": "fontawesome",
         }
+    ],
+    "logo": {
     ],
     "logo": {
         "text": "HowTo",
