@@ -23,7 +23,7 @@ Verify that you can access HPC gateway node (typing your `<SWC-PASSWORD>` both t
 $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
 $ ssh hpc-gw1
 ```
-To learn more about accessing the HPC via SSH, see the [relevant how-to guide](../programming/SSH-SWC-cluster.md).
+To learn more about accessing the HPC via SSH, see the [relevant how-to guide](ssh-cluster-target).
 
 ### Access to the SLEAP module
 Once you are on the HPC gateway node, SLEAP should be listed among the available modules when you run `module avail`:
