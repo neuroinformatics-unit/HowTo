@@ -1,3 +1,4 @@
+(licensing-target)=
 # Software licensing
 
 ## Disclaimer
@@ -50,4 +51,4 @@ If it is installed separately, and you simply call the library (e.g. using a Pyt
 Firstly, you should ensure that the license for your code is compatible with the included code (e.g. by using a [license compatibility checking tool](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-compatibility-checker)). You should also adhere to any terms of the third party license and it is good practice to always include a copy of this license with the third party code.
 
 ## Acknowledgements
-This document was adapted from the excellent [Imperial OSS license document](https://www.imperial.ac.uk/enterprise/staff/industry-partnerships-and-commercialisation/commercialisation/intellectual-property-guidance/open-source-software-licences/).
+This document was adapted from the excellent [Imperial OSS license document](https://www.imperial.ac.uk/research-and-innovation/support-for-staff/scholarly-communication/research-data-management/sharing-data/research-software/).
