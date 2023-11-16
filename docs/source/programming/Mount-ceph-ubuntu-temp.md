@@ -31,7 +31,7 @@ Make sure to replace the following for your particular case:
 
 If the command is executed without errors you will be prompted for your SWC password.
 
-### 3. Check the partition is mounted correctly.
+### 3. Check the partition is mounted correctly
 It should show up in the list of mounting points when running `df -h`
 
 :::{note}
@@ -48,6 +48,6 @@ Remember that because the mounting is temporary, the `ceph` partition will be un
 You can check that the partition is correctly unmounted by running `df -h` and verifying it does not show in the output.
 
 
-### References
+## References
 - [Mount network drive under Linux temporarily/permanently](https://www.rz.uni-kiel.de/en/hints-howtos/connecting-a-network-share/Linux/through-temporary-permanent-mounting/mount-network-drive-under-linux-temporarily-permanently)
 - [How to Mount a SMB Share in Ubuntu](https://support.zadarastorage.com/hc/en-us/articles/213024986-How-to-Mount-a-SMB-Share-in-Ubuntu)
