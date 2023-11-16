@@ -81,6 +81,7 @@ linkcheck_ignore = [
     "https://wiki.ucl.ac.uk/",  # ignore everything on the internal wiki
     "https://linux.die.net/man/1/rsync",
     "https://www.uclb.com/",
+    "https://support.zadarastorage.com",
 ]
 linkcheck_retries = 2
 

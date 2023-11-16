@@ -18,7 +18,7 @@ sudo mkdir /mnt/ceph-neuroinformatics
 ### 2. Mount the `ceph` partition
 To mount the desired partition on the directory we just created, run the `mount` command with the appropriate options. In our example, this would be:
 ```bash
-sudo mount -t cifs -o user=<SWC-USERNAME>,domain=AD.SWC.UCL.AC.UK //ceph-gw02.hpc.swc.ucl.ac.uk/neuroinformatics /mnt/ceph-neuroinformatics	
+sudo mount -t cifs -o user=<SWC-USERNAME>,domain=AD.SWC.UCL.AC.UK //ceph-gw02.hpc.swc.ucl.ac.uk/neuroinformatics /mnt/ceph-neuroinformatics
 ```
 :::{note}
 You can check the full set of options for the `mount` command by running `mount --help`
@@ -29,9 +29,9 @@ Make sure to replace the following for your particular case:
 - `/media/ceph-neuroinformatics` with the path to the local mount point you created in the previous step.
 - `<SWC-USERNAME>` with your SWC username
 
-If the command is executed without errors you will be prompted for your SWC password. 
+If the command is executed without errors you will be prompted for your SWC password.
 
-### 3. Check the partition is mounted correctly. 
+### 3. Check the partition is mounted correctly.
 It should show up in the list of mounting points when running `df -h`
 
 :::{note}
@@ -41,9 +41,9 @@ The command `df` prints out information about the file system
 ### 4. To unmount the storage
 Run the following command
 ```bash
-sudo umount /mnt/ceph-neuroinformatics
+sudo umount /mnt/ceph-neuroinformatics
 ```
-Remember that because the mounting is temporary, the `ceph` partition will be unmounted upon rebooting our machine. 
+Remember that because the mounting is temporary, the `ceph` partition will be unmounted upon rebooting our machine.
 
 You can check that the partition is correctly unmounted by running `df -h` and verifying it does not show in the output.
 
