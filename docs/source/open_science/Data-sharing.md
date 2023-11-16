@@ -23,7 +23,7 @@ Currently, SWC does not have any specific code and data sharing requirements, bu
 
 
 ## Code
-Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. To enable reuse, code should include an [appropriate license](https://howto.neuroinformatics.dev/guides/Licensing.html).
+Original code can be hosted in a public GitHub/GitLab repository, hosted on an organisational account (i.e. not an individual account). This could be the [SWC organisation](https://github.com/SainsburyWellcomeCentre), or that of a particular team, lab or collaboration. To enable reuse, code should include an [appropriate license](licensing-target).
 
 To ensure a permanent archive of the code associated with a publication a [DOI](https://www.doi.org/) should be created (e.g. using [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)).
 
@@ -46,7 +46,7 @@ In some cases, there may be a modality or field-specific repository that would b
 In all cases, using a repository that can create a [DOI](https://www.doi.org/) will help increase citations.
 
 ### Structure
-There is no single best way to structure your data, but it must be in a form that allows users to easily reuse it for their own purposes. This may be by adopting specific file formats (such as [NeuroData Without Borders](https://www.nwb.org/)). Alternatively the data could be organised within a standardised project folder structure. Many labs have their own system, but those starting from scratch may wish to use the [SWC-Blueprint data structure](https://swc-blueprint.neuroinformatics.dev/).
+There is no single best way to structure your data, but it must be in a form that allows users to easily reuse it for their own purposes. This may be by adopting specific file formats (such as [NeuroData Without Borders](https://www.nwb.org/)). Alternatively the data could be organised within a standardised project folder structure. Many labs have their own system, but those starting from scratch may wish to use the [NeuroBlueprint data structure](https://neuroblueprint.neuroinformatics.dev/).
 
 **However the data is structured, all relevant metadata must be included with the raw data.**
 
@@ -55,23 +55,23 @@ If you have any technical questions about sharing data or code, please contact a
 
 (repo-table)=
 ## Reference of potential repositories for neuroscience data
-| Repository                         |URL                                                |Domain                                                                                               |
-|------------------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| Globus                             |                                                   |Anything                                                                                             |
-| figshare                           |https://rdr.ucl.ac.uk/The_Sainsbury_Wellcome_Centre|Anything                                                                                             |
-| Zenodo                             |https://zenodo.org/                                |Anything                                                                                             |
-| Dryad                              |https://datadryad.org                              |Anything                                                                                             |
-| GIN (German Neuroinformatics Node) |https://gin.g-node.org/                            |Neuroscience                                                                                         |
-| EBRAINS                            |https://ebrains.eu/service/share-data              |Neuroscience                                                                                         |
-| Open Source Brain                  |https://www.v2.opensourcebrain.org/                |Any neuroscience data (data must be hosted elsewhere)                                                |
-| Brain Image Library                |http://www.brainimagelibrary.org/                  |Large brain image datasets                                                                           |
-| Image data resource                |https://idr.openmicroscopy.org/                    |Reference image datasets                                                                             |
-| BioImage Archive                   |https://www.ebi.ac.uk/bioimage-archive/            |Biological images                                                                                    |
-| DANDI                              |https://dandiarchive.org/                          |Electrophysiology, optophysiology, behavioural time-series and images from immunostaining experiments|
-| NeMO                               |https://nemoarchive.org/                           |Omic data from the BRAIN Initiative (& others)                                                       |
-| Openneuro                          |https://openneuro.org/                             |BIDS-compliant MRI, PET, EEG etc                                                                     |
-| CRCNS                              |https://crcns.org/                                 |Computational neuroscience                                                                           |
-| BrainGlobe                         |https://gin.g-node.org/BrainGlobe/atlases          |Brain Atlases                                                                                        |
-| NeuroMorpho                        |https://neuromorpho.org/                           |Neuronal morphologies                                                                                |
-| Cell Image Library                 |http://ccdb.ucsd.edu/home                          |Cell images                                                                                          |
-| ModelDB                            |https://senselab.med.yale.edu/ModelDB/             |Computational neuroscience models                                                                    |
+| Repository                         | URL                                                 | Domain                                                                                                |
+| ---------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Globus                             |                                                     | Anything                                                                                              |
+| figshare                           | https://rdr.ucl.ac.uk/The_Sainsbury_Wellcome_Centre | Anything                                                                                              |
+| Zenodo                             | https://zenodo.org/                                 | Anything                                                                                              |
+| Dryad                              | https://datadryad.org                               | Anything                                                                                              |
+| GIN (German Neuroinformatics Node) | https://gin.g-node.org/                             | Neuroscience                                                                                          |
+| EBRAINS                            | https://ebrains.eu/service/share-data               | Neuroscience                                                                                          |
+| Open Source Brain                  | https://www.v2.opensourcebrain.org/                 | Any neuroscience data (data must be hosted elsewhere)                                                 |
+| Brain Image Library                | http://www.brainimagelibrary.org/                   | Large brain image datasets                                                                            |
+| Image data resource                | https://idr.openmicroscopy.org/                     | Reference image datasets                                                                              |
+| BioImage Archive                   | https://www.ebi.ac.uk/bioimage-archive/             | Biological images                                                                                     |
+| DANDI                              | https://dandiarchive.org/                           | Electrophysiology, optophysiology, behavioural time-series and images from immunostaining experiments |
+| NeMO                               | https://nemoarchive.org/                            | Omic data from the BRAIN Initiative (& others)                                                        |
+| Openneuro                          | https://openneuro.org/                              | BIDS-compliant MRI, PET, EEG etc                                                                      |
+| CRCNS                              | https://crcns.org/                                  | Computational neuroscience                                                                            |
+| BrainGlobe                         | https://gin.g-node.org/BrainGlobe/atlases           | Brain Atlases                                                                                         |
+| NeuroMorpho                        | https://neuromorpho.org/                            | Neuronal morphologies                                                                                 |
+| Cell Image Library                 | http://ccdb.ucsd.edu/home                           | Cell images                                                                                           |
+| ModelDB                            | https://senselab.med.yale.edu/ModelDB/              | Computational neuroscience models                                                                     |
