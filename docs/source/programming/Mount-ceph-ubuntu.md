@@ -1,7 +1,8 @@
+(target-mount-ceph-ubuntu-perm)=
 # Mount ceph storage on Ubuntu permanently
 In this example, we will **permanently** mount the `neuroinformatics` partition of `ceph`. The same procedure can be used to mount other partitions, such as those belonging to particular labs or projects.
 
-To mount a partition of `ceph` only temporarily, see [Mount ceph storage on Ubuntu temporarily](Mount-ceph-ubuntu-temp.md).
+To mount a partition of `ceph` only temporarily, see [Mount ceph storage on Ubuntu temporarily](target-mount-ceph-ubuntu-temp).
 
 
 The following instructions have been tested on **Ubuntu 20.04 LTS**.

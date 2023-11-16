@@ -1,5 +1,6 @@
+(target-mount-ceph-ubuntu-temp)=
 # Mount ceph storage on Ubuntu temporarily
-In this example, we will **temporarily** mount a partition of `ceph` in an Ubuntu machine. The mounting is temporary because it will only remain until the next reboot. To mount a partition of `ceph` permanently, see [Mount ceph storage on Ubuntu permanently](Mount-ceph-ubuntu.md).
+In this example, we will **temporarily** mount a partition of `ceph` in an Ubuntu machine. The mounting is temporary because it will only remain until the next reboot. To mount a partition of `ceph` permanently, see [Mount ceph storage on Ubuntu permanently](target-mount-ceph-ubuntu-perm).
 
 
 ## Prerequisites
