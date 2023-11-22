@@ -1,3 +1,4 @@
+(ssh-cluster-target)=
 # Set up SSH for the SWC HPC cluster
 
 This guide explains how to connect to the SWC's HPC cluster via SSH.
@@ -9,14 +10,14 @@ This guide explains how to connect to the SWC's HPC cluster via SSH.
 ```
 
 ## Abbreviations
-| Acronym | Meaning |
-| --- | --- |
-| SWC | Sainsbury Wellcome Centre |
-| HPC | High Performance Computing |
-| SLURM | Simple Linux Utility for Resource Management |
-| SSH | Secure (Socket) Shell protocol |
-| IDE | Integrated Development Environment |
-| GUI | Graphical User Interface |
+| Acronym | Meaning                                      |
+| ------- | -------------------------------------------- |
+| SWC     | Sainsbury Wellcome Centre                    |
+| HPC     | High Performance Computing                   |
+| SLURM   | Simple Linux Utility for Resource Management |
+| SSH     | Secure (Socket) Shell protocol               |
+| IDE     | Integrated Development Environment           |
+| GUI     | Graphical User Interface                     |
 
 ## Prerequisites
 - You have an SWC account and know your username and password.
