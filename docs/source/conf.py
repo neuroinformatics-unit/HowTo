@@ -130,8 +130,6 @@ html_theme_options = {
         }
     ],
     "logo": {
-    ],
-    "logo": {
         "text": "HowTo",
         "image_light": "logo_light.png",
         "image_dark": "logo_dark.png",
