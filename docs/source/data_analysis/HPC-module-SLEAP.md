@@ -336,6 +336,16 @@ $ cat slurm.gpu-sr670-20.3445652.err
 
 ::::
 
+```{dropdown} Out-of-memory (OOM) errors
+:color: warning
+:icon: alert-fill
+
+If you encounter out-of-memory errors, there are a few things you can try:
+- Request more CPU memory via the `--mem` argument in the SLURM batch script.
+- Request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
+- Reduce the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scalng*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
+```
+
 ### Evaluate the trained models
 Upon successful completion of the training job, a `models` folder will have
 been created in the training job directory. It contains one subfolder per
