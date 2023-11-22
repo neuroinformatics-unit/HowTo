@@ -82,7 +82,7 @@ e.g. you are parallelising your code across multiple nodes with MPI.
 ### Memory Pool for All Cores
 - *Name:* `--mem`
 - *Description:* Specifies the total amount of memory (RAM) required for the job across all cores (per node)
-- *Example values:* `8G`, `16G`, `32G`
+- *Example values:* `8G`, `32G`, `64G`
 
 ### Time Limit
 - *Name:* `--time`

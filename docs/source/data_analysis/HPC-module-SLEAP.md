@@ -206,8 +206,8 @@ An example is provided below, followed by explanations.
 #SBATCH -J slp_train # job name
 #SBATCH -p gpu # partition (queue)
 #SBATCH -N 1   # number of nodes
-#SBATCH --mem 16G # memory pool for all cores
-#SBATCH -n 4 # number of cores
+#SBATCH --mem 32G # memory pool for all cores
+#SBATCH -n 8 # number of cores
 #SBATCH -t 0-06:00 # time (D-HH:MM)
 #SBATCH --gres gpu:1 # request 1 GPU (of any kind)
 #SBATCH -o slurm.%x.%N.%j.out # STDOUT
@@ -388,10 +388,10 @@ Below is an example SLURM batch script that contains a `sleap-track` call.
 #SBATCH -J slp_infer # job name
 #SBATCH -p gpu # partition
 #SBATCH -N 1   # number of nodes
-#SBATCH --mem 16G # memory pool for all cores
-#SBATCH -n 4 # number of cores
+#SBATCH --mem 64G # memory pool for all cores
+#SBATCH -n 16 # number of cores
 #SBATCH -t 0-02:00 # time (D-HH:MM)
-#SBATCH --gres gpu:1 # request 1 GPU (of any kind)
+#SBATCH --gres gpu:rtx5000:1 # request 1 GPU (of a specific kind)
 #SBATCH -o slurm.%x.%N.%j.out # write STDOUT
 #SBATCH -e slurm.%x.%N.%j.err # write STDERR
 #SBATCH --mail-type=ALL
@@ -425,6 +425,8 @@ sleap-track $VIDEO_DIR/M708149_EPM_20200317_165049331-converted.mp4 \
 ```
 The script is very similar to the training script, with the following differences:
 - The time limit `-t` is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.
+- The requested number of cores `n` and memory `--mem` are higher. This will depend on the requirements of the specific job you are running. It's best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.
+- The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see [wiki](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture)).
 - The `./train-script.sh` line is replaced by the `sleap-track` command.
 - The `\` character is used to split the long `sleap-track` command into multiple lines for readability. It is not necessary if the command is written on a single line.
 
