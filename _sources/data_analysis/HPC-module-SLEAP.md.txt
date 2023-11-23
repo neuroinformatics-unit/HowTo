@@ -7,13 +7,13 @@
 ```
 
 ## Abbreviations
-| Acronym | Meaning                                      |
-| ------- | -------------------------------------------- |
-| SLEAP   | Social LEAP Estimates Animal Poses           |
-| SWC     | Sainsbury Wellcome Centre                    |
-| HPC     | High Performance Computing                   |
-| SLURM   | Simple Linux Utility for Resource Management |
-| GUI     | Graphical User Interface                     |
+| Acronym                                                         | Meaning                                      |
+| --------------------------------------------------------------- | -------------------------------------------- |
+| [SLEAP](https://sleap.ai/)                                      | Social LEAP Estimates Animal Poses           |
+| [SWC](https://www.sainsburywellcome.org/web/)                   | Sainsbury Wellcome Centre                    |
+| [HPC](https://en.wikipedia.org/wiki/High-performance_computing) | High Performance Computing                   |
+| [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
+| [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface)   | Graphical User Interface                     |
 
 ## Prerequisites
 
