@@ -5,12 +5,12 @@
 ```
 
 ## Abbreviations
-| Acronym | Meaning                                      |
-| ------- | -------------------------------------------- |
-| SWC     | Sainsbury Wellcome Centre                    |
-| HPC     | High Performance Computing                   |
-| SLURM   | Simple Linux Utility for Resource Management |
-| MPI     | Message Passing Interface                    |
+| Acronym                                                         | Meaning                                      |
+| --------------------------------------------------------------- | -------------------------------------------- |
+| [SWC](https://www.sainsburywellcome.org/web/)                   | Sainsbury Wellcome Centre                    |
+| [HPC](https://en.wikipedia.org/wiki/High-performance_computing) | High Performance Computing                   |
+| [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
+| [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface)  | Message Passing Interface                    |
 
 
 ## Overview
