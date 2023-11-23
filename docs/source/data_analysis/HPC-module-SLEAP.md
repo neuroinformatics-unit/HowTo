@@ -340,10 +340,10 @@ $ cat slurm.gpu-sr670-20.3445652.err
 :color: warning
 :icon: alert-fill
 
-If you encounter out-of-memory errors, there are a few things you can try:
-- Request more CPU memory via the `--mem` argument in the SLURM batch script.
-- Request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
-- Reduce the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scalng*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
+If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:
+- CPU memory (RAM), specified via the `--mem` argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.
+- GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the `--gres gpu:1` argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
+- If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scalng*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
 ### Evaluate the trained models
