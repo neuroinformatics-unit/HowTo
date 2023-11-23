@@ -69,20 +69,19 @@ For a more detailed description see the [SLURM documentation](https://slurm.sche
 - *Example values:* `1`
 
 :::{warning}
-This should always be `1`, unless you really know what you're doing,
-e.g. you are parallelising your code across multiple nodes with MPI.
+This is usually `1` unless you're parallelising your code across multiple nodes with technologies such as MPI.
 :::
 
 ### Number of Cores
 - *Name:* `--ntasks`
 - *Alias:* `-n`
 - *Description:* Defines the number of cores (or tasks) required for the job.
-- *Example values:* `4`, `8`, `16`
+- *Example values:* `1`, `5`, `20`
 
 ### Memory Pool for All Cores
 - *Name:* `--mem`
 - *Description:* Specifies the total amount of memory (RAM) required for the job across all cores (per node)
-- *Example values:* `8G`, `32G`, `64G`
+- *Example values:* `4G`, `32G`, `64G`
 
 ### Time Limit
 - *Name:* `--time`
@@ -94,6 +93,8 @@ e.g. you are parallelising your code across multiple nodes with MPI.
 If the job exceeds the time limit, it will be terminated by SLURM.
 On the other hand, avoid requesting way more time than what your job needs,
 as this may delay its scheduling (depending on resource availability).
+
+If needed, the systems administrator can extend long-running jobs. 
 :::
 
 ### Generic Resources (GPUs)
