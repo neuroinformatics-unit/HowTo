@@ -1,4 +1,4 @@
-# Use the SLEAP module on the HPC cluster
+# Use the SLEAP module on the SWC HPC cluster
 
 ```{include} ../_static/swc-wiki-warning.md
 ```
@@ -35,8 +35,8 @@ SLEAP/2023-03-13
 SLEAP/2023-08-01
 ...
 ```
-- `SLEAP/2023-03-13` corresponds to `sleap v.1.2.9`
-- `SLEAP/2023-08-01` corresponds to `sleap v.1.3.1`
+- `SLEAP/2023-03-13` corresponds to `SLEAP v.1.2.9`
+- `SLEAP/2023-08-01` corresponds to `SLEAP v.1.3.1`
 
 We recommend always using the latest version, which is the one loaded by default
 when you run `module load SLEAP`. If you want to load a specific version,

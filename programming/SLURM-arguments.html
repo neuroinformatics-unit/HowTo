@@ -494,8 +494,7 @@ For a more detailed description see the <a class="reference external" href="http
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This should always be <code class="docutils literal notranslate"><span class="pre">1</span></code>, unless you really know what you’re doing,
-e.g. you are parallelising your code across multiple nodes with MPI.</p>
+<p>This is usually <code class="docutils literal notranslate"><span class="pre">1</span></code> unless you’re parallelising your code across multiple nodes with technologies such as MPI.</p>
 </div>
 </section>
 <section id="number-of-cores">
@@ -504,7 +503,7 @@ e.g. you are parallelising your code across multiple nodes with MPI.</p>
 <li><p><em>Name:</em> <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code></p></li>
 <li><p><em>Alias:</em> <code class="docutils literal notranslate"><span class="pre">-n</span></code></p></li>
 <li><p><em>Description:</em> Defines the number of cores (or tasks) required for the job.</p></li>
-<li><p><em>Example values:</em> <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">8</span></code>, <code class="docutils literal notranslate"><span class="pre">16</span></code></p></li>
+<li><p><em>Example values:</em> <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, <code class="docutils literal notranslate"><span class="pre">20</span></code></p></li>
 </ul>
 </section>
 <section id="memory-pool-for-all-cores">
@@ -512,7 +511,7 @@ e.g. you are parallelising your code across multiple nodes with MPI.</p>
 <ul class="simple">
 <li><p><em>Name:</em> <code class="docutils literal notranslate"><span class="pre">--mem</span></code></p></li>
 <li><p><em>Description:</em> Specifies the total amount of memory (RAM) required for the job across all cores (per node)</p></li>
-<li><p><em>Example values:</em> <code class="docutils literal notranslate"><span class="pre">8G</span></code>, <code class="docutils literal notranslate"><span class="pre">32G</span></code>, <code class="docutils literal notranslate"><span class="pre">64G</span></code></p></li>
+<li><p><em>Example values:</em> <code class="docutils literal notranslate"><span class="pre">4G</span></code>, <code class="docutils literal notranslate"><span class="pre">32G</span></code>, <code class="docutils literal notranslate"><span class="pre">64G</span></code></p></li>
 </ul>
 </section>
 <section id="time-limit">
@@ -528,6 +527,7 @@ e.g. you are parallelising your code across multiple nodes with MPI.</p>
 <p>If the job exceeds the time limit, it will be terminated by SLURM.
 On the other hand, avoid requesting way more time than what your job needs,
 as this may delay its scheduling (depending on resource availability).</p>
+<p>If needed, the systems administrator can extend long-running jobs.</p>
 </div>
 </section>
 <section id="generic-resources-gpus">
