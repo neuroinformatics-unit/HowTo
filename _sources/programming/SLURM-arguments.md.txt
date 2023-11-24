@@ -7,9 +7,9 @@
 ## Abbreviations
 | Acronym                                                         | Meaning                                      |
 | --------------------------------------------------------------- | -------------------------------------------- |
+| [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
 | [SWC](https://www.sainsburywellcome.org/web/)                   | Sainsbury Wellcome Centre                    |
 | [HPC](https://en.wikipedia.org/wiki/High-performance_computing) | High Performance Computing                   |
-| [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
 | [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface)  | Message Passing Interface                    |
 
 
@@ -94,7 +94,7 @@ If the job exceeds the time limit, it will be terminated by SLURM.
 On the other hand, avoid requesting way more time than what your job needs,
 as this may delay its scheduling (depending on resource availability).
 
-If needed, the systems administrator can extend long-running jobs. 
+If needed, the systems administrator can extend long-running jobs.
 :::
 
 ### Generic Resources (GPUs)

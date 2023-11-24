@@ -441,11 +441,11 @@ any prompt:</p>
 <tr class="row-even"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/High-performance_computing">HPC</a></p></td>
 <td><p>High Performance Computing</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://slurm.schedmd.com/">SLURM</a></p></td>
-<td><p>Simple Linux Utility for Resource Management</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a></p></td>
 <td><p>Graphical User Interface</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://slurm.schedmd.com/">SLURM</a></p></td>
+<td><p>Simple Linux Utility for Resource Management</p></td>
 </tr>
 </tbody>
 </table>
@@ -764,11 +764,11 @@ view the logs</label><div class="sd-tab-content docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">If you encounter out-of-memory errors, there are a few things you can try:</p>
+<p class="sd-card-text">If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:</p>
 <ul class="simple">
-<li><p class="sd-card-text">Request more CPU memory via the <code class="docutils literal notranslate"><span class="pre">--mem</span></code> argument in the SLURM batch script.</p></li>
-<li><p class="sd-card-text">Request a specific GPU card type with more GPU memory (e.g. <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a4500:1</span></code>). The SWC wiki provides a <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture">list of all GPU card types and their specifications</a>.</p></li>
-<li><p class="sd-card-text">Reduce the size of your SLEAP models. You may tweak the model backbone architecture, or play with <em>Input scalng</em>, <em>Max stride</em> and <em>Batch size</em>. See SLEAP’s <a class="reference external" href="https://sleap.ai/">documentation</a> and <a class="reference external" href="https://github.com/talmolab/sleap/discussions">discussion forum</a> for more details.</p></li>
+<li><p class="sd-card-text">CPU memory (RAM), specified via the <code class="docutils literal notranslate"><span class="pre">--mem</span></code> argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.</p></li>
+<li><p class="sd-card-text">GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:1</span></code> argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a4500:1</span></code>). The SWC wiki provides a <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture">list of all GPU card types and their specifications</a>.</p></li>
+<li><p class="sd-card-text">If requesting more memory doesn’t help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with <em>Input scaling</em>, <em>Max stride</em> and <em>Batch size</em>. See SLEAP’s <a class="reference external" href="https://sleap.ai/">documentation</a> and <a class="reference external" href="https://github.com/talmolab/sleap/discussions">discussion forum</a> for more details.</p></li>
 </ul>
 </div>
 </details></section>
@@ -807,12 +807,13 @@ their configurations (<code class="docutils literal notranslate"><span class="pr
 <li><p>Click on <em>Add Trained Models(s)</em> and select the folder containing the model(s) you want to evaluate.</p></li>
 <li><p>You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking <em>View Metrics</em>.</p></li>
 </ul>
+<p>For more detailed evaluation metrics, you can refer to <a class="reference external" href="https://sleap.ai/notebooks/Model_evaluation.html">SLEAP’s model evaluation notebook</a>.</p>
 </section>
 </section>
 <section id="model-inference">
 <h2>Model inference<a class="headerlink" href="#model-inference" title="Link to this heading">#</a></h2>
 <p>By inference, we mean using a trained model to predict the labels on new frames/videos.
-SLEAP provides the <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command line utility for running inference
+SLEAP provides the <a class="reference external" href="https://sleap.ai/guides/cli.html?#inference-and-tracking"><code class="docutils literal notranslate"><span class="pre">sleap-track</span></code></a> command line utility for running inference
 on a single video or a folder of videos.</p>
 <p>Below is an example SLURM batch script that contains a <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> call.</p>
 <div class="literal-block-wrapper docutils container" id="infer-slurm-sh">
@@ -863,7 +864,7 @@ on a single video or a folder of videos.</p>
 <ul class="simple">
 <li><p>The time limit <code class="docutils literal notranslate"><span class="pre">-t</span></code> is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.</p></li>
 <li><p>The requested number of cores <code class="docutils literal notranslate"><span class="pre">n</span></code> and memory <code class="docutils literal notranslate"><span class="pre">--mem</span></code> are higher. This will depend on the requirements of the specific job you are running. It’s best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.</p></li>
-<li><p>The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture">wiki</a>).</p></li>
+<li><p>The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture">the SWC wiki</a>).</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">./train-script.sh</span></code> line is replaced by the <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">\</span></code> character is used to split the long <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command into multiple lines for readability. It is not necessary if the command is written on a single line.</p></li>
 </ul>
@@ -1026,7 +1027,7 @@ This is normal. Subsequent imports should be faster.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>exit<span class="o">()</span>
 </pre></div>
 </div>
-<p>If you encounter troubles with using the SLEAP module, contact the
+<p>If you encounter troubles with using the SLEAP module, contact
 Niko Sirmpilatze of the SWC <a class="reference external" href="https://neuroinformatics.dev/">Neuroinformatics Unit</a>.</p>
 <p>To completely exit the HPC cluster, you will need to logout of the SSH session  twice:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">logout</span>

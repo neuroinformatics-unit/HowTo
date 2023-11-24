@@ -3,4 +3,5 @@ open_science/Data-sharing.md:63: [redirected permanently] https://datadryad.org 
 open_science/Data-sharing.md:65: [redirected permanently] https://ebrains.eu/service/share-data to https://www.ebrains.eu/data/share-data/
 open_science/Licensing.md:13: [redirected permanently] https://opensource.org/licenses/BSD-3-Clause to https://opensource.org/license/bsd-3-clause/
 open_science/Data-sharing.md:77: [redirected permanently] https://senselab.med.yale.edu/ModelDB/ to https://modeldb.science/
+data_analysis/HPC-module-SLEAP.md:389: [redirected with unknown code] https://sleap.ai/guides/cli.html?#inference-and-tracking to https://sleap.ai/guides/cli.html
 open_science/Licensing.md:21: [redirected permanently] https://tldrlegal.com/ to https://www.tldrlegal.com/
