@@ -343,7 +343,7 @@ $ cat slurm.gpu-sr670-20.3445652.err
 If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:
 - CPU memory (RAM), specified via the `--mem` argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.
 - GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the `--gres gpu:1` argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
-- If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scalng*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
+- If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
 ### Evaluate the trained models
@@ -385,7 +385,7 @@ The SLEAP GUI on your local machine can be used to quickly evaluate the trained 
 
 ## Model inference
 By inference, we mean using a trained model to predict the labels on new frames/videos.
-SLEAP provides the `sleap-track` command line utility for running inference
+SLEAP provides the [`sleap-track`](https://sleap.ai/guides/cli.html?#inference-and-tracking) command line utility for running inference
 on a single video or a folder of videos.
 
 Below is an example SLURM batch script that contains a `sleap-track` call.
@@ -436,7 +436,7 @@ sleap-track $VIDEO_DIR/M708149_EPM_20200317_165049331-converted.mp4 \
 The script is very similar to the training script, with the following differences:
 - The time limit `-t` is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.
 - The requested number of cores `n` and memory `--mem` are higher. This will depend on the requirements of the specific job you are running. It's best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.
-- The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see [wiki](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture)).
+- The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see [the SWC wiki](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture)).
 - The `./train-script.sh` line is replaced by the `sleap-track` command.
 - The `\` character is used to split the long `sleap-track` command into multiple lines for readability. It is not necessary if the command is written on a single line.
 
@@ -598,7 +598,7 @@ If all is as expected, you can exit the Python interpreter, and then exit the GP
 ```{code-block} console
 $ exit()
 ```
-If you encounter troubles with using the SLEAP module, contact the
+If you encounter troubles with using the SLEAP module, contact
 Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
 
 To completely exit the HPC cluster, you will need to logout of the SSH session  twice:
