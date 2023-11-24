@@ -12,8 +12,8 @@
 | [SLEAP](https://sleap.ai/)                                      | Social LEAP Estimates Animal Poses           |
 | [SWC](https://www.sainsburywellcome.org/web/)                   | Sainsbury Wellcome Centre                    |
 | [HPC](https://en.wikipedia.org/wiki/High-performance_computing) | High Performance Computing                   |
-| [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
 | [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface)   | Graphical User Interface                     |
+| [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
 
 ## Prerequisites
 
