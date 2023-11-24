@@ -383,6 +383,8 @@ The SLEAP GUI on your local machine can be used to quickly evaluate the trained 
 - Click on *Add Trained Models(s)* and select the folder containing the model(s) you want to evaluate.
 - You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking *View Metrics*.
 
+For more detailed evaluation metrics, you can refer to [SLEAP's model evaluation notebook](https://sleap.ai/notebooks/Model_evaluation.html).
+
 ## Model inference
 By inference, we mean using a trained model to predict the labels on new frames/videos.
 SLEAP provides the [`sleap-track`](https://sleap.ai/guides/cli.html?#inference-and-tracking) command line utility for running inference
