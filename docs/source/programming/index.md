@@ -7,6 +7,7 @@ Small tips and tricks that do not warrant a long-form guide can be found in the 
 ```{toctree}
 :maxdepth: 1
 
+SLURM-arguments
 SSH-SWC-cluster
 SSH-vscode
 Mount-ceph-ubuntu

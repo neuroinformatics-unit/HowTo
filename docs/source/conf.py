@@ -38,6 +38,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     "sphinx_design",
+    "sphinx_copybutton",
     "myst_parser",
     "numpydoc",
     "nbsphinx",
@@ -134,3 +135,7 @@ html_theme_options = {
 
 # Hide the "Show Source" button
 html_show_sourcelink = False
+
+# Configure the code block copy button
+# don't copy line numbers, prompts, or console outputs
+copybutton_exclude = ".linenos, .gp, .go"
