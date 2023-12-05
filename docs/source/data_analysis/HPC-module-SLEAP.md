@@ -95,7 +95,7 @@ The rest of this guide assumes that you have mounted the SWC filesystem on your 
 If you have not done so, please follow the relevant instructions on the
 [SWC internal wiki](https://wiki.ucl.ac.uk/display/SSC/SWC+Storage+Platform+Overview).
 
-We will also assume that the data you are working with are stored in a `ceph` or `winstor`
+We will also assume that the data you are working with are stored in a `ceph`
 directory to which you have access to. In the rest of this guide, we will use the path
 `/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data` which contains a SLEAP project
 for test purposes. You should replace this with the path to your own data.
@@ -104,9 +104,9 @@ for test purposes. You should replace this with the path to your own data.
 :color: warning
 :icon: alert-fill
 
-The cluster has fast access to data stored on the `ceph` and `winstor` filesystems.
-If your data is stored elsewhere, make sure to transfer it to `ceph` or `winstor`
-before running the job. You can use tools such as [`rsync`](https://linux.die.net/man/1/rsync)
+The cluster has fast access to data stored on the `ceph` filesystem, so if your
+data is stored elsewhere, make sure to transfer it to `ceph` before running the job.
+You can use tools such as [`rsync`](https://linux.die.net/man/1/rsync)
 to copy data from your local machine to `ceph` via an ssh connection. For example:
 
 ```{code-block} console
