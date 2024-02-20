@@ -56,7 +56,7 @@ If you have any technical questions about sharing data or code, please contact a
 (repo-table)=
 ## Reference of potential repositories for neuroscience data
 | Repository                         | URL                                                 | Domain                                                                                                |
-| ---------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| ---------------------------------- |-----------------------------------------------------| ----------------------------------------------------------------------------------------------------- |
 | Globus                             |                                                     | Anything                                                                                              |
 | figshare                           | https://rdr.ucl.ac.uk/The_Sainsbury_Wellcome_Centre | Anything                                                                                              |
 | Zenodo                             | https://zenodo.org/                                 | Anything                                                                                              |
@@ -74,4 +74,4 @@ If you have any technical questions about sharing data or code, please contact a
 | BrainGlobe                         | https://gin.g-node.org/BrainGlobe/atlases           | Brain Atlases                                                                                         |
 | NeuroMorpho                        | https://neuromorpho.org/                            | Neuronal morphologies                                                                                 |
 | Cell Image Library                 | http://ccdb.ucsd.edu/home                           | Cell images                                                                                           |
-| ModelDB                            | https://senselab.med.yale.edu/ModelDB/              | Computational neuroscience models                                                                     |
+| ModelDB                            | https://modeldb.science/                            | Computational neuroscience models                                                                     |
