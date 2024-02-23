@@ -469,6 +469,10 @@ However, if someone gets access to your machine with your user logged in, they w
 <h3>5. Unmount the storage<a class="headerlink" href="#unmount-the-storage" title="Link to this heading">#</a></h3>
 <p>To unmount the storage, run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">/media/ceph-neuroinformatics</span></code> (or whatever your mount point is).</p>
 <p>To permanently unmount the storage, remove the lines you added to the <code class="docutils literal notranslate"><span class="pre">fstab</span></code> file and run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">-a</span></code> again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not trust your instincts and use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">/media/ceph-neuroinformatics</span></code> to permanently unmount, even though it looks like a local folder. This will delete files on <code class="docutils literal notranslate"><span class="pre">ceph</span></code>!</p>
+</div>
 </section>
 </section>
 </section>

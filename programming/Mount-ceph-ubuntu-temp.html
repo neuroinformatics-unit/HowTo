@@ -448,6 +448,10 @@ document.write(`
 </div>
 <p>Remember that because the mounting is temporary, the <code class="docutils literal notranslate"><span class="pre">ceph</span></code> partition will be unmounted upon rebooting our machine.</p>
 <p>You can check that the partition is correctly unmounted by running <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">-h</span></code> and verifying it does not show in the output.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">/media/ceph-neuroinformatics</span></code> to unmount, even though it looks like a local folder. This will delete files on <code class="docutils literal notranslate"><span class="pre">ceph</span></code>!</p>
+</div>
 </section>
 </section>
 <section id="references">

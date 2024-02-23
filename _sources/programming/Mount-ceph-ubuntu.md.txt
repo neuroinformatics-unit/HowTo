@@ -73,3 +73,7 @@ The next time you reboot your machine, the storage should be mounted automatical
 To unmount the storage, run `sudo umount /media/ceph-neuroinformatics` (or whatever your mount point is).
 
 To permanently unmount the storage, remove the lines you added to the `fstab` file and run `sudo mount -a` again.
+
+:::{warning}
+Do not trust your instincts and use `sudo rm -r /media/ceph-neuroinformatics` to permanently unmount, even though it looks like a local folder. This will delete files on `ceph`!
+:::
