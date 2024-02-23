@@ -6,8 +6,9 @@
 
 Below we explain the main user workflows in GIN, focusing on creating a private repository of your data.
 
-> [!NOTE]
-> All GIN repos are private by default.
+:::{note}
+All GIN repos are private by default.
+:::
 
 ## Preparatory steps - do only once
 
@@ -36,9 +37,9 @@ These steps apply to any of the workflows below, but we need to do them only the
    - You will be prompted for your GIN username and password.
    - To list the repositories available to your account: `gin repos --all`
 
-> [!TIP]
->
-> You may need `sudo` permissions for some of the following `gin` commands. If so, remember to prepend all commands with `sudo`.
+:::{tip}
+You may need `sudo` permissions for some of the following `gin` commands. If so, remember to prepend all commands with `sudo`.
+:::
 
 2. **Initialise a GIN repository**
 
@@ -90,22 +91,22 @@ These steps apply to any of the workflows below, but we need to do them only the
        - To show the remotes accessible to your GIN account run `gin remotes`.
        </details>
 
-> [!NOTE]
->
-> Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` subdirectory. You can see it on the terminal by running `ls -la` from the local repository. The local repository excluding this `.git` folder is what we call later the _working directory_. 
+:::{note}
+Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` subdirectory. You can see it on the terminal by running `ls -la` from the local repository. The local repository excluding this `.git` folder is what we call later the _working directory_. 
+:::
 
-> [!TIP]
->
-> To create a GIN repository on a `ceph` directory:
->
-> - You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu-temp.html). To do this permanently, follow [this one](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu.html).
-> - You may also need to add an exception for the mounted directory. To do so, run the following command:
->
->   ```
->   git config --global --add safe.directory /mnt/<path-to-the-mounted-directory>
->   ```
->
-> - Alternatively, you can log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is likely faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` (and actually physically close to it).
+:::{tip}
+To create a GIN repository on a `ceph` directory:
+
+- You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu-temp.html). To do this permanently, follow [this one](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu.html). 
+- You may also need to add an exception for the mounted directory. To do so, run the following command:
+
+   ```
+   git config --global --add safe.directory /mnt/<path-to-the-mounted-directory
+   ```
+
+ - Alternatively, you can log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is likely faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` (and actually physically close to it).
+::: 
 
 3. **Add files to the GIN remote repository**
 
@@ -137,11 +138,11 @@ These steps apply to any of the workflows below, but we need to do them only the
 
    You may want to lock the data to save space locally or to prevent editing in the future - see the section on [File locking](#file-locking) for further details.
 
-> [!TIP]
->
-> - Use `gin ls` to check on the current status of the GIN repository - this is somewhat equivalent to `git status`. The acronyms for the different status of the files are described [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#list-the-sync-status-of-files-in-the-local-repository)
-> - Use `gin sync` to sync the changes bi-directionally between the local and the remote GIN repository.
-> - If the output from `gin ls` doesn't look right (e.g., files already uploaded to the GIN server appear under `Locally modified (unsaved)`), try running `gin sync` and check the status again.
+:::{tip}
+ - Use `gin ls` to check on the current status of the GIN repository - this is somewhat equivalent to `git status`. The acronyms for the different status of the files are described [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#list-the-sync-status-of-files-in-the-local-repository)
+ - Use `gin sync` to sync the changes bi-directionally between the local and the remote GIN repository.
+ - If the output from `gin ls` doesn't look right (e.g., files already uploaded to the GIN server appear under `Locally modified (unsaved)`), try running `gin sync` and check the status again.
+:::
 
 ## To update a dataset that is hosted in GIN
 
@@ -151,8 +152,9 @@ These steps apply to any of the workflows below, but we need to do them only the
    gin get <remote-repository-location>
    ```
 
-> [!TIP]
-> To see the `remote-repository-location`s accesible from your GIN account, run `gin repos`
+:::{tip}
+ To see the `remote-repository-location`s accesible from your GIN account, run `gin repos`
+:::
 
 2. Add files to the directory where the local repository is in, and commit them:
 
@@ -220,8 +222,9 @@ We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to 
 
 - To stop tracking the GIN repo locally delete the `.git` directory
 
-> [!NOTE]
-> If in the GIN repo the files are locked, remember to unlock them before removing the `.git` directory! Otherwise we won't be able to delete the `.git/annex` content.
+:::{note}
+If in the GIN repo the files are locked, remember to unlock them before removing the `.git` directory! Otherwise we won't be able to delete the `.git/annex` content.
+:::
 
 - To delete a GIN repository but keep the git repo:
 
@@ -248,8 +251,9 @@ We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to 
 
 - Unlocked files can be edited. If the data is unlocked and the full content of the dataset is downloaded locally, the file in the working directory has content, and so does its copy under git annex.
 
-> [!CAUTION]
-> This doubles disk usage of files checked into the repo, but in exchange users can modify and revert files to previous commits.
+:::{caution}
+This doubles disk usage of files checked into the repo, but in exchange users can modify and revert files to previous commits.
+:::
 
 - Locked files cannot be edited. For example, if we open a locked image with Preview in MacOS and try to edit it, we will be asked if we wish to unlock the file. However even if we do, we won't be able to save any changes because we don't have writing permissions.
 
