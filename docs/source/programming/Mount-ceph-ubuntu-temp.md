@@ -48,6 +48,9 @@ Remember that because the mounting is temporary, the `ceph` partition will be un
 
 You can check that the partition is correctly unmounted by running `df -h` and verifying it does not show in the output.
 
+:::{warning}
+Do not trust your instincts and use `sudo rm -r /media/ceph-neuroinformatics` to unmount, even though it looks like a local folder. This will delete files on `ceph`!
+:::
 
 ## References
 - [Mount network drive under Linux temporarily/permanently](https://www.rz.uni-kiel.de/en/hints-howtos/connecting-a-network-share/Linux/through-temporary-permanent-mounting/mount-network-drive-under-linux-temporarily-permanently)
