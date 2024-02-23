@@ -49,7 +49,7 @@ Remember that because the mounting is temporary, the `ceph` partition will be un
 You can check that the partition is correctly unmounted by running `df -h` and verifying it does not show in the output.
 
 :::{warning}
-Do not trust your instincts and use `sudo rm -r /media/ceph-neuroinformatics` to unmount, even though it looks like a local folder. This will delete files on `ceph`!
+Do not use `sudo rm -r /media/ceph-neuroinformatics` to unmount, even though it looks like a local folder. This will delete files on `ceph`!
 :::
 
 ## References
