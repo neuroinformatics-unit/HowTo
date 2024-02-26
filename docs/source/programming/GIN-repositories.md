@@ -169,7 +169,7 @@ To create a GIN repository on a `ceph` directory:
 
 ## To download the dataset locally
 
-#### If the repository doesn't exist locally:
+### If the repository doesn't exist locally:
 
 1. Clone (retrieve) the repository from the remote server to your local machine:
 
@@ -185,7 +185,7 @@ To create a GIN repository on a `ceph` directory:
    ```
    If the large files in the dataset are _locked_, this command will download the content to the git annex subdirectory, and turn the placeholder files in the working directory into symlinks that point to the content. If the files are _unlocked_, this command will replace the placeholder files in the working directory by the full-content files and **also** download the content to the git annex locally. See the section on [File locking](#file-locking) for further details.
 
-#### If the repository already exists locally:
+### If the repository already exists locally:
 
 1. Download any changes from the remote repository to the local clone, and get the most updated repository, by running (from the GIN local repository):
 
