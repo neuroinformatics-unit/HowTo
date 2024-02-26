@@ -1,8 +1,9 @@
-# Create a GIN private repository
+(target-create-gin-repo)=
+# Create a GIN repository for your dataset
 
 [GIN](https://gin.g-node.org/G-Node/Info/wiki) (hosted by the German Neuroinformatics Node) is a free and open data management system designed for neuroscientific data.
 
- It is web-accessible, based on `git` and `git-annex`, and allows you to keep your data in sync, backed up and easily accessible.
+ It is web-accessible, based on [`git`](https://git-scm.com/) and [`git-annex`](https://git-annex.branchable.com/), and allows you to keep your data in sync, backed up and easily accessible.
 
 Below we explain the main user workflows in GIN, focusing on creating a private repository of your data.
 
@@ -14,7 +15,7 @@ All GIN repos are private by default.
 
 These steps apply to any of the workflows below, but we need to do them only the first time we use GIN on our machine.
 
-1. Create [a GIN account](https://gin.g-node.org/user/sign_up)
+1. Create [a GIN account](https://gin.g-node.org/user/sign_up).
 2. [Download GIN CLI](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Setup#setup-gin-client) and set it up by running:
    ```
    gin login
@@ -35,7 +36,7 @@ These steps apply to any of the workflows below, but we need to do them only the
    ```
 
    - You will be prompted for your GIN username and password.
-   - To list the repositories available to your account: `gin repos --all`
+   - To list the repositories available to your account: `gin repos --all`.
 
 :::{tip}
 You may need `sudo` permissions for some of the following `gin` commands. If so, remember to prepend all commands with `sudo`.
@@ -51,7 +52,7 @@ You may need `sudo` permissions for some of the following `gin` commands. If so,
        gin create <remote-repository-name>
        ```
 
-         <details><summary> OR alternatively:</summary>
+         <details><summary> **OR alternatively**:</summary>
 
        Create a repository in the GIN server [from the browser](https://gin.g-node.org/repo/create), and download it locally to your local workspace by running:
 
@@ -72,7 +73,8 @@ You may need `sudo` permissions for some of the following `gin` commands. If so,
        gin create --here <remote-repository-name>
        ```
         This will create a repository named `<remote-repository-name>` on the GIN server under your account.
-        <details><summary>OR, to do each step independently:</summary>
+
+        <details><summary>**OR, to do each step independently**:</summary>
 
        - Initialise the current working directory as a GIN repository by running:
 
@@ -99,7 +101,7 @@ Initialising the GIN local repository (with `gin create` or `gin init`) will cre
 :::{tip}
 To create a GIN repository on a `ceph` directory:
 
-- You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu-temp.html). To do this permanently, follow [this one](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu.html).
+- You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](target-mount-ceph-ubuntu-temp). To do this permanently, follow [this one](target-mount-ceph-ubuntu-perm).
 - You may also need to add an exception for the mounted directory. To do so, run the following command:
 
    ```
@@ -113,7 +115,7 @@ To create a GIN repository on a `ceph` directory:
 
    It is good practice to keep a record of the changes in the repository through commit messages. To keep a useful and clean commit history, it is also recommended to make small commits by selecting a subset of the files.
 
-   - To make a record of the current state of a local repository, run
+   - To make a record of the current state of a local repository, run:
 
      ```
      gin commit --message <message> <filename>
@@ -140,7 +142,7 @@ To create a GIN repository on a `ceph` directory:
    You may want to lock the data to save space locally or to prevent editing in the future — see the section on [File locking](#file-locking) for further details.
 
 :::{tip}
- - Use `gin ls` to check on the current status of the GIN repository - this is somewhat equivalent to `git status`. The acronyms for the different status of the files are described [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#list-the-sync-status-of-files-in-the-local-repository)
+ - Use `gin ls` to check on the current status of the GIN repository - this is somewhat equivalent to `git status`. The acronyms for the different status of the files are described [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#list-the-sync-status-of-files-in-the-local-repository).
  - Use `gin sync` to sync the changes bi-directionally between the local and the remote GIN repository.
  - If the output from `gin ls` doesn't look right (e.g., files already uploaded to the GIN server appear under `Locally modified (unsaved)`), try running `gin sync` and check the status again.
 :::
@@ -198,7 +200,7 @@ To create a GIN repository on a `ceph` directory:
 
    With the `--content` flag, it optionally downloads the content of all files in the repository. If `--content` is not specified, new files will be empty placeholders.
 
-2. The content of individual files can be retrieved using
+2. The content of individual files can be retrieved using:
    ```
    gin get-content <filename>
    ```
@@ -221,7 +223,7 @@ We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to 
   gin git annex unannex [path/filename]
   ```
 
-- To stop tracking the GIN repo locally delete the `.git` directory
+- To stop tracking the GIN repo locally delete the `.git` directory:
 
 :::{note}
 If in the GIN repo the files are locked, remember to unlock them before removing the `.git` directory! Otherwise we won't be able to delete the `.git/annex` content.
@@ -260,7 +262,7 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
 
 - Files need to be committed before locking.
 
-- We can switch the state for one or more files with
+- We can switch the state for one or more files with:
     ```
     gin lock <filename>
     ```
@@ -276,32 +278,34 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
 
 ## Some under-the-hood details...
 
-- GIN is a wrapper around [git-annex](https://git-annex.branchable.com/)
+- GIN is a wrapper around [git-annex](https://git-annex.branchable.com/).
 
 - The high-level idea behind git-annex is:
-  - git is designed to track small text files, and doesn't cope well with large binary files
-  - git-annex bypasses this by using git only to track the names and metadata (hashes) of these large binary files, but not their content.
-  - the content of these files is only retrieved on demand
+  - `git` is designed to track small text files, and doesn't cope well with large binary files;
+  - `git-annex` bypasses this by using git only to track the names and metadata (hashes) of these large binary files, but not their content.
+  - the content of these files is only retrieved on demand.
+
 - How? Case for an unlocked dataset
 
   - When we `gin download` a repository from the GIN server, we get a local "copy" (clone) of the dataset in our machine. It is not strictly a copy, because the large binary files that make up this dataset will only be downloaded as placeholders.
 
   - These placeholder files have the same filenames (and paths) as the corresponding original files, but are instead simply ASCII text files (if the data is unlocked). If we open these placeholder files, we see they contain a path. This path is where the actual content of the corresponding file will be downloaded to, when we request it.
-  - For example, if the placeholder ASCII text file with name `09.08_09.08.2023-01-Left_frame_013230.png` points to this path
+
+  - For example, if the placeholder ASCII text file with name `image.png` points to this path:
     ```
     /annex/objects/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
     ```
-    it means that when we specifically request for this file's content with
+    it means that when we specifically request for this file's content with:
     ```
-    gin get-content 09.08_09.08.2023-01-Left_frame_013230.png
+    gin get-content image.png
     ```
-    the actual png file will be downloaded to
+    the actual png file will be downloaded to:
     ```
     .git/annex/objects/Xq/7G/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
     ```
     Notice that the path in the ASCII file and the actual path are somewhat different, since the actual path contains some subdirectories under `objects`.
 
-    We can actually verify this file is the actual image by opening it with an image viewer (e.g. in Mac by running:
+    We can actually verify this file is the actual image by opening it with an image viewer, e.g. in Mac by running:
     ```
     open -a Preview .git/annex/objects/Xq/7G/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
     ```
@@ -310,26 +314,26 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
 
   - When we `gin download` a repository from the GIN server, we get a local "copy" (clone) of the dataset in our machine. It is not strictly a copy, because the large binary files that make up this dataset will only be downloaded as placeholders.
   - If the data is locked and no content has been downloaded, the symlinks in the working directory will be broken (since there is no data in the git annex to retrieve).
-  - To get the actual content in the git annex, we need to run `gin download --content`. This will fetch the content from the GIN server. After this, the symlinks in the working directory should work
+  - To get the actual content in the git annex, we need to run `gin download --content`. This will fetch the content from the GIN server. After this, the symlinks in the working directory should work.
 
 - And in an existing directory?
 
   - After initialising the GIN repo in the current directory and adding a remote, we would commit the data. When committing, the data is "copied" to the git annex. You can verify this by checking the size of the `.git` folder before and after running `git commit`.
-  - To replace the files in the working directory with symlinks to the git annex content, we lock the data, by running `gin lock <path-to-data>`
+  - To replace the files in the working directory with symlinks to the git annex content, we lock the data, by running `gin lock <path-to-data>`.
   - After locking the data we need to commit this state change and upload the changes to the GIN server. This way the files will be locked for any future clones of the repo.
 
 - Useful tools for inspecting how all this works:
 
-  - `file` shows the type of file (inspecting the file, rather than plainly looking at the extension like Finder does)
-  - `open -a Preview <>` to open a png file that has no extension
-  - `ls -l <path-to-symlink>` to check the path a symlink points to
+  - `file` shows the type of file (inspecting the file, rather than plainly looking at the extension like Finder does).
+  - `open -a Preview <>` to open a png file that has no extension.
+  - `ls -l <path-to-symlink>` to check the path a symlink points to.
 
 ## Helpful resources
 
 - [GIN CLI Usage tutorial](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Usage+Tutorial): includes a description of a basic workflow and examples of multi-user workflows.
-- [GIN commands cheatsheet](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help)
-- [Troubleshooting](https://gin.g-node.org/G-Node/Info/wiki/FAQ%20Troubleshooting)
-- [GIN CLI Recipes](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Recipes)
+- [GIN commands cheatsheet](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help).
+- [Troubleshooting](https://gin.g-node.org/G-Node/Info/wiki/FAQ%20Troubleshooting).
+- [GIN CLI Recipes](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Recipes).
 
 ## References
 
