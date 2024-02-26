@@ -12,7 +12,7 @@ All GIN repos are private by default.
 
 ## Preparatory steps - do only once
 
-These steps apply to any of the workflows below, but we need to do them only the first time we use GIN in our machine.
+These steps apply to any of the workflows below, but we need to do them only the first time we use GIN on our machine.
 
 1. Create [a GIN account](https://gin.g-node.org/user/sign_up)
 2. [Download GIN CLI](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Setup#setup-gin-client) and set it up by running:
@@ -43,7 +43,7 @@ You may need `sudo` permissions for some of the following `gin` commands. If so,
 
 2. **Initialise a GIN repository**
 
-   - **Option 1: on a new directory**
+   - **Option 1: in a new directory**
 
      - Create a new GIN repository locally and on the GIN server by running:
 
@@ -63,7 +63,8 @@ You may need `sudo` permissions for some of the following `gin` commands. If so,
 
      - Once the repository has been initialised, add data to the new local GIN repository with `mv`, `cp` or drag-and-dropping files to the directory.
 
-   - **Option 2: on an existing directory**
+   - **Option 2: in an existing directory**
+``
 
      - To create a new repository on the GIN server and in the current working directory in one go, run:
 
@@ -85,7 +86,7 @@ You may need `sudo` permissions for some of the following `gin` commands. If so,
        gin add-remote <remote-name> <remote-repository-location>
        ```
 
-       where `<remote-name>` is the name you want to give to the remote (e.g. `origin`) and `<remote-repository-location>` is the location of the data store, which should be in the form of alias:path or server:path (e.g. `gin add-remote origin gin:sfmig/crab-data`).
+       where `<remote-name>` is the name you want to give to the remote (e.g. `origin`) and `<remote-repository-location>` is the location of the data store, which should be in the form of alias:path or server:path (e.g. `gin add-remote origin gin:<username>/<remote-repository-name>`).
 
        - If the remote GIN repository doesn't exist, you will be prompted to either create the remote GIN repository, add the remote address anyways, or abort.
        - To show the remotes accessible to your GIN account run `gin remotes`.
@@ -105,7 +106,7 @@ To create a GIN repository on a `ceph` directory:
    git config --global --add safe.directory /mnt/<path-to-the-mounted-directory
    ```
 
- - Alternatively, you can log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is likely faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` (and actually physically close to it).
+ - Alternatively, you can log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is likely faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` (and has a faster connection to it).
 :::
 
 3. **Add files to the GIN remote repository**
@@ -136,7 +137,7 @@ To create a GIN repository on a `ceph` directory:
 
 4. **Consider whether to lock the data**
 
-   You may want to lock the data to save space locally or to prevent editing in the future - see the section on [File locking](#file-locking) for further details.
+   You may want to lock the data to save space locally or to prevent editing in the future — see the section on [File locking](#file-locking) for further details.
 
 :::{tip}
  - Use `gin ls` to check on the current status of the GIN repository - this is somewhat equivalent to `git status`. The acronyms for the different status of the files are described [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#list-the-sync-status-of-files-in-the-local-repository)
@@ -269,7 +270,7 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
     ```
     After changing the state, remember to record the new state with a `gin commit`!
 
-- **\*Recommendations from the GIN docs on when to lock / unlocked data:**
+- **Recommendations from the GIN docs on when to lock / unlocked data:**
   - Keep files _unlocked_ if the workflow requires editing large files and keeping snapshots of the progress. But keep in mind this will increase storage use with every commit of a file.
   - Keep files _locked_ if using the repo mainly as long term storage, as an archive, if files are only to be read and if the filesystem supports symlinks. This will save extra storage of keeping two copies of the same file.
 
