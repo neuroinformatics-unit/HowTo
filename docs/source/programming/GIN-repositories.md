@@ -92,13 +92,13 @@ You may need `sudo` permissions for some of the following `gin` commands. If so,
        </details>
 
 :::{note}
-Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` subdirectory. You can see it on the terminal by running `ls -la` from the local repository. The local repository excluding this `.git` folder is what we call later the _working directory_. 
+Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` subdirectory. You can see it on the terminal by running `ls -la` from the local repository. The local repository excluding this `.git` folder is what we call later the _working directory_.
 :::
 
 :::{tip}
 To create a GIN repository on a `ceph` directory:
 
-- You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu-temp.html). To do this permanently, follow [this one](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu.html). 
+- You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu-temp.html). To do this permanently, follow [this one](https://howto.neuroinformatics.dev/programming/Mount-ceph-ubuntu.html).
 - You may also need to add an exception for the mounted directory. To do so, run the following command:
 
    ```
@@ -106,7 +106,7 @@ To create a GIN repository on a `ceph` directory:
    ```
 
  - Alternatively, you can log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is likely faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` (and actually physically close to it).
-::: 
+:::
 
 3. **Add files to the GIN remote repository**
 
@@ -130,7 +130,7 @@ To create a GIN repository on a `ceph` directory:
 
      You can add `--to <remote name>` to upload the changes to a specific remote.See full syntax [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#upload-local-changes-to-a-remote-repository).
 
-     If the set of files in the `gin upload` command includes files that have been changed locally but have not been committed, they will be automatically committed when uploading. 
+     If the set of files in the `gin upload` command includes files that have been changed locally but have not been committed, they will be automatically committed when uploading.
 
      After running `gin upload`, the data will be uploaded to the GIN server and it will be possible to retrieve it later from there. However, notice this command sends all changes made in the directory to the server, including deletions, renames, etc. Therefore, if you delete files from the directory on your computer and perform a `gin upload`, the deletion will also be sent and the file will be removed from the server as well. Such changes can be synchronized without uploading any new files by not specifying any files or directories (i.e. simply running `git upload`). See further details in [the docs](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Usage+Tutorial#basic-workflow-only-using-gin).
 
@@ -153,7 +153,7 @@ To create a GIN repository on a `ceph` directory:
    ```
 
 :::{tip}
- To see the `remote-repository-location`s accesible from your GIN account, run `gin repos`
+ To see the `remote-repository-location`s accessible from your GIN account, run `gin repos`
 :::
 
 2. Add files to the directory where the local repository is in, and commit them:
@@ -197,15 +197,15 @@ To create a GIN repository on a `ceph` directory:
 
    With the `--content` flag, it optionally downloads the content of all files in the repository. If `--content` is not specified, new files will be empty placeholders.
 
-2. The content of individual files can be retrieved using 
+2. The content of individual files can be retrieved using
    ```
    gin get-content <filename>
    ```
-   and later removed with: 
+   and later removed with:
    ```
    gin remove-content <filename>
    ```
-   
+
    See [the docs](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#download-all-new-information-from-a-remote-repository) for further details.
 
 ### To download the data programmatically in your Python code:
@@ -240,10 +240,10 @@ If in the GIN repo the files are locked, remember to unlock them before removing
 
 - The lock state relates to the nature of the placeholder files we get in the working directory when we do `gin get <remote-repository-location>`:
 
-  - **on Unix-like systems**: 
-    - if a file is _locked_, its corresponding placeholder file will be a _symlink_. These symlinks point to the annexed content (under `.git/annex/objects`). With the symlinks we can open the file but not modify it. 
+  - **on Unix-like systems**:
+    - if a file is _locked_, its corresponding placeholder file will be a _symlink_. These symlinks point to the annexed content (under `.git/annex/objects`). With the symlinks we can open the file but not modify it.
     - If a file is _unlocked_, the placeholder file in the working directory is an _ASCII text file with a path_. The path is approximately where the content of the file will be downloaded to when we request it.
-  - **on Windows**: 
+  - **on Windows**:
     - if a file is _locked_, the placeholder file is a _plain text file_ pointing to the content in the git annex.
     - If a file is _unlocked_, the behaviour should be the same as in Unix-like systems (I haven't tested this directly).
 
@@ -259,11 +259,11 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
 
 - Files need to be committed before locking.
 
-- We can switch the state for one or more files with 
+- We can switch the state for one or more files with
     ```
     gin lock <filename>
-    ``` 
-    and 
+    ```
+    and
     ```
     gin unlock <filename>
     ```
@@ -286,21 +286,21 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
   - When we `gin download` a repository from the GIN server, we get a local "copy" (clone) of the dataset in our machine. It is not strictly a copy, because the large binary files that make up this dataset will only be downloaded as placeholders.
 
   - These placeholder files have the same filenames (and paths) as the corresponding original files, but are instead simply ASCII text files (if the data is unlocked). If we open these placeholder files, we see they contain a path. This path is where the actual content of the corresponding file will be downloaded to, when we request it.
-  - For example, if the placeholder ASCII text file with name `09.08_09.08.2023-01-Left_frame_013230.png` points to this path 
+  - For example, if the placeholder ASCII text file with name `09.08_09.08.2023-01-Left_frame_013230.png` points to this path
     ```
     /annex/objects/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
     ```
-    it means that when we specifically request for this file's content with 
+    it means that when we specifically request for this file's content with
     ```
     gin get-content 09.08_09.08.2023-01-Left_frame_013230.png
     ```
-    the actual png file will be downloaded to 
+    the actual png file will be downloaded to
     ```
     .git/annex/objects/Xq/7G/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
-    ``` 
-    Notice that the path in the ASCII file and the actual path are somewhat different, since the actual path contains some subdirectories under `objects`. 
-    
-    We can actually verify this file is the actual image by opening it with an image viewer (e.g. in Mac by running: 
+    ```
+    Notice that the path in the ASCII file and the actual path are somewhat different, since the actual path contains some subdirectories under `objects`.
+
+    We can actually verify this file is the actual image by opening it with an image viewer (e.g. in Mac by running:
     ```
     open -a Preview .git/annex/objects/Xq/7G/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
     ```
@@ -317,7 +317,7 @@ This doubles disk usage of files checked into the repo, but in exchange users ca
   - To replace the files in the working directory with symlinks to the git annex content, we lock the data, by running `gin lock <path-to-data>`
   - After locking the data we need to commit this state change and upload the changes to the GIN server. This way the files will be locked for any future clones of the repo.
 
-- Useful tools for inspecting how all this works: 
+- Useful tools for inspecting how all this works:
 
   - `file` shows the type of file (inspecting the file, rather than plainly looking at the extension like Finder does)
   - `open -a Preview <>` to open a png file that has no extension
