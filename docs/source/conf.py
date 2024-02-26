@@ -83,6 +83,11 @@ linkcheck_ignore = [
     "https://linux.die.net/man/1/rsync",
     "https://www.uclb.com/",
     "https://support.zadarastorage.com",
+    "https://gin.g-node.org/G-Node/info/wiki#",  # ignore this URL anchors (dynamically rendered)
+    "https://gin.g-node.org/G-Node/Info/wiki/GIN\+CLI\+Help#",
+    "https://gin.g-node.org/G-Node/Info/wiki/FAQ\+Troubleshooting#",
+    "https://gin.g-node.org/G-Node/Info/wiki/GIN\+CLI\+Setup#",
+    "https://gin.g-node.org/G-Node/Info/wiki/GIN\+CLI\+Usage\+Tutorial#",
 ]
 linkcheck_retries = 2
 
