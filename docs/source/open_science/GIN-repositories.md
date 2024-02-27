@@ -142,7 +142,10 @@ To create a GIN repository on a `ceph` directory:
  - Use `gin ls` to check on the current status of the GIN repository - this is somewhat equivalent to `git status`. The acronyms used in the output for the different status of the files are described [here](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#list-the-sync-status-of-files-in-the-local-repository).
  - Use `gin sync` to sync the changes bi-directionally between the local and the remote GIN repository.
  - If the output from `gin ls` doesn't look right (e.g., files already uploaded to the GIN server appear under `Locally modified (unsaved)`), try running `gin sync` and check the status again.
+ - To logout from the GIN CLI session in the terminal, run `gin logout`.
 :::
+
+
 
 ### Is this repository public or private?
 
