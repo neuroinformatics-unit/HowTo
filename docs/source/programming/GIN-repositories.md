@@ -7,9 +7,6 @@
 
 Below we explain the main user workflows in GIN, focusing on creating a private repository of your data.
 
-:::{note}
-All GIN repos are private by default.
-:::
 
 ## Preparatory steps - do only once
 
