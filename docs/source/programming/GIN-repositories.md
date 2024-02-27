@@ -25,7 +25,7 @@ These steps apply to any of the workflows below, but we need to do them only the
    gin --version
    ```
 
-## Create a GIN private repository from the command line (CLI)
+## Create a GIN repository from the command line (CLI)
 
 1. **Log in to the GIN server**
 
@@ -146,6 +146,18 @@ To create a GIN repository on a `ceph` directory:
  - Use `gin sync` to sync the changes bi-directionally between the local and the remote GIN repository.
  - If the output from `gin ls` doesn't look right (e.g., files already uploaded to the GIN server appear under `Locally modified (unsaved)`), try running `gin sync` and check the status again.
 :::
+
+### Is this repository public or private?
+
+By default, all newly-created GIN repos are private.
+
+To make a GIN repository public, we need to edit the remote repository's settings via the browser.
+
+1. Go to the main page of the remote repository. You can see the URLs for the repositories you have access to by running `gin repos`.
+1. Click on _Settings_ (top right).
+1. Unselect the _Private_ checkbox under the _Basic settings_ section (see red box below).
+
+![](../_static/gin-privacy-settings.png)
 
 ## To update a dataset that is hosted in GIN
 
