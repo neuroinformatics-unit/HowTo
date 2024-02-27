@@ -36,7 +36,7 @@ These steps apply to any of the workflows below, but we need to do them only the
    - To list the repositories available to your account: `gin repos --all`.
 
 :::{tip}
-You may need `sudo` permissions for some of the following `gin` commands. If so, remember to prepend all commands with `sudo`.
+In Unix-like systems (Ubuntu, mac), you may need `sudo` permissions for some of the following `gin` commands. If so, remember to prepend all commands with `sudo`.
 :::
 
 2. **Initialise a GIN repository**
