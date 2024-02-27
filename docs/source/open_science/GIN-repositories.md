@@ -5,7 +5,7 @@
 
  It is web-accessible, based on [`git`](https://git-scm.com/) and [`git-annex`](https://git-annex.branchable.com/), and allows you to keep your data in sync, backed up and easily accessible.
 
-Below we explain the main user workflows in GIN, focusing on creating a private repository of your data.
+Below we explain the main user workflows in GIN.
 
 
 ## Preparatory steps - do only once
