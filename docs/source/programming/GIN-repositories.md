@@ -97,15 +97,13 @@ Initialising the GIN local repository (with `gin create` or `gin init`) will cre
 
 :::{tip}
 To create a GIN repository on a `ceph` directory:
+ - The fastest way is to log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` and has a faster connection to it.
 
-- You may need to mount the `ceph` directory first. To do this temporarily (i.e., until the next reboot), follow [this guide](target-mount-ceph-ubuntu-temp). To do this permanently, follow [this one](target-mount-ceph-ubuntu-perm).
-- You may also need to add an exception for the mounted directory. To do so, run the following command:
-
+ - Alternatively, you can mount the `ceph` directory in your local machine and work from there. To do this temporarily (i.e., until the next reboot), follow [this guide](target-mount-ceph-ubuntu-temp). To do this permanently, follow [this one](target-mount-ceph-ubuntu-perm). You may need to add an exception for git for the mounted directory. To do so, run:
    ```
    git config --global --add safe.directory /mnt/<path-to-the-mounted-directory
    ```
 
- - Alternatively, you can log to SWC's HPC cluster (specifically, its [gateway node](https://howto.neuroinformatics.dev/_images/swc_hpc_access_flowchart.png) `hpc-gw1`), which has the GIN CLI client installed, and work from there. This is likely faster than mounting the `ceph` directory in your laptop, since the HPC cluster is in the same network as `ceph` (and has a faster connection to it).
 :::
 
 3. **Add files to the GIN remote repository**
