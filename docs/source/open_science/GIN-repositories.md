@@ -3,7 +3,7 @@
 
 [GIN](https://gin.g-node.org/G-Node/Info/wiki) (hosted by the German Neuroinformatics Node) is a free and open data management system designed for neuroscientific data.
 
- It is web-accessible, based on [`git`](https://git-scm.com/) and [`git-annex`](https://git-annex.branchable.com/), and allows you to keep your data in sync, backed up and easily accessible.
+It is web-accessible, based on [`git`](https://git-scm.com/) and [`git-annex`](https://git-annex.branchable.com/), and allows you to keep your data in sync, backed up and easily accessible.
 
 Below we explain the main user workflows in GIN.
 
@@ -231,7 +231,7 @@ We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to 
 
 ## File locking
 
-[File locking](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Usage+Tutorial#file-locking) is an important point in GIN and git-annex repositories which surprisingly comes up quite late in the GIN docs. Below, are the main ideas behind this.
+[File locking](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Usage+Tutorial#file-locking) is an important point in GIN and git-annex repositories. Below are the main ideas behind this.
 
 - Files in a GIN repo can be _locked_ or _unlocked_.
 
@@ -241,15 +241,15 @@ We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to 
     - if a file is _locked_, its corresponding placeholder file will be a _symlink_. These symlinks point to the annexed content (under `.git/annex/objects`). With the symlinks we can open the file but not modify it.
     - If a file is _unlocked_, the placeholder file in the working directory is an _ASCII text file with a path_. The path is approximately where the content of the file will be downloaded to when we request it.
   - **on Windows**:
-    - if a file is _locked_, the placeholder file is a _plain text file_ pointing to the content in the git annex.
-    - If a file is _unlocked_, the behaviour should be the same as in Unix-like systems (I haven't tested this directly).
+    - if a file is _locked_, the placeholder file is a _plain text file_ pointing to the content in the git annex(, but see caution below!).
+    - If a file is _unlocked_, the behaviour is be the same as in Unix-like systems.
 
 - The lock state of a file is _persistent_. This means that if I clone a GIN repo whose files are unlocked, I lock them in my local copy, and then upload that to the GIN server, the next time someone clones from the GIN repo the files they fetch will be locked.
 
 - Unlocked files can be edited. If the data is unlocked and the full content of the dataset is downloaded locally, the file in the working directory has content, and so does its copy under git annex.
 
 :::{caution}
-Notice that if we download locally the content of unlocked, the disk usage of the files checked into the repo doubles, because the content exists both in the working directory and under the git annex. But in exchange users can modify and revert files to previous commits.
+Note that if we download the contents of unlocked files locally, the disk usage of the files checked into the repo doubles, because the content exists both in the working directory and under the git annex. But in exchange users can modify and revert files to previous commits.
 :::
 
 - Locked files cannot be edited. For example, if we open a locked image with Preview in MacOS and try to edit it, we will be asked if we wish to unlock the file. However, even if we do unlock it, we won't be able to save any changes because we don't have writing permissions.
