@@ -252,6 +252,10 @@ We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to 
 Note that if we download the contents of unlocked files locally, the disk usage of the files checked into the repo doubles, because the content exists both in the working directory and under the git annex. But in exchange users can modify and revert files to previous commits.
 :::
 
+:::{caution}
+We have observed that it is possible to unintentionally overwrite locked files, at least on Windows. Please be careful and double-check the output of `gin ls` before uploading. You may also want to read [about `git-annex` on Windows](https://gin.g-node.org/G-Node/Info/wiki/Some+Notes+On+Git+Annex) if you are considering using `git-annex` directly.
+:::
+
 - Locked files cannot be edited. For example, if we open a locked image with Preview in MacOS and try to edit it, we will be asked if we wish to unlock the file. However, even if we do unlock it, we won't be able to save any changes because we don't have writing permissions.
 
 - Files need to be committed before locking.
