@@ -9,6 +9,7 @@ Small tips and tricks that do not warrant a long-form guide can be found in the 
 
 SLURM-arguments
 SSH-SWC-cluster
+Jupyter-Lab-SWC-cluster
 SSH-vscode
 Mount-ceph-ubuntu
 Mount-ceph-ubuntu-temp
