@@ -5,17 +5,22 @@ On this website you can find long-form how-to guides as well as collections of s
 The website is maintained by members of the [Neuroinformatics Unit](https://neuroinformatics.dev). The information is primarily aimed at researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/) and [Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit), though most of it should be useful to neuroscientists in general.
 
 
-## Main sections
-The guides are organised into three main sections:
-
-::::{grid} 1 2 2 3
+::::{grid} 1 2 2 4
 :gutter: 3
 
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Data Analysis
-:link: data_analysis/index
+
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Electrophysiology at the SWC
+:link: ephys_at_swc/index
 :link-type: doc
 
-Guides related to tools and approaches for analysing neuroscientific data.
+Resources for preprocessing and analysis of extracellular electrophysiology data.
+:::
+
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Behaviour at the SWC
+:link: behav_at_swc/index
+:link-type: doc
+
+Guides related to tools and approaches for analysing behavioural data.
 :::
 
 :::{grid-item-card} {fas}`code;sd-text-primary` Programming
@@ -39,7 +44,8 @@ How to effectively share your code and data.
 :maxdepth: 2
 :hidden:
 
-data_analysis/index
+ephys_at_swc/index
+behav_at_swc/index
 programming/index
 open_science/index
 ```
