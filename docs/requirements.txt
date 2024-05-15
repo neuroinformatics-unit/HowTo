@@ -6,3 +6,6 @@ pydata-sphinx-theme
 sphinx
 sphinx-copybutton
 sphinx-design
+
+sphinx-gallery
+matplotlib
