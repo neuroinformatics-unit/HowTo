@@ -148,7 +148,3 @@ html_show_sourcelink = False
 # Configure the code block copy button
 # don't copy line numbers, prompts, or console outputs
 copybutton_exclude = ".linenos, .gp, .go"
-
-html_sidebars = {
-  "index_ephys": []
-}
