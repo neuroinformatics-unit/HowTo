@@ -1,77 +1,133 @@
-# Getting Started 
+# Getting Started
 
-Getting started with extracellular electrophysiolgoy is intimidating! There are 
-many different acquisition setups, packages, preprocessing, postprocessing and 
-analysis steps to consider.
+Getting started with extracellular electrophysiology can be intimidating!
+With numerous acquisition setups, software packages, preprocessing, postprocessing,
+and analysis steps to consider, it's understandable to feel daunted.
 
-A first step in getting started can be to ask for advice for your setup. Every setup
-and experiment is different, and it is usually most efficient to be pointed 
-in the right direction from the outset rahter than waste time exploring avenues
-that end up fruitless. See the [Community](#community_and_roadmap.md) sections for
-details on where to get help. 
+A good first step in getting started is to ask for advice. Every setup
+and experiment is different, and it's often most effective to
+seek guidance early on. See the [Community](community)
+sections for details on where to get help.
 
-Another step in getting started with electrophysiology analysis is
-to read some general introduction guides, see the resources step.
-Worth taking an afternoon to read these papers, give general overview.
+Before diving into the analysis, it can be useful to get an understanding
+for the history and landscape of extracellular electrophysiology.
+See the resources section for [general introductions](general-introduction))
+as well as more technical reading for deeper background.
 
-After this, diving right into the preprocessing and analysis on a 
-dataset you have collected is useful to see what issues might come up.
-We have a selection of examples in use at the SWC from rsearchers
-that you can try and out contact if you have questions (both spikeinterface
-and otherwise). or read more technical documentation depending on prefernce.
-
-Spikeinterface also has a lot of examples.
-
-See the resources section below for a full list of resources!
+To get started with pipeline building, the
+[SpikeInterface](spikeinterface) resources are a good starting point.
+We also have
+[Examples](examples_from_the_swc)
+from researchers at the
+SWC who'd be happy to answer any questions you might have.
 
 # Resources
 
+This section is by no means exhaustive, representing only a
+small collection of resources that researchers at the SWC have found
+useful in getting started.
+
 ## General Introduction
 
-https://www.sciencedirect.com/science/article/pii/S0959438817303161
-https://iopscience.iop.org/article/10.1088/2516-1091/ac6b96/meta
-past-present-future spike sorting https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4674014/
-? https://www.sciencedirect.com/science/article/pii/S0959438818301375
+Below are a selection of papers that give a general background
+and overview of the extracellular electrophysiology landscape:
+
+[Challenges and opportunities for large-scale electrophysiology with Neuropixels probes](https://www.sciencedirect.com/science/article/pii/S0959438817303161)
+
+[Spike sorting: new trends and challenges of the era of high-density probes](https://iopscience.iop.org/article/10.1088/2516-1091/ac6b96/meta)
+
+[Past, present and future of spike sorting techniques](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4674014/)
+
+[Continuing progress of spike sorting in the era of big data](https://www.sciencedirect.com/science/article/pii/S0959438818301375)
 
 ## Technical Introduction
 
-Neuropixels Day https://www.ucl.ac.uk/neuropixels/courses
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/
+Below are more technical resources on the different stages of
+extracellular electrophysiology analysis.
+
+A particularly useful resource is the
+[NeuroPixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
+(e.g. [2023](https://www.ucl.ac.uk/neuropixels/training/2023-neuropixels-course)).
+While these are particularly useful for NeuroPixels users, they are
+useful resources for any researcher
+approaching electrophysiology preprocessing and analysis.
 
 ### Preprocessing
 
-(Bill Karsh Stuff) https://billkarsh.github.io/SpikeGLX/Sgl_help/UserManual.html
-IBL white paper & the IBL repo https://figshare.com/articles/online_resource/Spike_sorting_pipeline_for_the_International_Brain_Laboratory/19705522
-Filters https://www.cell.com/neuron/pdf/S0896-6273(19)30174-6.pdf
+The [IBL white paper](https://figshare.com/articles/online_resource/Spike_sorting_pipeline_for_the_International_Brain_Laboratory/19705522)
+contains a clearly written overview of preprocessing steps. Similarly, Bill Karsh's
+[guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on the
+SpikeGLX website also gives a useful overview.
+
+[This paper](https://www.cell.com/neuron/pdf/S0896-6273(19)30174-6.pdf) provides a more
+technical treatment of digital filtering, a key step in preprocessing and analysis.
 
 ### Spike Sorting
 
-video https://www.youtube.com/watch?v=vSydfDvsewY
-more detailed spike sorting https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf
+[This video](https://www.youtube.com/watch?v=vSydfDvsewY) with Christophe Pouzat, provides
+an excellent overview of the spike-sorting problem.
+
+[This chapter](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf) provides a more
+technical overview of spike sorting. It is also recommended to check out the
+papers of existing spike sorting algorithms. A list of the main
+spike sorters can be found [here](https://spikeinterface.readthedocs.io/en/latest/modules/sorters.html#supported-spike-sorters).
+
 
 ### Quality Metrics and Manual Curation
 
-Phy website (docs: https://phy.readthedocs.io/en/latest/) (github: https://github.com/cortex-lab/phy?tab=readme-ov-file)
-Steve's Guide https://phy.readthedocs.io/en/latest/sorting_user_guide/
-Bombcell https://github.com/Julie-Fabre/bombcell
-Really nice paper https://www.jneurosci.org/content/31/24/8699
-Spikeinterface page https://spikeinterface.readthedocs.io/en/latest/modules/qualitymetrics.html
+Assessing the quality of spike-sorting is a key to producing high-quality data.
+
+These two papers provide a nice introduction to quality metrics of spike sorting:
+
+[Quality Metrics to Accompany Spike Sorting of Extracellular Signals](https://www.jneurosci.org/content/31/24/8699)
+
+[Improving data quality in neuronal population recordings](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/)
+
+[Phy](https://github.com/cortex-lab/phy)
+is the most popular tool for performing manual curation of spike sorting results.
+A great guide by [Steve Lenzi](https://phy.readthedocs.io/en/latest/sorting_user_guide/) takes you
+through the key steps for manual curation.
+
+More recently, advances in the automation of curation has been made using the
+[Bombcell package](https://github.com/Julie-Fabre/bombcell).
+
+SpikeInterface also maintain a set of quality metrics,
+[explained in detail](https://spikeinterface.readthedocs.io/en/latest/modules/qualitymetrics.html)
+in their documentation.
 
 ## SpikeInterface
 
-Github  https://github.com/SpikeInterface/spikeinterface
-Documentation  https://spikeinterface.readthedocs.io/en/latest/index.html
-Tutorials  https://github.com/SpikeInterface/spiketutorials
-Probeinterace  https://probeinterface.readthedocs.io/en/main/
+Visit the SpikeInterface
+[GitHub](https://github.com/SpikeInterface/spikeinterface)
+and
+[Documentation](https://spikeinterface.readthedocs.io/en/latest/index.html)
+to get started. Note their documentation currently points to the developer
+version, select your installed version from the list at the bottom-left
+of the page.
 
 ## Other Community Tools
 
-Connell pipeline  https://github.com/AllenInstitute/ecephys_spike_sorting
-Pynapple  https://github.com/pynapple-org/pynapple
-Spikeforest https://spikeforest.flatironinstitute.org/
-Elephant  https://neuralensemble.org/elephant/
-Neural Ensemble https://groups.google.com/g/neuralensemble
-IBL pipeline  https://github.com/int-brain-lab/ibl-neuropixel
-NeuroPixels Utils https://djoshea.github.io/neuropixel-utils/
+### Analysis
 
+SpikeInterface
+is mainly focused on preprocessing, spike sorting and quality metrics.
+The [Pynapple](https://github.com/pynapple-org/pynapple)
+and
+[Elephant]( https://neuralensemble.org/elephant/)
+both provide nice toolboxes for analysing data post-sorting.
 
+The [SpikeForest](https://spikeforest.flatironinstitute.org/)
+project is an excellent resource for assessing the performance of
+different spike-sorting algorithms across probe types and brain regions.
+
+### Pipelines
+
+While the community has gradually coalesced around SpikeInterface,
+other robust pipelines predating SpikeInterface provide a great technical resource:
+
+[The Allen Spike sorting pipeline](https://github.com/AllenInstitute/ecephys_spike_sorting)
+
+[The IBL sorting pipeline](https://github.com/int-brain-lab/ibl-neuropixel)
+
+[NeuroPixels Utils](https://djoshea.github.io/neuropixel-utils/) package
+(MATLAB) and related [NeuroPyxels](https://github.com/m-beau/NeuroPyxels).

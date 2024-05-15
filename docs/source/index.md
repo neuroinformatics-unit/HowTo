@@ -2,10 +2,10 @@
 
 On this website you can find long-form how-to guides as well as collections of small tips and tricks related to data analysis and software development in neuroscience.
 
-The website is maintained by members of the [Neuroinformatics Unit](https://neuroinformatics.dev). 
-The information is primarily aimed at researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/) 
-and 
-[Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit), 
+The website is maintained by members of the [Neuroinformatics Unit](https://neuroinformatics.dev).
+The information is primarily aimed at researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/)
+and
+[Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit),
 though most of it should be useful to neuroscientists in general.
 
 
@@ -13,7 +13,7 @@ though most of it should be useful to neuroscientists in general.
 :gutter: 3
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Electrophysiology at the SWC
-:link: ephys_at_swc/index_ephys
+:link: ephys_at_swc/index
 :link-type: doc
 
 Resources for preprocessing and analysis of extracellular electrophysiology data.
