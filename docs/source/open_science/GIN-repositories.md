@@ -40,58 +40,63 @@ In Unix-like systems (Ubuntu, Mac), you may need `sudo` permissions for some of 
 
 2. **Initialise a GIN repository**
 
-   - **Option 1: in a new directory**
+  ::::{tab-set}
 
-     - Create a new GIN repository locally and on the GIN server by running:
+  :::{tab-item} In a new directory
 
-       ```
-       $ gin create <remote-repository-name>
-       ```
+  - Create a new GIN repository locally and on the GIN server by running:
 
-        <details><summary> <b> OR alternatively: </b> </summary>
+    ```
+    $ gin create <remote-repository-name>
+    ```
 
-       Create a repository in the GIN server [from the browser](https://gin.g-node.org/repo/create), and download it locally to your local workspace by running:
+    <details><summary> <b> OR alternatively: </b> </summary>
 
-       ```
-       $ gin get <username>/<remote-repository-name>
-       ```
-        You can also copy this command from the GIN browser application, by clicking on the clipboard icon in the repository main site (see red highlight):
+    Create a repository in the GIN server [from the browser](https://gin.g-node.org/repo/create), and download it locally to your local workspace by running:
 
-        ![](../_static/gin-clipboard.png)
-        </details>
+    ```
+    $ gin get <username>/<remote-repository-name>
+    ```
+    You can also copy this command from the GIN browser application, by clicking on the clipboard icon in the repository main site (see red highlight):
 
-     - Once the repository has been initialised, add data to the new local GIN repository by moving or copying the relevant files to the directory.
+    ![](../_static/gin-clipboard.png)
+    </details>
 
+  - Once the repository has been initialised, add data to the new local GIN repository by moving or copying the relevant files to the directory.
+  :::
 
-   - **Option 2: in an existing directory**
-     - Move to the relevant directory using `cd`.
+  :::{tab-item} In an existing directory
+  - Move to the relevant directory using `cd`.
 
-     - Create a new repository on the GIN server and locally in the current working directory, by running:
+  - Create a new repository on the GIN server and locally in the current working directory, by running:
 
-        ```
-        $ gin create --here <remote-repository-name>
-        ```
-        This will create a repository named `<remote-repository-name>` on the GIN server under your user account.
+    ```
+    $ gin create --here <remote-repository-name>
+    ```
+    This will create a repository named `<remote-repository-name>` on the GIN server under your user account.
 
-        <details><summary> <b> OR, to do each step independently: </b> </summary>
+    <details><summary> <b> OR alternatively: </b> </summary>
 
-       - Initialise the current working directory as a GIN repository by running:
+    - Initialise the current working directory as a GIN repository by running:
 
-          ```
-          $ gin init
-          ```
+      ```
+      $ gin init
+      ```
 
-       - Then add a remote for your GIN local repository by running:
+    - Then add a remote for your GIN local repository by running:
 
-          ```
-          $ gin add-remote <remote-name> <remote-repository-location>
-          ```
+      ```
+      $ gin add-remote <remote-name> <remote-repository-location>
+      ```
 
-          where `<remote-name>` is the name you want to give to the remote (e.g. `origin`) and `<remote-repository-location>` is the location of the data store, which should be in the form of alias:path or server:path (e.g. `gin add-remote origin gin:<username>/<remote-repository-name>`).
+      where `<remote-name>` is the name you want to give to the remote (e.g. `origin`) and `<remote-repository-location>` is the location of the data store, which should be in the form of alias:path or server:path (e.g. `gin add-remote origin gin:<username>/<remote-repository-name>`).
 
-        - If the remote GIN repository doesn't exist, you will be prompted to either create it, add simply the remote address, or abort.
-        - To show the remotes accessible to your GIN account run `gin remotes`.
-       </details>
+    - If the remote GIN repository doesn't exist, you will be prompted to either create it, add simply the remote address, or abort.
+    - To show the remotes accessible to your GIN account run `gin remotes`.
+    </details>
+  :::
+  ::::
+
 
 :::{note}
 Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` subdirectory. You can see it on the terminal by running `ls -la` from the local repository. The local repository excluding this `.git` folder is what we will later call the _working directory_.
@@ -184,7 +189,9 @@ To make a GIN repository public:
 
 ## Download the dataset locally
 
-### If the repository doesn't exist locally:
+::::{tab-set}
+
+:::{tab-item} If the repository doesn't exist locally
 
 1. Clone (retrieve) the repository from the GIN remote server to your local machine:
 
@@ -201,8 +208,9 @@ To make a GIN repository public:
    If the large files in the dataset are _locked_, this command will download the content to the git annex subdirectory, and turn the placeholder files in the working directory into symlinks that point to the content.
 
    If the files are _unlocked_, this command will replace the placeholder files in the working directory by the full-content files and **also** download the content to the git annex locally. See the section on [File locking](#file-locking) for further details.
+:::
 
-### If the repository already exists locally:
+:::{tab-item} If the repository already exists locally
 
 1. Download any changes from the remote repository to the local clone by running (from the GIN local repository):
 
@@ -224,10 +232,9 @@ To make a GIN repository public:
    ```
 
    See [the GIN docs](https://gin.g-node.org/G-Node/Info/wiki/GIN+CLI+Help#download-all-new-information-from-a-remote-repository) for further details.
+:::
+::::
 
-### To download the data programmatically in your Python code:
-
-We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to easily download data from the GIN repo's URL. Pooch also has some other nice functionalities like caching the downloaded data, verifying cryptographic hashes or unzipping files upon download.
 
 ## File locking
 
@@ -274,7 +281,7 @@ We have observed that it is possible to unintentionally overwrite locked files, 
   - Keep files _unlocked_ if the workflow requires editing large files and keeping snapshots of the progress. But keep in mind this will increase storage use with every commit of a file.
   - Keep files _locked_ if using the repo mainly as long term storage, as an archive, if files are only to be read and if the filesystem supports symlinks. This will save extra storage of keeping two copies of the same file.
 
-## Some under-the-hood details...
+## Some under-the-hood details
 
 - GIN is a wrapper around [git-annex](https://git-annex.branchable.com/).
 
@@ -283,7 +290,9 @@ We have observed that it is possible to unintentionally overwrite locked files, 
   - `git-annex` bypasses this by using git only to track the names and metadata (hashes) of these large binary files, but not their content.
   - The content of these files is only retrieved on demand.
 
-- How? Case for an unlocked dataset
+::::{tab-set}
+
+:::{tab-item} How? Case for an unlocked dataset
 
   - When we `gin download` a repository from the GIN server, we get a local "copy" (clone) of the dataset in our machine. It is not strictly a copy, because the large binary files that make up this dataset will only be downloaded as placeholders.
 
@@ -307,8 +316,10 @@ We have observed that it is possible to unintentionally overwrite locked files, 
     ```
     open -a Preview .git/annex/objects/Xq/7G/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49/MD5-s15081575--f0a21c00672ab7ed0733951a652d4b49
     ```
+:::
 
-- How? Case for a locked dataset
+
+:::{tab-item} How? Case for a locked dataset
 
   - When we `gin download` a repository from the GIN server, we get a local "copy" (clone) of the dataset in our machine. It is not strictly a copy, because the large binary files that make up this dataset will only be downloaded as placeholders.
   - If the data is locked and no content has been downloaded, the symlinks in the working directory will be broken (since there is no data in the git annex to retrieve).
@@ -319,12 +330,12 @@ We have observed that it is possible to unintentionally overwrite locked files, 
   - After initialising the GIN repo in the current directory and adding a remote, we would commit the data. When committing, the data is "copied" to the git annex. You can verify this by checking the size of the `.git` folder before and after running `git commit`.
   - When we lock the data with `gin lock <path-to-data>`, the files in the working directory are replaced with symlinks to the git annex content.
   - After locking the data we should commit the state change and upload the changes to the GIN server. This way the files will be locked for any future clones of the repository.
+:::
+::::
 
-<!-- - Useful tools for inspecting how all this works:
+### To download the data programmatically Python
 
-  - `file` shows the type of file (by inspecting the file, rather than plainly looking at the extension like Finder does).
-  - `open -a Preview <>` to open a png file that has no extension.
-  - `ls -l <path-to-symlink>` to check the path a symlink points to. -->
+We recommend using [pooch](https://www.fatiando.org/pooch/latest/index.html) to easily download data from the GIN repo's URL. Pooch also has some other nice functionalities like caching the downloaded data, verifying cryptographic hashes or unzipping files upon download.
 
 ## Other useful tips
 
