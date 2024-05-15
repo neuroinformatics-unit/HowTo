@@ -131,6 +131,7 @@ html_theme_options = {
     },
     "footer_start": ["footer_start"],
     "footer_end": ["footer_end"],
+    "show_prev_next": False
 }
 
 # Hide the "Show Source" button
