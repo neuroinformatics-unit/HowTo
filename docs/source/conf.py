@@ -160,6 +160,4 @@ copybutton_exclude = ".linenos, .gp, .go"
 sphinx_gallery_conf = {
      'examples_dirs': ["ephys_at_swc/examples"],   # path to your example scripts
      'gallery_dirs': ["ephys_at_swc/gallery"],    # path to where to save gallery generated output
-     'download_all_examples': False,
-     'filename_pattern': r'two_moons\.py',
 }

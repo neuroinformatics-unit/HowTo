@@ -32,13 +32,13 @@ useful in getting started.
 Below are a selection of papers that give a general background
 and overview of the extracellular electrophysiology landscape:
 
-[Challenges and opportunities for large-scale electrophysiology with Neuropixels probes](https://www.sciencedirect.com/science/article/pii/S0959438817303161)
+[Challenges and opportunities for large-scale electrophysiology with Neuropixels probes](https://pubmed.ncbi.nlm.nih.gov/29444488/)
 
 [Spike sorting: new trends and challenges of the era of high-density probes](https://iopscience.iop.org/article/10.1088/2516-1091/ac6b96/meta)
 
 [Past, present and future of spike sorting techniques](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4674014/)
 
-[Continuing progress of spike sorting in the era of big data](https://www.sciencedirect.com/science/article/pii/S0959438818301375)
+[Continuing progress of spike sorting in the era of big data](https://pubmed.ncbi.nlm.nih.gov/30856552/)
 
 ## Technical Introduction
 
@@ -59,7 +59,7 @@ contains a clearly written overview of preprocessing steps. Similarly, Bill Kars
 [guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on the
 SpikeGLX website also gives a useful overview.
 
-[This paper](https://www.cell.com/neuron/pdf/S0896-6273(19)30174-6.pdf) provides a more
+[This paper](https://pubmed.ncbi.nlm.nih.gov/30998899/) provides a more
 technical treatment of digital filtering, a key step in preprocessing and analysis.
 
 ### Spike Sorting

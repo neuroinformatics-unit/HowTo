@@ -17,6 +17,6 @@ They are very friendly and
 happy to answer any questions!
 
 In addition, the
-[Neuropixels](https://neuropixelsgroup.slack.com/join/shared_invite/zt-2c8u0k21u-CC4wSkb8~U_Fkrf3HHf_kw#/shared-invite/email)
+[Neuropixels](https://neuropixelsgroup.slack.com/)
 Slack is a great resource, with an active community discussing both
 extracellular electrophysiology acquisition and analysis.
