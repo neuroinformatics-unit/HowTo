@@ -1,12 +1,11 @@
+ipython
 linkify-it-py
 matplotlib
 myst-parser
 nbsphinx
 numpydoc
-pandoc
 pydata-sphinx-theme
 sphinx
 sphinx-copybutton
 sphinx-design
-
 sphinx-gallery
