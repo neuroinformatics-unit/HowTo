@@ -37,11 +37,6 @@ like to read more about our plans, please visit our
 :link-type: doc
 :::
 
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Roadmap
-:link: roadmap
-:link-type: doc
-:::
-
 ::::
 
 ```{toctree}
