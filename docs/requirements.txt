@@ -1,4 +1,6 @@
+jupyter
 linkify-it-py
+matplotlib
 myst-parser
 nbsphinx
 numpydoc
@@ -8,4 +10,3 @@ sphinx-copybutton
 sphinx-design
 
 sphinx-gallery
-matplotlib
