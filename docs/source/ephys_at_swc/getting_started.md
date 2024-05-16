@@ -111,7 +111,7 @@ of the page.
 
 SpikeInterface
 is mainly focused on preprocessing, spike sorting and quality metrics.
-The [Pynapple](https://github.com/pynapple-org/pynapple)
+[Pynapple](https://github.com/pynapple-org/pynapple)
 and
 [Elephant]( https://neuralensemble.org/elephant/)
 both provide nice toolboxes for analysing data post-sorting.
