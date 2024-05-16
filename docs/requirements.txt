@@ -6,7 +6,7 @@ numpydoc
 pydata-sphinx-theme
 
 setuptools-scm
-sphinx
+sphinx<7.3
 sphinx-copybutton
 sphinx-design
 sphinx-gallery
