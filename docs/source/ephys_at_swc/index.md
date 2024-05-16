@@ -1,4 +1,4 @@
-# Electrophysiology at the SWC
+# Electrophysiology
 
 This page acts as an information hub for researchers using
 extracellular electrophysiology in the SWC. It contains
