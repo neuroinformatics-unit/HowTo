@@ -51,5 +51,4 @@ like to read more about our plans, please visit our
 getting_started
 examples_from_the_swc
 community
-roadmap
 ```
