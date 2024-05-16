@@ -1,3 +1,4 @@
+ipykernel
 ipython
 linkify-it-py
 matplotlib
