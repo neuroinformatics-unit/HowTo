@@ -11,4 +11,3 @@ sphinx-copybutton
 sphinx-design
 sphinx-gallery
 sphinx-sitemap
-tables
