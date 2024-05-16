@@ -4,6 +4,7 @@ matplotlib
 myst-parser
 nbsphinx
 numpydoc
+pandoc
 pydata-sphinx-theme
 sphinx
 sphinx-copybutton
