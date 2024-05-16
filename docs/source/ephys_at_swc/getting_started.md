@@ -85,7 +85,7 @@ These two papers provide a nice introduction to quality metrics of spike sorting
 
 [Phy](https://github.com/cortex-lab/phy)
 is the most popular tool for performing manual curation of spike sorting results.
-A great guide by [Steve Lenzi](https://phy.readthedocs.io/en/latest/sorting_user_guide/) takes you
+A great [guide by Steve Lenzi](https://phy.readthedocs.io/en/latest/sorting_user_guide/) takes you
 through the key steps for manual curation.
 
 More recently, advances in the automation of curation has been made using the
