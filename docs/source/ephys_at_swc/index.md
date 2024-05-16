@@ -12,11 +12,12 @@ please don't hesitate to get in contact! See the
 [Community](community.md)
 page for more details.
 
-This page is maintained by the
-[Neuroinformatics Unit](https://neuroinformatics.dev). The
-[Roadmap](roadmap.md)
-lays out our plans for developing community
-analysis tools at the SWC.
+This page is maintained by the [Neuroinformatics Unit](https://neuroinformatics.dev).
+We are focused on building community tools to automate
+and centralise electrophysiology analysis. If you'd
+like to read more about our plans, please visit our
+[Roadmap]().
+
 
 ::::{grid} 1 2 2 2
 :gutter: 3
