@@ -7,7 +7,6 @@ pydata-sphinx-theme
 
 setuptools-scm
 sphinx<7.2
-sphinx-autodoc-typehints
 sphinx-copybutton
 sphinx-design
 sphinx-gallery
