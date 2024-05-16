@@ -11,7 +11,7 @@ sections for details on where to get help.
 
 Before diving into the analysis, it can be useful to get an understanding
 for the history and landscape of extracellular electrophysiology.
-See the resources section for [general introductions](general-introduction))
+See the resources section for [general introductions](general-introduction)
 as well as more technical reading for deeper background.
 
 To get started with pipeline building, the
