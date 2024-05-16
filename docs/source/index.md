@@ -19,7 +19,7 @@ though most of it should be useful to neuroscientists in general.
 Resources for preprocessing and analysis of extracellular electrophysiology data.
 :::
 
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Behaviour at the SWC
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Behaviour
 :link: behav_at_swc/index
 :link-type: doc
 
