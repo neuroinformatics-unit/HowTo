@@ -12,7 +12,7 @@ though most of it should be useful to neuroscientists in general.
 ::::{grid} 1 2 2 2
 :gutter: 3
 
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Electrophysiology at the SWC
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Electrophysiology
 :link: ephys_at_swc/index
 :link-type: doc
 
