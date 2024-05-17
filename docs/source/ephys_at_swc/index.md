@@ -28,7 +28,7 @@ like to read more about our plans, please visit our
 :::
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Example Pipelines
-:link: examples_from_the_swc
+:link: gallery/index
 :link-type: doc
 :::
 
@@ -44,6 +44,6 @@ like to read more about our plans, please visit our
 :hidden:
 
 getting_started
-examples_from_the_swc
+gallery/index
 community
 ```

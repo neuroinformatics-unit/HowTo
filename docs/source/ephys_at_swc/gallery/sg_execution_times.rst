@@ -32,6 +32,6 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_ephys_at_swc_gallery_example_1.py` (``example_1.py``)
+   * - :ref:`sphx_glr_ephys_at_swc_gallery_examplesdfsdfsdf_1.py` (``examplesdfsdfsdf_1.py``)
      - 00:00.000
      - 0.0

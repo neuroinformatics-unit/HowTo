@@ -1,12 +1,31 @@
 :orphan:
 
-Examples
-========
+Example Pipelines
+==================
 
-Below is a gallery of examples.
-(note, rst links are possible here).
+This page holds example pipelines for researchers
+at the SWC. It details their setup, experimental
+paradigms along with the pipelines they
+use for preprocessing / analysis. Take a look
+through and feel free to get in contact with
+anyone through Slack.
+
+Below are a set of SpikeInterface scripts
+for preprocessing and sorting of data
+from a range of experimental setups. Also
+see the list of repositories with code for
+mutlimodal analysis including
+electrophysiology
+in
+:ref:`Python <python_examples>`
+and
+:ref:`Matlab <matlab_examples>`.
 
 
+SpikeInterface Preprocessing and Sorting
+----------------------------------------
+
+TODO: Dammy, Ivana
 
 
 
@@ -18,18 +37,18 @@ Below is a gallery of examples.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The Two Moons task">
+    <div class="sphx-glr-thumbcontainer" tooltip="Sara Mederos (Hofer Lab)&#x27;s pipeline to ...&lt;subtitle&gt;">
 
 .. only:: html
 
-  .. image:: /ephys_at_swc/gallery/images/thumb/sphx_glr_example_1_thumb.png
+  .. image:: /ephys_at_swc/gallery/images/thumb/sphx_glr_sara_mederos_thumb.png
     :alt:
 
-  :ref:`sphx_glr_ephys_at_swc_gallery_example_1.py`
+  :ref:`sphx_glr_ephys_at_swc_gallery_sara_mederos.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">The Two Moons task</div>
+      <div class="sphx-glr-thumbnail-title">Sara's Single Session Open Ephys</div>
     </div>
 
 
@@ -43,8 +62,20 @@ Below is a gallery of examples.
 .. toctree::
    :hidden:
 
-   /ephys_at_swc/gallery/example_1
+   /ephys_at_swc/gallery/sara_mederos
 
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: gallery_python.zip </ephys_at_swc/gallery/gallery_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: gallery_jupyter.zip </ephys_at_swc/gallery/gallery_jupyter.zip>`
 
 
 .. only:: html
