@@ -14,7 +14,7 @@ page for more details.
 
 This page is maintained by the [Neuroinformatics Unit](https://neuroinformatics.dev).
 We are focused on building community tools to automate
-and centralise electrophysiology analysis. 
+and centralise electrophysiology analysis.
 
 
 ::::{grid} 1 2 2 2
