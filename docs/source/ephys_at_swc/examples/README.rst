@@ -1,3 +1,4 @@
+:orphan:
 Example Pipelines
 ==================
 

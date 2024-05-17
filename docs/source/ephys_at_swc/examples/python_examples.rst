@@ -1,10 +1,11 @@
 .. _python_examples:
 
+:orphan:
+
 Python Repo Examples
-===============
+====================
 
 (TODO: mention where they do / do not use spikeinterface)
-
 Steve Lenzi (Margrie Lab) is an early adopter of spikewrap (dev version)
 and has integrated it into a repository for automated behavioural,
 electrophysiological and anatomical analysis. Steve works with an

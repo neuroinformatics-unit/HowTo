@@ -1,5 +1,7 @@
 .. _matlab_examples:
 
+:orphan:
+
 Matlab Examples
 ===============
 
