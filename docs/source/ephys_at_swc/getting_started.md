@@ -122,9 +122,6 @@ different spike-sorting algorithms across probe types and brain regions.
 
 ### Pipelines
 
-While the community has gradually coalesced around SpikeInterface,
-other robust pipelines predating SpikeInterface provide a great technical resource:
-
 [The Allen Spike sorting pipeline](https://github.com/AllenInstitute/ecephys_spike_sorting)
 
 [The IBL sorting pipeline](https://github.com/int-brain-lab/ibl-neuropixel)
