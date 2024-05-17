@@ -5,7 +5,7 @@ nbsphinx
 numpydoc
 pydata-sphinx-theme
 
-sphinx<7.2
+sphinx
 sphinx-copybutton
 sphinx-design
 sphinx-gallery
