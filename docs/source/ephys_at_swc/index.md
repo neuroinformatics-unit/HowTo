@@ -2,7 +2,7 @@
 
 This page acts as an information hub for researchers using
 extracellular electrophysiology in the SWC. It contains
-[guides](getting_started.md)
+[resources](resources.md)
 for preprocessing and analysis, as well as
 [example scripts](gallery/index)
 in use by researchers in the building.
@@ -20,8 +20,8 @@ and centralise electrophysiology analysis.
 ::::{grid} 1 2 2 2
 :gutter: 3
 
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Getting Started
-:link: getting_started
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Resources
+:link: resources
 :link-type: doc
 :::
 
@@ -41,7 +41,7 @@ and centralise electrophysiology analysis.
 :maxdepth: 1
 :hidden:
 
-getting_started
-gallery/index
+resources
+auto_examples_ephys/index
 community
 ```

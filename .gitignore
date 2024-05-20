@@ -1,3 +1,5 @@
+docs/source/ephys_at_the_swc/auto_examples_ephys
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
