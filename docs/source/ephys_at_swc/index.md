@@ -1,14 +1,14 @@
 # Electrophysiology
 
-This page acts as an information hub for researchers using
+This page acts as an information source for researchers using
 extracellular electrophysiology in the SWC. It contains
-[resources](resources.md)
-for preprocessing and analysis, as well as
-[example scripts](gallery/index)
-in use by researchers in the building.
+[Resources](resources.md) providing background on
+the technique, as well as
+[Example Pipelines](auto_examples_ephys/index)
+used researchers in the building.
 
-We encourage all types of contributions. If you've like to contribute a guide or pipeline,
-please don't hesitate to get in contact! See the
+We encourage all types of contributions. If you've like to contribute a
+guide or pipeline, please don't hesitate to get in contact! See the
 [Community](community.md)
 page for more details.
 

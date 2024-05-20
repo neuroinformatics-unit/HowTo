@@ -3,13 +3,12 @@
 This site is maintained by the
 [NeuroInformatics Unit](https://neuroinformatics.dev/).
 Please don't hesitate to contact us
-(in particular Joe Ziminski) on Slack with any questions or feedback
-on electrophysiology analysis at the SWC.
+(in particular Joe Ziminski) on Slack with any questions or feedback.
 
-For information and advice on extracellular electrophysiology from the SWC community, the
+For information and advice on electrophysiology from the SWC community, the
 best place to go is the `#forum-extracellular-ephys` channel on the SWC Slack.
 
-Outside the SWC, you can address any questions or issues about
+Outside the SWC, you can address any questions or issues for
 [SpikeInterface](https://github.com/SpikeInterface)
 by raising an issue on their
 [GitHub repository](https://github.com/SpikeInterface/spikeinterface/issues).
@@ -18,5 +17,5 @@ happy to answer any questions!
 
 In addition, the
 [Neuropixels](https://neuropixelsgroup.slack.com/)
-Slack is a great resource, with an active community discussing both
+Slack is a great resource, with an active community discussing
 extracellular electrophysiology acquisition and analysis.
