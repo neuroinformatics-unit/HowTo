@@ -1,12 +1,16 @@
 # Resources
 
-This section is by no means exhaustive, representing only a
-small collection of resources that researchers at the SWC have found
-useful in getting started.
+This section provides articles and videos providing
+background and technical detail on extracellular
+electrophysiology data preprocessing and analysis.
+
+This section is by no means exhaustive, please
+feel free to [get in contact](community.md) to suggest
+additions to this page.
 
 ## General Introduction
 
-Below are a selection of papers that give a general background
+Below are a selection of papers that give a history
 and overview of the extracellular electrophysiology landscape:
 
 [Steinmetz NA et al. (2018). Challenges and opportunities for large-scale electrophysiology with Neuropixels probes. *Current Opinion in Neurobiology*.](https://pubmed.ncbi.nlm.nih.gov/29444488/)
@@ -57,7 +61,8 @@ spike sorters can be found
 
 Assessing the quality of spike-sorting is a key to producing high-quality data.
 
-These two papers provide a nice introduction to quality metrics of spike sorting:
+These two papers provide a nice introduction to quality metrics for assessing
+spike sorting outputs:
 
 [Hill et al. (2011). Quality Metrics to Accompany Spike Sorting of Extracellular Signals. *Journal of Neuroscience*.](https://www.jneurosci.org/content/31/24/8699)
 
@@ -68,7 +73,7 @@ is the most popular tool for performing manual curation of spike sorting results
 A great [guide by Steve Lenzi](https://phy.readthedocs.io/en/latest/sorting_user_guide/) takes you
 through the key steps for manual curation.
 
-More recently, advances in the automation of curation has been made using the
+More recently, advances in the automating curation has been made in the
 [Bombcell package](https://github.com/Julie-Fabre/bombcell).
 
 SpikeInterface also maintain a set of quality metrics,
