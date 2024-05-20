@@ -9,13 +9,13 @@ useful in getting started.
 Below are a selection of papers that give a general background
 and overview of the extracellular electrophysiology landscape:
 
-[Challenges and opportunities for large-scale electrophysiology with Neuropixels probes](https://pubmed.ncbi.nlm.nih.gov/29444488/)
+[Steinmetz NA et al. (2018). Challenges and opportunities for large-scale electrophysiology with Neuropixels probes. *Current Opinion in Neurobiology*.](https://pubmed.ncbi.nlm.nih.gov/29444488/)
 
-[Spike sorting: new trends and challenges of the era of high-density probes](https://iopscience.iop.org/article/10.1088/2516-1091/ac6b96/meta)
+[Buccino AP et al. (2022). Spike sorting: new trends and challenges of the era of high-density probes. *Progress in Biomedical Engineering*.](https://iopscience.iop.org/article/10.1088/2516-1091/ac6b96/meta)
 
-[Past, present and future of spike sorting techniques](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4674014/)
+[Rey HG et al. (2015). Past, present and future of spike sorting techniques. *Brain Research Bulletin*.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4674014/)
 
-[Continuing progress of spike sorting in the era of big data](https://pubmed.ncbi.nlm.nih.gov/30856552/)
+[Carlson D et al. (2019). Continuing progress of spike sorting in the era of big data. *Current Opinion in Neurobiology*](https://pubmed.ncbi.nlm.nih.gov/30856552/)
 
 ## Technical Introduction
 
@@ -23,31 +23,34 @@ Below are more technical resources on the different stages of
 extracellular electrophysiology analysis.
 
 A particularly useful resource is the
-[NeuroPixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
+[Neuropixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
 (e.g. [2023](https://www.ucl.ac.uk/neuropixels/training/2023-neuropixels-course)).
-While these are particularly useful for NeuroPixels users, they are
+While these are particularly useful for Neuropixels users, they are
 useful resources for any researcher
 approaching electrophysiology preprocessing and analysis.
 
 ### Preprocessing
 
 The [IBL white paper](https://figshare.com/articles/online_resource/Spike_sorting_pipeline_for_the_International_Brain_Laboratory/19705522)
-contains a clearly written overview of preprocessing steps. Similarly, Bill Karsh's
-[guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on the
+contains a clearly written overview of preprocessing steps. Similarly,
+[Bill Karsh's guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on the
 SpikeGLX website also gives a useful overview.
 
-[This paper](https://pubmed.ncbi.nlm.nih.gov/30998899/) provides a more
-technical treatment of digital filtering, a key step in preprocessing and analysis.
+[de Cheveigné & Nelken (2019)](https://pubmed.ncbi.nlm.nih.gov/30998899/)
+provide a more technical treatment of digital filtering, a key step in preprocessing and analysis.
 
 ### Spike Sorting
 
-[This video](https://www.youtube.com/watch?v=vSydfDvsewY) with Christophe Pouzat, provides
-an excellent overview of the spike-sorting problem.
+[This video on Spike Sorting with Christophe Pouzat](https://www.youtube.com/watch?v=vSydfDvsewY),
+provides an excellent overview of the spike-sorting problem.
 
-[This chapter](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf) provides a more
-technical overview of spike sorting. It is also recommended to check out the
+[This chapter](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf) provides a
+more detailed introduction to spike sorting and associated quality metrics.
+
+It is also recommended to check out the
 papers of existing spike sorting algorithms. A list of the main
-spike sorters can be found [here](https://spikeinterface.readthedocs.io/en/latest/modules/sorters.html#supported-spike-sorters).
+spike sorters can be found
+[on the SpikeInterface website](https://spikeinterface.readthedocs.io/en/latest/modules/sorters.html#supported-spike-sorters).
 
 
 ### Quality Metrics and Manual Curation
@@ -56,9 +59,9 @@ Assessing the quality of spike-sorting is a key to producing high-quality data.
 
 These two papers provide a nice introduction to quality metrics of spike sorting:
 
-[Quality Metrics to Accompany Spike Sorting of Extracellular Signals](https://www.jneurosci.org/content/31/24/8699)
+[Hill et al. (2011). Quality Metrics to Accompany Spike Sorting of Extracellular Signals. *Journal of Neuroscience*.](https://www.jneurosci.org/content/31/24/8699)
 
-[Improving data quality in neuronal population recordings](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/)
+[Harris et al. (2016). Improving data quality in neuronal population recordings. *Nature Neuroscience*.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/)
 
 [Phy](https://github.com/cortex-lab/phy)
 is the most popular tool for performing manual curation of spike sorting results.
@@ -103,5 +106,5 @@ different spike-sorting algorithms across probe types and brain regions.
 
 [The IBL sorting pipeline](https://github.com/int-brain-lab/ibl-neuropixel)
 
-[NeuroPixels Utils](https://djoshea.github.io/neuropixel-utils/) package
+[Neuropixels Utils](https://djoshea.github.io/neuropixel-utils/) package
 (MATLAB) and related [NeuroPyxels](https://github.com/m-beau/NeuroPyxels).
