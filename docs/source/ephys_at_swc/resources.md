@@ -105,10 +105,3 @@ different spike-sorting algorithms across probe types and brain regions.
 
 [NeuroPixels Utils](https://djoshea.github.io/neuropixel-utils/) package
 (MATLAB) and related [NeuroPyxels](https://github.com/m-beau/NeuroPyxels).
-
-```{toctree}
-:maxdepth: 1
-:hidden:
-
-getting_started
-```
