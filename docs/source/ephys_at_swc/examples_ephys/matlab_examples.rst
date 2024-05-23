@@ -6,12 +6,14 @@ Matlab Examples
 ===============
 
 Mateo Velez-Fort investigates the integration of visual
-and vestibular information during motion with the
-Margrie lab's 'Rollercoaster' setup. They use
-SpikeGLX and Neuropixels to record from the
-visual cortex and (others?). The MATLAB
-pipeline (used in papers such as XXX, XXX) is available
-here.
+and vestibular information in the visual cortex with the
+Margrie lab's 'Translocator' setup. They use
+SpikeGLX and Neuropixels 2.0 for actute recordings from the
+primary visual cortex and other cortical areas. The MATLAB
+pipeline is available
+[here](https://github.com/SainsburyWellcomeCentre/rc2_analysis).
+
+TODO: consider whether to include papers or not.
 
 
 Michael Lohse
