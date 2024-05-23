@@ -13,7 +13,7 @@ primary visual cortex and other cortical areas. The MATLAB
 pipeline is available
 [here](https://github.com/SainsburyWellcomeCentre/rc2_analysis).
 
-TODO: consider whether to include papers or not.
+TODO: consider whether to include papers or not. (Tyson 2022, velez-fort 2024 in prep).
 
 
 Michael Lohse
@@ -24,3 +24,4 @@ acute recordings in a visual-change detection decision making task.
 They use NP1.0 probe with SpikeGLX in a head-fixed preparation with
 2 probes (often, but sometimes not) recording different regions across
 the whole brain. Their pipeline is available [here1], [here2], [here3].
+TODO: ADD links.
