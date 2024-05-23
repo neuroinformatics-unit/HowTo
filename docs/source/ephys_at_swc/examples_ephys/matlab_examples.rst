@@ -19,4 +19,8 @@ TODO: consider whether to include papers or not.
 Michael Lohse
 
 
-Andrei Khilkevich (check)
+Andrei Khilkevich (Mrsic-Flogel lab) performs
+acute recordings in a visual-change detection decision making task.
+They use NP1.0 probe with SpikeGLX in a head-fixed preparation with
+2 probes (often, but sometimes not) recording different regions across
+the whole brain. Their pipeline is available [here1], [here2], [here3].
