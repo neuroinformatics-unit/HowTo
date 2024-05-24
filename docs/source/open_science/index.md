@@ -7,4 +7,5 @@ A collection of long-form guides on topics related to open science.
 
 Licensing
 Data-sharing
+GIN-repositories
 ```
