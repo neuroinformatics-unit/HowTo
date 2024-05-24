@@ -98,7 +98,7 @@ In Unix-like systems (Ubuntu, MacOS), you may need `sudo` permissions for some o
 
 
 :::{note}
-Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` directory under the repository directory. You can see it on the terminal by running `ls -la` from the local repository. The local repository excluding this `.git` folder is what we will later call the _working directory_.
+Initialising the GIN local repository (with `gin create` or `gin init`) will create a hidden `.git` directory under the local repository directory. The local repository excluding this `.git` folder is what we will later call the _working directory_.
 :::
 
 
