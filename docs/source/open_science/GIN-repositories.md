@@ -289,6 +289,19 @@ After changing the locking state, remember to record the new state with a `gin c
 We recommend [pooch](https://www.fatiando.org/pooch/latest/index.html) to programmatically download a dataset from a GIN repository's URL. `pooch` is easy to use and has some nice
 functionalities like caching the downloaded data, verifying cryptographic hashes or unzipping files upon download.
 
+Here is a simple example of how to download a dataset from a GIN repository using `pooch`:
+
+```python
+import pooch
+
+filepath = pooch.retrieve(
+    url="https://gin.g-node.org/<username>/<repository>/src/main/file",
+    known_hash=None,
+    path="/home/<user>/downloads", # this is where the file will be saved
+    progressbar=True,
+)
+```
+
 ## Some under-the-hood details
 
 GIN is a wrapper around [git-annex](https://git-annex.branchable.com/). The high-level idea behind git-annex is:
