@@ -295,7 +295,7 @@ Here is a simple example of how to download a dataset from a GIN repository usin
 import pooch
 
 filepath = pooch.retrieve(
-    url="https://gin.g-node.org/<username>/raw/<repository>/main/file",
+    url="https://gin.g-node.org/<username>/<repository>/raw/main/file",
     known_hash=None,
     path="/home/<user>/downloads", # this is where the file will be saved
     progressbar=True,
