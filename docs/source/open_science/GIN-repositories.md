@@ -295,12 +295,26 @@ Here is a simple example of how to download a dataset from a GIN repository usin
 import pooch
 
 filepath = pooch.retrieve(
-    url="https://gin.g-node.org/<username>/<repository>/raw/main/file",
+    url="https://gin.g-node.org/<username>/<repository>/raw/main/<file>",
     known_hash=None,
     path="/home/<user>/downloads", # this is where the file will be saved
     progressbar=True,
 )
 ```
+
+:::{tip}
+A common mistake is to use the URL of the GIN repository's webpage instead of the URL of the raw file.
+
+The URL of the raw file will have `/raw/` in its path. For example, the URL of the raw file `image.png` in the repository `my-repo` under the user `my-user` should be `https://gin.g-node.org/my-user/my-repo/raw/main/image.png`.
+
+The easiest way to get the raw URL of a file is to:
+1. Navigate to the specific file in the GIN repository,
+2. Copy the URL at the search bar of the browser, and
+3. Replace `src` by `raw` in the copied URL.
+
+With videos and images, you can often get the raw URL of a file directly by right-clicking on the file in the GIN repository and opening it in a new tab. The URL in the new tab should be the raw URL.
+:::
+
 
 
 ## Some under-the-hood details
