@@ -676,12 +676,24 @@ functionalities like caching the downloaded data, verifying cryptographic hashes
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pooch</span>
 
 <span class="n">filepath</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://gin.g-node.org/&lt;username&gt;/&lt;repository&gt;/raw/main/file&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://gin.g-node.org/&lt;username&gt;/&lt;repository&gt;/raw/main/&lt;file&gt;&quot;</span><span class="p">,</span>
     <span class="n">known_hash</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/&lt;user&gt;/downloads&quot;</span><span class="p">,</span> <span class="c1"># this is where the file will be saved</span>
     <span class="n">progressbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A common mistake is to use the URL of the GIN repository’s webpage instead of the URL of the raw file.</p>
+<p>The URL of the raw file will have <code class="docutils literal notranslate"><span class="pre">/raw/</span></code> in its path. For example, the URL of the raw file <code class="docutils literal notranslate"><span class="pre">image.png</span></code> in the repository <code class="docutils literal notranslate"><span class="pre">my-repo</span></code> under the user <code class="docutils literal notranslate"><span class="pre">my-user</span></code> should be <code class="docutils literal notranslate"><span class="pre">https://gin.g-node.org/my-user/my-repo/raw/main/image.png</span></code>.</p>
+<p>The easiest way to get the raw URL of a file is to:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the specific file in the GIN repository,</p></li>
+<li><p>Copy the URL at the search bar of the browser, and</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">src</span></code> by <code class="docutils literal notranslate"><span class="pre">raw</span></code> in the copied URL.</p></li>
+</ol>
+<p>With videos and images, you can often get the raw URL of a file directly by right-clicking on the file in the GIN repository and opening it in a new tab. The URL in the new tab should be the raw URL.</p>
 </div>
 </section>
 <section id="some-under-the-hood-details">
