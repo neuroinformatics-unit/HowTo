@@ -1,6 +1,6 @@
 # Resources
 
-This section provides articles and videos providing
+This section includes articles and videos providing
 background and technical detail on extracellular
 electrophysiology data preprocessing and analysis.
 
@@ -23,25 +23,25 @@ and overview of the extracellular electrophysiology landscape:
 
 ## Technical Introduction
 
-Below are more technical resources on the different stages of
+This section includes more technical resources on the different stages of
 extracellular electrophysiology analysis.
 
 A particularly useful resource is the
 [Neuropixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
 (e.g. [2023](https://www.ucl.ac.uk/neuropixels/training/2023-neuropixels-course)).
-While these are particularly useful for Neuropixels users, they are
-useful resources for any researcher
+While these are targeted towards for Neuropixels users, they are
+valuable resources for any researcher
 approaching electrophysiology preprocessing and analysis.
 
 ### Preprocessing
 
 The [IBL white paper](https://figshare.com/articles/online_resource/Spike_sorting_pipeline_for_the_International_Brain_Laboratory/19705522)
-contains a clearly written overview of preprocessing steps. Similarly,
-[Bill Karsh's guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on the
-SpikeGLX website also gives a useful overview.
+contains a clearly written overview of common preprocessing steps. Similarly,
+[Bill Karsh's guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on 
+SpikeGLX preprocessing tools gives a useful overview.
 
 [de Cheveigné & Nelken (2019)](https://pubmed.ncbi.nlm.nih.gov/30998899/)
-provide a more technical treatment of digital filtering, a key step in preprocessing and analysis.
+provide a technical treatment of digital filtering, a key step in preprocessing and analysis.
 
 ### Spike Sorting
 
@@ -85,10 +85,8 @@ in their documentation.
 Visit the SpikeInterface
 [GitHub](https://github.com/SpikeInterface/spikeinterface)
 and
-[Documentation](https://spikeinterface.readthedocs.io/en/latest/index.html)
-to get started. Note their documentation currently points to the developer
-version, select your installed version from the list at the bottom-left
-of the page.
+[Documentation](https://spikeinterface.readthedocs.io/en/stable/)
+to get started.
 
 ## Other Community Tools
 
@@ -96,10 +94,10 @@ of the page.
 
 SpikeInterface
 is mainly focused on preprocessing, spike sorting and quality metrics.
-[Pynapple](https://github.com/pynapple-org/pynapple)
-and
-[Elephant]( https://neuralensemble.org/elephant/)
-both provide nice toolboxes for analysing data post-sorting.
+[Pynapple](https://github.com/pynapple-org/pynapple), 
+[Elephant]( https://neuralensemble.org/elephant/),
+and [Nemos](https://github.com/flatironinstitute/nemos)
+all provide nice toolboxes for analysing data post-sorting.
 
 The [SpikeForest](https://spikeforest.flatironinstitute.org/)
 project is an excellent resource for assessing the performance of
@@ -111,5 +109,5 @@ different spike-sorting algorithms across probe types and brain regions.
 
 [The IBL sorting pipeline](https://github.com/int-brain-lab/ibl-neuropixel)
 
-[Neuropixels Utils](https://djoshea.github.io/neuropixel-utils/) package
-(MATLAB) and related [NeuroPyxels](https://github.com/m-beau/NeuroPyxels).
+For working with NeuroPixels, [Neuropixels Utils](https://djoshea.github.io/neuropixel-utils/) package
+(MATLAB) and [NeuroPyxels](https://github.com/m-beau/NeuroPyxels) (Python).

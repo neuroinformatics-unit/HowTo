@@ -8,7 +8,7 @@ Please don't hesitate to contact us
 For information and advice on electrophysiology from the SWC community, the
 best place to go is the `#forum-extracellular-ephys` channel on the SWC Slack.
 
-Outside the SWC, you can address any questions or issues for
+Outside the SWC, you can address any questions or issues about
 [SpikeInterface](https://github.com/SpikeInterface)
 by raising an issue on their
 [GitHub repository](https://github.com/SpikeInterface/spikeinterface/issues).
