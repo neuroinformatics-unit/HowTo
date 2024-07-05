@@ -1,6 +1,4 @@
-:orphan:
-Example Pipelines
-==================
+# Example Pipelines
 
 This page holds example pipelines for researchers
 at the SWC. It details their setup, experimental
@@ -21,7 +19,16 @@ and
 :ref:`Matlab <matlab_examples>`.
 
 
-SpikeInterface Preprocessing and Sorting
-----------------------------------------
+## SpikeInterface Preprocessing and Sorting
 
 TODO: Dammy, Ivana
+
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+
+auto_examples_ephys/index
+matlab_examples.rst
+
+```

@@ -31,7 +31,7 @@ and centralise electrophysiology analysis.
 :::
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Example Pipelines
-:link: gallery/index
+:link: example_pipelines/index
 :link-type: doc
 :::
 
@@ -48,6 +48,6 @@ and centralise electrophysiology analysis.
 
 getting_started
 resources
-auto_examples_ephys/index
+example_pipelines/index
 community
 ```

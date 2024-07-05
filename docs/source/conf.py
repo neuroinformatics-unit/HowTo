@@ -158,6 +158,6 @@ copybutton_exclude = ".linenos, .gp, .go"
 
 # Configure sphinx-gallery
 sphinx_gallery_conf = {
-     'examples_dirs': ["ephys_at_swc/examples_ephys"],   # path to your example scripts
-     'gallery_dirs': ["ephys_at_swc/auto_examples_ephys"],    # path to where to save gallery generated output
+     'examples_dirs': ["ephys_at_swc/example_pipelines/examples"],   # path to your example scripts
+     'gallery_dirs': ["ephys_at_swc/example_pipelines/auto_examples_ephys"],    # path to where to save gallery generated output
 }

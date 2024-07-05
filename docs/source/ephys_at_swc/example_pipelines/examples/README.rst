@@ -18,3 +18,9 @@ Dammy Onih
 Nate Miska
 
 Chaofei Bao
+
+
+SpikeInterface Preprocessing and Sorting
+----------------------------------------
+
+TODO: Dammy, Ivana
