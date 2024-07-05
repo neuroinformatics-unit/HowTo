@@ -12,16 +12,22 @@ for preprocessing and sorting of data
 from a range of experimental setups. Also
 see the list of repositories with code for
 mutlimodal analysis including
-electrophysiology
-in
-:ref:`Python <python_examples>`
-and
-:ref:`Matlab <matlab_examples>`.
+electrophysiology.
 
+::::{grid} 1 2 2 2
+:gutter: 3
 
-## SpikeInterface Preprocessing and Sorting
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Python Examples
+:link: auto_examples_ephys/index
+:link-type: doc
+:::
 
-TODO: Dammy, Ivana
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` MATLAB Examples
+:link: matlab_examples
+:link-type: doc
+:::
+
+::::
 
 
 ```{toctree}
@@ -29,6 +35,6 @@ TODO: Dammy, Ivana
 :hidden:
 
 auto_examples_ephys/index
-matlab_examples.rst
+matlab_examples
 
 ```
