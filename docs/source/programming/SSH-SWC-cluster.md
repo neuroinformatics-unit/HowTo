@@ -70,9 +70,7 @@ You have now successfully logged into the cluster 🎉. You may stop reading her
 If you want to learn more about why we had to SSH twice, read the [next section](#why-do-we-ssh-twice).
 
 If you want to make you life easier, you can set yourself up with an [SSH config file](#ssh-config-file)
-and some [SSH keys](#ssh-keys). Trust us, it's worth the effort. For example, one
-benefit is that you will be able to use [Visual Studio Code](https://code.visualstudio.com/)
-on your PC/laptop to edit files on the cluster (see the [last section](#remote-development)).
+and some [SSH keys](#ssh-keys).
 :::
 
 ## Why do we SSH twice?
@@ -256,19 +254,3 @@ In case you want to SSH into the *bastion* node, you can do so by typing:
 ```{code-block} console
 $ ssh swc-bastion
 ```
-
-## Remote development
-One benefit of setting your SSH config and SSH keys is that you can now easily use
-[Visual Studio Code](https://code.visualstudio.com/) to edit files on remote machines.
-This is especially useful for editing scripts on the *gateway* node that you want to
-run on the *compute* nodes of the cluster.
-
-To do this, you need to install the [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension in VS Code. Then, when you
-click on the "Open a Remote Window" button in the bottom left corner of the VS Code window,
-you will see a list of the SSH hosts you have configured in your `~/.ssh/config` file.
-You can then select the host you want to connect to - e.g. `swc-gateway` - and VS Code
-will open a new window with a terminal connected to that host. You can then use the
-VS Code GUI to navigate the file system and edit files on the remote machine.
-
-Other IDEs like [PyCharm](https://www.jetbrains.com/pycharm/) also offer
-[similar functionality](https://www.jetbrains.com/help/pycharm/remote-development-overview.html).
