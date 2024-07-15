@@ -1,7 +1,12 @@
 (ssh-cluster-target)=
 # Set up SSH for the SWC HPC cluster
 
-This guide explains how to connect to the SWC's HPC cluster via SSH.
+This guide explains how to connect to the SWC's HPC cluster via SSH from
+any personal computer.
+
+If you have access to a desktop managed by the SWC's IT team
+the connection is much more straightforward than described here
+(see the [note on managed desktops](ssh-managed-target)).
 
 ```{include} ../_static/swc-wiki-warning.md
 ```
@@ -12,10 +17,11 @@ This guide explains how to connect to the SWC's HPC cluster via SSH.
 ## Abbreviations
 | Acronym                                                                 | Meaning                                      |
 | ----------------------------------------------------------------------- | -------------------------------------------- |
+| [SSH](https://en.wikipedia.org/wiki/Secure_Shell)                       | Secure (Socket) Shell protocol               |
 | [SWC](https://www.sainsburywellcome.org/web/)                           | Sainsbury Wellcome Centre                    |
 | [HPC](https://en.wikipedia.org/wiki/High-performance_computing)         | High Performance Computing                   |
+| [IT](https://en.wikipedia.org/wiki/Information_technology)              | Information Technology                       |
 | [SLURM](https://slurm.schedmd.com/)                                     | Simple Linux Utility for Resource Management |
-| [SSH](https://en.wikipedia.org/wiki/Secure_Shell)                       | Secure (Socket) Shell protocol               |
 | [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) | Integrated Development Environment           |
 | [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface)           | Graphical User Interface                     |
 
@@ -76,11 +82,11 @@ and some [SSH keys](#ssh-keys).
 ## Why do we SSH twice?
 We first need to distinguish the different types of nodes on the SWC HPC system:
 
-- the *bastion* node (or "jump host") - `ssh.swc.ucl.ac.uk`. This serves as a single entry point to the cluster from external networks. By funneling all external SSH connections through this node, it's easier to monitor, log, and control access, reducing the attack surface. The *bastion* node has very little processing power. It can be used to submit and monitor SLURM jobs, but it shouldn't be used for anything else.
+- the *bastion* node (or *login node*) - `ssh.swc.ucl.ac.uk`. This serves as a single entry point to the cluster from external networks. By funneling all external SSH connections through this node, it's easier to monitor, log, and control access, reducing the attack surface. The *bastion* node has very little processing power. It can be used to submit and monitor SLURM jobs, but it shouldn't be used for anything else.
 - the *gateway* node - `hpc-gw1`. This is a more powerful machine and can be used for light processing, such as editing your scripts, creating and copying files etc. However don't use it for anything computationally intensive, since this node's resources are shared across all users.
 - the *compute* nodes - `enc1-node10`, `gpu-sr670-21`, etc. These are the machinces that actually run the jobs we submit, either interactively via `srun` or via batch scripts submitted with `sbatch`.
 
-![](../_static/swc_hpc_access_flowchart.png)
+![](../_static/ssh_flowchart_unmanaged.png)
 
 Your home directory, as well as the locations where filesystems like `ceph` are mounted, are shared across all of the nodes.
 
@@ -90,11 +96,61 @@ Similarly, if you are on the *gateway* node, typing `logout` once will only get 
 
 The *compute* nodes should only be accessed via the SLURM `srun` or `sbatch` commands. This can be done from either the *bastion* or the *gateway* nodes. If you are running an interactive job on one of the *compute* nodes, you can terminate it by typing `exit`. This will return you to the node from which you entered.
 
+:::{dropdown} Be mindful of node usage
+:color: warning
+:icon: alert
+
+Avoid running heavy computations on the *bastion* or *gateway* nodes, as
+they are meant for light tasks like text editing or job submissions to SLURM.
+
+For quick tasks that may burden these nodes,
+request an interactive session on a *compute* node using the `srun` command.
+Here's an example for creating a new conda environment:
+
+```{code-block} console
+$ srun -p fast -n 4 --mem 8G --pty bash -i
+$ module load miniconda
+$ conda create -n myenv python=3.10
+```
+
+The first command requests 4 cores and 8GB of memory on a node of the `fast`
+partition, meant for jobs up to 3 hours long. The `--pty bash -i` part specifies
+an interactive bash shell. The following two commands are run in this shell,
+on the assigned *compute* node.
+
+Type `exit` to leave the interactive session when finished.
+Avoid keeping sessions open when not in use.
+:::
+
+(ssh-managed-target)=
+## Note on managed desktops
+
+The SWC's IT team offers managed desktop computers equipped with either
+a Windows or a Linux image. These machines are already part of the SWC's
+trusted network domain, meaning you can access the HPC cluster without
+having to go through the *bastion* node.
+
+- If you are using a [managed Windows desktop](https://wiki.ucl.ac.uk/display/SSC/SWC+Desktops),
+you can SSH directly into the *gateway* node with `ssh hpc-gw1` from the
+Windows `cmd` or PowerShell.
+You may use that node to prepare your scripts and submit SLURM jobs.
+- If you are using a [managed Linux desktop](https://wiki.ucl.ac.uk/display/SSC/Managed+Linux+Desktop),
+you can even bypass the *gateway* node. In fact, you may directly submit SLURM jobs
+from your terminal, without having to SSH at all. That's because managed Linux desktops
+use the same platform as the HPC nodes
+and are already equipped with the SLURM job scheduler.
+
+A modified version of the flowchart found above, including managed desktops:
+
+![](../_static/ssh_flowchart_full.png)
+
+
 ## SSH config file
-If you find yourself typing the above commands over and over again, you can make
-your life easier by editing the SSH config file.
-This is a text file that lives in your home directory and contains a list of aliases
-for SSH connections.
+If you are frequently accessing the cluster from an unmanaged machine,
+you may find yourself typing the same SSH commands over and over again.
+You can make your life easier by editing the SSH config file.
+This is a text file that lives in your home directory and contains
+a list of aliases for SSH connections.
 
 On your local PC/Laptop, navigate to the `.ssh` folder in your user's home `~` directory:
 ```{code-block} console

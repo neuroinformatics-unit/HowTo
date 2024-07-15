@@ -1,0 +1,36 @@
+flowchart LR
+    classDef safe stroke:#03A062,stroke-width:3px;
+    classDef unsafe stroke:#d95f02,stroke-width:3px;
+    classDef emphasis color:#03A062,stroke:#03A062,stroke-width:3px;
+
+    unmanaged("💻\n Unmanaged\n Computer") -->|ssh| bastion(("Bastion Node\n ssh.swc.ucl.ac.uk"))
+
+    subgraph trusted["SWC Network Domain"]
+
+        bastion --> |ssh| gateway(("Gateway Node\n hpc-gw1"))
+        managed_win("💻\n Managed\n Windows\n Desktop") ---> |ssh| gateway
+        managed_linux("💻\n Managed\n Linux\n Desktop") ---> |ssh| gateway
+        bastion ----> |srun\n sbatch| slurm{"SLURM 🚦"}
+        gateway --> |srun\n sbatch| slurm
+        managed_linux --> |srun\n sbatch| slurm
+
+        subgraph compute["Compute Nodes"]
+        node1(("Node 1"))
+        node2(("Node 2"))
+        node3(("Node 3"))
+        end
+
+        slurm --> node1
+        slurm --> node2
+        slurm --> node3
+
+    end
+
+    class bastion emphasis
+    class gateway emphasis
+    class unmanaged unsafe
+    class managed_win safe
+    class managed_linux safe
+    class node1 safe
+    class node2 safe
+    class node3 safe
