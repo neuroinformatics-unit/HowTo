@@ -33,15 +33,17 @@ $ module avail
 ...
 SLEAP/2023-03-13
 SLEAP/2023-08-01
+SLEAP/2024-08-14
 ...
 ```
 - `SLEAP/2023-03-13` corresponds to `SLEAP v.1.2.9`
 - `SLEAP/2023-08-01` corresponds to `SLEAP v.1.3.1`
+- `SLEAP/2024-08-14` corresponds to `SLEAP v.1.3.3`
 
 We recommend always using the latest version, which is the one loaded by default
 when you run `module load SLEAP`. If you want to load a specific version,
 you can do so by typing the full module name,
-including the date e.g. `module load SLEAP/2023-03-13`.
+including the date e.g. `module load SLEAP/2023-08-01`.
 
 If a module has been successfully loaded, it will be listed when you run `module list`,
 along with other modules it may depend on:
@@ -76,19 +78,19 @@ After that, you can follow the [rest of the SLEAP installation guide](https://sl
 
 :::{tab-item} Windows and Linux
 ```{code-block} console
-$ conda create -y -n sleap -c conda-forge -c nvidia -c sleap -c anaconda sleap=1.3.1
+$ conda create -y -n sleap -c conda-forge -c nvidia -c sleap -c anaconda sleap=1.3.3
 ```
 :::
 
 :::{tab-item} MacOS X and Apple Silicon
 ```{code-block} console
-$ conda create -y -n sleap -c conda-forge -c anaconda -c sleap sleap=1.3.1
+$ conda create -y -n sleap -c conda-forge -c anaconda -c sleap sleap=1.3.3
 ```
 :::
 
 ::::
 
-You may exchange `sleap=1.3.1` for other versions. To be on the safe side, ensure that your local installation version matches (or is at least close to) the one installed in the cluster module.
+You may exchange `sleap=1.3.3` for other versions. To be on the safe side, ensure that your local installation version matches (or is at least close to) the one installed in the cluster module.
 
 ### Mount the SWC filesystem on your local PC/laptop
 The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop.
@@ -534,7 +536,7 @@ name, temperature, memory usage, etc. If you see an error message instead,
 Next, load the SLEAP module.
 ```{code-block} console
 $ module load SLEAP
-Loading SLEAP/2023-08-01
+Loading SLEAP/2024-08-14
   Loading requirement: cuda/11.8
 ```
 
@@ -542,7 +544,7 @@ To verify that the module was loaded successfully:
 ```{code-block} console
 $ module list
 Currently Loaded Modulefiles:
- 1) SLEAP/2023-08-01
+ 1) SLEAP/2024-08-14
 ```
 You can essentially think of the module as a centrally installed conda environment.
 When it is loaded, you should be using a particular Python executable.
@@ -550,7 +552,7 @@ You can verify this by running:
 
 ```{code-block} console
 $ which python
-/ceph/apps/ubuntu-20/packages/SLEAP/2023-08-01/bin/python
+/ceph/apps/ubuntu-20/packages/SLEAP/2024-08-14/bin/python
 ```
 
 Finally we will verify that the `sleap` python package can be imported and can
@@ -571,7 +573,7 @@ This is normal. Subsequent imports should be faster.
 >>> import sleap
 
 >>> sleap.versions()
-SLEAP: 1.3.1
+SLEAP: 1.3.3
 TensorFlow: 2.8.4
 Numpy: 1.21.6
 Python: 3.7.12
@@ -603,10 +605,7 @@ $ exit()
 If you encounter troubles with using the SLEAP module, contact
 Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
 
-To completely exit the HPC cluster, you will need to logout of the SSH session  twice:
-```bash
-$ logout
-$ logout
-```
+To completely exit the HPC cluster, you will need to type `exit` or
+`logout` until you are back to your local machine's terminal prompt.
 See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
 for more information.
