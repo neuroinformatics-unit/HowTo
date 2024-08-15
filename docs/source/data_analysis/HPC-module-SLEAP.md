@@ -12,11 +12,31 @@
 | [SLEAP](https://sleap.ai/)                                      | Social LEAP Estimates Animal Poses           |
 | [SWC](https://www.sainsburywellcome.org/web/)                   | Sainsbury Wellcome Centre                    |
 | [HPC](https://en.wikipedia.org/wiki/High-performance_computing) | High Performance Computing                   |
+| [IT](https://en.wikipedia.org/wiki/Information_technology)      | Information Technology                       |
 | [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface)   | Graphical User Interface                     |
 | [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
 
 ## Prerequisites
 
+::: {dropdown} Note on managed Linux desktops
+:color: info
+:icon: info
+
+The SWC's IT team offers managed desktop computers equipped with a Linux image. These machines are already part of SWC's trusted domain and have direct access to SLURM, the HPC modules, and the SWC filesystem.
+
+If you have access to one of these desktops,
+you can skip the pre-requisite steps.
+You may simply open a terminal, type `module load SLEAP`,
+and start using SLEAP directly, as you would on any local
+Linux machine. All SLEAP commands should work as expected,
+including `sleap-label` for launching the GUI.
+
+That said, you may still want to offload GPU-intensive tasks to other HPC nodes (e.g. because the desktop's GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
+still want to read the sections on [model training](sleap-training)
+and [inference](sleap-inference).
+:::
+
+(access-to-the-hpc-cluster)=
 ### Access to the HPC cluster
 Verify that you can access HPC gateway node (typing your `<SWC-PASSWORD>` both times when prompted):
 ```{code-block} console
@@ -116,12 +136,14 @@ $ rsync -avz <LOCAL-DIR> <SWC-USERNAME>@ssh.swc.ucl.ac.uk:/ceph/scratch/neuroinf
 ```
 :::
 
+(sleap-training)=
 ## Model training
-This will consist of two parts - [preparing a training job](#prepare-the-training-job)
-(on your local SLEAP installation) and [running a training job](#run-the-training-job)
+This will consist of two parts - [preparing a training job](prepare-the-training-job)
+(on your local SLEAP installation) and [running a training job](run-the-training-job)
 (on the HPC cluster's SLEAP module). Some evaluation metrics for the trained models
-can be [viewed via the SLEAP GUI](#evaluate-the-trained-models) on your local SLEAP installation.
+can be [viewed via the SLEAP GUI](evaluate-the-trained-models) on your local SLEAP installation.
 
+(prepare-the-training-job)=
 ### Prepare the training job
 Follow the SLEAP instructions for [Creating a Project](https://sleap.ai/tutorials/new-project.html)
 and [Initial Labelling](https://sleap.ai/tutorials/initial-labeling.html).
@@ -136,6 +158,7 @@ i.e. *Predict* -> *Run Training…* -> *Export Training Job Package…*.
 - Make sure to save the exported training job package (e.g. `labels.v001.slp.training_job.zip`) in the mounted SWC filesystem, for example, in the same directory as the project file.
 - Unzip the training job package. This will create a folder with the same name (minus the `.zip` extension). This folder contains everything needed to run the training job on the HPC cluster.
 
+(run-the-training-job)=
 ### Run the training job
 Login to the HPC cluster as described above.
 ```{code-block} console
@@ -348,6 +371,7 @@ If you encounter out-of-memory errors, keep in mind that there two main sources 
 - If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
+(evaluate-the-trained-models)=
 ### Evaluate the trained models
 Upon successful completion of the training job, a `models` folder will have
 been created in the training job directory. It contains one subfolder per
@@ -387,6 +411,7 @@ The SLEAP GUI on your local machine can be used to quickly evaluate the trained 
 
 For more detailed evaluation metrics, you can refer to [SLEAP's model evaluation notebook](https://sleap.ai/notebooks/Model_evaluation.html).
 
+(sleap-inference)=
 ## Model inference
 By inference, we mean using a trained model to predict the labels on new frames/videos.
 SLEAP provides the [`sleap-track`](https://sleap.ai/guides/cli.html?#inference-and-tracking) command line utility for running inference
@@ -484,7 +509,7 @@ the training-inference cycle. The basic steps are:
 In this section, we will describe how to test that the SLEAP module is loaded
 correctly for you and that it can use the available GPUs.
 
-Login to the HPC cluster as described [above](#access-to-the-hpc-cluster).
+Login to the HPC cluster as described [above](access-to-the-hpc-cluster).
 
 Start an interactive job on a GPU node. This step is necessary, because we need
 to test the module's access to the GPU.
