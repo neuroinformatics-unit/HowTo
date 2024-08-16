@@ -138,7 +138,7 @@ $ rsync -avz <LOCAL-DIR> <SWC-USERNAME>@ssh.swc.ucl.ac.uk:/ceph/scratch/neuroinf
 
 (sleap-training)=
 ## Model training
-This will consist of two parts - [preparing a training job](prepare-the-training-job)
+This will consist of two parts: [preparing a training job](prepare-the-training-job)
 (on your local SLEAP installation) and [running a training job](run-the-training-job)
 (on the HPC cluster's SLEAP module). Some evaluation metrics for the trained models
 can be [viewed via the SLEAP GUI](evaluate-the-trained-models) on your local SLEAP installation.
@@ -372,7 +372,7 @@ If you encounter out-of-memory errors, keep in mind that there two main sources 
 ```
 
 (evaluate-the-trained-models)=
-### Evaluate the trained models
+## Model evaluation
 Upon successful completion of the training job, a `models` folder will have
 been created in the training job directory. It contains one subfolder per
 training run (by default prefixed with the date and time of the run).
@@ -631,6 +631,6 @@ If you encounter troubles with using the SLEAP module, contact
 Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
 
 To completely exit the HPC cluster, you will need to type `exit` or
-`logout` until you are back to your local machine's terminal prompt.
+`logout` until you are back to the terminal prompt of your local machine.
 See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
 for more information.
