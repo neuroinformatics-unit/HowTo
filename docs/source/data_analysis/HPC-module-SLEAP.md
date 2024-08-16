@@ -12,11 +12,31 @@
 | [SLEAP](https://sleap.ai/)                                      | Social LEAP Estimates Animal Poses           |
 | [SWC](https://www.sainsburywellcome.org/web/)                   | Sainsbury Wellcome Centre                    |
 | [HPC](https://en.wikipedia.org/wiki/High-performance_computing) | High Performance Computing                   |
+| [IT](https://en.wikipedia.org/wiki/Information_technology)      | Information Technology                       |
 | [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface)   | Graphical User Interface                     |
 | [SLURM](https://slurm.schedmd.com/)                             | Simple Linux Utility for Resource Management |
 
 ## Prerequisites
 
+::: {dropdown} Note on managed Linux desktops
+:color: info
+:icon: info
+
+The SWC's IT team offers managed desktop computers equipped with a Linux image. These machines are already part of SWC's trusted domain and have direct access to SLURM, the HPC modules, and the SWC filesystem.
+
+If you have access to one of these desktops,
+you can skip the pre-requisite steps.
+You may simply open a terminal, type `module load SLEAP`,
+and start using SLEAP directly, as you would on any local
+Linux machine. All SLEAP commands should work as expected,
+including `sleap-label` for launching the GUI.
+
+That said, you may still want to offload GPU-intensive tasks to an HPC node (e.g. because the desktop's GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
+still want to read the sections on [model training](sleap-training)
+and [inference](sleap-inference).
+:::
+
+(access-to-the-hpc-cluster)=
 ### Access to the HPC cluster
 Verify that you can access HPC gateway node (typing your `<SWC-PASSWORD>` both times when prompted):
 ```{code-block} console
@@ -33,15 +53,17 @@ $ module avail
 ...
 SLEAP/2023-03-13
 SLEAP/2023-08-01
+SLEAP/2024-08-14
 ...
 ```
 - `SLEAP/2023-03-13` corresponds to `SLEAP v.1.2.9`
 - `SLEAP/2023-08-01` corresponds to `SLEAP v.1.3.1`
+- `SLEAP/2024-08-14` corresponds to `SLEAP v.1.3.3`
 
 We recommend always using the latest version, which is the one loaded by default
 when you run `module load SLEAP`. If you want to load a specific version,
 you can do so by typing the full module name,
-including the date e.g. `module load SLEAP/2023-03-13`.
+including the date e.g. `module load SLEAP/2023-08-01`.
 
 If a module has been successfully loaded, it will be listed when you run `module list`,
 along with other modules it may depend on:
@@ -61,34 +83,8 @@ While you can delegate the GPU-intensive work to the HPC cluster,
 you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.
 
-We recommend following the official [SLEAP installation guide](https://sleap.ai/installation.html). If you already have `conda` installed, you may skip the `mamba` installation steps and opt for installing the `libmamba-solver` for `conda`:
-
-```{code-block} console
-$ conda install -n base conda-libmamba-solver
-$ conda config --set solver libmamba
-```
-This will get you the much faster dependency resolution that `mamba` provides, without having to install `mamba` itself.
-From `conda` version 23.10 onwards (released in November 2023), `libmamba-solver` [is anyway the default](https://conda.org/blog/2023-11-06-conda-23-10-0-release/).
-
-After that, you can follow the [rest of the SLEAP installation guide](https://sleap.ai/installation.html#conda-package), substituting `conda` for `mamba` in the relevant commands.
-
-::::{tab-set}
-
-:::{tab-item} Windows and Linux
-```{code-block} console
-$ conda create -y -n sleap -c conda-forge -c nvidia -c sleap -c anaconda sleap=1.3.1
-```
-:::
-
-:::{tab-item} MacOS X and Apple Silicon
-```{code-block} console
-$ conda create -y -n sleap -c conda-forge -c anaconda -c sleap sleap=1.3.1
-```
-:::
-
-::::
-
-You may exchange `sleap=1.3.1` for other versions. To be on the safe side, ensure that your local installation version matches (or is at least close to) the one installed in the cluster module.
+We recommend following the official [SLEAP installation guide](https://sleap.ai/installation.html).
+To minimise the risk of issues due to incompatibilities between versions, ensure the version of your local installation of SLEAP matches the one you plan to load in the cluster.
 
 ### Mount the SWC filesystem on your local PC/laptop
 The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop.
@@ -114,12 +110,14 @@ $ rsync -avz <LOCAL-DIR> <SWC-USERNAME>@ssh.swc.ucl.ac.uk:/ceph/scratch/neuroinf
 ```
 :::
 
+(sleap-training)=
 ## Model training
-This will consist of two parts - [preparing a training job](#prepare-the-training-job)
-(on your local SLEAP installation) and [running a training job](#run-the-training-job)
+This will consist of two parts: [preparing a training job](prepare-the-training-job)
+(on your local SLEAP installation) and [running a training job](run-the-training-job)
 (on the HPC cluster's SLEAP module). Some evaluation metrics for the trained models
-can be [viewed via the SLEAP GUI](#evaluate-the-trained-models) on your local SLEAP installation.
+can be [viewed via the SLEAP GUI](model-evaluation) on your local SLEAP installation.
 
+(prepare-the-training-job)=
 ### Prepare the training job
 Follow the SLEAP instructions for [Creating a Project](https://sleap.ai/tutorials/new-project.html)
 and [Initial Labelling](https://sleap.ai/tutorials/initial-labeling.html).
@@ -134,6 +132,7 @@ i.e. *Predict* -> *Run Training…* -> *Export Training Job Package…*.
 - Make sure to save the exported training job package (e.g. `labels.v001.slp.training_job.zip`) in the mounted SWC filesystem, for example, in the same directory as the project file.
 - Unzip the training job package. This will create a folder with the same name (minus the `.zip` extension). This folder contains everything needed to run the training job on the HPC cluster.
 
+(run-the-training-job)=
 ### Run the training job
 Login to the HPC cluster as described above.
 ```{code-block} console
@@ -346,7 +345,8 @@ If you encounter out-of-memory errors, keep in mind that there two main sources 
 - If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
-### Evaluate the trained models
+(model-evaluation)=
+## Model evaluation
 Upon successful completion of the training job, a `models` folder will have
 been created in the training job directory. It contains one subfolder per
 training run (by default prefixed with the date and time of the run).
@@ -385,6 +385,7 @@ The SLEAP GUI on your local machine can be used to quickly evaluate the trained 
 
 For more detailed evaluation metrics, you can refer to [SLEAP's model evaluation notebook](https://sleap.ai/notebooks/Model_evaluation.html).
 
+(sleap-inference)=
 ## Model inference
 By inference, we mean using a trained model to predict the labels on new frames/videos.
 SLEAP provides the [`sleap-track`](https://sleap.ai/guides/cli.html?#inference-and-tracking) command line utility for running inference
@@ -482,7 +483,7 @@ the training-inference cycle. The basic steps are:
 In this section, we will describe how to test that the SLEAP module is loaded
 correctly for you and that it can use the available GPUs.
 
-Login to the HPC cluster as described [above](#access-to-the-hpc-cluster).
+Login to the HPC cluster as described [above](access-to-the-hpc-cluster).
 
 Start an interactive job on a GPU node. This step is necessary, because we need
 to test the module's access to the GPU.
@@ -534,7 +535,7 @@ name, temperature, memory usage, etc. If you see an error message instead,
 Next, load the SLEAP module.
 ```{code-block} console
 $ module load SLEAP
-Loading SLEAP/2023-08-01
+Loading SLEAP/2024-08-14
   Loading requirement: cuda/11.8
 ```
 
@@ -542,7 +543,7 @@ To verify that the module was loaded successfully:
 ```{code-block} console
 $ module list
 Currently Loaded Modulefiles:
- 1) SLEAP/2023-08-01
+ 1) SLEAP/2024-08-14
 ```
 You can essentially think of the module as a centrally installed conda environment.
 When it is loaded, you should be using a particular Python executable.
@@ -550,7 +551,7 @@ You can verify this by running:
 
 ```{code-block} console
 $ which python
-/ceph/apps/ubuntu-20/packages/SLEAP/2023-08-01/bin/python
+/ceph/apps/ubuntu-20/packages/SLEAP/2024-08-14/bin/python
 ```
 
 Finally we will verify that the `sleap` python package can be imported and can
@@ -571,7 +572,7 @@ This is normal. Subsequent imports should be faster.
 >>> import sleap
 
 >>> sleap.versions()
-SLEAP: 1.3.1
+SLEAP: 1.3.3
 TensorFlow: 2.8.4
 Numpy: 1.21.6
 Python: 3.7.12
@@ -603,10 +604,7 @@ $ exit()
 If you encounter troubles with using the SLEAP module, contact
 Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
 
-To completely exit the HPC cluster, you will need to logout of the SSH session  twice:
-```bash
-$ logout
-$ logout
-```
+To completely exit the HPC cluster, you will need to type `exit` or
+`logout` until you are back to the terminal prompt of your local machine.
 See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
 for more information.
