@@ -83,34 +83,8 @@ While you can delegate the GPU-intensive work to the HPC cluster,
 you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.
 
-We recommend following the official [SLEAP installation guide](https://sleap.ai/installation.html). If you already have `conda` installed, you may skip the `mamba` installation steps and opt for installing the `libmamba-solver` for `conda`:
-
-```{code-block} console
-$ conda install -n base conda-libmamba-solver
-$ conda config --set solver libmamba
-```
-This will get you the much faster dependency resolution that `mamba` provides, without having to install `mamba` itself.
-From `conda` version 23.10 onwards (released in November 2023), `libmamba-solver` [is anyway the default](https://conda.org/blog/2023-11-06-conda-23-10-0-release/).
-
-After that, you can follow the [rest of the SLEAP installation guide](https://sleap.ai/installation.html#conda-package), substituting `conda` for `mamba` in the relevant commands.
-
-::::{tab-set}
-
-:::{tab-item} Windows and Linux
-```{code-block} console
-$ conda create -y -n sleap -c conda-forge -c nvidia -c sleap -c anaconda sleap=1.3.3
-```
-:::
-
-:::{tab-item} MacOS X and Apple Silicon
-```{code-block} console
-$ conda create -y -n sleap -c conda-forge -c anaconda -c sleap sleap=1.3.3
-```
-:::
-
-::::
-
-You may exchange `sleap=1.3.3` for other versions. To be on the safe side, ensure that your local installation version matches (or is at least close to) the one installed in the cluster module.
+We recommend following the official [SLEAP installation guide](https://sleap.ai/installation.html).
+To minimise the risk of issues due to incompatibilities between versions, ensure the version of your local installation of SLEAP matches the one you plan to load in the cluster.
 
 ### Mount the SWC filesystem on your local PC/laptop
 The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop.
