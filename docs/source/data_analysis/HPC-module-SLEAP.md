@@ -31,7 +31,7 @@ and start using SLEAP directly, as you would on any local
 Linux machine. All SLEAP commands should work as expected,
 including `sleap-label` for launching the GUI.
 
-That said, you may still want to offload GPU-intensive tasks to other HPC nodes (e.g. because the desktop's GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
+That said, you may still want to offload GPU-intensive tasks to an HPC node (e.g. because the desktop's GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
 still want to read the sections on [model training](sleap-training)
 and [inference](sleap-inference).
 :::
@@ -141,7 +141,7 @@ $ rsync -avz <LOCAL-DIR> <SWC-USERNAME>@ssh.swc.ucl.ac.uk:/ceph/scratch/neuroinf
 This will consist of two parts: [preparing a training job](prepare-the-training-job)
 (on your local SLEAP installation) and [running a training job](run-the-training-job)
 (on the HPC cluster's SLEAP module). Some evaluation metrics for the trained models
-can be [viewed via the SLEAP GUI](evaluate-the-trained-models) on your local SLEAP installation.
+can be [viewed via the SLEAP GUI](model-evaluation) on your local SLEAP installation.
 
 (prepare-the-training-job)=
 ### Prepare the training job
@@ -371,7 +371,7 @@ If you encounter out-of-memory errors, keep in mind that there two main sources 
 - If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
-(evaluate-the-trained-models)=
+(model-evaluation)=
 ## Model evaluation
 Upon successful completion of the training job, a `models` folder will have
 been created in the training job directory. It contains one subfolder per
