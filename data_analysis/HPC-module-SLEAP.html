@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=b0449be5" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -441,10 +441,13 @@ any prompt:</p>
 <tr class="row-even"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/High-performance_computing">HPC</a></p></td>
 <td><p>High Performance Computing</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Information_technology">IT</a></p></td>
+<td><p>Information Technology</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a></p></td>
 <td><p>Graphical User Interface</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://slurm.schedmd.com/">SLURM</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://slurm.schedmd.com/">SLURM</a></p></td>
 <td><p>Simple Linux Utility for Resource Management</p></td>
 </tr>
 </tbody>
@@ -453,8 +456,22 @@ any prompt:</p>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<section id="access-to-the-hpc-cluster">
-<h3>Access to the HPC cluster<a class="headerlink" href="#access-to-the-hpc-cluster" title="Link to this heading">#</a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Note on managed Linux desktops</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The SWC’s IT team offers managed desktop computers equipped with a Linux image. These machines are already part of SWC’s trusted domain and have direct access to SLURM, the HPC modules, and the SWC filesystem.</p>
+<p class="sd-card-text">If you have access to one of these desktops,
+you can skip the pre-requisite steps.
+You may simply open a terminal, type <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code>,
+and start using SLEAP directly, as you would on any local
+Linux machine. All SLEAP commands should work as expected,
+including <code class="docutils literal notranslate"><span class="pre">sleap-label</span></code> for launching the GUI.</p>
+<p class="sd-card-text">That said, you may still want to offload GPU-intensive tasks to an HPC node (e.g. because the desktop’s GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
+still want to read the sections on <a class="reference internal" href="#sleap-training"><span class="std std-ref">model training</span></a>
+and <a class="reference internal" href="#sleap-inference"><span class="std std-ref">inference</span></a>.</p>
+</div>
+</details><section id="access-to-the-hpc-cluster">
+<span id="id1"></span><h3>Access to the HPC cluster<a class="headerlink" href="#access-to-the-hpc-cluster" title="Link to this heading">#</a></h3>
 <p>Verify that you can access HPC gateway node (typing your <code class="docutils literal notranslate"><span class="pre">&lt;SWC-PASSWORD&gt;</span></code> both times when prompted):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>&lt;SWC-USERNAME&gt;@ssh.swc.ucl.ac.uk
 <span class="gp">$ </span>ssh<span class="w"> </span>hpc-gw1
@@ -469,17 +486,19 @@ any prompt:</p>
 <span class="go">...</span>
 <span class="go">SLEAP/2023-03-13</span>
 <span class="go">SLEAP/2023-08-01</span>
+<span class="go">SLEAP/2024-08-14</span>
 <span class="go">...</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2023-03-13</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.2.9</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2023-08-01</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.3.1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2024-08-14</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.3.3</span></code></p></li>
 </ul>
 <p>We recommend always using the latest version, which is the one loaded by default
 when you run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code>. If you want to load a specific version,
 you can do so by typing the full module name,
-including the date e.g. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP/2023-03-13</span></code>.</p>
+including the date e.g. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP/2023-08-01</span></code>.</p>
 <p>If a module has been successfully loaded, it will be listed when you run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>,
 along with other modules it may depend on:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>list
@@ -495,31 +514,8 @@ see this guide’s <a class="reference internal" href="#problems-with-the-sleap-
 <p>While you can delegate the GPU-intensive work to the HPC cluster,
 you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.</p>
-<p>We recommend following the official <a class="reference external" href="https://sleap.ai/installation.html">SLEAP installation guide</a>. If you already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, you may skip the <code class="docutils literal notranslate"><span class="pre">mamba</span></code> installation steps and opt for installing the <code class="docutils literal notranslate"><span class="pre">libmamba-solver</span></code> for <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>conda-libmamba-solver
-<span class="gp">$ </span>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>solver<span class="w"> </span>libmamba
-</pre></div>
-</div>
-<p>This will get you the much faster dependency resolution that <code class="docutils literal notranslate"><span class="pre">mamba</span></code> provides, without having to install <code class="docutils literal notranslate"><span class="pre">mamba</span></code> itself.
-From <code class="docutils literal notranslate"><span class="pre">conda</span></code> version 23.10 onwards (released in November 2023), <code class="docutils literal notranslate"><span class="pre">libmamba-solver</span></code> <a class="reference external" href="https://conda.org/blog/2023-11-06-conda-23-10-0-release/">is anyway the default</a>.</p>
-<p>After that, you can follow the <a class="reference external" href="https://sleap.ai/installation.html#conda-package">rest of the SLEAP installation guide</a>, substituting <code class="docutils literal notranslate"><span class="pre">conda</span></code> for <code class="docutils literal notranslate"><span class="pre">mamba</span></code> in the relevant commands.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-0">
-Windows and Linux</label><div class="sd-tab-content docutils">
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>create<span class="w"> </span>-y<span class="w"> </span>-n<span class="w"> </span>sleap<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>nvidia<span class="w"> </span>-c<span class="w"> </span>sleap<span class="w"> </span>-c<span class="w"> </span>anaconda<span class="w"> </span><span class="nv">sleap</span><span class="o">=</span><span class="m">1</span>.3.1
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-1">
-MacOS X and Apple Silicon</label><div class="sd-tab-content docutils">
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>create<span class="w"> </span>-y<span class="w"> </span>-n<span class="w"> </span>sleap<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>anaconda<span class="w"> </span>-c<span class="w"> </span>sleap<span class="w"> </span><span class="nv">sleap</span><span class="o">=</span><span class="m">1</span>.3.1
-</pre></div>
-</div>
-</div>
-</div>
-<p>You may exchange <code class="docutils literal notranslate"><span class="pre">sleap=1.3.1</span></code> for other versions. To be on the safe side, ensure that your local installation version matches (or is at least close to) the one installed in the cluster module.</p>
+<p>We recommend following the official <a class="reference external" href="https://sleap.ai/installation.html">SLEAP installation guide</a>.
+To minimise the risk of issues due to incompatibilities between versions, ensure the version of your local installation of SLEAP matches the one you plan to load in the cluster.</p>
 </section>
 <section id="mount-the-swc-filesystem-on-your-local-pc-laptop">
 <h3>Mount the SWC filesystem on your local PC/laptop<a class="headerlink" href="#mount-the-swc-filesystem-on-your-local-pc-laptop" title="Link to this heading">#</a></h3>
@@ -544,13 +540,13 @@ to copy data from your local machine to <code class="docutils literal notranslat
 </details></section>
 </section>
 <section id="model-training">
-<h2>Model training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
-<p>This will consist of two parts - <a class="reference internal" href="#prepare-the-training-job"><span class="std std-ref">preparing a training job</span></a>
+<span id="sleap-training"></span><h2>Model training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
+<p>This will consist of two parts: <a class="reference internal" href="#prepare-the-training-job"><span class="std std-ref">preparing a training job</span></a>
 (on your local SLEAP installation) and <a class="reference internal" href="#run-the-training-job"><span class="std std-ref">running a training job</span></a>
 (on the HPC cluster’s SLEAP module). Some evaluation metrics for the trained models
-can be <a class="reference internal" href="#evaluate-the-trained-models"><span class="std std-ref">viewed via the SLEAP GUI</span></a> on your local SLEAP installation.</p>
+can be <a class="reference internal" href="#model-evaluation"><span class="std std-ref">viewed via the SLEAP GUI</span></a> on your local SLEAP installation.</p>
 <section id="prepare-the-training-job">
-<h3>Prepare the training job<a class="headerlink" href="#prepare-the-training-job" title="Link to this heading">#</a></h3>
+<span id="id2"></span><h3>Prepare the training job<a class="headerlink" href="#prepare-the-training-job" title="Link to this heading">#</a></h3>
 <p>Follow the SLEAP instructions for <a class="reference external" href="https://sleap.ai/tutorials/new-project.html">Creating a Project</a>
 and <a class="reference external" href="https://sleap.ai/tutorials/initial-labeling.html">Initial Labelling</a>.
 Ensure that the project file (e.g. <code class="docutils literal notranslate"><span class="pre">labels.v001.slp</span></code>) is saved in the mounted SWC filesystem
@@ -566,7 +562,7 @@ i.e. <em>Predict</em> -&gt; <em>Run Training…</em> -&gt; <em>Export Training J
 </ul>
 </section>
 <section id="run-the-training-job">
-<h3>Run the training job<a class="headerlink" href="#run-the-training-job" title="Link to this heading">#</a></h3>
+<span id="id3"></span><h3>Run the training job<a class="headerlink" href="#run-the-training-job" title="Link to this heading">#</a></h3>
 <p>Login to the HPC cluster as described above.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>&lt;SWC-USERNAME&gt;@ssh.swc.ucl.ac.uk
 <span class="gp">$ </span>ssh<span class="w"> </span>hpc-gw1
@@ -696,8 +692,8 @@ You can make these files executable by running in the terminal:</p>
 </div>
 <p>You may monitor the progress of the job in various ways:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-2">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
 squeue</label><div class="sd-tab-content docutils">
 <p>View the status of the queued/running jobs with <a class="reference external" href="https://slurm.schedmd.com/squeue.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code></a>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
@@ -706,8 +702,8 @@ squeue</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-3">
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
 sacct</label><div class="sd-tab-content docutils">
 <p>View status of running/completed jobs with <a class="reference external" href="https://slurm.schedmd.com/sacct.html"><code class="docutils literal notranslate"><span class="pre">sacct</span></code></a>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct
@@ -735,8 +731,8 @@ elapsed and the peak memory usage in KB (MaxRSS):</p>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-4">
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
 view the logs</label><div class="sd-tab-content docutils">
 <p>View the contents of standard output and error
 (the node name and job ID will differ in each case):</p>
@@ -757,8 +753,9 @@ view the logs</label><div class="sd-tab-content docutils">
 </ul>
 </div>
 </details></section>
-<section id="evaluate-the-trained-models">
-<h3>Evaluate the trained models<a class="headerlink" href="#evaluate-the-trained-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="model-evaluation">
+<span id="id4"></span><h2>Model evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h2>
 <p>Upon successful completion of the training job, a <code class="docutils literal notranslate"><span class="pre">models</span></code> folder will have
 been created in the training job directory. It contains one subfolder per
 training run (by default prefixed with the date and time of the run).</p>
@@ -794,9 +791,8 @@ their configurations (<code class="docutils literal notranslate"><span class="pr
 </ul>
 <p>For more detailed evaluation metrics, you can refer to <a class="reference external" href="https://sleap.ai/notebooks/Model_evaluation.html">SLEAP’s model evaluation notebook</a>.</p>
 </section>
-</section>
 <section id="model-inference">
-<h2>Model inference<a class="headerlink" href="#model-inference" title="Link to this heading">#</a></h2>
+<span id="sleap-inference"></span><h2>Model inference<a class="headerlink" href="#model-inference" title="Link to this heading">#</a></h2>
 <p>By inference, we mean using a trained model to predict the labels on new frames/videos.
 SLEAP provides the <a class="reference external" href="https://sleap.ai/guides/cli.html?#inference-and-tracking"><code class="docutils literal notranslate"><span class="pre">sleap-track</span></code></a> command line utility for running inference
 on a single video or a folder of videos.</p>
@@ -942,21 +938,21 @@ name, temperature, memory usage, etc. If you see an error message instead,
 (even though you are on a GPU node) please contact the SWC Scientific Computing team.</p>
 <p>Next, load the SLEAP module.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
-<span class="go">Loading SLEAP/2023-08-01</span>
+<span class="go">Loading SLEAP/2024-08-14</span>
 <span class="go">  Loading requirement: cuda/11.8</span>
 </pre></div>
 </div>
 <p>To verify that the module was loaded successfully:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>list
 <span class="go">Currently Loaded Modulefiles:</span>
-<span class="go"> 1) SLEAP/2023-08-01</span>
+<span class="go"> 1) SLEAP/2024-08-14</span>
 </pre></div>
 </div>
 <p>You can essentially think of the module as a centrally installed conda environment.
 When it is loaded, you should be using a particular Python executable.
 You can verify this by running:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>which<span class="w"> </span>python
-<span class="go">/ceph/apps/ubuntu-20/packages/SLEAP/2023-08-01/bin/python</span>
+<span class="go">/ceph/apps/ubuntu-20/packages/SLEAP/2024-08-14/bin/python</span>
 </pre></div>
 </div>
 <p>Finally we will verify that the <code class="docutils literal notranslate"><span class="pre">sleap</span></code> python package can be imported and can
@@ -975,7 +971,7 @@ This is normal. Subsequent imports should be faster.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sleap</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sleap</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
-<span class="go">SLEAP: 1.3.1</span>
+<span class="go">SLEAP: 1.3.3</span>
 <span class="go">TensorFlow: 2.8.4</span>
 <span class="go">Numpy: 1.21.6</span>
 <span class="go">Python: 3.7.12</span>
@@ -1006,12 +1002,9 @@ This is normal. Subsequent imports should be faster.</p>
 </div>
 <p>If you encounter troubles with using the SLEAP module, contact
 Niko Sirmpilatze of the SWC <a class="reference external" href="https://neuroinformatics.dev/">Neuroinformatics Unit</a>.</p>
-<p>To completely exit the HPC cluster, you will need to logout of the SSH session  twice:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">logout</span>
-$<span class="w"> </span><span class="nb">logout</span>
-</pre></div>
-</div>
-<p>See <a class="reference internal" href="../programming/SSH-SWC-cluster.html"><span class="std std-doc">Set up SSH for the SWC HPC cluster</span></a>
+<p>To completely exit the HPC cluster, you will need to type <code class="docutils literal notranslate"><span class="pre">exit</span></code> or
+<code class="docutils literal notranslate"><span class="pre">logout</span></code> until you are back to the terminal prompt of your local machine.
+See <a class="reference internal" href="../programming/SSH-SWC-cluster.html"><span class="std std-doc">Set up SSH for the SWC HPC cluster</span></a>
 for more information.</p>
 </section>
 </section>
@@ -1050,9 +1043,9 @@ for more information.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">Model training</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-training-job">Prepare the training job</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-training-job">Run the training job</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-trained-models">Evaluate the trained models</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation">Model evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-inference">Model inference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-training-inference-cycle">The training-inference cycle</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
@@ -1084,7 +1077,7 @@ for more information.</p>
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="sphinx-version">
-Created using <a href="https://sphinx-doc.org/">Sphinx</a> 7.4.5.
+Created using <a href="https://sphinx-doc.org/">Sphinx</a> 8.0.2.
 <br/>
 </p>
 <p class="theme-version">
