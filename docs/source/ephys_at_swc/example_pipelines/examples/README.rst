@@ -2,40 +2,39 @@
 
 :orphan:
 
-Python Repo Examples
-====================
+Python Analysis Repo Examples
+=============================
 
-DETAILS
---------
-
-(TODO: mention where they do / do not use spikeinterface)
-Steve Lenzi (Margrie Lab) is an early adopter of spikewrap (dev version) [REMOVE ALL SPIKEWRAP]
-and has integrated it into a repository for automated behavioural,
-electrophysiological and anatomical analysis. Steve works with an
-escape paradigm recording stimulus-responsive neurons in the posterior
-striatum (check) across multiple sessions. He is using NeuroPixels
-and SpikeGLX and is repository is [here]().
-
-Mutli-probe Cambridge Neurotech [TODO]
+Multi-probe Cambridge Neurotech
 --------------------------------------
 
-Dammy Onih is running a multi-session paradigm with two
-Cambridge Neurotech probes LINK. In this task, a mice learns
-a statistic learning paradigm with auditory stimulus (MORE DETAIL?)
-and recordings for the hippocampus are understanding to XXX signatures
-of learning. The pipeline uses SpikeInterface for preprocessing,
-sorting and analysis and can be found [here]().
+Dammy Onih (Akrami lab) is running a multi-session paradigm with two
+[Cambridge Neurotech](https://www.cambridgeneurotech.com/neural-probes)
+probes. In this multi-session task, a mice learns a statistic learning paradigm to a
+reward-associated auditory stimulus, recording from the hippocampus.
+The pipeline uses SpikeInterface for preprocessing,
+sorting and analysis and can be found [here](https://github.com/AOONIH/ephys/tree/master).
 
-[Some behaviour] with the IBL pipeline
+The IBL Analysis Pipeline
 --------------------------------------
 
 Nate Miska (Mrsic-Flogel lab) is a member of the
 [International Brain Laboratory (IBL)](https://www.internationalbrainlab.com/)
-running the IBL task XXX with acute recordings. Neuropixels 1.0
-IBLRIG. See the analysis pipeline [XXX]() and details on the
+running the [IBL's standardised behavioural task](https://elifesciences.org/articles/63711)
+with acute Neuropixels 1.0 recordings.
+See the analysis pipeline [XXX]() and details on the
 IBL data management system can be found [here]().
 
-SpikeInterface Preprocessing and Sorting
-----------------------------------------
+Automated analysis with Neuropixels 2.0
+---------------------------------------
 
-TODO: Ivana, Nicole,
+Steve Lenzi (Margrie Lab) has an integrated pipeline for automated behavioural,
+electrophysiological and anatomical analysis. Steve works with an
+mutli-session escape paradigm recording stimulus-responsive neurons in the posterior
+striatum. He is using NeuroPixels 2.0 and SpikeGLX, the pipeline
+code can be found [here](https://github.com/stephenlenzi/npix_lse).
+
+Preprocessing and Sorting Examples
+----------------------------------
+
+

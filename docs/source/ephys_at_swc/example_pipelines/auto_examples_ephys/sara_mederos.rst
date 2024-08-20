@@ -136,6 +136,10 @@ Sara Mederos investigates ... setup ... details...
 
       :download:`Download Python source code: sara_mederos.py <sara_mederos.py>`
 
+    .. container:: sphx-glr-download sphx-glr-download-zip
+
+      :download:`Download zipped: sara_mederos.zip <sara_mederos.zip>`
+
 
 .. only:: html
 
