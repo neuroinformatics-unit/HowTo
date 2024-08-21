@@ -19,16 +19,18 @@ import matplotlib.pyplot as plt
 from spikeinterface import curation
 from spikeinterface.widgets import plot_timeseries
 import spikeinterface as si  # TODO
+import numpy as np
+
 
 data_path = Path(
-    r"/ceph/.../test_data/100323/2023-10-03_18-57-09/Record Node 101/experiment1"
+    r"/ceph/.../100323/2023-10-03_18-57-09/Record Node 101/experiment1"
 )
 output_path = Path(
-    r"/ceph/.../test_data/derivatives/100323/"
+    r"/ceph/.../derivatives/100323/"
 )
 
 show_probe = False
-show_preprocessing = False
+show_preprocessing = True
 
 # This reads OpenEphys 'Binary' format. It determines the
 # probe using probeinterface.read_openephys, which reads `settings.xml`
@@ -40,20 +42,27 @@ if show_probe:
     plot_probe(probe)
     plt.show()
 
-# Run the preprocessing steps
+# Run time shift (multiplex correction) and filter
 shifted_recording = phase_shift(raw_recording)
 filtered_recording = bandpass_filter(shifted_recording, freq_min=300, freq_max=6000)
+
+# Perform median average filter by shank
+channel_group = filtered_recording.get_property("group")
+split_channel_ids = [
+    filtered_recording.get_channel_ids()[channel_group == idx]
+    for idx in np.unique(channel_group)
+]
 preprocessed_recording = common_reference(
-    filtered_recording, reference="global", operator="median"
+    filtered_recording, reference="global", operator="median", groups=split_channel_ids
 )
 
 if show_preprocessing:
     recs_grouped_by_shank = preprocessed_recording.split_by("group")
     for rec in recs_grouped_by_shank:
         plot_timeseries(
-            preprocessed_recording,
-            order_channel_by_depth=False,
-            time_range=(3500, 3500),
+            filtered_recording,
+            order_channel_by_depth=True,
+            time_range=(3499, 3500),
             return_scaled=True,
             show_channel_ids=True,
             mode="map",
@@ -76,7 +85,7 @@ sorting = sorting.remove_empty_units()
 
 sorting = curation.remove_excess_spikes(sorting, preprocessed_recording)
 
-# The way spikeinterface is setup means that quality metrics are
+# The way spikeinterface is set up means that quality metrics are
 # calculated on the spikeinterface-preprocessed, NOT the kilosort
 # preprocessed (i.e. drift-correct data).
 # see https://github.com/SpikeInterface/spikeinterface/pull/1954 for details.
