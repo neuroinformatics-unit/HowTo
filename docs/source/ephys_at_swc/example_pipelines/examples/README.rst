@@ -18,7 +18,7 @@ The IBL analysis pipeline
 
 Nate Miska (Mrsic-Flogel lab) is a member of the
 `International Brain Laboratory
-(IBL) <(https://www.internationalbrainlab.com/>`_
+(IBL) <https://www.internationalbrainlab.com/>`_
 running the
 `IBL's standardised behavioural task <https://elifesciences.org/articles/63711>`_
 with acute Neuropixels 1.0 recordings. Details of the

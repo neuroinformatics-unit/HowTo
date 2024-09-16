@@ -26,4 +26,4 @@ Neuropixels 2.0 (SpikeGLX) for acute recordings from the
 primary visual cortex and other cortical areas as the head-fixed
 mouse is physically displaced along a track.
 The pipeline is available
-`here <(https://github.com/SainsburyWellcomeCentre/rc2_analysis>`__.
+`here <https://github.com/SainsburyWellcomeCentre/rc2_analysis>`__.
