@@ -79,8 +79,6 @@ exclude_patterns = [
     # this is to prevent sphinx from complaining about duplicate source files
     "ephys_at_swc/example_pipelines/auto_examples_ephys/*.ipynb",
     "ephys_at_swc/example_pipelines/auto_examples_ephys/*.py",
-    "getting_started/*.ipynb",
-    "getting_started/*.py",
 ]
 
 # Ignore certain URLs from being checked
