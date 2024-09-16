@@ -9,9 +9,10 @@ Multi-probe Neuropixels 1.0
 ---------------------------
 
 Andrei Khilkevich (Mrsic-Flogel lab) performs
-acute recordings in a visual change-detection decision making task.
-A head-fixed preparation recording from 2 implanted probes (NP 1.0)
-simultaneously to record different regions across the whole brain.
+acute recordings in a visual change-detection decision
+-making task.
+Two implanted probes (NP 1.0) in a head-fixed preparation are used to
+simultaneously record different regions across the whole brain.
 Their pipeline is available
 `here <https://github.com/BaselLaserMouse/Khilkevich_Lohse_2024/tree/main/NPX-postprocessing-pipeline>`__.
 

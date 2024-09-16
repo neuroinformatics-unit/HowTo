@@ -1,12 +1,12 @@
 # Examples
 
-This page shares extracellular electrophysiology pipelines in use by researchers across the SWC.
+This page shares extracellular electrophysiology pipelines used by researchers across the SWC.
 
 These examples aim to demonstrate the possibilities for ephys
 pipeline building rather than serve as drop-in tools for
-data processing. However, please feel free to get in
-contact with any listed researchers to ask questions
-or for advice!
+data processing. However, please feel free to
+contact any listed researchers to ask questions
+or seek advice!
 
 
 ::::{grid} 1 2 2 2
