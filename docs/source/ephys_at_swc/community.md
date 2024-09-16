@@ -17,5 +17,5 @@ happy to answer any questions!
 
 In addition, the
 [Neuropixels](https://neuropixelsgroup.slack.com/)
-Slack is a great resource, with an active community discussing
+Slack channel is a great resource, with an active community discussing
 extracellular electrophysiology acquisition and analysis.

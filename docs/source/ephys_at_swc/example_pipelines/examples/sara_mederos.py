@@ -1,12 +1,15 @@
 """
-Sara's Single Session Open Ephys
-=========================
+NP2.0 in SpikeInterface
+=======================
 
-Sara Mederos (Hofer Lab)'s pipeline to ...<subtitle>
+Sara Mederos (Hofer Lab) performs chronic electrophysiological
+recordings from subcortical and cortical areas using 4-shank
+Neuropixels 2.0 probes (Open Ephys). Recordings are conducted
+in freely moving mice during behavioral paradigms that assess
+the cognitive control of innate behaviors. A pipeline
+used for pre-processing, sorting, and quality metrics
+can be found below.
 """
-
-# %%
-# Sara Mederos investigates ... setup ... details...
 
 import probeinterface.plotting
 from spikeinterface import extract_waveforms

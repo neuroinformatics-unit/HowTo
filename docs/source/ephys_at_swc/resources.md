@@ -29,7 +29,7 @@ extracellular electrophysiology analysis.
 A particularly useful resource is the
 [Neuropixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
 (e.g. [2023](https://www.ucl.ac.uk/neuropixels/training/2023-neuropixels-course)).
-While these are targeted towards for Neuropixels users, they are
+While these are targeted towards Neuropixels users, they are
 valuable resources for any researcher
 approaching electrophysiology preprocessing and analysis.
 
@@ -37,7 +37,7 @@ approaching electrophysiology preprocessing and analysis.
 
 The [IBL white paper](https://figshare.com/articles/online_resource/Spike_sorting_pipeline_for_the_International_Brain_Laboratory/19705522)
 contains a clearly written overview of common preprocessing steps. Similarly,
-[Bill Karsh's guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on 
+[Bill Karsh's guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on
 SpikeGLX preprocessing tools gives a useful overview.
 
 [de Cheveigné & Nelken (2019)](https://pubmed.ncbi.nlm.nih.gov/30998899/)
@@ -76,7 +76,7 @@ through the key steps for manual curation.
 More recently, advances in the automating curation has been made in the
 [Bombcell package](https://github.com/Julie-Fabre/bombcell).
 
-SpikeInterface also maintain a set of quality metrics,
+SpikeInterface also maintains a set of quality metrics,
 [explained in detail](https://spikeinterface.readthedocs.io/en/latest/modules/qualitymetrics.html)
 in their documentation.
 
@@ -94,10 +94,10 @@ to get started.
 
 SpikeInterface
 is mainly focused on preprocessing, spike sorting and quality metrics.
-[Pynapple](https://github.com/pynapple-org/pynapple), 
+[Pynapple](https://github.com/pynapple-org/pynapple),
 [Elephant]( https://neuralensemble.org/elephant/),
 and [Nemos](https://github.com/flatironinstitute/nemos)
-all provide nice toolboxes for analysing data post-sorting.
+all provide useful  toolboxes for analysing data post-sorting.
 
 The [SpikeForest](https://spikeforest.flatironinstitute.org/)
 project is an excellent resource for assessing the performance of
@@ -105,7 +105,7 @@ different spike-sorting algorithms across probe types and brain regions.
 
 ### Pipelines
 
-[The Allen Spike sorting pipeline](https://github.com/AllenInstitute/ecephys_spike_sorting)
+[The Allen spike-sorting pipeline](https://github.com/AllenInstitute/ecephys_spike_sorting)
 
 [The IBL sorting pipeline](https://github.com/int-brain-lab/ibl-neuropixel)
 

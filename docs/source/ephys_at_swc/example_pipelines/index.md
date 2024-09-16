@@ -1,18 +1,13 @@
-# Example Pipelines
+# Examples
 
-This page holds example pipelines for researchers
-at the SWC. It details their setup, experimental
-paradigms along with the pipelines they
-use for preprocessing / analysis. Take a look
-through and feel free to get in contact with
-anyone through Slack.
+This page shares extracellular electrophysiology pipelines in use by researchers across the SWC.
 
-Below are a set of SpikeInterface scripts
-for preprocessing and sorting of data
-from a range of experimental setups. Also
-see the list of repositories with code for
-mutlimodal analysis including
-electrophysiology.
+These examples aim to demonstrate the possibilities for ephys
+pipeline building rather than serve as drop-in tools for
+data processing. However, please feel free to get in
+contact with any listed researchers to ask questions
+or for advice!
+
 
 ::::{grid} 1 2 2 2
 :gutter: 3
