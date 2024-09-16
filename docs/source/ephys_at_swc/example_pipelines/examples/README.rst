@@ -1,5 +1,3 @@
-.. _python_examples:
-
 :orphan:
 
 Python Pipelines
