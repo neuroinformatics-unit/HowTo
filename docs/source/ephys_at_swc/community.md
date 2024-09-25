@@ -3,7 +3,9 @@
 This site is maintained by the
 [NeuroInformatics Unit](https://neuroinformatics.dev/).
 Please don't hesitate to contact us
-(in particular Joe Ziminski) on Slack with any questions or feedback.
+(in particular Joe Ziminski) on Slack or 
+[Zulip chat](https://neuroinformatics.zulipchat.com/)
+with any questions or feedback.
 
 For information and advice on electrophysiology from the SWC community, the
 best place to go is the `#forum-extracellular-ephys` channel on the SWC Slack.
