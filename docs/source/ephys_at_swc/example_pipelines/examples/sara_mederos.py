@@ -4,7 +4,7 @@ NP2.0 in SpikeInterface
 
 Sara Mederos (Hofer Lab) performs chronic electrophysiological
 recordings from subcortical and cortical areas using 4-shank
-Neuropixels 2.0 probes (Open Ephys). Recordings are conducted
+Neuropixels 2.0 probes (acquired using [Open Ephys](https://open-ephys.org/)). Recordings are conducted
 in freely moving mice during behavioral paradigms that assess
 the cognitive control of innate behaviors. A pipeline
 used for pre-processing, sorting, and quality metrics
