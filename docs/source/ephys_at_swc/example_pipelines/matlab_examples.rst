@@ -8,9 +8,9 @@ Matlab Pipelines
 Multi-probe Neuropixels 1.0
 ---------------------------
 
-Andrei Khilkevich (Mrsic-Flogel lab) performs
-acute recordings in a visual change-detection decision
--making task.
+Andrei Khilkevich
+(`Mrsic-Flogel lab <https://www.sainsburywellcome.org/web/groups/mrsic-flogel-lab>`__)
+performs acute recordings in a visual change-detection decision-making task.
 Two implanted probes (NP 1.0) in a head-fixed preparation are used to
 simultaneously record different regions across the whole brain.
 Their pipeline is available
@@ -19,7 +19,9 @@ Their pipeline is available
 Automated pipeline for multimodal integration
 ---------------------------------------------
 
-Mateo Velez-Fort (Margie Lab) investigates the integration of visual
+Mateo Velez-Fort
+(`Margie Lab <https://www.sainsburywellcome.org/web/groups/margrie-lab>`__)
+investigates the integration of visual
 and vestibular information in the visual cortex with the
 Margrie lab's 'Translocator' setup. They use
 Neuropixels 2.0 (acquired using [SpikeGLX](https://github.com/billkarsh/SpikeGLX)) for acute recordings from the

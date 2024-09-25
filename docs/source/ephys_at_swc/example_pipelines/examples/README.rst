@@ -6,7 +6,9 @@ Python Pipelines
 Multiple probes (Cambridge Neurotech)
 -------------------------------------
 
-Dammy Onih (Akrami lab) is running a multi-session paradigm with two
+Dammy Onih
+(`Akrami lab <https://www.sainsburywellcome.org/web/groups/akrami-lab>`__)
+is running a multi-session paradigm with two
 `Cambridge Neurotech <https://www.cambridgeneurotech.com/neural-probes>`__
 probes. In this multi-session task, mice learn a statistical learning paradigm to a
 reward-associated auditory stimulus, recording from the hippocampus.
@@ -16,7 +18,8 @@ sorting, and analysis and can be found `here <https://github.com/AOONIH/ephys/tr
 The IBL analysis pipeline
 -------------------------
 
-Nate Miska (Mrsic-Flogel lab) is a member of the
+Nate Miska (`Mrsic-Flogel lab <https://www.sainsburywellcome.org/web/groups/mrsic-flogel-lab>`__)
+is a member of the
 `International Brain Laboratory
 (IBL) <https://www.internationalbrainlab.com/>`_
 running the
@@ -29,7 +32,8 @@ on the IBL data management system can be found
 Integrated analysis with Neuropixels 2.0
 ----------------------------------------
 
-Steve Lenzi (Margrie Lab) has an integrated pipeline for automated behavioural,
+Steve Lenzi (`Margie Lab <https://www.sainsburywellcome.org/web/groups/margrie-lab>`__)
+has an integrated pipeline for automated behavioural,
 electrophysiological, and anatomical analysis. Steve works with a
 multi-session escape paradigm, recording stimulus-responsive neurons in the posterior
 striatum. He is using NeuroPixels 2.0 and SpikeGLX with a SpikeInterface-based
