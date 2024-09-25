@@ -2,26 +2,28 @@
 NP2.0 in SpikeInterface
 =======================
 
-Sara Mederos (Hofer Lab) performs chronic electrophysiological
+Sara Mederos
+`(Hofer Lab) <https://www.sainsburywellcome.org/web/groups/hofer-lab>`__
+performs chronic electrophysiological
 recordings from subcortical and cortical areas using 4-shank
-Neuropixels 2.0 probes (acquired using [Open Ephys](https://open-ephys.org/)). Recordings are conducted
-in freely moving mice during behavioral paradigms that assess
-the cognitive control of innate behaviors. A pipeline
-used for pre-processing, sorting, and quality metrics
+Neuropixels 2.0 probes (acquired using
+`Open Ephys <https://open-ephys.org/>`__).
+Recordings are conducted in freely moving mice during behavioral
+paradigms that assess the cognitive control of innate behaviors.
+A pipeline used for pre-processing, sorting, and quality metrics
 can be found below.
 """
 
-import probeinterface.plotting
 from spikeinterface import extract_waveforms
-from spikeinterface.extractors import read_openephys_event, read_openephys
+from spikeinterface.extractors import read_openephys
 from spikeinterface.preprocessing import phase_shift, bandpass_filter, common_reference
 from spikeinterface.sorters import run_sorter
+from spikeinterface.qualitymetrics import compute_quality_metrics
 from pathlib import Path
-from probeinterface.plotting import plot_probe, plot_probe_group
+from probeinterface.plotting import plot_probe
 import matplotlib.pyplot as plt
 from spikeinterface import curation
 from spikeinterface.widgets import plot_timeseries
-import spikeinterface as si  # TODO
 import numpy as np
 
 
@@ -63,7 +65,7 @@ if show_preprocessing:
     recs_grouped_by_shank = preprocessed_recording.split_by("group")
     for rec in recs_grouped_by_shank:
         plot_timeseries(
-            filtered_recording,
+            preprocessed_recording,
             order_channel_by_depth=True,
             time_range=(3499, 3500),
             return_scaled=True,
@@ -106,5 +108,5 @@ waveforms = extract_waveforms(
     radius_um=75,
 )
 
-quality_metrics = si.qualitymetrics.compute_quality_metrics(waveforms)
+quality_metrics = compute_quality_metrics(waveforms)
 quality_metrics.to_csv(output_path / "postprocessing")
