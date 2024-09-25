@@ -22,7 +22,7 @@ Automated pipeline for multimodal integration
 Mateo Velez-Fort (Margie Lab) investigates the integration of visual
 and vestibular information in the visual cortex with the
 Margrie lab's 'Translocator' setup. They use
-Neuropixels 2.0 (SpikeGLX) for acute recordings from the
+Neuropixels 2.0 (acquired using [SpikeGLX](https://github.com/billkarsh/SpikeGLX)) for acute recordings from the
 primary visual cortex and other cortical areas as the head-fixed
 mouse is physically displaced along a track.
 The pipeline is available
