@@ -2,12 +2,11 @@
 
 On this website you can find long-form how-to guides as well as collections of small tips and tricks related to data analysis and software development in neuroscience.
 
-The website is maintained by members of the [Neuroinformatics Unit](https://neuroinformatics.dev).
-The information is primarily aimed at researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/)
-and
-[Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit),
-though most of it should be useful to neuroscientists in general.
+The website is maintained by members of the [Neuroinformatics Unit](https://neuroinformatics.dev). The information is primarily aimed at researchers at the [Sainsbury Wellcome Centre (SWC)](https://www.sainsburywellcome.org/web/) and [Gatsby Computational Neuroscience Unit (GCNU)](https://www.ucl.ac.uk/gatsby/gatsby-computational-neuroscience-unit), though most of it should be useful to neuroscientists in general.
 
+
+## Main sections
+The guides are organised into four main sections:
 
 ::::{grid} 1 2 2 2
 :gutter: 3
@@ -19,11 +18,11 @@ though most of it should be useful to neuroscientists in general.
 Resources for preprocessing and analysis of extracellular electrophysiology data.
 :::
 
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Behaviour
-:link: behav_at_swc/index
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Data Analysis
+:link: data_analysis/index
 :link-type: doc
 
-Guides related to tools and approaches for analysing behavioural data.
+Guides related to tools and approaches for analysing neuroscientific data.
 :::
 
 :::{grid-item-card} {fas}`code;sd-text-primary` Programming
@@ -48,7 +47,7 @@ How to effectively share your code and data.
 :hidden:
 
 ephys_at_swc/index
-behav_at_swc/index
+data_analysis/index
 programming/index
 open_science/index
 ```
