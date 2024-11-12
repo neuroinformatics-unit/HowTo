@@ -10,6 +10,7 @@ Small tips and tricks that do not warrant a long-form guide can be found in the 
 SLURM-arguments
 SSH-SWC-cluster
 SSH-vscode
+vscode-with-slurm-job
 Mount-ceph-ubuntu
 Mount-ceph-ubuntu-temp
 Cookiecutter-cruft
