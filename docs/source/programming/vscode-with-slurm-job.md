@@ -29,7 +29,7 @@ code tunnel
 
 A URL will appear in the terminal, `https://github.com/login/device`. Follow this link, log in with your GitHub credentials, and enter the provided PIN to authorize access. After completing this step, a second link will appear in the terminal (e.g., `https://vscode.dev/tunnel/gpu-XXXX`), which you can follow to access your VSCode session running directly on the HPC compute node.
 
-When you’re finished, simply exit the SLURM session to close the VSCode tunnel and release resources. 
+When you’re finished, simply exit the SLURM session to close the VSCode tunnel and release resources.
 
 ### Important Note on Extensions
 
@@ -38,4 +38,3 @@ When using VSCode in this setup, exercise caution with extensions. Some, like th
 ## Additional Benefits of Code Tunnel
 
 One advantage of using VSCode's code tunnel is that it forwards any HTTP servers launched from the same node, such as MLflow or Jupyter Notebook servers. When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
-
