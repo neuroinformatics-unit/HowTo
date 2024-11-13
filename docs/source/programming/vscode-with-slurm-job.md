@@ -10,13 +10,14 @@ This solution is easy to set up and constrained by the SLURM job's resource limi
 First, connect to the bastion node by running:
 
 ```console
-ssh username@swc.ucl.ac.uk
+$ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
+$ ssh hpc-gw1
 ```
 
 Once connected, request an interactive job via SLURM to access a compute node:
 
 ```console
-srun -p fast --pty bash -i
+$ srun -p fast -n 4 --mem 8G --pty bash -i
 ```
 
 In this example, `-p fast` requests the fast partition, with default time settings, though you may adjust this according to your needs.
