@@ -1,8 +1,8 @@
 # Using VSCode with SLURM-Managed Jobs on the SWC HPC Cluster
 
-This guide explains how to set up and use VSCode within a SLURM-managed job on the SWC HPC cluster, offering a solution for users who require fast access to Ceph or WinStor and substantial computational resources, when a managed machine is not available.
+This guide explains how to set up and use VSCode within a SLURM-managed job on the SWC HPC cluster, offering a solution for users who require fast access to shared storage or substantial computational resources.
 
-This solution is proven to be easy to set up and constrained by the SLURM job's resource limits, ensuring that users can work efficiently without overloading the system.
+This solution is easy to set up and constrained by the SLURM job's resource limits, ensuring that users can work efficiently without overloading the system.
 
 
 ## Instructions
