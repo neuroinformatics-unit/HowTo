@@ -1,4 +1,4 @@
-# Using VSCode with SLURM-Managed jobs on the SWC HPC cluster
+# Using VSCode with SLURM-managed jobs on the SWC HPC cluster
 
 This guide explains how to set up and use VSCode within a SLURM-managed job on the SWC HPC cluster, offering a solution for users who require fast access to shared storage or substantial computational resources.
 
@@ -7,24 +7,24 @@ This solution is easy to set up and constrained by the SLURM job's resource limi
 
 ## Instructions
 
-First, connect to the bastion node by running:
+First, open a terminal (not the VSCode terminal) and connect to the gateway node by running:
 
-```bash
-$ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
-$ ssh hpc-gw1
+```{code-block} console
+ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
+ssh hpc-gw1
 ```
 
-Once connected, request an interactive job via SLURM to access a compute node:
+Once connected, request an interactive job via SLURM to access a compute node. For example:
 
-```bash
-$ srun -p fast -n 4 --mem 8G --pty bash -i
+```{code-block} console
+srun -p fast -n 4 --mem 8G --pty bash -i
 ```
 
-In this example, `-p fast` requests the fast partition, with default time settings, though you may adjust this according to your needs.
+In this example, `-p fast` requests the fast partition, with default time settings, though you may adjust this according to your needs. For more information, see the [SLURM arguments primer](https://howto.neuroinformatics.dev/programming/SLURM-arguments.html).
 
 After connecting to a compute node, initiate VSCode Code Tunnel by typing:
 
-```bash
+```{code-block} console
 code tunnel
 ```
 
