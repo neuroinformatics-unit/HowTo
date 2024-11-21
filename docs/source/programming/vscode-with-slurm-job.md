@@ -30,7 +30,15 @@ code tunnel
 
 A URL will appear in the terminal, `https://github.com/login/device`. 
 Follow this link, log in with your GitHub credentials, and enter the provided PIN to authorize access. 
-After completing this step, a second link will appear in the terminal (e.g., `https://vscode.dev/tunnel/gpu-XXXX`), which you can follow to access your VSCode session running directly on the HPC compute node.
+
+You have two options to run VSCode:
+
+-  Run VSCode in the browser
+    After completing the above step, a second link will appear in the terminal (e.g., `https://vscode.dev/tunnel/gpu-XXXX`), which you can follow to access your VSCode session running directly on the HPC compute node. 
+
+- Run VSCode on your local machine
+    If you want instead to use your local VSCode, install the "Remote - Tunnels" extension, click on "Open remote window" in the bottom left corner of the VSCode window, and select "Connect to Tunnel". You should see the name "gpu-XXXX" in the list of available tunnels. Click on it to connect to the VSCode session running on the HPC compute node.
+
 NB: the GPU name in the URL provided might not match the actual node name. 
 
 When you’re finished, simply exit the SLURM session to close the VSCode tunnel and release resources.
