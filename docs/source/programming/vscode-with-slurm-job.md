@@ -33,7 +33,7 @@ Follow this link, log in with your GitHub credentials, and enter the provided PI
 
 You have two options to run VSCode:
 
--  **Run VSCode in  the browser:**
+-  **Run VSCode in the browser:**
     After completing the above step, a second link will appear in the terminal (e.g., `https://vscode.dev/tunnel/<node-name>`), which you can follow to access your VSCode session running directly on the HPC compute node.
 
 - **Run VSCode on your local machine:**
