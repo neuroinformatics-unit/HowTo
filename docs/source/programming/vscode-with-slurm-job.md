@@ -41,7 +41,7 @@ You have two options to run VSCode:
 
 NB: the node name in the provided URL might not match the actual node name assigned by SLURM.
 
-If by mistake you close your terminal window, the tunnel will continue to run till you reach the time limit. To rejoin the slurm job, you can use the following command if you know the job ID:
+If by mistake you close your terminal window, the tunnel will continue to run until you reach the time limit. To rejoin the SLURM job, you can use the following command if you know the job ID:
 
 ```{code-block} console
 $ sattach <JOBID>.0
