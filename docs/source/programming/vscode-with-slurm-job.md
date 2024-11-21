@@ -39,7 +39,9 @@ You have two options to run VSCode:
 - **Run VSCode on your local machine:**
     If you want instead to use your local VSCode, install the "Remote - Tunnels" extension, click on "Open remote window" in the bottom left corner of the VSCode window, and select "Connect to Tunnel". You should see the node name in the list of available tunnels. Click on it to connect to the VSCode session running on the HPC compute node.
 
-NB: the node name in the provided URL might not match the actual node name assigned by SLURM.
+:::{note}
+The name associated with the tunnel may not match the node name assigned by SLURM. E.g., the assigned compute node may appear as `gpu-380-11` in SLURM, but the corresponding tunnel may be named `gpu-350-02` in VSCode. When using VSCode via the browser, the tunnel name is shown at the end of the URL (e.g., `https://vscode.dev/tunnel/<node-name>`).
+:::
 
 If by mistake you close your terminal window, the tunnel will continue to run until you reach the time limit. To rejoin the SLURM job, you can use the following command if you know the job ID:
 
