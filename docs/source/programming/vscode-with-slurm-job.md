@@ -39,7 +39,7 @@ You have two options to run VSCode:
 - **Run VSCode on your local machine:**
     If you want instead to use your local VSCode, install the "Remote - Tunnels" extension, click on "Open remote window" in the bottom left corner of the VSCode window, and select "Connect to Tunnel". You should see the node name in the list of available tunnels. Click on it to connect to the VSCode session running on the HPC compute node.
 
-NB: the node name in the URL provided might not match the actual node name assigned by SLURM.
+NB: the node name in the provided URL might not match the actual node name assigned by SLURM.
 
 If by mistake you close your terminal window, the tunnel will continue to run till you reach the time limit. To rejoin the slurm job, you can use the following command if you know the job ID:
 
@@ -69,5 +69,3 @@ One advantage of using VSCode's code tunnel is that it forwards any HTTP servers
 $ srun -p fast -w <node-name> -n 4 --mem 8G --pty bash -i
 ```
 When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
-
-In order to do so, can request a separate slurm job for the same node to run your alternative sever
