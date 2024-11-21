@@ -2,7 +2,9 @@
 
 This guide explains how to set up and use VSCode in a SLURM interactive job on the SWC HPC cluster, offering a solution for users who require fast access to shared storage or substantial computational resources.
 
-This solution is easy to set up and constrained by the SLURM job's resource limits, ensuring that users can work efficiently without overloading the system.
+This solution is easy to set up and constrained by the SLURM job's resource limits, as long as those limits are applied. This ensures that users can work efficiently within the allocated resources, preventing system overload. While the constraints depend on SLURM's enforcement (e.g., memory or time limits), users should remain mindful of their resource requests to avoid program terminations.
+
+Furthermore, VSCode's code tunnel automatically forwards any HTTP servers launched from the compute node, such as Dash-Plotly apps or Jupyter Notebook servers, offering seamless integration.
 
 
 ## Instructions
