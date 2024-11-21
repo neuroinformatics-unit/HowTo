@@ -22,7 +22,7 @@ $ srun -p fast -n 4 --mem 8G --pty bash -i
 
 In this example, `-p fast` requests the fast partition, with default time settings, though you may adjust this according to your needs. For more information, see the [SLURM arguments primer](https://howto.neuroinformatics.dev/programming/SLURM-arguments.html).
 
-After connecting to a compute node, initiate VSCode Code Tunnel by typing:
+After connecting to a compute node, initiate [VSCode Remote Tunnel](https://code.visualstudio.com/docs/remote/tunnels) by typing:
 
 ```{code-block} console
 $ code tunnel
