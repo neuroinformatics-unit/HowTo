@@ -53,7 +53,7 @@ When you’re finished, simply exit the SLURM session to close the VSCode tunnel
 :color: info
 :icon: info
 
-As explained in [vscode docs](https://code.visualstudio.com/docs/remote/tunnels#:~:text=When%20opening%20a%20vscode.,right%20set%20of%20remote%20machines.) it serves as a secure way to authenticate the user and ensure that only the user who initiated the tunnel can access it:
+As explained in [vscode docs](https://code.visualstudio.com/docs/remote/tunnels) it serves as a secure way to authenticate the user and ensure that only the user who initiated the tunnel can access it:
 > Tunneling securely transmits data from one network to another via [Microsoft dev tunnels](https://learn.microsoft.com/azure/developer/dev-tunnels/overview).
 >
 > Both hosting and connecting to a tunnel requires authentication with the same Github or Microsoft account on each end. In both cases, VS Code will make outbound connections to a service hosted in Azure; no firewall changes are generally necessary, and VS Code doesn't set up any network listeners.
