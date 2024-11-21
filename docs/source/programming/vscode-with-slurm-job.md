@@ -34,12 +34,12 @@ Follow this link, log in with your GitHub credentials, and enter the provided PI
 You have two options to run VSCode:
 
 -  **Run VSCode in  the browser:**
-    After completing the above step, a second link will appear in the terminal (e.g., `https://vscode.dev/tunnel/gpu-XXXX`), which you can follow to access your VSCode session running directly on the HPC compute node.
+    After completing the above step, a second link will appear in the terminal (e.g., `https://vscode.dev/tunnel/<node-name>`), which you can follow to access your VSCode session running directly on the HPC compute node.
 
 - **Run VSCode on your local machine:**
-    If you want instead to use your local VSCode, install the "Remote - Tunnels" extension, click on "Open remote window" in the bottom left corner of the VSCode window, and select "Connect to Tunnel". You should see the name "gpu-XXXX" in the list of available tunnels. Click on it to connect to the VSCode session running on the HPC compute node.
+    If you want instead to use your local VSCode, install the "Remote - Tunnels" extension, click on "Open remote window" in the bottom left corner of the VSCode window, and select "Connect to Tunnel". You should see the node name in the list of available tunnels. Click on it to connect to the VSCode session running on the HPC compute node.
 
-NB: the GPU name in the URL provided might not match the actual node name.
+NB: the node name in the URL provided might not match the actual node name assigned by SLURM.
 
 If by mistake you close your terminal window, the tunnel will continue to run till you reach the time limit. To rejoin the slurm job, you can use the following command if you know the job ID:
 
@@ -66,7 +66,7 @@ As explained in [vscode docs](https://code.visualstudio.com/docs/remote/tunnels#
 One advantage of using VSCode's code tunnel is that it forwards any HTTP servers launched from the same node, such as Dash-Plotly apps or Jupyter Notebook servers. To launch your additional server, request a separate slurm job for the same compute node, e.g.:
 
 ```{code-block} console
-$ srun -p gpu -w <gpu-XXXX> -n 4 --mem 8G --pty bash -i
+$ srun -p fast -w <node-name> -n 4 --mem 8G --pty bash -i
 ```
 When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
 
