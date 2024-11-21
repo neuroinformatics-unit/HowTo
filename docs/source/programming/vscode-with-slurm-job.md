@@ -41,6 +41,11 @@ You have two options to run VSCode:
 
 NB: the GPU name in the URL provided might not match the actual node name. 
 
+If by mistake you close your terminal window, the tunnel will continue to run till you reach the time limit. To rejoin the slurm job, you can use the following command if you know the job ID:
+
+```{code-block} console
+sattach <JOBID>.0
+``
 When you’re finished, simply exit the SLURM session to close the VSCode tunnel and release resources.
 
 ::: {dropdown} Why do I have to authenticate via GitHub?
