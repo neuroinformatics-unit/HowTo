@@ -61,4 +61,11 @@ As explained in [vscode docs](https://code.visualstudio.com/docs/remote/tunnels#
 
 ## Additional benefits of code tunnel
 
-One advantage of using VSCode's code tunnel is that it forwards any HTTP servers launched from the same node, such as MLflow or Jupyter Notebook servers. When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
+One advantage of using VSCode's code tunnel is that it forwards any HTTP servers launched from the same node, such as MLflow or Jupyter Notebook servers. To launch your additional server, request a separate slurm job for the same compute node, e.g.:
+
+```{code-block} console
+srun -p gpu -w <gpu-XXXX> -n 4 --mem 8G --pty bash -i
+```
+When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
+
+In order to do so, can request a separate slurm job for the same node to run your alternative sever
