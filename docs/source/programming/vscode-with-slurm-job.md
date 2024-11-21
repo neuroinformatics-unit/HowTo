@@ -47,7 +47,7 @@ If by mistake you close your terminal window, the tunnel will continue to run un
 $ sattach <JOBID>.0
 ```
 
-When you’re finished, simply exit the SLURM session to close the VSCode tunnel and release resources.
+When you’re finished, simply exit the SLURM session to close the VSCode tunnel and release the assigned resources.
 
 ::: {dropdown} Why do I have to authenticate via GitHub?
 :color: info
