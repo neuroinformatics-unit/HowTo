@@ -28,7 +28,7 @@ After connecting to a compute node, initiate [VSCode Remote Tunnel](https://code
 $ code tunnel
 ```
 
-A URL will appear in the terminal, `https://github.com/login/device`.
+A URL (`https://github.com/login/device`) and a PIN code will appear in the terminal.
 Follow this link, log in with your GitHub credentials, and enter the provided PIN to authorize access.
 
 You have two options to run VSCode:
