@@ -6,10 +6,17 @@ The website is maintained by members of the [Neuroinformatics Unit](https://neur
 
 
 ## Main sections
-The guides are organised into three main sections:
+The guides are organised into four main sections:
 
-::::{grid} 1 2 2 3
+::::{grid} 1 2 2 2
 :gutter: 3
+
+:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Electrophysiology
+:link: ephys_at_swc/index
+:link-type: doc
+
+Resources for preprocessing and analysis of extracellular electrophysiology data.
+:::
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Data Analysis
 :link: data_analysis/index
@@ -39,6 +46,7 @@ How to effectively share your code and data.
 :maxdepth: 2
 :hidden:
 
+ephys_at_swc/index
 data_analysis/index
 programming/index
 open_science/index
