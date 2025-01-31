@@ -29,5 +29,5 @@ with acute Neuropixels 1.0 recordings. Details of the
 on the IBL data management system can be found
 `here <https://int-brain-lab.github.io/iblenv/index.html>`_.
 
-Python Scripts
---------------
+Standalone Scripts
+------------------
