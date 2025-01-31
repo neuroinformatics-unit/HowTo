@@ -3,7 +3,7 @@
 This site is maintained by the
 [NeuroInformatics Unit](https://neuroinformatics.dev/).
 Please don't hesitate to contact us
-(in particular Joe Ziminski) on Slack or 
+(in particular Joe Ziminski) on Slack or
 [Zulip chat](https://neuroinformatics.zulipchat.com/)
 with any questions or feedback.
 
