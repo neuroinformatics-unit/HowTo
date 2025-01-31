@@ -48,7 +48,11 @@ provide a technical treatment of digital filtering, a key step in preprocessing 
 [This video on Spike Sorting with Christophe Pouzat](https://www.youtube.com/watch?v=vSydfDvsewY),
 provides an excellent overview of the spike-sorting problem.
 
-[This chapter](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf) provides a
+
+Spike Sorting.
+D. N. Hill, D. Kleinfeld and S. B. Mehta. In Observed Brain Dynamics by P. P. Mitra and H. Bokil, 2007, Oxford Press, 9:257-270.
+
+[Hill et al., Spike Sorting. In Observed Brain Dynamics by P. P. Mitra and H. Bokil, 2007, Oxford Press, 9:257-270.](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf)
 more detailed introduction to spike sorting and associated quality metrics.
 
 It is also recommended to check out the
