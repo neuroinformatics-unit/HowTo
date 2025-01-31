@@ -50,7 +50,7 @@ provides an excellent overview of the spike-sorting problem.
 
 This article provides a more detailed introduction to spike sorting and associated quality metrics:
 
-[Hill et al., Spike Sorting. In Observed Brain Dynamics by P. P. Mitra and H. Bokil, 2007, Oxford Press, 9:257-270.](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf)
+[Hill DN et al, (2007). Spike Sorting. In *Observed Brain Dynamics by P. P. Mitra and H. Bokil*.](https://neurophysics.ucsd.edu/publications/obd_ch3_2.pdf)
 
 It is also recommended to check out the
 papers of existing spike sorting algorithms. A list of the main
@@ -65,9 +65,9 @@ Assessing the quality of spike-sorting is a key to producing high-quality data.
 These two papers provide a nice introduction to quality metrics for assessing
 spike sorting outputs:
 
-[Hill et al. (2011). Quality Metrics to Accompany Spike Sorting of Extracellular Signals. *Journal of Neuroscience*.](https://www.jneurosci.org/content/31/24/8699)
+[Hill DN et al. (2011). Quality Metrics to Accompany Spike Sorting of Extracellular Signals. *Journal of Neuroscience*.](https://www.jneurosci.org/content/31/24/8699)
 
-[Harris et al. (2016). Improving data quality in neuronal population recordings. *Nature Neuroscience*.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/)
+[Harris KD et al. (2016). Improving data quality in neuronal population recordings. *Nature Neuroscience*.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/)
 
 [Phy](https://github.com/cortex-lab/phy)
 is the most popular tool for performing manual curation of spike sorting results.
