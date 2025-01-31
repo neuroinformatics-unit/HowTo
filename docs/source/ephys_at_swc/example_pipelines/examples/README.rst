@@ -29,15 +29,5 @@ with acute Neuropixels 1.0 recordings. Details of the
 on the IBL data management system can be found
 `here <https://int-brain-lab.github.io/iblenv/index.html>`_.
 
-Integrated analysis with Neuropixels 2.0
-----------------------------------------
-
-Steve Lenzi (`Margie Lab <https://www.sainsburywellcome.org/web/groups/margrie-lab>`__)
-has an integrated pipeline for automated behavioural,
-electrophysiological, and anatomical analysis. Steve works with a
-multi-session escape paradigm, recording stimulus-responsive neurons in the posterior
-striatum. He is using NeuroPixels 2.0 and SpikeGLX with a SpikeInterface-based
-pipeline; the code can be found `here <https://github.com/stephenlenzi/npix_lse>`__.
-
 Python Scripts
 --------------
