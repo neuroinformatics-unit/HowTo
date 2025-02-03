@@ -6,7 +6,7 @@ The website is maintained by members of the [Neuroinformatics Unit](https://neur
 
 
 ## Main sections
-The guides are organised into four main sections:
+The guides are organised into three main sections:
 
 ::::{grid} 1 2 2 2
 :gutter: 3

@@ -96,7 +96,6 @@ linkcheck_ignore = [
 linkcheck_anchors_ignore_for_url = [
     "https://gin.g-node.org/G-Node/Info/wiki",
     "https://gin.g-node.org/G-Node/info/wiki",  # ignore both spellings
-    "https://github.com/stephenlenzi/npix_lse",  # ignore private repository
 ]
 linkcheck_retries = 2
 
