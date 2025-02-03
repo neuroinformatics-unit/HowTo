@@ -8,7 +8,6 @@ data processing. However, please feel free to
 contact any listed researchers to ask questions
 or seek advice!
 
-
 ::::{grid} 1 2 2 2
 :gutter: 3
 

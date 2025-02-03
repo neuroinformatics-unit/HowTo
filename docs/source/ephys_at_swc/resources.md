@@ -8,6 +8,14 @@ This section is by no means exhaustive, please
 feel free to [get in contact](community.md) to suggest
 additions to this page.
 
+For pipeline building, we recommend
+[SpikeInterface](https://github.com/SpikeInterface/spikeinterface),
+an open source community toolkit for extracellular electrophysiology,
+for preprocessing and spike sorting. To begin
+building your pipeline, the
+[SpikeInterface](https://spikeinterface.readthedocs.io/en/stable/)
+documentation is a good starting point.
+
 ## General Introduction
 
 Below are a selection of papers that give a history

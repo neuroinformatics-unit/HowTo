@@ -16,13 +16,8 @@ We are focused on building community tools to automate
 and standardise electrophysiology analysis.
 
 
-::::{grid} 1 2 2 2
+::::{grid} 1 3 3 3 
 :gutter: 3
-
-:::{grid-item-card} {fas}`chart-simple;sd-text-primary` Getting Started
-:link: getting_started
-:link-type: doc
-:::
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Resources
 :link: resources
@@ -45,7 +40,6 @@ and standardise electrophysiology analysis.
 :maxdepth: 2
 :hidden:
 
-getting_started
 resources
 example_pipelines/index
 community
