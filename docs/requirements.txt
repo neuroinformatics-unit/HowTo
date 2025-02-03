@@ -1,8 +1,11 @@
 linkify-it-py
+matplotlib
 myst-parser
 nbsphinx
 numpydoc
 pydata-sphinx-theme
+
 sphinx
 sphinx-copybutton
 sphinx-design
+sphinx-gallery
