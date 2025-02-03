@@ -8,7 +8,7 @@ The website is maintained by members of the [Neuroinformatics Unit](https://neur
 ## Main sections
 The guides are organised into three main sections:
 
-::::{grid} 1 2 2 2
+::::{grid} 1 2 2 3
 :gutter: 3
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Data Analysis
