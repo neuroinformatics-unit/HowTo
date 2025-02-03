@@ -1,5 +1,6 @@
 docs/source/ephys_at_swc/example_pipelines/auto_examples_ephys/
 sg_execution_times.rst
+auto_examples_ephys
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
