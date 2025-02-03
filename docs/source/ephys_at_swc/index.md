@@ -16,7 +16,7 @@ We are focused on building community tools to automate
 and standardise electrophysiology analysis.
 
 
-::::{grid} 1 3 3 3 
+::::{grid} 1 3 3 3
 :gutter: 3
 
 :::{grid-item-card} {fas}`chart-simple;sd-text-primary` Resources

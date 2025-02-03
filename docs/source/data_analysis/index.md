@@ -5,5 +5,6 @@ Guides related to the analysis of neuroscientific data, spanning a wide range of
 ```{toctree}
 :maxdepth: 1
 
+../ephys_at_swc/index
 HPC-module-SLEAP
 ```
