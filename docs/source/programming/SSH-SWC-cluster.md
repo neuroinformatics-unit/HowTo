@@ -115,6 +115,10 @@ $ conda create -n myenv python=3.10
 
 The first command requests 4 cores and 8GB of memory on a node of the `cpu`
 partition, meant for jobs that do not require GPUs.
+Depending on your needs and node availability, you may need to request
+a different partition. See the [SLURM arguments primer](slurm-arguments-target)
+for more information.
+
 The `--pty bash -i` part specifies
 an interactive bash shell. The following two commands are run in this shell,
 on the assigned *compute* node.

@@ -22,7 +22,9 @@ Once connected, request an interactive job via SLURM to access a compute node. F
 $ srun -p cpu -n 4 --mem 8G --pty bash -i
 ```
 
-In this example, `-p cpu` requests the 'cpu' partition, with default time settings, though you may adjust this according to your needs. For more information, see the [SLURM arguments primer](https://howto.neuroinformatics.dev/programming/SLURM-arguments.html).
+In this example, `-p cpu` requests the "cpu" partition, with default time settings, though you may adjust this according to your needs.
+You can also try other partitions depending on your needs and node availability.
+For more information, see the [SLURM arguments primer](slurm-arguments-target).
 
 After connecting to a compute node, initiate [VSCode Remote Tunnel](https://code.visualstudio.com/docs/remote/tunnels) by typing:
 
