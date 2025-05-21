@@ -526,13 +526,17 @@ they are meant for light tasks like text editing or job submissions to SLURM.</p
 <p class="sd-card-text">For quick tasks that may burden these nodes,
 request an interactive session on a <em>compute</em> node using the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command.
 Here’s an example for creating a new conda environment:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>fast<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>8G<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>cpu<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>8G<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>miniconda
 <span class="gp">$ </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
 </pre></div>
 </div>
-<p class="sd-card-text">The first command requests 4 cores and 8GB of memory on a node of the <code class="docutils literal notranslate"><span class="pre">fast</span></code>
-partition, meant for jobs up to 3 hours long. The <code class="docutils literal notranslate"><span class="pre">--pty</span> <span class="pre">bash</span> <span class="pre">-i</span></code> part specifies
+<p class="sd-card-text">The first command requests 4 cores and 8GB of memory on a node of the <code class="docutils literal notranslate"><span class="pre">cpu</span></code>
+partition, meant for jobs that do not require GPUs.
+Depending on your needs and node availability, you may need to request
+a different partition. See the <a class="reference internal" href="SLURM-arguments.html#slurm-arguments-target"><span class="std std-ref">SLURM arguments primer</span></a>
+for more information.</p>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">--pty</span> <span class="pre">bash</span> <span class="pre">-i</span></code> part specifies
 an interactive bash shell. The following two commands are run in this shell,
 on the assigned <em>compute</em> node.</p>
 <p class="sd-card-text">Type <code class="docutils literal notranslate"><span class="pre">exit</span></code> to leave the interactive session when finished.

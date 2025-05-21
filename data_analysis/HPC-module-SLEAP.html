@@ -890,20 +890,20 @@ correctly for you and that it can use the available GPUs.</p>
 <p>Login to the HPC cluster as described <a class="reference internal" href="#access-to-the-hpc-cluster"><span class="std std-ref">above</span></a>.</p>
 <p>Start an interactive job on a GPU node. This step is necessary, because we need
 to test the module’s access to the GPU.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>fast<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>gpu<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
 </pre></div>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Explain the above command</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">fast</span></code> requests a node from the ‘fast’ partition. This refers to the queue of nodes with a 3-hour time limit. They are meant for short jobs, such as testing.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">gpu</span></code> requests a node from the ‘gpu’ partition (queue)</p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> requests 1 GPU of any kind</p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--pty</span></code> is short for ‘pseudo-terminal’.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--pty</span></code> is short for ‘pseudo-terminal’</p></li>
 <li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">-i</span></code> stands for ‘interactive’</p></li>
 </ul>
 <p class="sd-card-text">Taken together, the above command will start an interactive bash terminal session
-on a node of the ‘fast’ partition, equipped with 1 GPU.</p>
+on a node of the ‘gpu’ partition, equipped with 1 GPU card.</p>
 </div>
 </details><p>First, let’s verify that you are indeed on a node equipped with a functional
 GPU, by typing <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>:</p>

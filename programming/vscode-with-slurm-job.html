@@ -399,10 +399,12 @@
 </pre></div>
 </div>
 <p>Once connected, request an interactive job via SLURM to access a compute node. For example:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>fast<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>8G<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>cpu<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>8G<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
 </pre></div>
 </div>
-<p>In this example, <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">fast</span></code> requests the fast partition, with default time settings, though you may adjust this according to your needs. For more information, see the <a class="reference external" href="https://howto.neuroinformatics.dev/programming/SLURM-arguments.html">SLURM arguments primer</a>.</p>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">cpu</span></code> requests the “cpu” partition, with default time settings, though you may adjust this according to your needs.
+You can also try other partitions depending on your needs and node availability.
+For more information, see the <a class="reference internal" href="SLURM-arguments.html#slurm-arguments-target"><span class="std std-ref">SLURM arguments primer</span></a>.</p>
 <p>After connecting to a compute node, initiate <a class="reference external" href="https://code.visualstudio.com/docs/remote/tunnels">VSCode Remote Tunnel</a> by typing:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>code<span class="w"> </span>tunnel
 </pre></div>
@@ -439,7 +441,7 @@ If you want instead to use your local VSCode, install the “Remote - Tunnels”
 <section id="additional-benefits-of-code-tunnel">
 <h2>Additional benefits of code tunnel<a class="headerlink" href="#additional-benefits-of-code-tunnel" title="Link to this heading">#</a></h2>
 <p>One advantage of using VSCode’s code tunnel is that it forwards any HTTP servers launched from the same node, such as Dash-Plotly apps or Jupyter Notebook servers. To launch your additional server, request a separate slurm job for the same compute node, e.g.:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>fast<span class="w"> </span>-w<span class="w"> </span>&lt;node-name&gt;<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>8G<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-p<span class="w"> </span>cpu<span class="w"> </span>-w<span class="w"> </span>&lt;node-name&gt;<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>8G<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span>-i
 </pre></div>
 </div>
 <p>When these are initiated, VSCode will notify you with a link that you can follow to access the server’s UI directly.</p>
