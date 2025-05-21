@@ -54,7 +54,7 @@ For a more detailed description see the [SLURM documentation](https://slurm.sche
 - *Name:* `--partition`
 - *Alias:* `-p`
 - *Description:* Specifies the partition (or queue) to submit the job to. To see a list of all partitions/queues, the nodes they contain and their respective time limits, type `sinfo` when logged in to the HPC cluster.
-- *Example values:* `gpu`, `cpu`, `fast`, `medium`
+- *Example values:* `gpu`, `cpu`
 
 ### Job Name
 - *Name:* `--job-name`

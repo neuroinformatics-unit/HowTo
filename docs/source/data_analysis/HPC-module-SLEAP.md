@@ -488,19 +488,19 @@ Login to the HPC cluster as described [above](access-to-the-hpc-cluster).
 Start an interactive job on a GPU node. This step is necessary, because we need
 to test the module's access to the GPU.
 ```{code-block} console
-$ srun -p fast --gres=gpu:1 --pty bash -i
+$ srun -p gpu --gres=gpu:1 --pty bash -i
 ```
 :::{dropdown} Explain the above command
 :color: info
 :icon: info
 
-* `-p fast` requests a node from the 'fast' partition. This refers to the queue of nodes with a 3-hour time limit. They are meant for short jobs, such as testing.
+* `-p gpu` requests a node from the 'gpu' partition (queue)
 * `--gres=gpu:1` requests 1 GPU of any kind
-*  `--pty` is short for 'pseudo-terminal'.
+*  `--pty` is short for 'pseudo-terminal'
 *  The `-i` stands for 'interactive'
 
 Taken together, the above command will start an interactive bash terminal session
-on a node of the 'fast' partition, equipped with 1 GPU.
+on a node of the 'gpu' partition, equipped with 1 GPU card.
 :::
 
 First, let's verify that you are indeed on a node equipped with a functional
