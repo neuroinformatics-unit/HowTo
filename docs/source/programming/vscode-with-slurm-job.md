@@ -19,10 +19,12 @@ $ ssh hpc-gw2
 Once connected, request an interactive job via SLURM to access a compute node. For example:
 
 ```{code-block} console
-$ srun -p fast -n 4 --mem 8G --pty bash -i
+$ srun -p cpu -n 4 --mem 8G --pty bash -i
 ```
 
-In this example, `-p fast` requests the fast partition, with default time settings, though you may adjust this according to your needs. For more information, see the [SLURM arguments primer](https://howto.neuroinformatics.dev/programming/SLURM-arguments.html).
+In this example, `-p cpu` requests the "cpu" partition, with default time settings, though you may adjust this according to your needs.
+You can also try other partitions depending on your needs and node availability.
+For more information, see the [SLURM arguments primer](slurm-arguments-target).
 
 After connecting to a compute node, initiate [VSCode Remote Tunnel](https://code.visualstudio.com/docs/remote/tunnels) by typing:
 
@@ -70,6 +72,6 @@ As explained in [VSCode docs](https://code.visualstudio.com/docs/remote/tunnels)
 One advantage of using VSCode's code tunnel is that it forwards any HTTP servers launched from the same node, such as Dash-Plotly apps or Jupyter Notebook servers. To launch your additional server, request a separate slurm job for the same compute node, e.g.:
 
 ```{code-block} console
-$ srun -p fast -w <node-name> -n 4 --mem 8G --pty bash -i
+$ srun -p cpu -w <node-name> -n 4 --mem 8G --pty bash -i
 ```
 When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
