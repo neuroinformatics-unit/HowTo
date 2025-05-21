@@ -41,7 +41,7 @@ and [inference](sleap-inference).
 Verify that you can access HPC gateway node (typing your `<SWC-PASSWORD>` both times when prompted):
 ```{code-block} console
 $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
-$ ssh hpc-gw1
+$ ssh hpc-gw2
 ```
 To learn more about accessing the HPC via SSH, see the [relevant how-to guide](ssh-cluster-target).
 
@@ -137,7 +137,7 @@ i.e. *Predict* -> *Run Training…* -> *Export Training Job Package…*.
 Login to the HPC cluster as described above.
 ```{code-block} console
 $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
-$ ssh hpc-gw1
+$ ssh hpc-gw2
 ```
 Navigate to the training job folder (replace with your own path) and list its contents:
 ```{code-block} console

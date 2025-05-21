@@ -7,7 +7,7 @@ flowchart LR
 
     subgraph trusted["SWC Network Domain"]
 
-        bastion --> |ssh| gateway(("Gateway Node\n hpc-gw1"))
+        bastion --> |ssh| gateway(("Gateway Node\n hpc-gw2"))
         managed_win("💻\n Managed\n Windows\n Desktop") ---> |ssh| gateway
         managed_linux("💻\n Managed\n Linux\n Desktop") ---> |ssh| gateway
         bastion ----> |srun\n sbatch| slurm{"SLURM 🚦"}
