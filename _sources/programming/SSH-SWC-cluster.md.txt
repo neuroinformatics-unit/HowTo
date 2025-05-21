@@ -46,7 +46,7 @@ You have two options on how to proceed:
     ```{code-block} console
     :caption: cmd
     ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
-    ssh hpc-gw1
+    ssh hpc-gw2
     ```
 
     The [SSH config file](#ssh-config-file) section can be followed using the file browser and Notepad, instead of the terminal and `nano`.
@@ -68,7 +68,7 @@ Run the following commands on the terminal, typing your `<SWC-PASSWORD>` both ti
 
 ```{code-block} console
 $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
-$ ssh hpc-gw1
+$ ssh hpc-gw2
 ```
 You have now successfully logged into the cluster 🎉. You may stop reading here, but...
 
@@ -83,14 +83,14 @@ and some [SSH keys](#ssh-keys).
 We first need to distinguish the different types of nodes on the SWC HPC system:
 
 - the *bastion* node (or *login node*) - `ssh.swc.ucl.ac.uk`. This serves as a single entry point to the cluster from external networks. By funneling all external SSH connections through this node, it's easier to monitor, log, and control access, reducing the attack surface. The *bastion* node has very little processing power. It can be used to submit and monitor SLURM jobs, but it shouldn't be used for anything else.
-- the *gateway* node - `hpc-gw1`. This is a more powerful machine and can be used for light processing, such as editing your scripts, creating and copying files etc. However don't use it for anything computationally intensive, since this node's resources are shared across all users.
+- the *gateway* node - `hpc-gw2`. This is a more powerful machine and can be used for light processing, such as editing your scripts, creating and copying files etc. However don't use it for anything computationally intensive, since this node's resources are shared across all users.
 - the *compute* nodes - `enc1-node10`, `gpu-sr670-21`, etc. These are the machinces that actually run the jobs we submit, either interactively via `srun` or via batch scripts submitted with `sbatch`.
 
 ![](../_static/ssh_flowchart_unmanaged.png)
 
 Your home directory, as well as the locations where filesystems like `ceph` are mounted, are shared across all of the nodes.
 
-The first `ssh` command - `ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk` only takes you to the *bastion* node. A second command - `ssh hpc-gw1` - is needed to reach the *gateway* node.
+The first `ssh` command - `ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk` only takes you to the *bastion* node. A second command - `ssh hpc-gw2` - is needed to reach the *gateway* node.
 
 Similarly, if you are on the *gateway* node, typing `logout` once will only get you one layer outo the *bastion* node. You need to type `logout` again to exit the *bastion* node and return to your local machine.
 
@@ -131,7 +131,7 @@ trusted network domain, meaning you can access the HPC cluster without
 having to go through the *bastion* node.
 
 - If you are using a [managed Windows desktop](https://wiki.ucl.ac.uk/display/SSC/SWC+Desktops),
-you can SSH directly into the *gateway* node with `ssh hpc-gw1` from the
+you can SSH directly into the *gateway* node with `ssh hpc-gw2` from the
 Windows `cmd` or PowerShell.
 You may use that node to prepare your scripts and submit SLURM jobs.
 - If you are using a [managed Linux desktop](https://wiki.ucl.ac.uk/display/SSC/Managed+Linux+Desktop),
@@ -184,7 +184,7 @@ Host swc-bastion
 # Specify how to get to the gateway node by jumping through the bastion node
 # The gateway hostname is specified as the jump-host would see it
 Host swc-gateway
-    HostName hpc-gw1
+    HostName hpc-gw2
     User <SWC-USERNAME>
     ProxyJump swc-bastion
 ```
@@ -276,7 +276,7 @@ Host swc-bastion
 # Specify how to get to the gateway node by jumping through the bastion node
 # The gateway hostname is specified as the jump-host would see it
 Host swc-gateway
-    HostName hpc-gw1
+    HostName hpc-gw2
     User <SWC-USERNAME>
     ProxyJump swc-bastion
     IdentityFile ~/.ssh/<MY-SPECIAL-KEY>

@@ -13,7 +13,7 @@ First, open a terminal (not the VSCode terminal) and connect to the gateway node
 
 ```{code-block} console
 $ ssh <SWC-USERNAME>@ssh.swc.ucl.ac.uk
-$ ssh hpc-gw1
+$ ssh hpc-gw2
 ```
 
 Once connected, request an interactive job via SLURM to access a compute node. For example:

@@ -472,7 +472,7 @@ any prompt:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">cmd</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh &lt;SWC-USERNAME&gt;@ssh.swc.ucl.ac.uk</span>
-<span class="go">ssh hpc-gw1</span>
+<span class="go">ssh hpc-gw2</span>
 </pre></div>
 </div>
 </div>
@@ -494,7 +494,7 @@ provided that you have defined those aliases in your <code class="docutils liter
 <p>Run the following commands on the terminal, typing your <code class="docutils literal notranslate"><span class="pre">&lt;SWC-PASSWORD&gt;</span></code> both times when prompted
 (your password will not be displayed on the screen):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>&lt;SWC-USERNAME&gt;@ssh.swc.ucl.ac.uk
-<span class="gp">$ </span>ssh<span class="w"> </span>hpc-gw1
+<span class="gp">$ </span>ssh<span class="w"> </span>hpc-gw2
 </pre></div>
 </div>
 <p>You have now successfully logged into the cluster 🎉. You may stop reading here, but…</p>
@@ -510,12 +510,12 @@ and some <a class="reference internal" href="#ssh-keys"><span class="std std-ref
 <p>We first need to distinguish the different types of nodes on the SWC HPC system:</p>
 <ul class="simple">
 <li><p>the <em>bastion</em> node (or <em>login node</em>) - <code class="docutils literal notranslate"><span class="pre">ssh.swc.ucl.ac.uk</span></code>. This serves as a single entry point to the cluster from external networks. By funneling all external SSH connections through this node, it’s easier to monitor, log, and control access, reducing the attack surface. The <em>bastion</em> node has very little processing power. It can be used to submit and monitor SLURM jobs, but it shouldn’t be used for anything else.</p></li>
-<li><p>the <em>gateway</em> node - <code class="docutils literal notranslate"><span class="pre">hpc-gw1</span></code>. This is a more powerful machine and can be used for light processing, such as editing your scripts, creating and copying files etc. However don’t use it for anything computationally intensive, since this node’s resources are shared across all users.</p></li>
+<li><p>the <em>gateway</em> node - <code class="docutils literal notranslate"><span class="pre">hpc-gw2</span></code>. This is a more powerful machine and can be used for light processing, such as editing your scripts, creating and copying files etc. However don’t use it for anything computationally intensive, since this node’s resources are shared across all users.</p></li>
 <li><p>the <em>compute</em> nodes - <code class="docutils literal notranslate"><span class="pre">enc1-node10</span></code>, <code class="docutils literal notranslate"><span class="pre">gpu-sr670-21</span></code>, etc. These are the machinces that actually run the jobs we submit, either interactively via <code class="docutils literal notranslate"><span class="pre">srun</span></code> or via batch scripts submitted with <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p></li>
 </ul>
 <p><img alt="" src="../_images/ssh_flowchart_unmanaged.png" /></p>
 <p>Your home directory, as well as the locations where filesystems like <code class="docutils literal notranslate"><span class="pre">ceph</span></code> are mounted, are shared across all of the nodes.</p>
-<p>The first <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command - <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;SWC-USERNAME&gt;&#64;ssh.swc.ucl.ac.uk</span></code> only takes you to the <em>bastion</em> node. A second command - <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">hpc-gw1</span></code> - is needed to reach the <em>gateway</em> node.</p>
+<p>The first <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command - <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;SWC-USERNAME&gt;&#64;ssh.swc.ucl.ac.uk</span></code> only takes you to the <em>bastion</em> node. A second command - <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">hpc-gw2</span></code> - is needed to reach the <em>gateway</em> node.</p>
 <p>Similarly, if you are on the <em>gateway</em> node, typing <code class="docutils literal notranslate"><span class="pre">logout</span></code> once will only get you one layer outo the <em>bastion</em> node. You need to type <code class="docutils literal notranslate"><span class="pre">logout</span></code> again to exit the <em>bastion</em> node and return to your local machine.</p>
 <p>The <em>compute</em> nodes should only be accessed via the SLURM <code class="docutils literal notranslate"><span class="pre">srun</span></code> or <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> commands. This can be done from either the <em>bastion</em> or the <em>gateway</em> nodes. If you are running an interactive job on one of the <em>compute</em> nodes, you can terminate it by typing <code class="docutils literal notranslate"><span class="pre">exit</span></code>. This will return you to the node from which you entered.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -547,7 +547,7 @@ trusted network domain, meaning you can access the HPC cluster without
 having to go through the <em>bastion</em> node.</p>
 <ul class="simple">
 <li><p>If you are using a <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/SWC+Desktops">managed Windows desktop</a>,
-you can SSH directly into the <em>gateway</em> node with <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">hpc-gw1</span></code> from the
+you can SSH directly into the <em>gateway</em> node with <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">hpc-gw2</span></code> from the
 Windows <code class="docutils literal notranslate"><span class="pre">cmd</span></code> or PowerShell.
 You may use that node to prepare your scripts and submit SLURM jobs.</p></li>
 <li><p>If you are using a <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/Managed+Linux+Desktop">managed Linux desktop</a>,
@@ -594,7 +594,7 @@ Host<span class="w"> </span>swc-bastion
 <span class="c1"># Specify how to get to the gateway node by jumping through the bastion node</span>
 <span class="c1"># The gateway hostname is specified as the jump-host would see it</span>
 Host<span class="w"> </span>swc-gateway
-<span class="w">    </span>HostName<span class="w"> </span>hpc-gw1
+<span class="w">    </span>HostName<span class="w"> </span>hpc-gw2
 <span class="w">    </span>User<span class="w"> </span>&lt;SWC-USERNAME&gt;
 <span class="w">    </span>ProxyJump<span class="w"> </span>swc-bastion
 </pre></div>
@@ -673,7 +673,7 @@ Host<span class="w"> </span>swc-bastion
 <span class="c1"># Specify how to get to the gateway node by jumping through the bastion node</span>
 <span class="c1"># The gateway hostname is specified as the jump-host would see it</span>
 Host<span class="w"> </span>swc-gateway
-<span class="w">    </span>HostName<span class="w"> </span>hpc-gw1
+<span class="w">    </span>HostName<span class="w"> </span>hpc-gw2
 <span class="w">    </span>User<span class="w"> </span>&lt;SWC-USERNAME&gt;
 <span class="w">    </span>ProxyJump<span class="w"> </span>swc-bastion
 <span class="hll"><span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/&lt;MY-SPECIAL-KEY&gt;
