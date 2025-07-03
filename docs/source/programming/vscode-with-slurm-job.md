@@ -67,7 +67,7 @@ As explained in [VSCode docs](https://code.visualstudio.com/docs/remote/tunnels)
 >Once you connect from a remote VS Code instance, an SSH connection is created over the tunnel in order to provide end-to-end encryption.
 :::
 
-## Additional benefits of code tunnel
+## Port forwarding
 
 One advantage of using VSCode's code tunnel is that it automatically detects any HTTP servers you launch from the same node (such as Dash-Plotly apps or Jupyter Notebook servers) and shows them in the "Ports" view. Make sure to launch your server inside your compute node, for example by running:
 
