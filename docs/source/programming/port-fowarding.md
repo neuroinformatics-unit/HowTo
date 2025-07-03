@@ -22,10 +22,10 @@ ssh hpc-gw2
 Then request a SLURM interactive job. For example:
 
 ```bash
-srun --nodes=1 --ntasks-per-node=1 --cpus-per-task=8 -p a100 --gres=gpu:1 --time=96:00:00 --mem=41G --pty bash -i
+srun -p gpu --gres=gpu:1 --mem=16G --pty bash -i
 ```
 
-This will assign you a compute node and give you an interactive shell there.
+This will assign you a compute node using one GPU and give you an interactive shell there.
 
 ---
 
@@ -53,7 +53,7 @@ Jupyter will start and display a link with a token.
 On **your local machine**, open a separate terminal and run:
 
 ```bash
-ssh -L 8082:localhost:8082 <node-name>
+ssh -N <SWC-USERNAME>@<node-name> -J <SWC-USERNAME>@ssh.swc.ucl.ac.uk,<SWC-USERNAME>@<node-name> -L 8082:localhost:8082
 ```
 
 Replace `<node-name>` with the actual name of the compute node assigned to you (e.g., `gpu-sr670-20`). This command establishes a secure tunnel between your laptop and the node.
@@ -103,7 +103,7 @@ You may prefer this method when:
 
 If you prefer a fully integrated development environment and are okay with occasional tunnel issues, see our guide on:
 
-[Using VSCode with Interactive SLURM Jobs →](./vscode-tunnel.md)
+[Using VSCode with Interactive SLURM Jobs →](./vscode-with-slurm-job.md)
 
 ---
 
@@ -113,7 +113,7 @@ If you prefer a fully integrated development environment and are okay with occas
 
 For Dash applications, you can follow the same port forwarding approach:
 
-1. **On the compute node**, launch your Dash app with a specific port:
+**On the compute node**, launch your Dash app with a specific port:
 
 ```bash
 python app.py
@@ -136,37 +136,32 @@ if __name__ == '__main__':
     app.run_server(debug=False, host='0.0.0.0', port=8050)
 ```
 
-2. **On your local machine**, forward the port:
-
-```bash
-ssh -L 8050:localhost:8050 <node-name>
-```
-
-3. **Access your app** at `http://localhost:8050`
 
 ### Streamlit Applications
 
 For Streamlit applications:
 
-1. **On the compute node**, launch Streamlit with a specific port:
+```python
+import streamlit as st
+
+st.title("My Streamlit App")
+st.write("This is a simple Streamlit app.")
+
+if __name__ == "__main__":
+    st.run()
+```
+**On the compute node**, launch Streamlit with a specific port:
 
 ```bash
 streamlit run app.py --server.port 8501 --server.address 0.0.0.0
 ```
 
-2. **On your local machine**, forward the port:
-
-```bash
-ssh -L 8501:localhost:8501 <node-name>
-```
-
-3. **Access your app** at `http://localhost:8501`
 
 ### Flask/FastAPI Applications
 
 For Flask or FastAPI applications:
 
-1. **On the compute node**, launch your app:
+**On the compute node**, launch your app:
 
 ```bash
 # For Flask
@@ -175,12 +170,3 @@ python app.py
 # For FastAPI
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
-
-2. **On your local machine**, forward the port:
-
-```bash
-ssh -L 8000:localhost:8000 <node-name>
-```
-
-3. **Access your app** at `http://localhost:8000`
-
