@@ -69,9 +69,10 @@ As explained in [VSCode docs](https://code.visualstudio.com/docs/remote/tunnels)
 
 ## Additional benefits of code tunnel
 
-One advantage of using VSCode's code tunnel is that it forwards any HTTP servers launched from the same node, such as Dash-Plotly apps or Jupyter Notebook servers. To launch your additional server, request a separate slurm job for the same compute node, e.g.:
+One advantage of using VSCode's code tunnel is that it automatically detects any HTTP servers you launch from the same node (such as Dash-Plotly apps or Jupyter Notebook servers) and shows them in the "Ports" view. Make sure to launch your server inside your compute node, for example by running:
 
 ```{code-block} console
-$ srun -p cpu -w <node-name> -n 4 --mem 8G --pty bash -i
+$ jupyter notebook
 ```
-When these are initiated, VSCode will notify you with a link that you can follow to access the server's UI directly.
+
+You can then open the forwarded address from the Ports view in your browser or copy it. By default, forwarded ports are private and require GitHub authentication; to make a port public (no sign-in required), right-click the port and select "Port Visibility > Public." For more details, see the [VSCode port forwarding documentation](https://code.visualstudio.com/docs/debugtest/port-forwarding).
