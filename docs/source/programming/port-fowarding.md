@@ -107,7 +107,7 @@ If you prefer a fully integrated development environment and are okay with occas
 
 ---
 
-## Examples for Other Web Applications
+## Examples of Other Web Applications
 
 ### Dash Applications
 
@@ -156,17 +156,3 @@ if __name__ == "__main__":
 streamlit run app.py --server.port 8501 --server.address 0.0.0.0
 ```
 
-
-### Flask/FastAPI Applications
-
-For Flask or FastAPI applications:
-
-**On the compute node**, launch your app:
-
-```bash
-# For Flask
-python app.py
-
-# For FastAPI
-uvicorn main:app --host 0.0.0.0 --port 8000
-```
