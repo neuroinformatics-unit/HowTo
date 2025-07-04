@@ -1,4 +1,4 @@
-# Port Forwarding for Jupyter and HPC Jobs
+# Accessing HTTP servers running on the HPC with port forwarding
 
 This guide explains how to securely and effectively forward ports from a compute node on the SWC HPC cluster to your local machine, enabling access to services like Jupyter Lab. This is particularly useful when `code tunnel` is unreliable or you prefer using a terminal-based workflow.
 
