@@ -146,9 +146,6 @@ import streamlit as st
 
 st.title("My Streamlit App")
 st.write("This is a simple Streamlit app.")
-
-if __name__ == "__main__":
-    st.run()
 ```
 **On the compute node**, launch Streamlit with a specific port:
 
