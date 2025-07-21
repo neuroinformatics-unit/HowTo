@@ -44,7 +44,19 @@ Then launch Jupyter Lab, specifying a port (e.g., 8082) and disabling the browse
 jupyter lab --no-browser --port=8082
 ```
 
-Jupyter will start and display a link with a token.
+Jupyter will start and display output similar to this:
+
+```
+[I 2024-01-01 12:00:00.000 ServerApp] Jupyter Server 2.14.2 is running at:
+[I 2024-01-01 12:00:00.000 ServerApp] http://localhost:8082/lab?token=abc123def456...
+[I 2024-01-01 12:00:00.000 ServerApp]     http://127.0.0.1:8082/lab?token=abc123def456...
+...
+    Or copy and paste one of these URLs:
+        http://localhost:8082/lab?token=abc123def456...
+        http://127.0.0.1:8082/lab?token=abc123def456...
+```
+
+**Look for the lines that say "Or copy and paste one of these URLs:"** - these contain the complete URLs with the authentication token that you'll need to access Jupyter Lab from your browser.
 
 ---
 
@@ -58,7 +70,13 @@ ssh -N <SWC-USERNAME>@<node-name> -J <SWC-USERNAME>@ssh.swc.ucl.ac.uk,<SWC-USERN
 
 Replace `<node-name>` with the actual name of the compute node assigned to you (e.g., `gpu-sr670-20`). This command establishes a secure tunnel between your laptop and the node.
 
-Then, **in your browser**, copy the complete URL from the Jupyter Lab output (change `127.0.0.1` to `localhost`) or go to `http://localhost:8082` and paste the token.
+Then, **in your browser**, copy one of the complete URLs from the Jupyter Lab output. For example, from the output above, you would copy:
+
+```
+http://localhost:8082/lab?token=abc123def456...
+```
+
+**Note:** Either URL works, but you can change `127.0.0.1` to `localhost` if needed. The important part is to **copy the entire URL including the `?token=` portion** - this token is what authenticates you to the Jupyter server.
 
 ---
 ## Troubleshooting
