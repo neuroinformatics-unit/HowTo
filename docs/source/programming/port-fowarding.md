@@ -34,7 +34,7 @@ This will assign you a compute node using one GPU and give you an interactive sh
 On the assigned node, activate your environment and navigate to your project folder:
 
 ```bash
-pyenv activate my_venv_3115
+conda activate my_env
 cd /path/to/your/project
 ```
 
