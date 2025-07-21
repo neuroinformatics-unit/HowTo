@@ -58,13 +58,7 @@ ssh -N <SWC-USERNAME>@<node-name> -J <SWC-USERNAME>@ssh.swc.ucl.ac.uk,<SWC-USERN
 
 Replace `<node-name>` with the actual name of the compute node assigned to you (e.g., `gpu-sr670-20`). This command establishes a secure tunnel between your laptop and the node.
 
-Then, **in your browser**, go to:
-
-```
-http://localhost:8082
-```
-
-Paste in the token provided by the `jupyter lab` output.
+Then, **in your browser**, copy the complete URL from the Jupyter Lab output (change `127.0.0.1` to `localhost`) or go to `http://localhost:8082` and paste the token.
 
 ---
 
@@ -113,13 +107,7 @@ If you prefer a fully integrated development environment and are okay with occas
 
 For Dash applications, you can follow the same port forwarding approach:
 
-**On the compute node**, launch your Dash app with a specific port:
-
-```bash
-python app.py
-```
-
-Where your `app.py` contains:
+Create your `app.py`:
 
 ```python
 from dash import Dash, html, dcc
@@ -134,6 +122,12 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8050)
+```
+
+**On the compute node**, launch your Dash app:
+
+```bash
+python app.py
 ```
 
 
