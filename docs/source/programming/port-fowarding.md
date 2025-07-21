@@ -61,41 +61,17 @@ Replace `<node-name>` with the actual name of the compute node assigned to you (
 Then, **in your browser**, copy the complete URL from the Jupyter Lab output (change `127.0.0.1` to `localhost`) or go to `http://localhost:8082` and paste the token.
 
 ---
-
-### 4. Notes on usage and cluster rules
-
-This method **respects cluster usage policies** because:
-
-- You are only SSHing into a node **you were explicitly allocated by SLURM**.
-- The port forwarding (`ssh -L`) only gives you access to services running **on the localhost of that node**, not to shared resources.
-
-:::note
-Using `ssh -L` on an allocated node is generally considered safe, as long as you're not trying to bypass SLURM's resource management or share your access with others.
-:::
-
----
-
-## When to use this method
-
-You may prefer this method when:
-
-- `code tunnel` times out frequently or becomes unreliable.
-- You don't need a full GUI like VSCode but still want access to Jupyter or HTTP apps.
-- You're comfortable with the command line and prefer manual control over your environment.
-
----
-
 ## Troubleshooting
 
-- **Jupyter not accessible at `localhost:8082`?** Make sure the ports match exactly in both commands.
-- **Timeouts or connection drops?** Ensure you're using the assigned node and haven't closed the original SLURM session.
-- **Port already in use?** Try another port like `8888`, `8090`, etc., just remember to update both commands.
+- **Port mismatch?** Ensure both commands use the same port number.
+- **Connection drops?** Keep your SLURM session active on the assigned node.
+- **Port in use?** Try a different port (e.g., `8888`, `8090`) in both commands.
 
 ---
 
 ## Complementary tools
 
-If you prefer a fully integrated development environment and are okay with occasional tunnel issues, see our guide on:
+If you prefer a fully integrated development environment see our guide on:
 
 [Using VSCode with Interactive SLURM Jobs →](./vscode-with-slurm-job.md)
 
