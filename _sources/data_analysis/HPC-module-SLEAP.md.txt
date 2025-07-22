@@ -89,7 +89,7 @@ To minimise the risk of issues due to incompatibilities between versions, ensure
 ### Mount the SWC filesystem on your local PC/laptop
 The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop.
 If you have not done so, please follow the relevant instructions on the
-[SWC internal wiki](https://wiki.ucl.ac.uk/display/SSC/SWC+Storage+Platform+Overview).
+[SWC internal wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-SWC-Storage-Platform-Overview-198905992.aspx).
 
 We will also assume that the data you are working with are stored in a `ceph`
 directory to which you have access to. In the rest of this guide, we will use the path
@@ -341,7 +341,7 @@ $ cat slurm.gpu-sr670-20.3445652.err
 
 If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:
 - CPU memory (RAM), specified via the `--mem` argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.
-- GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the `--gres gpu:1` argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
+- GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the `--gres gpu:1` argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx).
 - If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
@@ -439,7 +439,7 @@ sleap-track $VIDEO_DIR/M708149_EPM_20200317_165049331-converted.mp4 \
 The script is very similar to the training script, with the following differences:
 - The time limit `-t` is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.
 - The requested number of cores `n` and memory `--mem` are higher. This will depend on the requirements of the specific job you are running. It's best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.
-- The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see [the SWC wiki](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture)).
+- The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see [the SWC wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx)).
 - The `./train-script.sh` line is replaced by the `sleap-track` command.
 - The `\` character is used to split the long `sleap-track` command into multiple lines for readability. It is not necessary if the command is written on a single line.
 

@@ -397,7 +397,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Some links within this document point to the
-<a class="reference external" href="https://wiki.ucl.ac.uk/display/SI/SWC+Intranet">SWC internal wiki</a>,
+<a class="reference external" href="https://liveuclac.sharepoint.com/sites/SWCIntranet">SWC internal wiki</a>,
 which is only accessible from within the SWC network.
 We recommend opening these links in a new tab.</p>
 </div>
@@ -518,7 +518,7 @@ To minimise the risk of issues due to incompatibilities between versions, ensure
 <h3>Mount the SWC filesystem on your local PC/laptop<a class="headerlink" href="#mount-the-swc-filesystem-on-your-local-pc-laptop" title="Link to this heading">#</a></h3>
 <p>The rest of this guide assumes that you have mounted the SWC filesystem on your local PC/laptop.
 If you have not done so, please follow the relevant instructions on the
-<a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/SWC+Storage+Platform+Overview">SWC internal wiki</a>.</p>
+<a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-SWC-Storage-Platform-Overview-198905992.aspx">SWC internal wiki</a>.</p>
 <p>We will also assume that the data you are working with are stored in a <code class="docutils literal notranslate"><span class="pre">ceph</span></code>
 directory to which you have access to. In the rest of this guide, we will use the path
 <code class="docutils literal notranslate"><span class="pre">/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data</span></code> which contains a SLEAP project
@@ -745,7 +745,7 @@ view the logs</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:</p>
 <ul class="simple">
 <li><p class="sd-card-text">CPU memory (RAM), specified via the <code class="docutils literal notranslate"><span class="pre">--mem</span></code> argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.</p></li>
-<li><p class="sd-card-text">GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:1</span></code> argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a4500:1</span></code>). The SWC wiki provides a <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture">list of all GPU card types and their specifications</a>.</p></li>
+<li><p class="sd-card-text">GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:1</span></code> argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a4500:1</span></code>). The SWC wiki provides a <a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx">list of all GPU card types and their specifications</a>.</p></li>
 <li><p class="sd-card-text">If requesting more memory doesn’t help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with <em>Input scaling</em>, <em>Max stride</em> and <em>Batch size</em>. See SLEAP’s <a class="reference external" href="https://sleap.ai/">documentation</a> and <a class="reference external" href="https://github.com/talmolab/sleap/discussions">discussion forum</a> for more details.</p></li>
 </ul>
 </div>
@@ -842,7 +842,7 @@ on a single video or a folder of videos.</p>
 <ul class="simple">
 <li><p>The time limit <code class="docutils literal notranslate"><span class="pre">-t</span></code> is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.</p></li>
 <li><p>The requested number of cores <code class="docutils literal notranslate"><span class="pre">n</span></code> and memory <code class="docutils literal notranslate"><span class="pre">--mem</span></code> are higher. This will depend on the requirements of the specific job you are running. It’s best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.</p></li>
-<li><p>The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see <a class="reference external" href="https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture">the SWC wiki</a>).</p></li>
+<li><p>The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see <a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx">the SWC wiki</a>).</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">./train-script.sh</span></code> line is replaced by the <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">\</span></code> character is used to split the long <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command into multiple lines for readability. It is not necessary if the command is written on a single line.</p></li>
 </ul>
