@@ -27,7 +27,7 @@ the connection is much more straightforward than described here
 
 ## Prerequisites
 - You have an SWC account and know your username and password.
-- You have read the [SWC wiki's section on High Performance Computing (HPC)](https://wiki.ucl.ac.uk/display/SSC/High+Performance+Computing), especially the [Logging into the Cluster page](https://wiki.ucl.ac.uk/display/SSC/Logging+into+the+Cluster).
+- You have read the [SWC wiki's section on High Performance Computing (HPC)](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-High-Performance-Computing-147954090.aspx), especially the [Logging into the Cluster page](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-Logging-into-the-Cluster-194972967.aspx).
 - You know the basics of using the command line, i.e. using the terminal to navigate the file system and run commands.
 - You have an SSH client installed on your computer. This is usually pre-installed on Linux and macOS. SSH is also available on Windows (since Windows 10), however some steps will differ. If you are a Windows user, read the note below before proceeding.
 
@@ -135,11 +135,11 @@ a Windows or a Linux image. These machines are already part of the SWC's
 trusted network domain, meaning you can access the HPC cluster without
 having to go through the *bastion* node.
 
-- If you are using a [managed Windows desktop](https://wiki.ucl.ac.uk/display/SSC/SWC+Desktops),
+- If you are using a [managed Windows desktop](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-SWC-Desktops-147956857.aspx),
 you can SSH directly into the *gateway* node with `ssh hpc-gw2` from the
 Windows `cmd` or PowerShell.
 You may use that node to prepare your scripts and submit SLURM jobs.
-- If you are using a [managed Linux desktop](https://wiki.ucl.ac.uk/display/SSC/Managed+Linux+Desktop),
+- If you are using a [managed Linux desktop](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-Managed-Linux-Desktop-69502751.aspx),
 you can even bypass the *gateway* node. In fact, you may directly submit SLURM jobs
 from your terminal, without having to SSH at all. That's because managed Linux desktops
 use the same platform as the HPC nodes

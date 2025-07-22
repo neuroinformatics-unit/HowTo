@@ -105,7 +105,7 @@ If needed, the systems administrator can extend long-running jobs.
 :::{warning}
 No GPU will be allocated to you unless you specify it via the `--gres` argument (even if you are on the 'gpu' partition).
 To request 1 GPU of any kind, use `--gres gpu:1`. To request a specific GPU type, you have to include its name, e.g. `--gres gpu:rtx2080:1`.
-You can view the available GPU types on the [SWC internal wiki](https://wiki.ucl.ac.uk/display/SSC/CPU+and+GPU+Platform+architecture).
+You can view the available GPU types on the [SWC internal wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx).
 :::
 
 ### Standard Output File
