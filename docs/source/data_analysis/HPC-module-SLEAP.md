@@ -6,6 +6,8 @@
 ```{include} ../_static/code-blocks-note.md
 ```
 
+
+
 ## Abbreviations
 | Acronym                                                         | Meaning                                      |
 | --------------------------------------------------------------- | -------------------------------------------- |
@@ -54,16 +56,27 @@ $ module avail
 SLEAP/2023-03-13
 SLEAP/2023-08-01
 SLEAP/2024-08-14
+SLEAP/2025-09-30
 ...
 ```
 - `SLEAP/2023-03-13` corresponds to `SLEAP v.1.2.9`
 - `SLEAP/2023-08-01` corresponds to `SLEAP v.1.3.1`
 - `SLEAP/2024-08-14` corresponds to `SLEAP v.1.3.3`
+- `SLEAP/2025-09-30` corresponds to `SLEAP v.1.3.4`
 
 We recommend always using the latest version, which is the one loaded by default
 when you run `module load SLEAP`. If you want to load a specific version,
 you can do so by typing the full module name,
 including the date e.g. `module load SLEAP/2023-08-01`.
+
+::: {warning}
+All SLEAP modules currently available on the HPC are from the
+legacy SLEAP<=1.4.1 series (TensorFlow backend).
+Thus all links to SLEAP documentation in this guide refer to <https://legacy.sleap.ai/>.
+
+Modules for [SLEAP>=1.5.0](https://docs.sleap.ai/latest/) (PyTorch backend)
+will be added in future.
+:::
 
 If a module has been successfully loaded, it will be listed when you run `module list`,
 along with other modules it may depend on:
@@ -83,7 +96,7 @@ While you can delegate the GPU-intensive work to the HPC cluster,
 you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.
 
-We recommend following the official [SLEAP installation guide](https://sleap.ai/installation.html).
+We recommend following the official [SLEAP installation guide](https://legacy.sleap.ai/installation.html).
 To minimise the risk of issues due to incompatibilities between versions, ensure the version of your local installation of SLEAP matches the one you plan to load in the cluster.
 
 ### Mount the SWC filesystem on your local PC/laptop
@@ -119,14 +132,14 @@ can be [viewed via the SLEAP GUI](model-evaluation) on your local SLEAP installa
 
 (prepare-the-training-job)=
 ### Prepare the training job
-Follow the SLEAP instructions for [Creating a Project](https://sleap.ai/tutorials/new-project.html)
-and [Initial Labelling](https://sleap.ai/tutorials/initial-labeling.html).
+Follow the SLEAP instructions for [Creating a Project](https://legacy.sleap.ai/tutorials/new-project.html)
+and [Initial Labelling](https://legacy.sleap.ai/tutorials/initial-labeling.html).
 Ensure that the project file (e.g. `labels.v001.slp`) is saved in the mounted SWC filesystem
 (as opposed to your local filesystem).
 
-Next, follow the instructions in [Remote Training](https://sleap.ai/guides/remote.html#remote-training),
+Next, follow the instructions in [Remote Training](https://legacy.sleap.ai/guides/remote.html#remote-training),
 i.e. *Predict* -> *Run Training…* -> *Export Training Job Package…*.
-- For selecting the right configuration parameters, see [Configuring Models](https://sleap.ai/guides/choosing-models.html#) and [Troubleshooting Workflows](https://sleap.ai/guides/troubleshooting-workflows.html)
+- For selecting the right configuration parameters, see [Configuring Models](https://legacy.sleap.ai/guides/choosing-models.html#) and [Troubleshooting Workflows](https://legacy.sleap.ai/guides/troubleshooting-workflows.html)
 - Set the *Predict On* parameter to *nothing*. Remote training and inference (prediction) are easiest to run separately on the HPC Cluster. Also unselect *Visualize Predictions During Training* in training settings, if it's enabled by default.
 - If you are working with camera view from above or below (as opposed to a side view), set the *Rotation Min Angle* and *Rotation Max Angle* to -180 and 180 respectively in the *Augmentation* section.
 - Make sure to save the exported training job package (e.g. `labels.v001.slp.training_job.zip`) in the mounted SWC filesystem, for example, in the same directory as the project file.
@@ -168,12 +181,12 @@ sleap-train centered_instance.json labels.v001.pkg.slp
 The precise commands will depend on the model configuration you chose in SLEAP.
 Here we see two separate training calls, one for the 'centroid' and another for
 the 'centered_instance' model. That's because in this example we have chosen
-the ['Top-Down'](https://sleap.ai/tutorials/initial-training.html#training-options)
+the ['Top-Down'](https://legacy.sleap.ai/tutorials/initial-training.html#training-options)
 configuration, which consists of two neural networks - the first for isolating
 the animal instances (by finding their centroids) and the second for predicting
 all the body parts per instance.
 
-![Top-Down model configuration](https://sleap.ai/_images/topdown_approach.jpg)
+![Top-Down model configuration](https://legacy.sleap.ai/_images/topdown_approach.jpg)
 
 :::{dropdown} More on 'Top-Down' vs 'Bottom-Up' models
 :color: info
@@ -182,7 +195,7 @@ all the body parts per instance.
 Although the 'Top-Down' configuration was designed with multiple animals in mind,
 it can also be used for single-animal videos. It makes sense to use it for videos
 where the animal occupies a relatively small portion of the frame - see
-[Troubleshooting Workflows](https://sleap.ai/guides/troubleshooting-workflows.html) for more info.
+[Troubleshooting Workflows](https://legacy.sleap.ai/guides/troubleshooting-workflows.html) for more info.
 :::
 
 Next you need to create a SLURM batch script, which will schedule the training job
@@ -214,6 +227,9 @@ An example is provided below, followed by explanations.
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
 
+# Print GPU info
+nvidia-smi
+
 # Load the SLEAP module
 module load SLEAP
 
@@ -241,6 +257,8 @@ For more information  see the [SLURM documentation](https://slurm.schedmd.com/sb
 
 - The `#` lines are comments. They are not executed by SLURM, but they are useful
 for explaining the script to your future self and others.
+
+- The `nvidia-smi` line prints some information about the GPU(s) available on the node, including their driver version and memory usage. This is useful for debugging purposes.
 
 - The `module load SLEAP` line loads the latest SLEAP module and any other modules
 it may depend on.
@@ -342,7 +360,7 @@ $ cat slurm.gpu-sr670-20.3445652.err
 If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:
 - CPU memory (RAM), specified via the `--mem` argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.
 - GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the `--gres gpu:1` argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a4500:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx).
-- If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
+- If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://legacy.sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
 ```
 
 (model-evaluation)=
@@ -383,12 +401,12 @@ The SLEAP GUI on your local machine can be used to quickly evaluate the trained 
 - Click on *Add Trained Models(s)* and select the folder containing the model(s) you want to evaluate.
 - You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking *View Metrics*.
 
-For more detailed evaluation metrics, you can refer to [SLEAP's model evaluation notebook](https://sleap.ai/notebooks/Model_evaluation.html).
+For more detailed evaluation metrics, you can refer to [SLEAP's model evaluation notebook](https://legacy.sleap.ai/notebooks/Model_evaluation.html).
 
 (sleap-inference)=
 ## Model inference
 By inference, we mean using a trained model to predict the labels on new frames/videos.
-SLEAP provides the [`sleap-track`](https://sleap.ai/guides/cli.html?#inference-and-tracking) command line utility for running inference
+SLEAP provides the [`sleap-track`](https://legacy.sleap.ai/guides/cli.html?#inference-and-tracking) command line utility for running inference
 on a single video or a folder of videos.
 
 Below is an example SLURM batch script that contains a `sleap-track` call.
@@ -409,6 +427,9 @@ Below is an example SLURM batch script that contains a `sleap-track` call.
 #SBATCH -e slurm.%x.%N.%j.err # write STDERR
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=user@domain.com
+
+# Print GPU info
+nvidia-smi
 
 # Load the SLEAP module
 module load SLEAP
@@ -452,9 +473,16 @@ The script is very similar to the training script, with the following difference
 - The first argument is the path to the video file to be processed.
 - The `-m` option is used to specify the path to the model configuration file(s) to be used for inference. In this example we use the two models that were trained above.
 - The `--gpu` option is used to specify the GPU to be used for inference. The `auto` value will automatically select the GPU with the highest percentage of available memory (of the GPUs that are available on the machine/node)
-- The options starting with `--tracking` specify parameters used for tracking the detected instances (animals) across frames. See SLEAP's guide on [tracking methods](https://sleap.ai/guides/proofreading.html#tracking-method-details) for more info.
+- The options starting with `--tracking` specify parameters used for tracking the detected instances (animals) across frames. See SLEAP's guide on [tracking methods](https://legacy.sleap.ai/guides/proofreading.html#tracking-method-details) for more info.
 - The `-o` option is used to specify the path to the output file containing the predictions.
 - The above script will predict all the frames in the video. You may select specific frames via the `--frames` option. For example: `--frames 1-50` or `--frames 1,3,5,7,9`.
+:::
+
+::: {dropdown} RGB-to-Grayscale conversion errors during inference
+:color: warning
+:icon: alert-fill
+
+If you encounter errors related to [RGB-to-Grayscale conversion](https://github.com/talmolab/sleap/issues/638), you may circumvent them by adding the `--batch_size 1` option to `sleap-track` or by running inference on a CPU node (change `-p gpu` to `-p cpu` and remove the `--gres gpu:rtx5000:1` option). That said, both workarounds will make inference slower.
 :::
 
 You can submit and monitor the inference job in the same way as the training job.
@@ -470,8 +498,8 @@ You can use the SLEAP GUI on your local machine to load and view the predictions
 ## The training-inference cycle
 Now that you have some predictions, you can keep improving your models by repeating
 the training-inference cycle. The basic steps are:
-- Manually correct some of the predictions: see [Prediction-assisted labeling](https://sleap.ai/tutorials/assisted-labeling.html)
-- Merge corrected labels into the initial training set: see [Merging guide](https://sleap.ai/guides/merging.html)
+- Manually correct some of the predictions: see [Prediction-assisted labeling](https://legacy.sleap.ai/tutorials/assisted-labeling.html)
+- Merge corrected labels into the initial training set: see [Merging guide](https://legacy.sleap.ai/guides/merging.html)
 - Save the merged training set as `labels.v002.slp`
 - Export a new training job `labels.v002.slp.training_job` (you may reuse the training configurations from `v001`)
 - Repeat the training-inference cycle until satisfied
@@ -556,7 +584,7 @@ $ which python
 
 Finally we will verify that the `sleap` python package can be imported and can
 'see' the GPU. We will mostly just follow the
-[relevant SLEAP instructions](https://sleap.ai/installation.html#testing-that-things-are-working).
+[relevant SLEAP instructions](https://legacy.sleap.ai/installation.html#testing-that-things-are-working).
 First, start a Python interpreter:
 ```{code-block} console
 $ python
