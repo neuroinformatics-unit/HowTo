@@ -6,8 +6,6 @@
 ```{include} ../_static/code-blocks-note.md
 ```
 
-
-
 ## Abbreviations
 | Acronym                                                         | Meaning                                      |
 | --------------------------------------------------------------- | -------------------------------------------- |
@@ -75,7 +73,7 @@ legacy SLEAP<=1.4.1 series (TensorFlow backend).
 Thus all links to SLEAP documentation in this guide refer to <https://legacy.sleap.ai/>.
 
 Modules for [SLEAP>=1.5.0](https://docs.sleap.ai/latest/) (PyTorch backend)
-will be added in future.
+will be added in the future.
 :::
 
 If a module has been successfully loaded, it will be listed when you run `module list`,
