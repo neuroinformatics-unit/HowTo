@@ -3,6 +3,7 @@ matplotlib
 myst-parser
 nbsphinx
 numpydoc
+pre-commit
 pydata-sphinx-theme
 
 sphinx
