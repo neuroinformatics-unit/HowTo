@@ -5,14 +5,16 @@
 
 
 <!-- ## A brief primer on video encoding
-- GoP? -->
+- GoP? keyframes, i-frames, PTS etc -->
+<!-- The encoder assigns PTS values to each frame based on the frame rate and time base, but it has some freedom in how it does this — different encoders (libx264, libx265, etc.) and different container muxers can make slightly different choices about rounding and spacing. Once written to the file, PyAV just reads whatever values the encoder stored. -->
 
 ## Re-encoding videos to ensure reliably seekable frames
 For all the rest: recommended to re-encode video first
 
 To re-encode (from SLEAP DOCS, with request for timestamps unchanged)
 ```bash
-ffmpeg -y -i input_video.avi \
+ffmpeg -y \
+-i input_video.avi \
 -c:v libx264 \
 -pix_fmt yuv420p \
 -preset superfast \
@@ -35,7 +37,12 @@ output_video.mp4
 ## Counting frames in a video
 
 ```bash
-ffprobe -v error -select_streams v:0 -count_frames -show_entries stream=nb_read_frames -of csv=p=0 <path-to-video>
+ffprobe -v error \
+-select_streams v:0 \
+-count_frames \
+-show_entries stream=nb_read_frames \
+-of csv=p=0 \  # output as .csv without headers
+<path-to-video>
 ```
 Note that we use `nb_read_frames` rather than `nb_frames`; the latter is faster but less accurate because it gets the frames from the header of the container.
 
@@ -60,10 +67,9 @@ for f in "${frames[@]}"; do
 done
 ```
 This spawns one ffmpeg call per frame, which is slower but easier to manage for large lists.
-* You can change the fps before extracting...? (https://shotstack.io/learn/ffmpeg-extract-frames/)
 
-Recommended for sanity: sleap-io or similar, it provides an array-like interface for a video, then use PIL or imageio to save the file
-
+* Option 2: sleap-io or similar, it provides an array-like interface for a video, then use PIL or imageio to save the file
+Con: it can be slow for later frames
 ```python
 import sleap_io as sio
 import imageio.v3 as iio
@@ -80,6 +86,117 @@ for frame_idx in list_frames_idcs:
 
 Note that sleap-io does not re-encode — it reads frames from the original file using whichever backend you have installed (imageio-ffmpeg by default, or OpenCV/PyAV optionally). If the video is not reliably seekable (e.g. a poorly encoded AVI), you can still get wrong frames, same as with raw ffmpeg. the recommendation in your ffmpeg.md to re-encode first still applies even when using sleap-io. sleap-io makes the frame access interface nicer, but it doesn't solve the underlying seekability problem of the source video.
 
+
+* Option 3: use pyav and seek first to nearest keyframe
+From Claude:
+Seeking to a specific frame index requires converting it to a timestamp, seeking to the nearest keyframe before it, then decoding forward until you reach it:
+
+```python
+import av
+
+target_idx = 324
+# indices are 0-based because
+# frame.pts starts at 0 for the first frame,
+# so current_idx (derived from frame.pts) is also 0-based.
+
+with av.open(video_path) as container:
+    stream = container.streams.video[0]
+    fps = float(stream.average_rate)
+
+    # Seek to nearest keyframe before target (time in microseconds)
+    container.seek(int(target_idx / fps * 1e6))
+
+    for frame in container.decode(stream):
+        current_idx = round(frame.pts * float(stream.time_base) * fps)
+        if current_idx >= target_idx:
+            img = frame.to_ndarray(format="rgb24")
+            break
+```
+
+`container.seek()` takes microseconds and lands on the nearest keyframe before the target time
+`frame.pts * stream.time_base` converts the frame's presentation timestamp to seconds, then multiplying by `fps` gives the frame index
+You decode forward from the keyframe until you hit the target
+This is fast for any frame because it only decodes from the nearest keyframe, not from the start of the video.
+
+
+**To avoid issues with floating point error accumulation**, operating with fraction arithmetic via `Fraction` is preferred (we assumeframes have uniformly spaced PTS values, i.e. constant frame rate):
+
+`frame.time_base` and `stream.codec_context.framerate` are already Fraction objects in PyAV. Note that PTS (Presentation Timestamp) is always an integer in the container.
+
+* Why PTS is always an integer:
+It's how video containers work at the format level — PTS is stored as an int64 in the container, representing a count of time base units. The time base (a Fraction) is the scaling factor to convert it to seconds. So actual time = pts * time_base, where pts is always a raw integer counter.
+
+int() is still worth keeping for `target_pts` because target_pts should theoretically be an exact integer (for constant frame rate video, target_idx / fps / time_base divides out cleanly). Using int() makes this explicit and keeps both sides as integers. If it's not an exact integer due to an unusual fps/time_base combination, int() floors it, which is the safe direction — you'd land on the frame just before rather than just after the target.
+
+```py
+import av
+from fractions import Fraction
+
+target_idx = 324
+# indices are 0-based because
+# frame.pts starts at 0 for the first frame,
+# so current_idx (derived from frame.pts) is also 0-based.
+
+with av.open(video_path) as container:
+    stream = container.streams.video[0]
+    fps = stream.codec_context.framerate # Fraction
+
+    # Go to nearest keyframe **before** target (time in microseconds)
+    container.seek(int(target_idx / float(fps) * 1e6))
+
+    # Decode from keyframe until we get a frame with PTS >= target
+    target_pts = None # initialise
+    for frame in container.decode(stream):
+        # Compute target_pts from first frame
+        # (we need to get frame.time_base from first frame)
+        if target_pts is None:
+          target_pts = int(Fraction(target_idx) / fps / frame.time_base)
+
+        # Throw an error if PTS for this frame not defined
+        # (possible in some containers)
+        if frame.pts is None:
+          raise ValueError(f"Frame has no PTS — cannot seek accurately")
+
+        # Compare PTS values (both are integers)
+        if frame.pts >= target_pts:
+            img = frame.to_ndarray(format='rgb24')
+            break
+```
+
+* Why >= rather than =?
+target_pts is computed from target_idx / fps / time_base, which assumes frames are perfectly evenly spaced. But the actual PTS values stored in the stream may not follow this exactly — encoders sometimes adjust PTS values slightly for buffering, B-frames, or timestamp rounding. So the frame you want might be stored with PTS 324323 rather than the 324324 you computed, and == would skip it.
+>= handles this by accepting the first frame at or past the target time, which is always the correct frame.
+
+
+The PTS values stored in the file are the ground truth — they are what the decoder uses to decide when to display each frame. Your computed target_pts is just an approximation derived from metadata (fps, time_base), so the actual stored PTS is always more authoritative. This is exactly why >= is safer than == — you trust the stored PTS values rather than your computed expectation of what they should be.
+
+Key aspects:
+- exact Fraction arithmetic for target_pts,
+- integer comparison, and
+- >= to handle PTS misalignment.
+
+
+If you are closer to the end of the video (e.g. you want to extract the last frame), you may want to start searching from a
+point closer the end.
+```py
+# Last frame — seek near the end, then step forward:
+with av.open(video_path) as container:
+    stream = container.streams.video[0]
+
+    # Seeking lands on the nearest keyframe before the requested point
+    container.seek(stream.duration, stream=stream)
+
+    # decodes frames sequentially from the seek position.
+    # Each frame is decoded in order from that keyframe onward.
+    last = None
+    for frame in container.decode(stream):
+        last = frame
+    img = last.to_ndarray(format="rgb24")
+iio.imwrite(output_path, img)
+```
+
+The one caveat with PTS comparison: it assumes frames have uniformly spaced PTS values (constant frame rate). For variable frame rate videos this could break, but for your camera footage that's not a concern.
+
 ## Extracting a clip from a video
 * Recommended to always check at the end if the total number of frames in the output clip is what you expect! (See section "Counting frames in a video")
 
@@ -88,6 +205,7 @@ Note that sleap-io does not re-encode — it reads frames from the original file
 
 
 * Output seeking
+- Slower but more reliable (see [crabs script](https://github.com/SainsburyWellcomeCentre/crabs-exploration/blob/6dd8df17642d0250674c62083057abce03c64fff/crabs/utils/extract_loop_clips.py#L188))
 
 
 * Stream copy: if there is stream `copy` there is no frame-accuracy, because the stream that is passed to the `input` and `output` gates is not decoded into frames. Even if used with "output" syntax.
@@ -103,6 +221,8 @@ frame_PTS: the start time of the frame (PRESENTATION TIMESTAMP = PTS)
 So if the stream that goes thru the "output gate" is in groups of pictures (e.g. because we have `copy` and the video is not transcoded), then it will let pass one full group of pictures
 
 Note: [Syntax to express time duration in ffmpeg commands](https://ffmpeg.org/ffmpeg-utils.html#time-duration-syntax)
+
+Alternative: via sleap-io (although note that sleap-io does not re-encode)
 
 ## Combine image files into a video
 
