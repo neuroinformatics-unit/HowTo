@@ -1,12 +1,63 @@
 # Useful `ffmpeg` workflows for working with video data
 
 
-`ffmpeg` is a very powerful tool to work with video data, but has a few gotchas that can be tricky. Below some recommendations for common workflows and the rationale behind them.
+`ffmpeg` is a very powerful tool to work with video data, but has a few gotchas that can be tricky. Below you can find some recommendations for common workflows and the rationale behind them.
 
 
-<!-- ## A brief primer on video encoding
-- GoP? keyframes, i-frames, PTS etc -->
-<!-- The encoder assigns PTS values to each frame based on the frame rate and time base, but it has some freedom in how it does this — different encoders (libx264, libx265, etc.) and different container muxers can make slightly different choices about rounding and spacing. Once written to the file, PyAV just reads whatever values the encoder stored. -->
+## A minimal primer on video encoding
+We often have the mental model of videos being a sequence of standalone images. However, digital videos are typically encoded as video streams, whose structure is very different from a sequence of standalone frames. To understand better the nuances between encoded digital videos and this mental model, we need to clarify some concepts.
+
+We only give a brief and simplified overview here, but if you would like further details [this blogpost from Loopbio](http://blog.loopbio.com/video-io-1-introduction.html#:~:text=A%20concise%20primer%20on%20video%20compression) is a recommended read (as well as the references at the end of the post).
+
+### Encoding and decoding
+Encoding is the process of converting raw video into a compressed bitstream following a specific standard (e.g., H.264). Decoding is the reverse process: interpreting a bitstream to reconstruct the pixel data for each frame. In this post, we will use encoding and compression to refer to the same concept, even though strictly speaking encoding refers to a change of format only. But in the context of video data both concepts largely overlap.
+
+A clear example of why we encode videos is provided in the [Loopbio blogpost](http://blog.loopbio.com/video-io-1-introduction.html):
+> When stored digitally, an uncompressed video needs `width * height * colordepth * framerate * duration` bits. How much is that? As an example, one early video that a client uploaded to loopy had a resolution of 1920x1080, 24 bits color depth and a fast framerate of 120fps. If uncompressed, this video would need 5 971 968 000 bits per second (this is know as bitrate). In other words, a minute of such video would use up around 42GB, or in other words, had we stored these videos raw, we could only have been able to keep around 100 minutes. Our client has around 145 hours of beautiful fish schools footage recorded under the Red See, so there is no way that would work.
+>
+> Obviously no one uses raw video when storing or transmitting digital video. Our client had around 145 hours of footage, but it was taking only slightly less than 7TB (instead of 2835TB!). This is so because the videos were compressed.
+
+### Group of pictures (GoP)
+A group of pictures is the basic unit in a compressed video. The encoding and decoding of a group of pictures is independent of the rest of frames. In H.264, a group of pictures is made up of 12 frames.
+
+### Types of frames: I-frames, P-frames, B-frames
+In the simplest case, a GoP is made up of I-frames and P-frames:
+* I-frames are encoded as a regular image; to decode an I-frame we do not need information from other frames in the GoP. These frames are sometimes called **keyframes**.
+* To decode a P-frame, you need data from the previous frame.
+* Some codecs may generate another type of frame, the B-frame, which needs data from previous and next frames to be decoded.
+
+### Motion vector and residual maps
+So if not saved as standalone images, how are P-frames represented? Rather than saving all their pixel values, P-frames are encoded in a more compact representation, made of two parts:
+- a motion vector map, and
+- a residual map.
+
+The motion vector map $M$ is the vector field that for each block of pixels in frame `t-1` holds the vector pointing to the most similar block of pixels in frame `t`. The similarity between blocks of pixels is determined via a block matching algorithm. The residual map $R$ contains the difference in pixel values $I$ between matched blocks of pixels in frame `t-1` and in frame `t`. As a result, we can decode the pixel values in frame `t` as:
+$$
+\mathbf{I}^{t}(x, y) = \mathbf{I}^{t-1}\left[(x, y) - \mathbf{M}^{t}(x, y)\right] + \mathbf{R}^{t}(x, y),
+$$
+where $x,y$ are the coordinates in image space of a specific pixel value.
+
+The basic idea is that if the motion vector estimation is good, the residual map will be quite sparse and therefore the representation will be more compressed than holding the full pixel values of frame `t`.
+
+::: note
+You can actually visualise the motion vector map in FFMPEG as described in [this presentation by Werner Robitza](https://slhck.info/ffmpeg-encoding-course/#/51).
+:::
+
+### Constant Rate Factor (CRF)
+The Constant Rate Factor is a type of rate control mode. A rate control mode is an algorithm that is part of an encoder, and determines how many bits will be used for each frame. This in turn determines the file size and how quality is distributed. In science, we usually care more for good quality videos rather than a very small file size, so CRF is often a good rate control mode because it instructs the encoder to aim for a certain output quality. For further details on rate control mode, we recommend the post by Werner Robitza [Understanding Rate Control Modes](https://slhck.info/video/2017/03/01/rate-control.html).
+
+If you are using FFMPEG, the CRF value will range from 0 to 51, where 0 is lossless, 23 is the default and 51 is the worst quality. Subjectively the values between 17-28 are considered close to visually lossless. For further details, please check [FFMPEG's CRF guide](https://trac.ffmpeg.org/wiki/Encode/H.264#a1.ChooseaCRFvalue).
+
+
+### Presentation timestamp (PTS)
+* PTS
+
+The encoder assigns PTS values to each frame based on the frame rate and time base, but it has some freedom in how it does this — different encoders (libx264, libx265, etc.) and different container muxers can make slightly different choices about rounding and spacing. Once written to the file, PyAV just reads whatever values the encoder stored.
+
+
+### Frame accurate seeking
+
+
 
 ## Re-encoding videos to ensure reliably seekable frames
 For all the rest: recommended to re-encode video first
@@ -239,10 +290,17 @@ There's a common point of confusion: when extracting frames to image files, F
 
 
 ## Further reading
-* ffmpeg docs
-* ffmpeg wiki
-- [Frame accuracy when seeking](https://fftrac-bg.ffmpeg.org/wiki/Seeking)
+- Liu, H., Liu, W., Chi, Z., Wang, Y., Yu, Y., Chen, J., & Tang, J. (2022). Fast human pose estimation in compressed videos. IEEE Transactions on Multimedia, 25, 1390-1400.
+- Mathis, A., & Warren, R. (2018). On the inference speed and video-compression robustness of DeepLabCut. [BioRxiv, 457242](https://www.biorxiv.org/content/10.1101/457242v1).
+- [Loopbio blog: An Introduction to Video Compression](http://blog.loopbio.com/video-io-1-introduction.html)
+- [FFMPEG's H.264 guide](https://trac.ffmpeg.org/wiki/Encode/H.264])
+- [FFMPEG'S Frame accuracy when seeking](https://fftrac-bg.ffmpeg.org/wiki/Seeking)
+- [FFMPEG's CRF guide](https://trac.ffmpeg.org/wiki/Encode/H.264#a1.ChooseaCRFvalue)
+- [Understanding rate control modes](https://slhck.info/video/2017/03/01/rate-control.html)
+- [What is CRF](https://slhck.info/video/2017/02/24/crf-guide.html)
+- [Workshop on digital video](https://github.com/leandromoreira/digital_video_introduction)
+
+
+
 - [Main options](https://ffmpeg.org/ffmpeg.html#Main-options)
 - [Video options](https://ffmpeg.org/ffmpeg.html#Video-Options)
-- [FFMPEG's H.264 guide seems useful](https://trac.ffmpeg.org/wiki/Encode/H.264#a1.ChooseaCRFvalue)
-	- links to [Understanding rate control modes](https://slhck.info/video/2017/03/01/rate-control.html) and [What is CRF](https://slhck.info/video/2017/02/24/crf-guide.html)
