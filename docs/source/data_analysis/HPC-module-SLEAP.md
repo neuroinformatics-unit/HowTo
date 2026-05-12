@@ -139,7 +139,7 @@ can be [viewed via the SLEAP GUI](model-evaluation) on your local SLEAP installa
 ### Prepare the training job
 Follow the [SLEAP tutorial](https://docs.sleap.ai/latest/tutorial/overview/) till
 the end of the section on [Initial Labelling](https://docs.sleap.ai/latest/tutorial/initial-labeling/).
-Ensure that the project file (e.g. `labels.v001.slp`) is saved in the mounted SWC filesystem
+Ensure that the project file (e.g. `labels.v002.slp`) is saved in the mounted SWC filesystem
 (as opposed to your local filesystem).
 
 Next, read the [Training a model](https://docs.sleap.ai/latest/tutorial/training-a-model/) section
@@ -150,8 +150,7 @@ i.e. *Predict* -> *Run Training…* -> *Export Training Job Package…*.
 
 - For selecting the right configuration parameters, see the [Model Configuration](https://nn.sleap.ai/latest/reference/models/) guide.
 - Set the *Inference Target* parameter to *Nothing*. Remote training and inference (prediction) are easiest to run separately on the HPC Cluster.
-- If you are working with camera view from above or below (as opposed to a side view), set the *Rotation* to ±180° in the *Augmentation* section.
-- Make sure to save the exported training job package (e.g. `labels.v001.slp.training_job.zip`) in the mounted SWC filesystem, for example, in the same directory as the project file.
+- Make sure to save the exported training job package (e.g. `labels.v002.slp.training_job.zip`) in the mounted SWC filesystem, for example, in the same directory as the project file.
 - Unzip the training job package. This will create a folder with the same name (minus the `.zip` extension). This folder contains everything needed to run the training job on the HPC cluster: YAML configuration files and a packaged labels file (`.pkg.slp`).
 
 (run-the-training-job)=
@@ -185,35 +184,6 @@ the 'Top-Down' configuration, which consists of two neural networks - the first
 for isolating the animal instances (by finding their centroids) and the second
 for predicting all the body parts per instance.
 
-Importantly, SLEAP also gives you a `train-script.sh` file that contains the exact commands needed to run the training job from the unzipped package folder.
-You can inspect this file with `cat train-script.sh`:
-
-```{code-block} bash
-#!/bin/bash
-sleap train --config-name centroid.yaml --config-dir . trainer_config.ckpt_dir='/mnt/Data/sleap-tutorial-data/models' trainer_config.run_name='260512_151547.centroid.n=46'
-sleap train --config-name centered_instance.yaml --config-dir . trainer_config.ckpt_dir='/mnt/Data/sleap-tutorial-data/models' trainer_config.run_name='260512_151547.centered_instance.n=46'
-```
-
-You will need to modify the paths in the `trainer_config.ckpt_dir` argument to point to a directory where you want the trained model files to be saved. You can edit the `train-script.sh` file with `nano` or any text editor of your choice.
-
-In this example, we'll set this path to an appropriate directory in the `ceph` filesystem:
-```{code-block} bash
-:linenos:
-#!/bin/bash
-sleap train --config-name centroid.yaml --config-dir . trainer_config.ckpt_dir='/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data/models' trainer_config.run_name='260512_151547.centroid.n=46'
-sleap train --config-name centered_instance.yaml --config-dir . trainer_config.ckpt_dir='/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data/models' trainer_config.run_name='260512_151547.centered_instance.n=46'
-```
-
-For a full list of available `sleap train` arguments, run `sleap train --help` (with the SLEAP module loaded)
-and consult the relevant SLEAP-NN documentation on [training](https://nn.sleap.ai/latest/guides/training/).
-
-:::{note}
-`sleap train` and `sleap track` are short aliases for `sleap-nn train` and `sleap-nn track` respectively.
-Both forms work interchangeably.
-:::
-
-In `nano`, you can save the file by pressing `Ctrl+O` and exit by pressing `Ctrl+X`.
-
 ![Top-Down model configuration](https://legacy.sleap.ai/_images/topdown_approach.jpg)
 
 :::{dropdown} More on 'Top-Down' vs 'Bottom-Up' models
@@ -224,6 +194,18 @@ Although the 'Top-Down' configuration was designed with multiple animals in mind
 it can also be used for single-animal videos. It makes sense to use it for videos
 where the animal occupies a relatively small portion of the frame - see
 [Model Configuration](https://nn.sleap.ai/latest/reference/models/) for more info.
+:::
+
+SLEAP also generates a `train-script.sh` file in the training job folder.
+You can inspect it with `cat train-script.sh` to see the training commands it contains —
+these are useful as a reference, but they reflect the paths on the machine that
+exported the training job package and may not work as-is on the HPC cluster.
+Instead, we'll write the `sleap train` commands from scratch in the nex step.
+
+:::{note}
+`sleap train` is an alias for `sleap-nn train`. Both forms work interchangeably.
+For a full list of available arguments, run `sleap train --help` (with the SLEAP module loaded)
+or consult the SLEAP-NN documentation on [training](https://nn.sleap.ai/latest/guides/training/).
 :::
 
 Next you need to create a SLURM batch script, which will schedule the training job
@@ -267,9 +249,9 @@ SLP_JOB_DIR=$SLP_DIR/$SLP_JOB_NAME
 # Go to the job directory
 cd $SLP_JOB_DIR
 
-# Run the train-script.sh generated by SLEAP
-# which we edited to point to the correct checkpoint directory
-./train-script.sh
+# Run the training for each model
+sleap train --config-name centroid.yaml --config-dir . trainer_config.ckpt_dir="$SLP_DIR/models"
+sleap train --config-name centered_instance.yaml --config-dir . trainer_config.ckpt_dir="$SLP_DIR/models"
 ```
 
 :::{dropdown} Explanation of the batch script
@@ -307,12 +289,12 @@ For more information  see the [SLURM documentation](https://slurm.schedmd.com/sb
   so no separate `cuda` module is needed.
 
 - The `cd` line changes the working directory to the training job folder.
-  This is necessary because the training commands inside `train-script.sh`
-  use relative paths to the configuration files.
+  This is necessary because the `--config-dir .` argument in the `sleap train`
+  commands uses a relative path to find the YAML configuration files.
 
-- The `./train-script.sh` line runs the script containing the training commands.
-  Alternatively, you could also type the training commands directly in the
-  SLURM script.
+- The `sleap train` commands each train one model. `--config-name` specifies the
+  YAML file, `--config-dir` the directory to find it in, and
+  `trainer_config.ckpt_dir` sets where the trained model files will be saved.
 :::
 
 :::{dropdown} Legacy training commands (TensorFlow modules)
@@ -336,13 +318,10 @@ and the [legacy CLI reference](https://legacy.sleap.ai/guides/cli.html) for deta
 
 :::{warning}
 Before submitting the job, ensure that you have permissions to execute
-both the SLURM batch script (`train-slurm.sh`) and the
-training commands script (`train-script.sh`).
-You can make these files executable by running in the terminal:
+the SLURM batch script. You can make it executable by running:
 
 ```{code-block} console
 $ chmod +x train-slurm.sh
-$ chmod +x train-script.sh
 ```
 :::
 
@@ -467,6 +446,13 @@ SLEAP provides the `sleap track` command line utility for running inference
 on a single video or a folder of videos.
 See the [remote inference guide](https://docs.sleap.ai/latest/guides/running-sleap-remotely/#remote-inference) for more details.
 
+:::{note}
+`sleap track` is an alias for `sleap-nn track`. Both forms work interchangeably.
+For a full list of available arguments, run `sleap track --help` (with the SLEAP module loaded)
+or consult the relevant SLEAP-NN documentation on [inference](https://nn.sleap.ai/latest/guides/inference/)
+and [tracking](https://nn.sleap.ai/latest/guides/tracking/).
+:::
+
 Below is an example SLURM batch script that contains a `sleap track` call.
 ```{code-block} bash
 :linenos:
@@ -513,10 +499,6 @@ The script is very similar to the training script, with the following difference
 - The `sleap train` calls are replaced by the `sleap track` command.
 - The `\` character is used to split the long `sleap track` command into multiple lines for readability. It is not necessary if the command is written on a single line.
 
-For a full list of available `sleap track` arguments, run `sleap track --help` (with the SLEAP module loaded)
-and consult the relevant SLEAP-NN documentation on [inference](https://nn.sleap.ai/latest/guides/inference/)
-and [tracking](https://nn.sleap.ai/latest/guides/tracking/).
-
 :::{dropdown} Legacy inference commands (TensorFlow modules)
 :color: info
 :icon: info
@@ -560,7 +542,7 @@ or merge them into an existing SLEAP project.
 For example, you can:
 
 - [Manually correct](https://docs.sleap.ai/latest/tutorial/correcting-predictions/) some of the predictions
-- Merge corrected labels into the initial training set (`File` -> `Merge into Project...`).
+- Merge corrected labels into the initial training set (*File* -> *Merge into Project...*).
 - Save the merged training set under a new name, e.g. `labels.v003.slp`
 - Export a new training job `labels.v003.slp.training_job` (you may reuse the training configurations from before)
 - Repeat the training-inference cycle until satisfied
