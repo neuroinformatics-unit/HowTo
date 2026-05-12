@@ -410,15 +410,15 @@ It contains one subfolder per training run.
 $ cd /ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
 $ cd models
 $ ls -1
-'260512_144511.centroid.n=10'
-'260512_144548.centered_instance.n=10'
+'260512_151547.centroid.n=46'
+'260512_151547.centered_instance.n=46'
 ```
 
 Each subfolder holds the trained model files (e.g. `best.ckpt`),
 their configurations (`training_config.yaml`) and some evaluation metrics.
 
 ```{code-block} console
-$ cd '260512_144548.centered_instance.n=10'
+$ cd '260512_151547.centroid.n=46'
 $ ls -1
 best.ckpt
 initial_config.yaml
@@ -485,8 +485,8 @@ mkdir -p $SLP_DIR/predictions
 # Run the inference command
 sleap track \
     -i $SLP_DIR/mice.mp4 \
-    -m $SLP_DIR/models/260512_144511.centroid.n=10 \
-    -m $SLP_DIR/models/260512_144548.centered_instance.n=10 \
+    -m $SLP_DIR/models/260512_151547.centroid.n=46 \
+    -m $SLP_DIR/models/260512_151547.centered_instance.n=46 \
     -d auto \
     -b 4 \
     --tracking \
