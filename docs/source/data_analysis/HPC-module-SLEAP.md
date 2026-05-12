@@ -227,7 +227,8 @@ An example is provided below, followed by explanations.
 #SBATCH -p gpu # partition (queue)
 #SBATCH -N 1   # number of nodes
 #SBATCH --mem 32G # memory pool for all cores
-#SBATCH -n 8 # number of cores
+#SBATCH --ntasks-per-node=1 # one process per node
+#SBATCH --cpus-per-task=8   # CPU cores available to the process
 #SBATCH -t 0-06:00 # time (D-HH:MM)
 #SBATCH --gres gpu:a100:1 # request 1 GPU of a given type (see dropdown below)
 #SBATCH -o slurm.%x.%N.%j.out # STDOUT
@@ -264,6 +265,12 @@ For more information  see the [SLURM documentation](https://slurm.schedmd.com/sb
 
 - The `#` lines are comments. They are not executed by SLURM, but they are useful
   for explaining the script to your future self and others.
+
+- `--ntasks-per-node=1` tells SLURM to launch one process per node. PyTorch Lightning
+  (which SLEAP uses internally) requires this form rather than `--ntasks` or `-n`.
+  Lightning then manages GPU parallelism internally within that single process.
+  `--cpus-per-task=8` allocates 8 CPU cores to that process,
+  which are used for data loading and preprocessing.
 
 - `--gres gpu:a100:1` requests 1 GPU of type A100. If you don't care about the specific
     GPU type, you can simply request `--gres gpu:1`. You can inspect the available GPU
@@ -462,7 +469,8 @@ Below is an example SLURM batch script that contains a `sleap track` call.
 #SBATCH -p gpu # partition
 #SBATCH -N 1   # number of nodes
 #SBATCH --mem 64G # memory pool for all cores
-#SBATCH -n 16 # number of cores
+#SBATCH --ntasks-per-node=1 # one process per node
+#SBATCH --cpus-per-task=16  # CPU cores available to the process
 #SBATCH -t 0-02:00 # time (D-HH:MM)
 #SBATCH --gres gpu:a100:1 # request 1 GPU of a given type
 #SBATCH -o slurm.%x.%N.%j.out # write STDOUT
@@ -494,7 +502,7 @@ sleap track \
 ```
 The script is very similar to the training script, with the following differences:
 - The time limit `-t` is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.
-- The requested number of cores `n` and memory `--mem` are higher. This will depend on the requirements of the specific job you are running. It's best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.
+- The requested `--cpus-per-task` and `--mem` are higher. This will depend on the requirements of the specific job you are running. It's best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.
 - You can request a specific GPU type with `--gres gpu:<type>:1` (e.g. `--gres gpu:a100:1`). The different GPU types vary in GPU memory size and compute capabilities (see [the SWC wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx)).
 - The `sleap train` calls are replaced by the `sleap track` command.
 - The `\` character is used to split the long `sleap track` command into multiple lines for readability. It is not necessary if the command is written on a single line.
