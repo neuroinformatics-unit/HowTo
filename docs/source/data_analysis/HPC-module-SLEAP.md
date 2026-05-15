@@ -200,7 +200,7 @@ SLEAP also generates a `train-script.sh` file in the training job folder.
 You can inspect it with `cat train-script.sh` to see the training commands it contains —
 these are useful as a reference, but they reflect the paths on the machine that
 exported the training job package and may not work as-is on the HPC cluster.
-Instead, we'll write the `sleap train` commands from scratch in the nex step.
+Instead, we'll write the `sleap train` commands from scratch in the next step.
 
 :::{note}
 `sleap train` is an alias for `sleap-nn train`. Both forms work interchangeably.
@@ -401,7 +401,7 @@ $ cat slurm.gpu-sr670-20.3445652.err
 :color: warning
 :icon: alert-fill
 
-If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:
+If you encounter out-of-memory errors, keep in mind that there are two main sources of memory usage:
 - CPU memory (RAM), specified via the `--mem` argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.
 - GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the `--gres gpu:1` argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. `--gres gpu:a100:1`). The SWC wiki provides a [list of all GPU card types and their specifications](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx).
 - If requesting more memory doesn't help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with *Input scaling*, *Max stride* and *Batch size*. See SLEAP's [documentation](https://docs.sleap.ai/) and [discussion forum](https://github.com/talmolab/sleap/discussions) for more details.
