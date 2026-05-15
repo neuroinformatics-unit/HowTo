@@ -547,6 +547,9 @@ was detected. Look for the `[GPU / CUDA]` section.
 :color: info
 :icon: info
 
+If `sleap doctor` fails, you can also verify manually by starting a
+Python interpreter and running the following commands:
+
 ```{code-block} console
 $ python
 ```
@@ -567,15 +570,17 @@ When done, exit the GPU node:
 $ exit
 ```
 
-Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent verification steps.
-
-If you encounter troubles with using the SLEAP module, contact
-Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
-
 To completely exit the HPC cluster, you will need to type `exit` or
 `logout` until you are back to the terminal prompt of your local machine.
 See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
 for more information.
+
+Using a legacy (TensorFlow) module instead?
+See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent verification steps.
+
+If you encounter troubles with using the SLEAP module, contact
+Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
+
 
 (legacy-modules)=
 ## Legacy (TensorFlow) modules
