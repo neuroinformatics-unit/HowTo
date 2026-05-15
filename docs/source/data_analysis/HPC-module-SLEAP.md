@@ -456,12 +456,10 @@ sleap track \
     --tracking \
     -o $SLP_DIR/predictions/labels.v002.predictions.slp
 ```
-The script is very similar to the training script, with the following differences:
-- The time limit `-t` is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.
-- The requested `--cpus-per-task` and `--mem` are higher. This will depend on the requirements of the specific job you are running. It's best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.
-- You can request a specific GPU type with `--gres gpu:<type>:1` (e.g. `--gres gpu:a100:1`). The different GPU types vary in GPU memory size and compute capabilities (see [the SWC wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx)).
-- The `sleap train` calls are replaced by the `sleap track` command.
-- The `\` character is used to split the long `sleap track` command into multiple lines for readability. It is not necessary if the command is written on a single line.
+The script mirrors the training one, with a few differences:
+- `sleap train` is replaced by a single `sleap track` call (split across lines with `\` for readability).
+- The time limit `-t` is lower, since inference is typically faster than training (depends on video length and number of models).
+- `--cpus-per-task` and `--mem` are higher; tune these to your specific job, ideally after a scaled-down trial run.
 
 :::{dropdown} Legacy inference commands (TensorFlow modules)
 :color: info
