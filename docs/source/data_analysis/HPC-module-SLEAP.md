@@ -237,49 +237,34 @@ sleap train --config-name centered_instance.yaml --config-dir . trainer_config.c
 :::{dropdown} Explanation of the batch script
 :color: info
 :icon: info
-- The `#SBATCH` lines are SLURM directives. They specify the resources needed
-for the job, such as the number of nodes, CPUs, memory, etc.
-A primer on the most useful SLURM arguments is provided in this [how-to guide](slurm-arguments-target).
-For more information  see the [SLURM documentation](https://slurm.schedmd.com/sbatch.html).
-
-- The `#` lines are comments. They are not executed by SLURM, but they are useful
-  for explaining the script to your future self and others.
+- `#SBATCH` lines are SLURM directives specifying the resources needed for the job.
+  See our [SLURM primer](slurm-arguments-target) and the [SLURM documentation](https://slurm.schedmd.com/sbatch.html) for details.
 
 - `--ntasks-per-node=1` tells SLURM to launch one process per node. PyTorch Lightning
-  (which SLEAP uses internally) requires this form rather than `--ntasks` or `-n`.
-  Lightning then manages GPU parallelism internally within that single process.
-  `--cpus-per-task=8` allocates 8 CPU cores to that process,
-  which are used for data loading and preprocessing.
+  (which SLEAP uses internally) requires this form rather than `--ntasks` or `-n`;
+  Lightning then manages GPU parallelism within that single process.
+  `--cpus-per-task=8` allocates CPU cores to that process for data loading and preprocessing.
 
-- `--gres gpu:a100:1` requests 1 GPU of type A100. If you don't care about the specific
-    GPU type, you can simply request `--gres gpu:1`. You can inspect the available GPU
-    types by listing the nodes in the `gpu` and `gpu_lowp` partitions with `sinfo`:
+- `--gres gpu:a100:1` requests 1 GPU of type A100. To request any available GPU, use `--gres gpu:1`.
+  Inspect available GPU types by listing the nodes in the `gpu` and `gpu_lowp` partitions:
     ```{code-block} console
     $ sinfo -p gpu,gpu_lowp -o "%N %G" --noheader
     ```
-    In each output line, look for the string between `gpu:` and the next `:` (e.g. `a100` or `l40s`).
-    Avoid GPUs with CUDA compute capability below 7.5, which are no longer supported by recent PyTorch versions (>= 2.5).
-    At the time of writing, only the `p5000` cards are incompatible.
-    Refer to the GPU platform information on the
-    [SWC internal wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx)
-    and look up a GPU's compute capability at the
-    [NVIDIA CUDA GPUs page](https://developer.nvidia.com/cuda/gpus).
-
-
-- The `nvidia-smi` line prints some information about the GPU(s) available on the node,
-  including their driver version and memory usage.
-  This is useful for debugging purposes.
+    Look for the string between `gpu:` and the next `:` (e.g. `a100`, `l40s`).
+    Avoid GPUs with CUDA compute capability below 7.5 (unsupported by PyTorch ≥ 2.5);
+    at the time of writing, only `p5000` cards are incompatible.
+    See the [SWC wiki](https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx)
+    and the [NVIDIA CUDA GPUs page](https://developer.nvidia.com/cuda/gpus) for compute capabilities.
 
 - `module load SLEAP` loads the latest SLEAP module and its dependencies.
   PyTorch bundles its own CUDA runtime, so no separate `cuda` module is needed.
 
-- The `cd` line changes the working directory to the training job folder.
-  This is necessary because the `--config-dir .` argument in the `sleap train`
-  commands uses a relative path to find the YAML configuration files.
+- `cd $SLP_JOB_DIR` is needed because `--config-dir .` in the `sleap train` commands
+  uses a relative path to find the YAML configuration files.
 
-- The `sleap train` commands each train one model. `--config-name` specifies the
-  YAML file, `--config-dir` the directory to find it in, and
-  `trainer_config.ckpt_dir` sets where the trained model files will be saved.
+- Each `sleap train` call trains one model: `--config-name` selects the YAML file,
+  `--config-dir` the directory containing it, and `trainer_config.ckpt_dir`
+  sets where the trained model files will be saved.
 :::
 
 :::{dropdown} Legacy training commands (TensorFlow modules)
