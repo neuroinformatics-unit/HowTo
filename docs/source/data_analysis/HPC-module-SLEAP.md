@@ -570,15 +570,18 @@ Next, load the SLEAP module.
 $ module load SLEAP
 ```
 
-The quickest way to verify that SLEAP is correctly installed and can access
-the GPU is to run the built-in diagnostic command:
+Verify that SLEAP is correctly installed and can access the GPU by running
+the built-in diagnostic command:
 ```{code-block} console
 $ sleap doctor
 ```
-This will print system information, package versions, and confirm whether a GPU
-was detected. Look for the `[GPU / CUDA]` section to confirm GPU support.
+This prints system information, package versions, and confirms whether a GPU
+was detected. Look for the `[GPU / CUDA]` section.
 
-To verify manually via the Python interpreter:
+:::{dropdown} Verify manually via the Python interpreter
+:color: info
+:icon: info
+
 ```{code-block} console
 $ python
 ```
@@ -590,12 +593,11 @@ $ python
 True
 >>> torch.cuda.get_device_name(0)
 'Quadro RTX 5000'
-```
-
-If all is as expected, you can exit the Python interpreter, and then exit the GPU node:
-```{code-block} pycon
 >>> exit()
 ```
+:::
+
+When done, exit the GPU node:
 ```{code-block} console
 $ exit
 ```
