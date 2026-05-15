@@ -22,18 +22,9 @@
 :color: info
 :icon: info
 
-The SWC's IT team offers managed desktop computers equipped with a Linux image. These machines are already part of SWC's trusted domain and have direct access to SLURM, the HPC modules, and the SWC filesystem.
+SWC's IT team offers managed Linux desktops with direct access to SLURM, the HPC modules, and the SWC filesystem. If you have one, you can skip the prerequisite steps: open a terminal, run `module load SLEAP`, and use SLEAP directly (including `sleap label` for the GUI).
 
-If you have access to one of these desktops,
-you can skip the pre-requisite steps.
-You may simply open a terminal, type `module load SLEAP`,
-and start using SLEAP directly, as you would on any local
-Linux machine. All SLEAP commands should work as expected,
-including `sleap label` for launching the GUI.
-
-That said, you may still want to offload GPU-intensive tasks to an HPC node (e.g. because the desktop's GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
-still want to read the sections on [model training](sleap-training)
-and [inference](sleap-inference).
+You may still want to offload GPU-intensive work to an HPC node (e.g. for more powerful GPUs or parallel jobs). In that case, read the sections on [model training](sleap-training) and [inference](sleap-inference).
 :::
 
 (access-to-the-hpc-cluster)=
@@ -57,24 +48,8 @@ $ module avail SLEAP
    D:  Default Module
 ...
 ```
-- `SLEAP/2026-05-08` corresponds to `SLEAP v.1.6.3` (PyTorch backend)
-- Older modules correspond to legacy versions of SLEAP (TensorFlow backend).
-  - `SLEAP/2025-09-30` corresponds to `SLEAP v.1.3.4`
-  - SLEAP modules with older dates are no longer recommended for use, as they were built for
-    an older version of Ubuntu than the one currently running on the cluster.
-
-
-::: {note}
-Starting with `SLEAP/2026-05-08`, all new SLEAP modules use the
-[PyTorch backend](https://docs.sleap.ai/). This guide
-documents the PyTorch-based workflow, which is the recommended approach
-for all new projects.
-
-If you need to use a legacy (TensorFlow) module,
-e.g. to maintain compatibility with an existing project, make sure to load
-the corresponding module by its full name, e.g. `module load SLEAP/2025-09-30`,
-and refer to the [legacy SLEAP documentation](https://legacy.sleap.ai/).
-:::
+- `SLEAP/2026-05-08` corresponds to `SLEAP v.1.6.3` ([PyTorch backend](https://docs.sleap.ai/)) — this is the recommended module for all new projects, and what this guide documents.
+- Older modules use the legacy TensorFlow backend (e.g. `SLEAP/2025-09-30` is `SLEAP v.1.3.4`). Load these by full name if you need to maintain compatibility with an existing project, and refer to the [legacy SLEAP documentation](https://legacy.sleap.ai/). Modules with dates before `2025-09-30` are no longer recommended (built for an older Ubuntu).
 
 If a module has been successfully loaded, it will be listed among
 other loaded modules when you run `module list`:
@@ -291,9 +266,8 @@ For more information  see the [SLURM documentation](https://slurm.schedmd.com/sb
   including their driver version and memory usage.
   This is useful for debugging purposes.
 
-- The `module load SLEAP` line loads the latest SLEAP module (PyTorch backend)
-  and any other modules it may depend on. PyTorch bundles its own CUDA runtime,
-  so no separate `cuda` module is needed.
+- `module load SLEAP` loads the latest SLEAP module and its dependencies.
+  PyTorch bundles its own CUDA runtime, so no separate `cuda` module is needed.
 
 - The `cd` line changes the working directory to the training job folder.
   This is necessary because the `--config-dir .` argument in the `sleap train`
