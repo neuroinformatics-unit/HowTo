@@ -63,6 +63,16 @@ Currently Loaded Modulefiles:
 If you have troubles with loading the SLEAP module,
 see this guide's [Troubleshooting section](#problems-with-the-sleap-module).
 
+:::{note}
+The SLEAP CLI commands `sleap train` and `sleap track` are aliases for
+`sleap-nn train` and `sleap-nn track` respectively; the two forms work
+interchangeably. For a full list of arguments, run `<command> --help`
+(with the SLEAP module loaded) or consult the SLEAP-NN documentation on
+[training](https://nn.sleap.ai/latest/guides/training/),
+[inference](https://nn.sleap.ai/latest/guides/inference/) and
+[tracking](https://nn.sleap.ai/latest/guides/tracking/).
+:::
+
 
 ### Install SLEAP on your local PC/laptop
 While you can delegate the GPU-intensive work to the HPC cluster,
@@ -176,12 +186,6 @@ You can inspect it with `cat train-script.sh` to see the training commands it co
 these are useful as a reference, but they reflect the paths on the machine that
 exported the training job package and may not work as-is on the HPC cluster.
 Instead, we'll write the `sleap train` commands from scratch in the next step.
-
-:::{note}
-`sleap train` is an alias for `sleap-nn train`. Both forms work interchangeably.
-For a full list of available arguments, run `sleap train --help` (with the SLEAP module loaded)
-or consult the SLEAP-NN documentation on [training](https://nn.sleap.ai/latest/guides/training/).
-:::
 
 Next you need to create a SLURM batch script, which will schedule the training job
 on the HPC cluster. Create a new file called `train-slurm.sh`
@@ -426,13 +430,6 @@ By inference, we mean using a trained model to predict the labels on new frames/
 SLEAP provides the `sleap track` command line utility for running inference
 on a single video or a folder of videos.
 See the [remote inference guide](https://docs.sleap.ai/latest/guides/running-sleap-remotely/#remote-inference) for more details.
-
-:::{note}
-`sleap track` is an alias for `sleap-nn track`. Both forms work interchangeably.
-For a full list of available arguments, run `sleap track --help` (with the SLEAP module loaded)
-or consult the relevant SLEAP-NN documentation on [inference](https://nn.sleap.ai/latest/guides/inference/)
-and [tracking](https://nn.sleap.ai/latest/guides/tracking/).
-:::
 
 Below is an example SLURM batch script that contains a `sleap track` call.
 ```{code-block} bash
