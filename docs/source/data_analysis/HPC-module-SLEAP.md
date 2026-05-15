@@ -267,24 +267,7 @@ sleap train --config-name centered_instance.yaml --config-dir . trainer_config.c
   sets where the trained model files will be saved.
 :::
 
-:::{dropdown} Legacy training commands (TensorFlow modules)
-:color: info
-:icon: info
-
-If you are using a legacy SLEAP module (≤ 1.4.1, TensorFlow backend),
-the training commands use `sleap-train` with JSON config files:
-
-```{code-block} bash
-sleap-train centroid.json labels.v002.pkg.slp
-sleap-train centered_instance.json labels.v002.pkg.slp
-```
-
-The exported training job package from legacy SLEAP also includes a
-`train-script.sh` that contains these commands, so you can simply run
-`./train-script.sh` from the SLURM script. See the legacy SLEAP
-[remote training guide](https://legacy.sleap.ai/guides/remote.html#remote-training)
-and the [legacy CLI reference](https://legacy.sleap.ai/guides/cli.html) for details.
-:::
+Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent training commands.
 
 :::{warning}
 Before submitting the job, ensure that you have permissions to execute
@@ -461,25 +444,7 @@ The script mirrors the training one, with a few differences:
 - The time limit `-t` is lower, since inference is typically faster than training (depends on video length and number of models).
 - `--cpus-per-task` and `--mem` are higher; tune these to your specific job, ideally after a scaled-down trial run.
 
-:::{dropdown} Legacy inference commands (TensorFlow modules)
-:color: info
-:icon: info
-
-If you are using a legacy SLEAP module (≤ 1.4.1, TensorFlow backend),
-inference is run with `sleap-track` and JSON config files:
-
-```{code-block} bash
-sleap-track video.mp4 \
-    -m models/centroid/training_config.json \
-    -m models/centered_instance/training_config.json \
-    --gpu auto \
-    --tracking.tracker simple \
-    --tracking.similarity centroid \
-    -o predictions.slp
-```
-
-See the [legacy SLEAP CLI reference](https://legacy.sleap.ai/guides/cli.html) for details.
-:::
+Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent inference commands.
 
 You can submit and monitor the inference job in the same way as the training job.
 ```{code-block} console
@@ -602,12 +567,54 @@ When done, exit the GPU node:
 $ exit
 ```
 
-:::{dropdown} Troubleshooting legacy modules (TensorFlow backend)
-:color: info
-:icon: info
+Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent verification steps.
 
-If you are using a legacy SLEAP module (≤ 1.4.1), the verification
-steps use TensorFlow instead of PyTorch:
+If you encounter troubles with using the SLEAP module, contact
+Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
+
+To completely exit the HPC cluster, you will need to type `exit` or
+`logout` until you are back to the terminal prompt of your local machine.
+See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
+for more information.
+
+(legacy-modules)=
+## Legacy (TensorFlow) modules
+
+If you are using a legacy SLEAP module (≤ 1.4.1, TensorFlow backend), the
+CLI uses `sleap-train` and `sleap-track` with JSON config files instead of
+the YAML-based `sleap train` / `sleap track` shown above. See the
+[legacy SLEAP documentation](https://legacy.sleap.ai/) for full details;
+the equivalents for the steps in this guide are below.
+
+### Training
+
+```{code-block} bash
+sleap-train centroid.json labels.v002.pkg.slp
+sleap-train centered_instance.json labels.v002.pkg.slp
+```
+
+The exported training job package from legacy SLEAP also includes a
+`train-script.sh` containing these commands, so you can run
+`./train-script.sh` from the SLURM script. See the legacy
+[remote training guide](https://legacy.sleap.ai/guides/remote.html#remote-training)
+and [CLI reference](https://legacy.sleap.ai/guides/cli.html).
+
+### Inference
+
+```{code-block} bash
+sleap-track video.mp4 \
+    -m models/centroid/training_config.json \
+    -m models/centered_instance/training_config.json \
+    --gpu auto \
+    --tracking.tracker simple \
+    --tracking.similarity centroid \
+    -o predictions.slp
+```
+
+### Verifying the module
+
+The verification steps in the [Troubleshooting section](#problems-with-the-sleap-module)
+use TensorFlow instead of PyTorch:
 
 ```{code-block} pycon
 >>> import sleap
@@ -619,12 +626,3 @@ steps use TensorFlow instead of PyTorch:
 ```
 
 For details, see the [legacy SLEAP installation guide](https://legacy.sleap.ai/installation.html#testing-that-things-are-working).
-:::
-
-If you encounter troubles with using the SLEAP module, contact
-Niko Sirmpilatze of the SWC [Neuroinformatics Unit](https://neuroinformatics.dev/).
-
-To completely exit the HPC cluster, you will need to type `exit` or
-`logout` until you are back to the terminal prompt of your local machine.
-See [Set up SSH for the SWC HPC cluster](../programming/SSH-SWC-cluster.md)
-for more information.
