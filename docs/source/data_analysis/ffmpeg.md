@@ -5,7 +5,7 @@
 
 
 ## A minimal primer on video encoding
-We often have the mental model of videos being a sequence of standalone images. However, digital videos are typically encoded as video streams, whose structure is very different from a sequence of standalone frames. To understand better the nuances between encoded digital videos and this mental model, we need to clarify some concepts.
+We often have the mental model of videos being a sequence of standalone images. However, digital videos are typically encoded as video streams, whose structure is very different from a sequence of standalone frames. To understand better the differences, we need to clarify some concepts.
 
 We only give a brief and simplified overview here, but if you would like further details [this blogpost from Loopbio](http://blog.loopbio.com/video-io-1-introduction.html#:~:text=A%20concise%20primer%20on%20video%20compression) is a recommended read (as well as the references at the end of the post).
 
@@ -24,31 +24,31 @@ A video codec is software (or hardware) that compresses (encodes) and decompress
 In this post, we will use encoding and compression to refer to the same concept, even though strictly speaking encoding refers to a change of format only, without necessarily a reduction in file size. However in the context of video data, both concepts largely overlap. Similarly, we will use decoding and decompression as synonyms.
 :::
 
-The video compression that results from the encoding process takes advantage of spatial redundancies (regions of a single frame with a lot or repetition), temporal redundancies (consecutive frames tend to look very much alike) and the human visual perception particularities (for example, we can distinguish better between bright and dark than between shades of colors) to make for smaller video files while still keeping good quality. (TODO: paraphrase this section).
+How does the encoding process compress the size of the video file? It does so by taking advantage of spatial redundancies (i.e. regions of a single frame with a lot or repetition), temporal redundancies (i.e. consecutive frames tend to look very much alike) and the human visual perception particularities (for example, we can distinguish better between bright and dark than between shades of colors). This allows encoders to make for smaller video files while still keeping good visual quality. (TODO: paraphrase this section).
 
-The encoding process necessarily implies some loss of the original video quality, since in a way we are approximating the raw pixel values using a compressed representation. Importantly, encoding is always a tradeoff between video quality, file size and speed, of which we can only have two out of the three. As stated in [this presentation by Werner Robitza](https://slhck.info/ffmpeg-encoding-course/#/32), that means that:
+The encoding process necessarily implies some loss of the original video quality, since we are approximating the raw pixel values using a compressed representation. Importantly, encoding is always a tradeoff between video quality, file size and speed, of which we can only have two out of the three. As stated in [this presentation by Werner Robitza](https://slhck.info/ffmpeg-encoding-course/#/32), that means that:
 * If we want a high-quality video that can be encoded quickly, the compressed video will necessarily be large
 * If we want a high-quality video with smaller file size, we will necessarily have a slower encoding of the data
 * If we want a small file size and fast encoding, its quality will be lower
 
-For scientific applications, often retaining video quality is the most important requirement, but a reasonable file size is also desirable. We often work offline, and care less about the speed of encoding. Note that the encoding process is slower than the decoding process, and thus the main "bottleneck". This is because the encoder needs to solve a complex optimisation problem that determines aspects such as how to partition the frame into blocks, the predictions mode to use or how to allocate bits across the video stream. The decoder instead is designed to be fast, it simply implements the optimal instructions computed by the encoder. (TODO: find a nice reference for this)
+The encoding process is slower than the decoding process, and thus the main "bottleneck". This is because the encoder needs to solve a complex optimisation problem that determines aspects such as how to partition the frame into blocks, the predictions mode to use or how to allocate bits across the video stream. The decoder instead is designed to be fast, it simply implements the optimal instructions computed by the encoder. (TODO: find a nice reference for this)
+
+For scientific applications, retaining video quality is often the most important requirement, but a reasonable file size is also desirable. We usually also care less about the speed of encoding.
 
 Below you can find a short video with the basics of video encoding:
 
 <iframe width="190" height="119" frameborder="0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; web-share" allowfullscreen src="https://commons.wikimedia.org/wiki/File:Video_Codecs_101.webm?embedplayer=true"></iframe>
 
 ### Group of pictures (GoP) and types of frames
-A group of pictures is the basic unit in a compressed video. The encoding and decoding of a group of pictures is independent of the rest of frames: that is, to obtain the full pixel values for all frames in a group of pictures, we only need the information held in that set of frames, and no other frames outside that group are required. In H.264, a group of pictures is made up of 12 frames.
+A group of pictures is the basic unit in a compressed video. The encoding and decoding of a group of pictures is independent of the rest of frames: that is, to obtain the full pixel values for all frames in a group of pictures, we only need the information held in that set of frames, and no other frames outside that group are required. In H.264, a group of pictures is made up of 12 frames (TODO: double check).
 
-In the simplest case, a GoP is made up two types of frames, which differ by the way the are encoded:
+A GoP is made up two types of frames, which differ by the way the are encoded:
 * intra frames, or **I-frames**, are encoded as a regular standalone image; to decode an I-frame we do not need information from any other frames. These frames are also called **keyframes**.
-* predicted frames, or **P-frames**, are not encoded as a regular standalone image. Instead, decoding their pixel content requires decoding the data from previous frames.
-* Some codecs may generate another type of frame called bi-predictive or **B-frames**, which need data from previous and future frames to be decoded.
+* inter frames are not encoded as a regular standalone image. Instead, decoding their pixel content requires decoding the data from other frames. If only data from previous frames is required, the inter frames are called predicted frames, or **P-frames**. If data from both previous and future frames is required, the inter frames are also called bi-predictive or **B-frames**,
 
-Both P-frames and B-frames are sometimes called **inter frames**
 
 ### Motion vector and residual maps
-So if not saved as standalone images, how are P-frames represented? Rather than saving all their pixel values, P-frames are encoded in a more compact representation, made of two parts:
+So if not saved as standalone images, how are inter frames represented? Let's focus on the simpler case of P-frames. Rather than saving all their pixel values, P-frames are encoded in a more compact representation, made of two parts:
 - a motion vector map, and
 - a residual map.
 
@@ -69,9 +69,11 @@ You can actually visualise the motion vector map in FFMPEG as described in [this
 NOTE: this section could be a collapsible
 
 ### Fast random access
-Fast random access is a common desirable characteristic of a compressed video, that refers to how quickly you can decode a specific frame. This is relevant, for example, for a seamless experience when scrolling through the timeline of a video. With codecs like H.264 in its normal mode, which use keyframes (I-frames) and interframes (i.e. P-frames and B-frames), to decode frame 1247 the decoder would need to go to the nearest keyframe first (maybe frame 1200) and decode all 47 frames in between.
+Fast random access is a common desirable characteristic of a compressed video, that refers to how quickly you can decode a specific frame. This is relevant, for example, for a seamless experience when scrolling through the timeline of a video.
 
-This may be slow in some cases, which is why some codecs can be set to "all-intra", meaning all frames are set to be keyframes. If all frames are essentially standalone images, decoding any of them is fast. However, the file size will increase considerably.
+How is a random frame decoded? With codecs like H.264 in its normal mode (which use keyframes and interframes), to decode frame 1247 the decoder would need to go to the nearest keyframe first (maybe frame 1200) and then decode all 47 frames in between.
+
+This may be slow in some cases, which is why some codecs can be set to "all-intra", meaning all frames are forced to be keyframes. If all frames are essentially standalone images, decoding any of them is fast. However, the file size will increase considerably.
 
 
 ### Frame accurate seeking
@@ -176,6 +178,19 @@ ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of csv=p
 ```bash
  ffmpeg -i input.mp4 -vf "select='eq(n\,10)+eq(n\,50)+eq(n\,100)'" -vsync vfr frame_%03d.png
 ```
+The select filter **decodes every frame from the beginning of the stream** and simply decides which decoded frames to pass through to the output. It doesn't skip or seek at all — it's a filter that accepts or rejects already-decoded frames based on your expression (e.g., select='eq(pict_type,I)' to pass only keyframes).
+Because it decodes everything, it is:
+* Frame-accurate — you get exactly the frames matching your condition
+* Slow — no shortcuts are taken; the full stream is decoded
+We can combine it with -ss (before -i for input seeking behaviour, after -i for output seeking behaviour), for faster speed.
+
+Note about default filenaming in the single pass snippet above: the order of the frames in the select parameter does not matter, because it acts as a logical OR gate for the frame index. As a result, frames are extracted in decode order, that is, in ascending order. In the example above, frame idx = 10 will be saved as frame_001.png, idx=50 --> frame_002.png and idx=100 --> frame_003.png. You may want to add a loop later to rename the files, or alternatively, use a loop and extract each frame in a separate command for clarity. But note that in the per-frame loop: "Total work ≈ sum over frames of (decode from preceding keyframe to that frame), plus N times the ffmpeg startup + file-open overhead.", the overhead is usually larger.
+
+From Claude:
+> n is ffmpeg's built-in variable for the zero-based index of the current video frame being decoded. The select filter evaluates the expression for every frame, and only passes through frames where the result is non-zero (truthy). So eq(n,100) returns 1 when ffmpeg is processing frame 100, and 0 otherwise. The + acts as a logical OR.
+> -vsync vfr \  # prevent ffmpeg from producing a video with same fps as input.  Without vfr, ffmpeg would duplicate the selected frames to fill the gaps and produce an output with the same fps as the input — so instead of 3 frames you'd get a full-length video with those frames repeated.
+> -q:v 2 — output quality for the PNG encoder. Lower is better; 2 gives near-lossless quality. For PNG (lossless by definition) this controls the zlib compression level, so it has no effect on pixel accuracy, only on file size vs. encode speed.
+> Without -q:v, ffmpeg defaults to -q:v 3 for PNG, which is one compression level lower effort — the difference in speed is negligible. PNG compression levels (1–9) trade encode time for file size, but the effect is small compared to the time spent decoding the video frames. You can safely drop it.
 
 Tip — for many frames, it's cleaner to use a script:
 ```bash
@@ -263,6 +278,7 @@ with av.open(video_path) as container:
     container.seek(int(target_idx / float(fps) * 1e6))
 
     # Decode from keyframe until we get a frame with PTS >= target
+    # (assumes constant fps)
     target_pts = None # initialise
     for frame in container.decode(stream):
         # Compute target_pts from first frame
@@ -321,6 +337,8 @@ The one caveat with PTS comparison: it assumes frames have uniformly spaced PTS 
 
 * Input seeking
 - in theory for ffmpeg > 2.1 and without stream `copy` it is frame accurate
+- but:
+> Input-side seeking (-ss before -i): FFmpeg jumps to the nearest preceding keyframe using the container index, then decodes forward to your target timestamp. This is fast because it skips demuxing and decoding the bulk of the stream. The decoded frame at your target timestamp is accurate. The only "inaccuracy" is that the output stream may begin at the keyframe rather than your exact timestamp — relevant when trimming, not when extracting a frame.
 
 
 * Output seeking
@@ -343,12 +361,20 @@ Note: [Syntax to express time duration in ffmpeg commands](https://ffmpeg.org/ff
 
 Alternative: via sleap-io (although note that sleap-io does not re-encode)
 
+> the difference between input and output seeking is on where the output stream starts and how much decoding work is done to get there
+
 ## Combine image files into a video
 
 See here: https://hamelot.io/visualization/using-ffmpeg-to-convert-a-set-of-images-into-a-video/
 
 ```bash
 ffmpeg -r 60 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25  -pix_fmt yuv420p test.mp4
+```
+
+```bash
+ffmpeg -r 1 -f image2 -pattern_type glob -i '/path/to/dir/with/images/*.png' \
+  -vcodec libx264 -crf 25 -pix_fmt yuv420p \
+  /path/to/output/video.mp4
 ```
 
 ```bash
