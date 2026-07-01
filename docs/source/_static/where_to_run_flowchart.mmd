@@ -1,0 +1,26 @@
+flowchart TD
+    classDef start fill:#f5f5f5,stroke:#555,stroke-width:2px;
+    classDef decision fill:#fff,stroke:#555,stroke-width:1px;
+    classDef local stroke:#03A062,stroke-width:3px,color:#03A062;
+    classDef cluster stroke:#1f77b4,stroke-width:3px,color:#1f77b4;
+    classDef browser stroke:#9467bd,stroke-width:3px,color:#9467bd;
+
+    Q0(["🧑‍💻<br>I want to run some code"]):::start --> Q1{"Does it fit on<br>my laptop?<br>(CPU/RAM/GPU/time)"}
+
+    Q1 -->|Yes| LOCAL["💻 Run locally"]:::local
+    Q1 -->|No, I need<br>the cluster| Q2{"Which machine<br>am I using?"}
+
+    Q2 -->|Managed Linux<br>desktop| SLURM_DIRECT["⚡ Submit SLURM jobs directly<br>from your terminal<br>(no SSH needed)"]:::cluster
+    Q2 -->|Managed Windows<br>desktop, or<br>personal computer| Q3{"How do I want to<br>work on the cluster?"}
+
+    Q3 -->|Batch / fire-and-forget| SSH_BATCH["🔑 SSH + sbatch<br>over a script"]:::cluster
+    Q3 -->|Interactive coding<br>in an editor| VSCODE["🧩 srun a compute node, then<br>code tunnel from inside it<br>(open in VSCode locally<br>or vscode.dev)"]:::cluster
+    Q3 -->|GUI app or full<br>Linux desktop| OOD_DESKTOP["🖥️ OOD Desktop"]:::browser
+    Q3 -->|Browser-based tool<br>Jupyter / Dash / Streamlit| Q5{"Is it in the<br>OOD app list?"}
+    Q3 -->|Quick file browsing<br>or job status check| OOD_FILES["📁 OOD Files /<br>Active Jobs"]:::browser
+
+    Q5 -->|Yes| OOD_APP["🧪 Launch the<br>OOD Interactive App"]:::browser
+    Q5 -->|No| PORT_FWD["🔌 SSH port forwarding<br>from an srun-allocated<br>compute node"]:::cluster
+
+    FORBIDDEN["⛔ Never ssh directly into a compute node:<br>it bypasses SLURM and disrupts other users.<br>Always go through srun / sbatch / OOD."]:::forbidden
+    classDef forbidden fill:#fff3f3,stroke:#d62728,stroke-width:2px,color:#d62728;

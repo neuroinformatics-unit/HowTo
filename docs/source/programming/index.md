@@ -7,10 +7,12 @@ Small tips and tricks that do not warrant a long-form guide can be found in the 
 ```{toctree}
 :maxdepth: 1
 
+Where-to-run
 SLURM-arguments
 SSH-SWC-cluster
 SSH-vscode
 vscode-with-slurm-job
+Open-OnDemand-SWC
 Mount-ceph-ubuntu
 Mount-ceph-ubuntu-temp
 Cookiecutter-cruft
