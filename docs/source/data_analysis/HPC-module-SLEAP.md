@@ -64,7 +64,7 @@ Currently Loaded Modulefiles:
 ```
 
 If you have troubles with loading the SLEAP module,
-see this guide's [Troubleshooting section](#problems-with-the-sleap-module).
+see the [](troubleshooting) section.
 
 :::{note}
 The SLEAP CLI commands `sleap train` and `sleap track` are aliases for
