@@ -36,7 +36,7 @@ extracellular electrophysiology analysis.
 
 A particularly useful resource is the
 [Neuropixels](https://www.ucl.ac.uk/brain-sciences/neuropixels/training) course, with their videos published online
-(e.g. [2023](https://www.ucl.ac.uk/brain-sciences/research/neuropixels/training/2023-neuropixels-course)).
+(e.g. [2025](https://www.ucl.ac.uk/brain-sciences/research/neuropixels/training/2025-neuropixels-course)).
 While these are targeted towards Neuropixels users, they are
 valuable resources for any researcher
 approaching electrophysiology preprocessing and analysis.
