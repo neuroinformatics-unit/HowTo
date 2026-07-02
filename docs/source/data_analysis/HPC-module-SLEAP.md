@@ -1,4 +1,4 @@
-# Use the SLEAP module on the SWC HPC cluster
+# Use SLEAP on the SWC HPC cluster
 
 ```{include} ../_static/swc-wiki-warning.md
 ```
@@ -37,7 +37,7 @@ $ ssh hpc-gw2
 To learn more about accessing the HPC via SSH, see the [relevant how-to guide](ssh-cluster-target).
 
 ### Access to the SLEAP module
-Once you are on the HPC gateway node, you can see the available SLEAP modules by running `module avail SLEAP`:
+Once you are on the HPC gateway node, you can list the available SLEAP modules:
 
 ```{code-block} console
 $ module avail SLEAP
@@ -48,11 +48,14 @@ $ module avail SLEAP
    D:  Default Module
 ...
 ```
-- `SLEAP/2026-05-08` corresponds to `SLEAP v.1.6.3` ([PyTorch backend](https://docs.sleap.ai/)) — this is the recommended module for all new projects, and what this guide documents.
-- Older modules use the legacy TensorFlow backend (e.g. `SLEAP/2025-09-30` is `SLEAP v.1.3.4`). Load these by full name if you need to maintain compatibility with an existing project, and refer to the [legacy SLEAP documentation](https://legacy.sleap.ai/). Modules with dates before `2025-09-30` are no longer recommended (built for an older Ubuntu).
+- `SLEAP/2026-05-08` corresponds to [SLEAP v1.6.3](https://docs.sleap.ai/v1.6.3/) (PyTorch backend) — this is the recommended module for all new projects, and what this guide documents.
+- Older modules use the [legacy TensorFlow backend](https://legacy.sleap.ai/). Use these only if you need compatibility with an existing project. 
+- Modules dated before `2025-09-30` were built for an older Ubuntu base and are no longer recommended.
 
-If a module has been successfully loaded, it will be listed among
-other loaded modules when you run `module list`:
+To load the recommended PyTorch-based version (the default):
+
+
+To view the modules that are currently loaded:
 
 ```{code-block} console
 $ module list
@@ -80,10 +83,10 @@ you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.
 
 We recommend following the official [SLEAP installation guide](https://docs.sleap.ai/latest/installation/).
-To minimise the risk of issues due to incompatibilities between versions, ensure the version of your local installation of SLEAP matches the one you plan to load in the cluster.
+To avoid compatibility issues, make sure your local SLEAP version matches the module you plan to use on the cluster.
+The guide also includes a [version compatibility table](https://docs.sleap.ai/latest/installation/#version-compatibility) showing which versions of `sleap`, `sleap-io`, and `sleap-nn` belong together—use this when installing a specific version or updating pinned packages.
 
-For, example, to match the latest SLEAP module at the time of writing (`SLEAP/2026-05-08`),
-you will need to run the following command in your local terminal:
+For example, to match the current default module (`SLEAP/2026-05-08`, SLEAP v1.6.3), you can install the corresponding versions locally with:
 
 ```{code-block} console
 uv tool install --python 3.13 "sleap[nn]==1.6.3" --with "sleap-io==0.7.0" --with "sleap-nn==0.2.0" --torch-backend auto
@@ -165,18 +168,18 @@ and data pipeline settings for each model. You can inspect them with
 The precise files will depend on the model configuration you chose in SLEAP.
 Here we see two config files, one for the 'centroid' and another for
 the 'centered_instance' model. That's because in this example we have chosen
-the 'Top-Down' configuration, which consists of two neural networks - the first
+the ['Top-Down](https://nn.sleap.ai/latest/reference/models/#top-down)' configuration, which consists of two neural networks - the first
 for isolating the animal instances (by finding their centroids) and the second
 for predicting all the body parts per instance.
 
-![Top-Down model configuration](https://legacy.sleap.ai/_images/topdown_approach.jpg)
+![Top-Down model configuration](https://nn.sleap.ai/latest/assets/images/topdown_approach.jpg)
 
 :::{dropdown} More on 'Top-Down' vs 'Bottom-Up' models
 :color: info
 :icon: info
 
 Although the 'Top-Down' configuration was designed with multiple animals in mind,
-it can also be used for single-animal videos. It makes sense to use it for videos
+it can also be used for single-animal videos,
 where the animal occupies a relatively small portion of the frame - see
 [Model Configuration](https://nn.sleap.ai/latest/reference/models/) for more info.
 :::
@@ -440,9 +443,9 @@ sleap track \
     -o $SLP_DIR/predictions/labels.v002.predictions.slp
 ```
 The script mirrors the training one, with a few differences:
-- `sleap train` is replaced by a single `sleap track` call (split across lines with `\` for readability).
-- The time limit `-t` is lower, since inference is typically faster than training (depends on video length and number of models).
 - `--cpus-per-task` and `--mem` are higher; tune these to your specific job, ideally after a scaled-down trial run.
+- The time limit `-t` is lower, since inference is typically faster than training (depends on video length and number of models).
+- `sleap train` is replaced by a single `sleap track` call (split across lines with `\` for readability).
 
 Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent inference commands.
 
