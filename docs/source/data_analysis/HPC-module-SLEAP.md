@@ -387,7 +387,14 @@ SLEAP provides the `sleap track` command line utility for running inference
 on a single video or a folder of videos.
 See the [remote inference guide](https://docs.sleap.ai/latest/guides/running-sleap-remotely/#remote-inference) for more details.
 
-Below is an example SLURM batch script that contains a `sleap track` call.
+Create a new file called `infer-slurm.sh`. Because this script uses absolute paths
+(see below), you can keep it anywhere you like.
+
+```{code-block} console
+$ nano infer-slurm.sh
+```
+
+An example is provided below.
 ```{code-block} bash
 :linenos:
 #!/bin/bash
@@ -431,6 +438,11 @@ The script mirrors the training one, with a few differences:
 - `--cpus-per-task` and `--mem` are higher; tune these to your specific job, ideally after a scaled-down trial run.
 - The time limit `-t` is lower, since inference is typically faster than training (depends on video length and number of models).
 - `sleap train` is replaced by a single `sleap track` call (split across lines with `\` for readability).
+- Paths are absolute (built from `$SLP_DIR`) rather than relative to the training job folder.
+
+In the `sleap track` call, `-i` is the input video to run inference on (replace this
+with the path to your own video), each `-m` points to a trained model from the training
+step, and `-o` is the output file where the predictions will be saved.
 
 Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent inference commands.
 
