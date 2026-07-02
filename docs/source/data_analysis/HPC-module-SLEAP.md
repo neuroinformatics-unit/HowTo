@@ -73,16 +73,6 @@ Currently Loaded Modules:
 If you have troubles with loading the SLEAP module,
 see the [](troubleshooting) section.
 
-:::{note}
-The SLEAP CLI commands `sleap train` and `sleap track` are aliases for
-`sleap-nn train` and `sleap-nn track` respectively; the two forms work
-interchangeably. For a full list of arguments, run `<command> --help`
-(with the SLEAP module loaded) or consult the SLEAP-NN documentation on
-[training](https://nn.sleap.ai/latest/guides/training/),
-[inference](https://nn.sleap.ai/latest/guides/inference/) and
-[tracking](https://nn.sleap.ai/latest/guides/tracking/).
-:::
-
 
 ### Install SLEAP on your local PC/laptop
 While you can delegate the GPU-intensive work to the HPC cluster,
@@ -453,6 +443,16 @@ Upon completion, a `labels.v002.predictions.slp` file will have been created in 
 
 You can use the SLEAP GUI on your local machine to load and view the predictions:
 *File* -> *Open Project...* -> select the `labels.v002.predictions.slp` file.
+
+:::{note}
+The SLEAP CLI commands `sleap train` and `sleap track` are aliases for
+`sleap-nn train` and `sleap-nn track` respectively; the two forms work
+interchangeably. For a full list of arguments, run `<command> --help`
+(with the SLEAP module loaded) or consult the SLEAP-NN documentation on
+[training](https://nn.sleap.ai/latest/guides/training/),
+[inference](https://nn.sleap.ai/latest/guides/inference/) and
+[tracking](https://nn.sleap.ai/latest/guides/tracking/).
+:::
 
 
 ## The training-inference cycle
