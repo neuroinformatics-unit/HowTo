@@ -35,8 +35,8 @@ This section includes more technical resources on the different stages of
 extracellular electrophysiology analysis.
 
 A particularly useful resource is the
-[Neuropixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
-(e.g. [2023](https://www.ucl.ac.uk/neuropixels/training/2023-neuropixels-course)).
+[Neuropixels](https://www.ucl.ac.uk/brain-sciences/neuropixels/training) course, with their videos published online
+(e.g. [2023](https://www.ucl.ac.uk/brain-sciences/research/neuropixels/training/2023-neuropixels-course)).
 While these are targeted towards Neuropixels users, they are
 valuable resources for any researcher
 approaching electrophysiology preprocessing and analysis.
@@ -86,7 +86,7 @@ More recently, advances in the automating curation has been made in the
 [Bombcell package](https://github.com/Julie-Fabre/bombcell).
 
 SpikeInterface also maintains a set of quality metrics,
-[explained in detail](https://spikeinterface.readthedocs.io/en/latest/modules/qualitymetrics.html)
+[explained in detail](https://spikeinterface.readthedocs.io/en/stable/modules/metrics.html)
 in their documentation.
 
 ## SpikeInterface
@@ -108,7 +108,7 @@ is mainly focused on preprocessing, spike sorting and quality metrics.
 and [Nemos](https://github.com/flatironinstitute/nemos)
 all provide useful  toolboxes for analysing data post-sorting.
 
-The [SpikeForest](https://spikeforest.flatironinstitute.org/)
+The [SpikeForest](https://github.com/flatironinstitute/spikeforest)
 project is an excellent resource for assessing the performance of
 different spike-sorting algorithms across probe types and brain regions.
 
