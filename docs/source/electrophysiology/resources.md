@@ -21,13 +21,13 @@ documentation is a good starting point.
 Below are a selection of papers that give a history
 and overview of the extracellular electrophysiology landscape:
 
-[Steinmetz NA et al. (2018). Challenges and opportunities for large-scale electrophysiology with Neuropixels probes. *Current Opinion in Neurobiology*.](https://pubmed.ncbi.nlm.nih.gov/29444488/)
+[Steinmetz NA et al. (2018). Challenges and opportunities for large-scale electrophysiology with Neuropixels probes. *Current Opinion in Neurobiology*.](https://doi.org/10.1016/j.conb.2018.01.009)
 
 [Buccino AP et al. (2022). Spike sorting: new trends and challenges of the era of high-density probes. *Progress in Biomedical Engineering*.](https://iopscience.iop.org/article/10.1088/2516-1091/ac6b96/meta)
 
 [Rey HG et al. (2015). Past, present and future of spike sorting techniques. *Brain Research Bulletin*.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4674014/)
 
-[Carlson D et al. (2019). Continuing progress of spike sorting in the era of big data. *Current Opinion in Neurobiology*](https://pubmed.ncbi.nlm.nih.gov/30856552/)
+[Carlson D et al. (2019). Continuing progress of spike sorting in the era of big data. *Current Opinion in Neurobiology*](https://doi.org/10.1016/j.conb.2019.02.007)
 
 ## Technical Introduction
 
@@ -35,8 +35,8 @@ This section includes more technical resources on the different stages of
 extracellular electrophysiology analysis.
 
 A particularly useful resource is the
-[Neuropixels](https://www.ucl.ac.uk/neuropixels/courses) course, with their videos published online
-(e.g. [2023](https://www.ucl.ac.uk/neuropixels/training/2023-neuropixels-course)).
+[Neuropixels](https://www.ucl.ac.uk/brain-sciences/neuropixels/training) course, with their videos published online
+(e.g. [2025](https://www.ucl.ac.uk/brain-sciences/research/neuropixels/training/2025-neuropixels-course)).
 While these are targeted towards Neuropixels users, they are
 valuable resources for any researcher
 approaching electrophysiology preprocessing and analysis.
@@ -48,7 +48,7 @@ contains a clearly written overview of common preprocessing steps. Similarly,
 [Bill Karsh's guide](https://billkarsh.github.io/SpikeGLX/help/catgt_tshift/catgt_tshift/) on
 SpikeGLX preprocessing tools gives a useful overview.
 
-[de Cheveigné & Nelken (2019)](https://pubmed.ncbi.nlm.nih.gov/30998899/)
+[de Cheveigné & Nelken (2019)](https://doi.org/10.1016/j.neuron.2019.02.039)
 provide a technical treatment of digital filtering, a key step in preprocessing and analysis.
 
 ### Spike Sorting
@@ -73,7 +73,7 @@ Assessing the quality of spike-sorting is a key to producing high-quality data.
 These two papers provide a nice introduction to quality metrics for assessing
 spike sorting outputs:
 
-[Hill DN et al. (2011). Quality Metrics to Accompany Spike Sorting of Extracellular Signals. *Journal of Neuroscience*.](https://www.jneurosci.org/content/31/24/8699)
+[Hill DN et al. (2011). Quality Metrics to Accompany Spike Sorting of Extracellular Signals. *Journal of Neuroscience*.](https://doi.org/10.1523/JNEUROSCI.0971-11.2011)
 
 [Harris KD et al. (2016). Improving data quality in neuronal population recordings. *Nature Neuroscience*.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5244825/)
 
@@ -86,7 +86,7 @@ More recently, advances in the automating curation has been made in the
 [Bombcell package](https://github.com/Julie-Fabre/bombcell).
 
 SpikeInterface also maintains a set of quality metrics,
-[explained in detail](https://spikeinterface.readthedocs.io/en/latest/modules/qualitymetrics.html)
+[explained in detail](https://spikeinterface.readthedocs.io/en/stable/modules/metrics.html)
 in their documentation.
 
 ## SpikeInterface
@@ -108,7 +108,7 @@ is mainly focused on preprocessing, spike sorting and quality metrics.
 and [Nemos](https://github.com/flatironinstitute/nemos)
 all provide useful  toolboxes for analysing data post-sorting.
 
-The [SpikeForest](https://spikeforest.flatironinstitute.org/)
+The [SpikeForest](https://doi.org/10.7554/eLife.55167)
 project is an excellent resource for assessing the performance of
 different spike-sorting algorithms across probe types and brain regions.
 
