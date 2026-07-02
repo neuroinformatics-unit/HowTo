@@ -86,6 +86,7 @@ linkcheck_ignore = [
     "https://neuromorpho.org/",
     "https://liveuclac.sharepoint.com/",  # ignore everything on the internal wiki
     "https://gin.g-node.org/",  # GIN is often slow/unreachable and times out
+    "https://doi.org/",  # DOIs are stable but publishers often block link checkers
     "https://linux.die.net/man/1/rsync",
     "https://www.uclb.com/",
     "https://support.zadarastorage.com",
