@@ -108,7 +108,7 @@ is mainly focused on preprocessing, spike sorting and quality metrics.
 and [Nemos](https://github.com/flatironinstitute/nemos)
 all provide useful  toolboxes for analysing data post-sorting.
 
-The [SpikeForest](https://github.com/flatironinstitute/spikeforest)
+The [SpikeForest](https://doi.org/10.7554/eLife.55167)
 project is an excellent resource for assessing the performance of
 different spike-sorting algorithms across probe types and brain regions.
 
