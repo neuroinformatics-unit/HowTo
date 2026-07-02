@@ -477,6 +477,7 @@ For example, you can:
 - Export a new training job `labels.v003.slp.training_job` (you may reuse the training configurations from before)
 - Repeat the training-inference cycle until satisfied
 
+(troubleshooting)=
 ## Troubleshooting
 
 ### Problems with the SLEAP module
@@ -621,7 +622,7 @@ sleap-track video.mp4 \
 
 ### Verifying the module
 
-The verification steps in the [Troubleshooting section](#problems-with-the-sleap-module)
+The verification steps in the [](troubleshooting) section
 use TensorFlow instead of PyTorch:
 
 ```{code-block} pycon
