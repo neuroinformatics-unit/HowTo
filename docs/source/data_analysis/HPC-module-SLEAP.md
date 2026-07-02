@@ -192,16 +192,19 @@ where the animal occupies a relatively small portion of the frame - see
 :::
 
 SLEAP also generates a `train-script.sh` file in the training job folder.
-You can inspect it with `cat train-script.sh` to see the training commands it contains —
-these are useful as a reference, but they reflect the paths on the machine that
-exported the training job package and may not work as-is on the HPC cluster.
-Instead, we'll write the `sleap train` commands from scratch in the next step.
+You can inspect it with `cat train-script.sh` to see the training commands it contains.
+These are useful as a reference, but be cautious about copying them verbatim.
+They may point to folders on the machine that exported the training package,
+rather than on the cluster. They may also include a `trainer_config.run_name=...`
+setting whose value contains an `=` sign. This makes SLEAP stop with an error like
+`mismatched input '=' expecting`. Instead, we'll write the `sleap train` commands from
+scratch in the next step, letting SLEAP name each training run automatically.
 
 Next you need to create a SLURM batch script, which will schedule the training job
-on the HPC cluster. Create a new file called `train-slurm.sh`
-(you can do this in the terminal with `nano`/`vim` or in a text editor of
-your choice on your local PC/laptop). Here we create the script in the same folder
-as the training job, but you can save it anywhere you want, or even keep track of it with `git`.
+on the HPC cluster. Create a new file called `train-slurm.sh` inside the training job
+folder (the same folder that holds the config files), because the training commands
+below use paths relative to that folder. You can create it in the terminal with
+`nano`/`vim`, or write it in a text editor on your local machine and copy it in.
 
 ```{code-block} console
 $ nano train-slurm.sh
@@ -231,17 +234,9 @@ nvidia-smi
 # Load the SLEAP module
 module load SLEAP
 
-# Define directories for SLEAP project and exported training job
-SLP_DIR=/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
-SLP_JOB_NAME=labels.v002.slp.training_job
-SLP_JOB_DIR=$SLP_DIR/$SLP_JOB_NAME
-
-# Go to the job directory
-cd $SLP_JOB_DIR
-
 # Run the training for each model
-sleap train --config-name centroid.yaml --config-dir . trainer_config.ckpt_dir="$SLP_DIR/models"
-sleap train --config-name centered_instance.yaml --config-dir . trainer_config.ckpt_dir="$SLP_DIR/models"
+sleap train --config-name centroid.yaml --config-dir . trainer_config.ckpt_dir='models'
+sleap train --config-name centered_instance.yaml --config-dir . trainer_config.ckpt_dir='models'
 ```
 
 :::{dropdown} Explanation of the batch script
@@ -269,28 +264,21 @@ sleap train --config-name centered_instance.yaml --config-dir . trainer_config.c
 - `module load SLEAP` loads the latest SLEAP module and its dependencies.
   PyTorch bundles its own CUDA runtime, so no separate `cuda` module is needed.
 
-- `cd $SLP_JOB_DIR` is needed because `--config-dir .` in the `sleap train` commands
-  uses a relative path to find the YAML configuration files.
+- `--config-dir .` and `trainer_config.ckpt_dir='models'` use paths relative to the
+  training job folder, so submit the script from within that folder (see below).
 
 - Each `sleap train` call trains one model: `--config-name` selects the YAML file,
-  `--config-dir` the directory containing it, and `trainer_config.ckpt_dir`
-  sets where the trained model files will be saved.
+  `--config-dir .` points to the current folder containing it, and
+  `trainer_config.ckpt_dir='models'` saves the trained model into a `models/`
+  subfolder of the training job folder.
 :::
 
 Using a legacy (TensorFlow) module instead? See [Legacy (TensorFlow) modules](legacy-modules) for the equivalent training commands.
 
-:::{warning}
-Before submitting the job, ensure that you have permissions to execute
-the SLURM batch script. You can make it executable by running:
-
+Now submit the batch script from within the training job folder, so that the
+relative paths in the script resolve correctly:
 ```{code-block} console
-$ chmod +x train-slurm.sh
-```
-:::
-
-Now you can submit the batch script via running the following command
-(in the same directory as the script):
-```{code-block} console
+$ cd /ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data/labels.v002.slp.training_job
 $ sbatch train-slurm.sh
 Submitted batch job 3445652
 ```
@@ -366,11 +354,11 @@ If you encounter out-of-memory errors, keep in mind that there are two main sour
 (model-evaluation)=
 ## Model evaluation
 Upon successful completion of the training job, a `models` folder will have
-been created in your specified `trainer_config.ckpt_dir`.
+been created inside the training job folder (as set by `trainer_config.ckpt_dir='models'`).
 It contains one subfolder per training run.
 
 ```{code-block} console
-$ cd /ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
+$ cd /ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data/labels.v002.slp.training_job
 $ cd models
 $ ls -1
 '260512_151547.centroid.n=46'
@@ -442,8 +430,8 @@ mkdir -p $SLP_DIR/predictions
 # Run the inference command
 sleap track \
     -i $SLP_DIR/mice.mp4 \
-    -m $SLP_DIR/models/260512_151547.centroid.n=46 \
-    -m $SLP_DIR/models/260512_151547.centered_instance.n=46 \
+    -m $SLP_DIR/labels.v002.slp.training_job/models/260512_151547.centroid.n=46 \
+    -m $SLP_DIR/labels.v002.slp.training_job/models/260512_151547.centered_instance.n=46 \
     -d auto \
     -b 4 \
     --tracking \
