@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Use the SLEAP module on the SWC HPC cluster &#8212; HowTo</title>
+    <title>Use SLEAP on the SWC HPC cluster &#8212; HowTo</title>
   
   
   
@@ -358,7 +358,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../electrophysiology/community.html">Community</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Use the SLEAP module on the SWC HPC cluster</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Use SLEAP on the SWC HPC cluster</a></li>
 </ul>
 </div>
 </nav></div>
@@ -402,7 +402,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Data Analysis</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Use the SLEAP module on the SWC HPC cluster</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Use SLEAP on the SWC HPC cluster</span></li>
   </ul>
 </nav>
 </div>
@@ -419,8 +419,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="use-the-sleap-module-on-the-swc-hpc-cluster">
-<h1>Use the SLEAP module on the SWC HPC cluster<a class="headerlink" href="#use-the-sleap-module-on-the-swc-hpc-cluster" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="use-sleap-on-the-swc-hpc-cluster">
+<h1>Use SLEAP on the SWC HPC cluster<a class="headerlink" href="#use-sleap-on-the-swc-hpc-cluster" title="Link to this heading">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Some links within this document point to the
@@ -483,16 +483,8 @@ any prompt:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Note on managed Linux desktops</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The SWC’s IT team offers managed desktop computers equipped with a Linux image. These machines are already part of SWC’s trusted domain and have direct access to SLURM, the HPC modules, and the SWC filesystem.</p>
-<p class="sd-card-text">If you have access to one of these desktops,
-you can skip the pre-requisite steps.
-You may simply open a terminal, type <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code>,
-and start using SLEAP directly, as you would on any local
-Linux machine. All SLEAP commands should work as expected,
-including <code class="docutils literal notranslate"><span class="pre">sleap-label</span></code> for launching the GUI.</p>
-<p class="sd-card-text">That said, you may still want to offload GPU-intensive tasks to an HPC node (e.g. because the desktop’s GPU is not powerful enough or because you need to run many jobs in parallel). In that case, you may
-still want to read the sections on <a class="reference internal" href="#sleap-training"><span class="std std-ref">model training</span></a>
-and <a class="reference internal" href="#sleap-inference"><span class="std std-ref">inference</span></a>.</p>
+<p class="sd-card-text">SWC’s IT team offers managed Linux desktops with direct access to SLURM, the HPC modules, and the SWC filesystem. If you have one, you can skip the prerequisite steps: open a terminal, run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code>, and use SLEAP directly (including <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">label</span></code> for the GUI).</p>
+<p class="sd-card-text">You may still want to offload GPU-intensive work to an HPC node (e.g. for more powerful GPUs or parallel jobs). In that case, read the sections on <a class="reference internal" href="#sleap-training"><span class="std std-ref">model training</span></a> and <a class="reference internal" href="#sleap-inference"><span class="std std-ref">inference</span></a>.</p>
 </div>
 </details><section id="access-to-the-hpc-cluster">
 <span id="id1"></span><h3>Access to the HPC cluster<a class="headerlink" href="#access-to-the-hpc-cluster" title="Link to this heading">#</a></h3>
@@ -505,51 +497,50 @@ and <a class="reference internal" href="#sleap-inference"><span class="std std-r
 </section>
 <section id="access-to-the-sleap-module">
 <h3>Access to the SLEAP module<a class="headerlink" href="#access-to-the-sleap-module" title="Link to this heading">#</a></h3>
-<p>Once you are on the HPC gateway node, SLEAP should be listed among the available modules when you run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>avail
-<span class="go">...</span>
-<span class="go">SLEAP/2023-03-13</span>
-<span class="go">SLEAP/2023-08-01</span>
-<span class="go">SLEAP/2024-08-14</span>
-<span class="go">SLEAP/2025-09-30</span>
+<p>Once you are on the HPC gateway node, you can list the available SLEAP modules:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>avail<span class="w"> </span>SLEAP
+<span class="go">----------------------- /ceph/apps/ubuntu-24/modulefiles-----------------------</span>
+<span class="go">   ...  SLEAP/2025-09-30    SLEAP/2026-05-08 (D)</span>
+
+<span class="go">  Where:</span>
+<span class="go">   D:  Default Module</span>
 <span class="go">...</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2023-03-13</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.2.9</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2023-08-01</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.3.1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2024-08-14</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.3.3</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2025-09-30</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">SLEAP</span> <span class="pre">v.1.3.4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SLEAP/2026-05-08</span></code> corresponds to <a class="reference external" href="https://docs.sleap.ai/v1.6.3/">SLEAP v1.6.3</a> (PyTorch backend) — this is the recommended module for all new projects, and what this guide documents.</p></li>
+<li><p>Older modules use the <a class="reference external" href="https://legacy.sleap.ai/">legacy TensorFlow backend</a>. Use these only if you need compatibility with an existing project.</p></li>
+<li><p>Modules dated before <code class="docutils literal notranslate"><span class="pre">2025-09-30</span></code> were built for an older Ubuntu base and are no longer recommended.</p></li>
 </ul>
-<p>We recommend always using the latest version, which is the one loaded by default
-when you run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code>. If you want to load a specific version,
-you can do so by typing the full module name,
-including the date e.g. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP/2023-08-01</span></code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>All SLEAP modules currently available on the HPC are from the
-legacy SLEAP&lt;=1.4.1 series (TensorFlow backend).
-Thus all links to SLEAP documentation in this guide refer to <a class="reference external" href="https://legacy.sleap.ai/">https://legacy.sleap.ai/</a>.</p>
-<p>Modules for <a class="reference external" href="https://docs.sleap.ai/latest/">SLEAP&gt;=1.5.0</a> (PyTorch backend)
-will be added in the future.</p>
+<p>To load the recommended PyTorch-based version (the default):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
+</pre></div>
 </div>
-<p>If a module has been successfully loaded, it will be listed when you run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>,
-along with other modules it may depend on:</p>
+<p>To load an older TensorFlow-based version (e.g. <code class="docutils literal notranslate"><span class="pre">SLEAP/2025-09-30</span></code>, which is SLEAP v1.3.4), specify its full name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>SLEAP/2025-09-30
+</pre></div>
+</div>
+<p>To view the modules that are currently loaded:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>list
-<span class="go">Currently Loaded Modulefiles:</span>
-<span class="go"> 1) cuda/11.8   2) SLEAP/2023-08-01</span>
+<span class="go">Currently Loaded Modules:</span>
+<span class="go">...   15) SLEAP/2026-05-08</span>
 </pre></div>
 </div>
 <p>If you have troubles with loading the SLEAP module,
-see this guide’s <a class="reference internal" href="#problems-with-the-sleap-module"><span class="std std-ref">Troubleshooting section</span></a>.</p>
+see the <a class="reference internal" href="#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section.</p>
 </section>
 <section id="install-sleap-on-your-local-pc-laptop">
 <h3>Install SLEAP on your local PC/laptop<a class="headerlink" href="#install-sleap-on-your-local-pc-laptop" title="Link to this heading">#</a></h3>
 <p>While you can delegate the GPU-intensive work to the HPC cluster,
 you will need to use the SLEAP GUI for some steps, such as labelling frames.
 Thus, you also need to install SLEAP on your local PC/laptop.</p>
-<p>We recommend following the official <a class="reference external" href="https://legacy.sleap.ai/installation.html">SLEAP installation guide</a>.
-To minimise the risk of issues due to incompatibilities between versions, ensure the version of your local installation of SLEAP matches the one you plan to load in the cluster.</p>
+<p>We recommend following the official <a class="reference external" href="https://docs.sleap.ai/latest/installation/">SLEAP installation guide</a>.
+To avoid compatibility issues, make sure your local SLEAP version matches the module you plan to use on the cluster.
+The guide also includes a <a class="reference external" href="https://docs.sleap.ai/latest/installation/#version-compatibility">version compatibility table</a> showing which versions of <code class="docutils literal notranslate"><span class="pre">sleap</span></code>, <code class="docutils literal notranslate"><span class="pre">sleap-io</span></code>, and <code class="docutils literal notranslate"><span class="pre">sleap-nn</span></code> belong together—use this when installing a specific version or updating pinned packages.</p>
+<p>For example, to match the current default module (<code class="docutils literal notranslate"><span class="pre">SLEAP/2026-05-08</span></code>, SLEAP v1.6.3), you can install the corresponding versions locally with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">uv tool install --python 3.13 &quot;sleap[nn]==1.6.3&quot; --with &quot;sleap-io==0.7.0&quot; --with &quot;sleap-nn==0.2.0&quot; --torch-backend auto</span>
+</pre></div>
+</div>
 </section>
 <section id="mount-the-swc-filesystem-on-your-local-pc-laptop">
 <h3>Mount the SWC filesystem on your local PC/laptop<a class="headerlink" href="#mount-the-swc-filesystem-on-your-local-pc-laptop" title="Link to this heading">#</a></h3>
@@ -581,18 +572,20 @@ to copy data from your local machine to <code class="docutils literal notranslat
 can be <a class="reference internal" href="#model-evaluation"><span class="std std-ref">viewed via the SLEAP GUI</span></a> on your local SLEAP installation.</p>
 <section id="prepare-the-training-job">
 <span id="id2"></span><h3>Prepare the training job<a class="headerlink" href="#prepare-the-training-job" title="Link to this heading">#</a></h3>
-<p>Follow the SLEAP instructions for <a class="reference external" href="https://legacy.sleap.ai/tutorials/new-project.html">Creating a Project</a>
-and <a class="reference external" href="https://legacy.sleap.ai/tutorials/initial-labeling.html">Initial Labelling</a>.
-Ensure that the project file (e.g. <code class="docutils literal notranslate"><span class="pre">labels.v001.slp</span></code>) is saved in the mounted SWC filesystem
+<p>Follow the <a class="reference external" href="https://docs.sleap.ai/latest/tutorial/overview/">SLEAP tutorial</a> till
+the end of the section on <a class="reference external" href="https://docs.sleap.ai/latest/tutorial/initial-labeling/">Initial Labelling</a>.
+Ensure that the project file (e.g. <code class="docutils literal notranslate"><span class="pre">labels.v002.slp</span></code>) is saved in the mounted SWC filesystem
 (as opposed to your local filesystem).</p>
-<p>Next, follow the instructions in <a class="reference external" href="https://legacy.sleap.ai/guides/remote.html#remote-training">Remote Training</a>,
+<p>Next, read the <a class="reference external" href="https://docs.sleap.ai/latest/tutorial/training-a-model/">Training a model</a> section
+of the tutorial, but <strong>do not hit the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button</strong> in the SLEAP GUI just yet
+(that would run the training job on your local machine, which is not what we want).
+Instead, follow the instructions in the <a class="reference external" href="https://docs.sleap.ai/latest/guides/running-sleap-remotely/">Running SLEAP remotely</a> guide,
 i.e. <em>Predict</em> -&gt; <em>Run Training…</em> -&gt; <em>Export Training Job Package…</em>.</p>
 <ul class="simple">
-<li><p>For selecting the right configuration parameters, see <a class="reference external" href="https://legacy.sleap.ai/guides/choosing-models.html#">Configuring Models</a> and <a class="reference external" href="https://legacy.sleap.ai/guides/troubleshooting-workflows.html">Troubleshooting Workflows</a></p></li>
-<li><p>Set the <em>Predict On</em> parameter to <em>nothing</em>. Remote training and inference (prediction) are easiest to run separately on the HPC Cluster. Also unselect <em>Visualize Predictions During Training</em> in training settings, if it’s enabled by default.</p></li>
-<li><p>If you are working with camera view from above or below (as opposed to a side view), set the <em>Rotation Min Angle</em> and <em>Rotation Max Angle</em> to -180 and 180 respectively in the <em>Augmentation</em> section.</p></li>
-<li><p>Make sure to save the exported training job package (e.g. <code class="docutils literal notranslate"><span class="pre">labels.v001.slp.training_job.zip</span></code>) in the mounted SWC filesystem, for example, in the same directory as the project file.</p></li>
-<li><p>Unzip the training job package. This will create a folder with the same name (minus the <code class="docutils literal notranslate"><span class="pre">.zip</span></code> extension). This folder contains everything needed to run the training job on the HPC cluster.</p></li>
+<li><p>For selecting the right configuration parameters, see the <a class="reference external" href="https://nn.sleap.ai/latest/reference/models/">Model Configuration</a> guide.</p></li>
+<li><p>Set the <em>Inference Target</em> parameter to <em>Nothing</em>. Remote training and inference (prediction) are easiest to run separately on the HPC Cluster.</p></li>
+<li><p>Make sure to save the exported training job package (e.g. <code class="docutils literal notranslate"><span class="pre">labels.v002.slp.training_job.zip</span></code>) in the mounted SWC filesystem, for example, in the same directory as the project file.</p></li>
+<li><p>Unzip the training job package. This will create a folder with the same name (minus the <code class="docutils literal notranslate"><span class="pre">.zip</span></code> extension). This folder contains everything needed to run the training job on the HPC cluster: YAML configuration files and a packaged labels file (<code class="docutils literal notranslate"><span class="pre">.pkg.slp</span></code>).</p></li>
 </ul>
 </section>
 <section id="run-the-training-job">
@@ -604,127 +597,113 @@ i.e. <em>Predict</em> -&gt; <em>Run Training…</em> -&gt; <em>Export Training J
 </div>
 <p>Navigate to the training job folder (replace with your own path) and list its contents:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>labels.v001.slp.training_job
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>labels.v002.slp.training_job
 <span class="gp">$ </span>ls<span class="w"> </span>-1
-<span class="go">centered_instance.json</span>
-<span class="go">centroid.json</span>
+<span class="go">centered_instance.yaml</span>
+<span class="go">centroid.yaml</span>
 <span class="go">inference-script.sh</span>
 <span class="go">jobs.yaml</span>
-<span class="go">labels.v001.pkg.slp</span>
-<span class="go">labels.v001.slp.predictions.slp</span>
-<span class="go">train_slurm.sh</span>
-<span class="go">swc-hpc-pose-estimation</span>
-<span class="hll"><span class="go">train-script.sh</span>
-</span></pre></div>
-</div>
-<p>There should be a <code class="docutils literal notranslate"><span class="pre">train-script.sh</span></code> file created by SLEAP, which already contains the
-commands to run the training. You can see the contents of the file by running <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">train-script.sh</span></code>:</p>
-<div class="literal-block-wrapper docutils container" id="train-script-sh">
-<div class="code-block-caption"><span class="caption-text">labels.v001.slp.training_job/train-script.sh</span><a class="headerlink" href="#train-script-sh" title="Link to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
-<span class="linenos">2</span>sleap-train<span class="w"> </span>centroid.json<span class="w"> </span>labels.v001.pkg.slp
-<span class="linenos">3</span>sleap-train<span class="w"> </span>centered_instance.json<span class="w"> </span>labels.v001.pkg.slp
+<span class="go">labels.v002.pkg.slp</span>
+<span class="go">train-script.sh</span>
 </pre></div>
 </div>
-</div>
-<p>The precise commands will depend on the model configuration you chose in SLEAP.
-Here we see two separate training calls, one for the ‘centroid’ and another for
+<p>The YAML configuration files specify the model architecture, training hyperparameters,
+and data pipeline settings for each model. You can inspect them with
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">centroid.yaml</span></code> or open them in a text editor.</p>
+<p>The precise files will depend on the model configuration you chose in SLEAP.
+Here we see two config files, one for the ‘centroid’ and another for
 the ‘centered_instance’ model. That’s because in this example we have chosen
-the <a class="reference external" href="https://legacy.sleap.ai/tutorials/initial-training.html#training-options">‘Top-Down’</a>
-configuration, which consists of two neural networks - the first for isolating
-the animal instances (by finding their centroids) and the second for predicting
-all the body parts per instance.</p>
-<p><img alt="Top-Down model configuration" src="https://legacy.sleap.ai/_images/topdown_approach.jpg" /></p>
+the <a class="reference external" href="https://nn.sleap.ai/latest/reference/models/#top-down">‘Top-Down</a>’ configuration, which consists of two neural networks - the first
+for isolating the animal instances (by finding their centroids) and the second
+for predicting all the body parts per instance.</p>
+<p><img alt="Top-Down model configuration" src="https://nn.sleap.ai/latest/assets/images/topdown_approach.jpg" /></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">More on ‘Top-Down’ vs ‘Bottom-Up’ models</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Although the ‘Top-Down’ configuration was designed with multiple animals in mind,
-it can also be used for single-animal videos. It makes sense to use it for videos
+it can also be used for single-animal videos,
 where the animal occupies a relatively small portion of the frame - see
-<a class="reference external" href="https://legacy.sleap.ai/guides/troubleshooting-workflows.html">Troubleshooting Workflows</a> for more info.</p>
+<a class="reference external" href="https://nn.sleap.ai/latest/reference/models/">Model Configuration</a> for more info.</p>
 </div>
-</details><p>Next you need to create a SLURM batch script, which will schedule the training job
-on the HPC cluster. Create a new file called <code class="docutils literal notranslate"><span class="pre">train_slurm.sh</span></code>
-(you can do this in the terminal with <code class="docutils literal notranslate"><span class="pre">nano</span></code>/<code class="docutils literal notranslate"><span class="pre">vim</span></code> or in a text editor of
-your choice on your local PC/laptop). Here we create the script in the same folder
-as the training job, but you can save it anywhere you want, or even keep track of it with <code class="docutils literal notranslate"><span class="pre">git</span></code>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nano<span class="w"> </span>train_slurm.sh
+</details><p>SLEAP also generates a <code class="docutils literal notranslate"><span class="pre">train-script.sh</span></code> file in the training job folder.
+You can inspect it with <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">train-script.sh</span></code> to see the training commands it contains.
+These are useful as a reference, but be cautious about copying them verbatim.
+They may point to folders on the machine that exported the training package,
+rather than on the cluster. They may also include a <code class="docutils literal notranslate"><span class="pre">trainer_config.run_name=...</span></code>
+setting whose value contains an <code class="docutils literal notranslate"><span class="pre">=</span></code> sign. This makes SLEAP stop with an error like
+<code class="docutils literal notranslate"><span class="pre">mismatched</span> <span class="pre">input</span> <span class="pre">'='</span> <span class="pre">expecting</span></code>. Instead, we’ll write the <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">train</span></code> commands from
+scratch in the next step, letting SLEAP name each training run automatically.</p>
+<p>Next you need to create a SLURM batch script, which will schedule the training job
+on the HPC cluster. Create a new file called <code class="docutils literal notranslate"><span class="pre">train-slurm.sh</span></code> inside the training job
+folder (the same folder that holds the config files), because the training commands
+below use paths relative to that folder. You can create it in the terminal with
+<code class="docutils literal notranslate"><span class="pre">nano</span></code>/<code class="docutils literal notranslate"><span class="pre">vim</span></code>, or write it in a text editor on your local machine and copy it in.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nano<span class="w"> </span>train-slurm.sh
 </pre></div>
 </div>
 <p>An example is provided below, followed by explanations.</p>
-<div class="literal-block-wrapper docutils container" id="train-slurm-sh">
-<div class="code-block-caption"><span class="caption-text">train_slurm.sh</span><a class="headerlink" href="#train-slurm-sh" title="Link to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1">#SBATCH -J slp_train # job name</span>
 <span class="linenos"> 4</span><span class="c1">#SBATCH -p gpu # partition (queue)</span>
 <span class="linenos"> 5</span><span class="c1">#SBATCH -N 1   # number of nodes</span>
 <span class="linenos"> 6</span><span class="c1">#SBATCH --mem 32G # memory pool for all cores</span>
-<span class="linenos"> 7</span><span class="c1">#SBATCH -n 8 # number of cores</span>
-<span class="linenos"> 8</span><span class="c1">#SBATCH -t 0-06:00 # time (D-HH:MM)</span>
-<span class="linenos"> 9</span><span class="c1">#SBATCH --gres gpu:1 # request 1 GPU (of any kind)</span>
-<span class="linenos">10</span><span class="c1">#SBATCH -o slurm.%x.%N.%j.out # STDOUT</span>
-<span class="linenos">11</span><span class="c1">#SBATCH -e slurm.%x.%N.%j.err # STDERR</span>
-<span class="linenos">12</span><span class="c1">#SBATCH --mail-type=ALL</span>
-<span class="linenos">13</span><span class="c1">#SBATCH --mail-user=user@domain.com</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="c1"># Print GPU info</span>
-<span class="linenos">16</span>nvidia-smi
-<span class="linenos">17</span>
-<span class="linenos">18</span><span class="c1"># Load the SLEAP module</span>
-<span class="linenos">19</span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
-<span class="linenos">20</span>
-<span class="linenos">21</span><span class="c1"># Define directories for SLEAP project and exported training job</span>
-<span class="linenos">22</span><span class="nv">SLP_DIR</span><span class="o">=</span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
-<span class="linenos">23</span><span class="nv">SLP_JOB_NAME</span><span class="o">=</span>labels.v001.slp.training_job
-<span class="linenos">24</span><span class="nv">SLP_JOB_DIR</span><span class="o">=</span><span class="nv">$SLP_DIR</span>/<span class="nv">$SLP_JOB_NAME</span>
-<span class="linenos">25</span>
-<span class="linenos">26</span><span class="c1"># Go to the job directory</span>
-<span class="linenos">27</span><span class="nb">cd</span><span class="w"> </span><span class="nv">$SLP_JOB_DIR</span>
-<span class="linenos">28</span>
-<span class="linenos">29</span><span class="c1"># Run the training script generated by SLEAP</span>
-<span class="linenos">30</span>./train-script.sh
+<span class="linenos"> 7</span><span class="c1">#SBATCH --ntasks-per-node=1 # one process per node</span>
+<span class="linenos"> 8</span><span class="c1">#SBATCH --cpus-per-task=8   # CPU cores available to the process</span>
+<span class="linenos"> 9</span><span class="c1">#SBATCH -t 0-06:00 # time (D-HH:MM)</span>
+<span class="linenos">10</span><span class="c1">#SBATCH --gres gpu:a100:1 # request 1 GPU of a given type (see dropdown below)</span>
+<span class="linenos">11</span><span class="c1">#SBATCH -o slurm.%x.%N.%j.out # STDOUT</span>
+<span class="linenos">12</span><span class="c1">#SBATCH -e slurm.%x.%N.%j.err # STDERR</span>
+<span class="linenos">13</span><span class="c1">#SBATCH --mail-type=ALL</span>
+<span class="linenos">14</span><span class="c1">#SBATCH --mail-user=user@domain.com</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># Print GPU info</span>
+<span class="linenos">17</span>nvidia-smi
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1"># Load the SLEAP module</span>
+<span class="linenos">20</span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="c1"># Run the training for each model</span>
+<span class="linenos">23</span>sleap<span class="w"> </span>train<span class="w"> </span>--config-name<span class="w"> </span>centroid.yaml<span class="w"> </span>--config-dir<span class="w"> </span>.<span class="w"> </span>trainer_config.ckpt_dir<span class="o">=</span><span class="s1">&#39;models&#39;</span>
+<span class="linenos">24</span>sleap<span class="w"> </span>train<span class="w"> </span>--config-name<span class="w"> </span>centered_instance.yaml<span class="w"> </span>--config-dir<span class="w"> </span>.<span class="w"> </span>trainer_config.ckpt_dir<span class="o">=</span><span class="s1">&#39;models&#39;</span>
 </pre></div>
 </div>
-</div>
-<p>In <code class="docutils literal notranslate"><span class="pre">nano</span></code>, you can save the file by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code> and exit by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Explanation of the batch script</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<ul class="simple">
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> lines are SLURM directives. They specify the resources needed
-for the job, such as the number of nodes, CPUs, memory, etc.
-A primer on the most useful SLURM arguments is provided in this <a class="reference internal" href="../programming/SLURM-arguments.html#slurm-arguments-target"><span class="std std-ref">how-to guide</span></a>.
-For more information  see the <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">SLURM documentation</a>.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">#</span></code> lines are comments. They are not executed by SLURM, but they are useful
-for explaining the script to your future self and others.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> line prints some information about the GPU(s) available on the node, including their driver version and memory usage. This is useful for debugging purposes.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code> line loads the latest SLEAP module and any other modules
-it may depend on.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">cd</span></code> line changes the working directory to the training job folder.
-This is necessary because the <code class="docutils literal notranslate"><span class="pre">train-script.sh</span></code> file contains relative paths
-to the  model configuration and the project file.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">./train-script.sh</span></code> line runs the training job (executes the contained commands).</p></li>
+<ul>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> lines are SLURM directives specifying the resources needed for the job.
+See our <a class="reference internal" href="../programming/SLURM-arguments.html#slurm-arguments-target"><span class="std std-ref">SLURM primer</span></a> and the <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">SLURM documentation</a> for details.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--ntasks-per-node=1</span></code> tells SLURM to launch one process per node. PyTorch Lightning
+(which SLEAP uses internally) requires this form rather than <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> or <code class="docutils literal notranslate"><span class="pre">-n</span></code>;
+Lightning then manages GPU parallelism within that single process.
+<code class="docutils literal notranslate"><span class="pre">--cpus-per-task=8</span></code> allocates CPU cores to that process for data loading and preprocessing.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a100:1</span></code> requests 1 GPU of type A100. To request any available GPU, use <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:1</span></code>.
+Inspect available GPU types by listing the nodes in the <code class="docutils literal notranslate"><span class="pre">gpu</span></code> and <code class="docutils literal notranslate"><span class="pre">gpu_lowp</span></code> partitions:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sinfo<span class="w"> </span>-p<span class="w"> </span>gpu,gpu_lowp<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%N %G&quot;</span><span class="w"> </span>--noheader
+</pre></div>
+</div>
+<p class="sd-card-text">Look for the string between <code class="docutils literal notranslate"><span class="pre">gpu:</span></code> and the next <code class="docutils literal notranslate"><span class="pre">:</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">a100</span></code>, <code class="docutils literal notranslate"><span class="pre">l40s</span></code>).
+Avoid GPUs with CUDA compute capability below 7.5 (unsupported by PyTorch ≥ 2.5);
+at the time of writing, only <code class="docutils literal notranslate"><span class="pre">p5000</span></code> cards are incompatible.
+See the <a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx">SWC wiki</a>
+and the <a class="reference external" href="https://developer.nvidia.com/cuda/gpus">NVIDIA CUDA GPUs page</a> for compute capabilities.</p>
+</li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">SLEAP</span></code> loads the latest SLEAP module and its dependencies.
+PyTorch bundles its own CUDA runtime, so no separate <code class="docutils literal notranslate"><span class="pre">cuda</span></code> module is needed.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--config-dir</span> <span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">trainer_config.ckpt_dir='models'</span></code> use paths relative to the
+training job folder, so submit the script from within that folder (see below).</p></li>
+<li><p class="sd-card-text">Each <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">train</span></code> call trains one model: <code class="docutils literal notranslate"><span class="pre">--config-name</span></code> selects the YAML file,
+<code class="docutils literal notranslate"><span class="pre">--config-dir</span> <span class="pre">.</span></code> points to the current folder containing it, and
+<code class="docutils literal notranslate"><span class="pre">trainer_config.ckpt_dir='models'</span></code> saves the trained model into a <code class="docutils literal notranslate"><span class="pre">models/</span></code>
+subfolder of the training job folder.</p></li>
 </ul>
 </div>
-</details><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Before submitting the job, ensure that you have permissions to execute
-both the batch script and the training script generated by SLEAP.
-You can make these files executable by running in the terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>train-script.sh
-<span class="gp">$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>train_slurm.sh
-</pre></div>
-</div>
-<p>If the scripts are not in your working directory, you will need to specify their full paths:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>/path/to/train-script.sh
-<span class="gp">$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>/path/to/train_slurm.sh
-</pre></div>
-</div>
-</div>
-<p>Now you can submit the batch script via running the following command
-(in the same directory as the script):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>train_slurm.sh
+</details><p>Using a legacy (TensorFlow) module instead? See <a class="reference internal" href="#legacy-modules"><span class="std std-ref">Legacy (TensorFlow) modules</span></a> for the equivalent training commands.</p>
+<p>Now submit the batch script from within the training job folder, so that the
+relative paths in the script resolve correctly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data/labels.v002.slp.training_job
+<span class="gp">$ </span>sbatch<span class="w"> </span>train-slurm.sh
 <span class="go">Submitted batch job 3445652</span>
 </pre></div>
 </div>
@@ -783,11 +762,11 @@ view the logs</label><div class="sd-tab-content docutils">
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path></svg></span><span class="sd-summary-text">Out-of-memory (OOM) errors</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">If you encounter out-of-memory errors, keep in mind that there two main sources of memory usage:</p>
+<p class="sd-card-text">If you encounter out-of-memory errors, keep in mind that there are two main sources of memory usage:</p>
 <ul class="simple">
 <li><p class="sd-card-text">CPU memory (RAM), specified via the <code class="docutils literal notranslate"><span class="pre">--mem</span></code> argument in the SLURM batch script. This is the memory used by the Python process running the training job and is shared among all the CPU cores.</p></li>
-<li><p class="sd-card-text">GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:1</span></code> argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a4500:1</span></code>). The SWC wiki provides a <a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx">list of all GPU card types and their specifications</a>.</p></li>
-<li><p class="sd-card-text">If requesting more memory doesn’t help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with <em>Input scaling</em>, <em>Max stride</em> and <em>Batch size</em>. See SLEAP’s <a class="reference external" href="https://legacy.sleap.ai/">documentation</a> and <a class="reference external" href="https://github.com/talmolab/sleap/discussions">discussion forum</a> for more details.</p></li>
+<li><p class="sd-card-text">GPU memory, this is the memory used by the GPU card(s) and depends on the GPU card type you requested via the <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:1</span></code> argument in the SLURM batch script. To increase it, you can request a specific GPU card type with more GPU memory (e.g. <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:a100:1</span></code>). The SWC wiki provides a <a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx">list of all GPU card types and their specifications</a>.</p></li>
+<li><p class="sd-card-text">If requesting more memory doesn’t help, you can try reducing the size of your SLEAP models. You may tweak the model backbone architecture, or play with <em>Input scaling</em>, <em>Max stride</em> and <em>Batch size</em>. See SLEAP’s <a class="reference external" href="https://docs.sleap.ai/">documentation</a> and <a class="reference external" href="https://github.com/talmolab/sleap/discussions">discussion forum</a> for more details.</p></li>
 </ul>
 </div>
 </details></section>
@@ -795,29 +774,28 @@ view the logs</label><div class="sd-tab-content docutils">
 <section id="model-evaluation">
 <span id="id4"></span><h2>Model evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h2>
 <p>Upon successful completion of the training job, a <code class="docutils literal notranslate"><span class="pre">models</span></code> folder will have
-been created in the training job directory. It contains one subfolder per
-training run (by default prefixed with the date and time of the run).</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>labels.v001.slp.training_job
+been created inside the training job folder (as set by <code class="docutils literal notranslate"><span class="pre">trainer_config.ckpt_dir='models'</span></code>).
+It contains one subfolder per training run.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data/labels.v002.slp.training_job
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>models
 <span class="gp">$ </span>ls<span class="w"> </span>-1
-<span class="go">230509_141357.centered_instance</span>
-<span class="go">230509_141357.centroid</span>
+<span class="go">&#39;260512_151547.centroid.n=46&#39;</span>
+<span class="go">&#39;260512_151547.centered_instance.n=46&#39;</span>
 </pre></div>
 </div>
-<p>Each subfolder holds the trained model files (e.g. <code class="docutils literal notranslate"><span class="pre">best_model.h5</span></code>),
-their configurations (<code class="docutils literal notranslate"><span class="pre">training_config.json</span></code>) and some evaluation metrics.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>230509_141357.centered_instance
+<p>Each subfolder holds the trained model files (e.g. <code class="docutils literal notranslate"><span class="pre">best.ckpt</span></code>),
+their configurations (<code class="docutils literal notranslate"><span class="pre">training_config.yaml</span></code>) and some evaluation metrics.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class="s1">&#39;260512_151547.centroid.n=46&#39;</span>
 <span class="gp">$ </span>ls<span class="w"> </span>-1
-<span class="go">best_model.h5</span>
-<span class="go">initial_config.json</span>
-<span class="go">labels_gt.train.slp</span>
-<span class="go">labels_gt.val.slp</span>
-<span class="go">labels_pr.train.slp</span>
-<span class="go">labels_pr.val.slp</span>
-<span class="go">metrics.train.npz</span>
-<span class="go">metrics.val.npz</span>
-<span class="go">training_config.json</span>
+<span class="go">best.ckpt</span>
+<span class="go">initial_config.yaml</span>
+<span class="go">labels_gt.train.0.slp</span>
+<span class="go">labels_gt.val.0.slp</span>
+<span class="go">labels_pr.train.0.slp</span>
+<span class="go">labels_pr.val.0.slp</span>
+<span class="go">metrics.train.0.npz</span>
+<span class="go">metrics.val.0.npz</span>
+<span class="go">training_config.yaml</span>
 <span class="go">training_log.csv</span>
 </pre></div>
 </div>
@@ -827,111 +805,106 @@ their configurations (<code class="docutils literal notranslate"><span class="pr
 <li><p>Click on <em>Add Trained Models(s)</em> and select the folder containing the model(s) you want to evaluate.</p></li>
 <li><p>You can view the basic metrics on the shown table or you can also view a more detailed report (including plots) by clicking <em>View Metrics</em>.</p></li>
 </ul>
-<p>For more detailed evaluation metrics, you can refer to <a class="reference external" href="https://legacy.sleap.ai/notebooks/Model_evaluation.html">SLEAP’s model evaluation notebook</a>.</p>
+<p>For more detailed evaluation metrics, you can refer to <a class="reference external" href="https://docs.sleap.ai/latest/notebooks/Model_evaluation/">SLEAP’s model evaluation notebook</a>.</p>
 </section>
 <section id="model-inference">
 <span id="sleap-inference"></span><h2>Model inference<a class="headerlink" href="#model-inference" title="Link to this heading">#</a></h2>
 <p>By inference, we mean using a trained model to predict the labels on new frames/videos.
-SLEAP provides the <a class="reference external" href="https://legacy.sleap.ai/guides/cli.html?#inference-and-tracking"><code class="docutils literal notranslate"><span class="pre">sleap-track</span></code></a> command line utility for running inference
-on a single video or a folder of videos.</p>
-<p>Below is an example SLURM batch script that contains a <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> call.</p>
-<div class="literal-block-wrapper docutils container" id="infer-slurm-sh">
-<div class="code-block-caption"><span class="caption-text">infer_slurm.sh</span><a class="headerlink" href="#infer-slurm-sh" title="Link to this code">#</a></div>
+SLEAP provides the <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">track</span></code> command line utility for running inference
+on a single video or a folder of videos.
+See the <a class="reference external" href="https://docs.sleap.ai/latest/guides/running-sleap-remotely/#remote-inference">remote inference guide</a> for more details.</p>
+<p>Create a new file called <code class="docutils literal notranslate"><span class="pre">infer-slurm.sh</span></code>. Because this script uses absolute paths
+(see below), you can keep it anywhere you like.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nano<span class="w"> </span>infer-slurm.sh
+</pre></div>
+</div>
+<p>An example is provided below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1">#SBATCH -J slp_infer # job name</span>
 <span class="linenos"> 4</span><span class="c1">#SBATCH -p gpu # partition</span>
 <span class="linenos"> 5</span><span class="c1">#SBATCH -N 1   # number of nodes</span>
 <span class="linenos"> 6</span><span class="c1">#SBATCH --mem 64G # memory pool for all cores</span>
-<span class="linenos"> 7</span><span class="c1">#SBATCH -n 16 # number of cores</span>
-<span class="linenos"> 8</span><span class="c1">#SBATCH -t 0-02:00 # time (D-HH:MM)</span>
-<span class="linenos"> 9</span><span class="c1">#SBATCH --gres gpu:rtx5000:1 # request 1 GPU (of a specific kind)</span>
-<span class="linenos">10</span><span class="c1">#SBATCH -o slurm.%x.%N.%j.out # write STDOUT</span>
-<span class="linenos">11</span><span class="c1">#SBATCH -e slurm.%x.%N.%j.err # write STDERR</span>
-<span class="linenos">12</span><span class="c1">#SBATCH --mail-type=ALL</span>
-<span class="linenos">13</span><span class="c1">#SBATCH --mail-user=user@domain.com</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="c1"># Print GPU info</span>
-<span class="linenos">16</span>nvidia-smi
-<span class="linenos">17</span>
-<span class="linenos">18</span><span class="c1"># Load the SLEAP module</span>
-<span class="linenos">19</span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
-<span class="linenos">20</span>
-<span class="linenos">21</span><span class="c1"># Define directories for SLEAP project and exported training job</span>
-<span class="linenos">22</span><span class="nv">SLP_DIR</span><span class="o">=</span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
-<span class="linenos">23</span><span class="nv">VIDEO_DIR</span><span class="o">=</span><span class="nv">$SLP_DIR</span>/videos
-<span class="linenos">24</span><span class="nv">SLP_JOB_NAME</span><span class="o">=</span>labels.v001.slp.training_job
-<span class="linenos">25</span><span class="nv">SLP_JOB_DIR</span><span class="o">=</span><span class="nv">$SLP_DIR</span>/<span class="nv">$SLP_JOB_NAME</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span><span class="c1"># Go to the job directory</span>
-<span class="linenos">28</span><span class="nb">cd</span><span class="w"> </span><span class="nv">$SLP_JOB_DIR</span>
-<span class="linenos">29</span><span class="c1"># Make a directory to store the predictions</span>
-<span class="linenos">30</span>mkdir<span class="w"> </span>-p<span class="w"> </span>predictions
-<span class="linenos">31</span>
-<span class="linenos">32</span><span class="c1"># Run the inference command</span>
-<span class="linenos">33</span>sleap-track<span class="w"> </span><span class="nv">$VIDEO_DIR</span>/M708149_EPM_20200317_165049331-converted.mp4<span class="w"> </span><span class="se">\</span>
-<span class="linenos">34</span><span class="w">    </span>-m<span class="w"> </span><span class="nv">$SLP_JOB_DIR</span>/models/231010_164307.centroid/training_config.json<span class="w"> </span><span class="se">\</span>
-<span class="linenos">35</span><span class="w">    </span>-m<span class="w"> </span><span class="nv">$SLP_JOB_DIR</span>/models/231010_164307.centered_instance/training_config.json<span class="w"> </span><span class="se">\</span>
-<span class="linenos">36</span><span class="w">    </span>--gpu<span class="w"> </span>auto<span class="w"> </span><span class="se">\</span>
-<span class="linenos">37</span><span class="w">    </span>--tracking.tracker<span class="w"> </span>simple<span class="w"> </span><span class="se">\</span>
-<span class="linenos">38</span><span class="w">    </span>--tracking.similarity<span class="w"> </span>centroid<span class="w"> </span><span class="se">\</span>
-<span class="linenos">39</span><span class="w">    </span>--tracking.post_connect_single_breaks<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="linenos">40</span><span class="w">    </span>-o<span class="w"> </span>predictions/labels.v001.slp.predictions.slp<span class="w"> </span><span class="se">\</span>
-<span class="linenos">41</span><span class="w">    </span>--verbosity<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
-<span class="linenos">42</span><span class="w">    </span>--no-empty-frames
+<span class="linenos"> 7</span><span class="c1">#SBATCH --ntasks-per-node=1 # one process per node</span>
+<span class="linenos"> 8</span><span class="c1">#SBATCH --cpus-per-task=16  # CPU cores available to the process</span>
+<span class="linenos"> 9</span><span class="c1">#SBATCH -t 0-02:00 # time (D-HH:MM)</span>
+<span class="linenos">10</span><span class="c1">#SBATCH --gres gpu:a100:1 # request 1 GPU of a given type</span>
+<span class="linenos">11</span><span class="c1">#SBATCH -o slurm.%x.%N.%j.out # write STDOUT</span>
+<span class="linenos">12</span><span class="c1">#SBATCH -e slurm.%x.%N.%j.err # write STDERR</span>
+<span class="linenos">13</span><span class="c1">#SBATCH --mail-type=ALL</span>
+<span class="linenos">14</span><span class="c1">#SBATCH --mail-user=user@domain.com</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># Print GPU info</span>
+<span class="linenos">17</span>nvidia-smi
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1"># Load the SLEAP module</span>
+<span class="linenos">20</span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="c1"># Define directory for SLEAP project</span>
+<span class="linenos">23</span><span class="nv">SLP_DIR</span><span class="o">=</span>/ceph/scratch/neuroinformatics-dropoff/SLEAP_HPC_test_data
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="c1"># Make a directory to store the predictions (if it doesn&#39;t exist already)</span>
+<span class="linenos">26</span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$SLP_DIR</span>/predictions
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="c1"># Run the inference command</span>
+<span class="linenos">29</span>sleap<span class="w"> </span>track<span class="w"> </span><span class="se">\</span>
+<span class="linenos">30</span><span class="w">    </span>-i<span class="w"> </span><span class="nv">$SLP_DIR</span>/mice.mp4<span class="w"> </span><span class="se">\</span>
+<span class="linenos">31</span><span class="w">    </span>-m<span class="w"> </span><span class="nv">$SLP_DIR</span>/labels.v002.slp.training_job/models/260512_151547.centroid.n<span class="o">=</span><span class="m">46</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">32</span><span class="w">    </span>-m<span class="w"> </span><span class="nv">$SLP_DIR</span>/labels.v002.slp.training_job/models/260512_151547.centered_instance.n<span class="o">=</span><span class="m">46</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">33</span><span class="w">    </span>-d<span class="w"> </span>auto<span class="w"> </span><span class="se">\</span>
+<span class="linenos">34</span><span class="w">    </span>-b<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">35</span><span class="w">    </span>--tracking<span class="w"> </span><span class="se">\</span>
+<span class="linenos">36</span><span class="w">    </span>-o<span class="w"> </span><span class="nv">$SLP_DIR</span>/predictions/labels.v002.predictions.slp
 </pre></div>
 </div>
-</div>
-<p>The script is very similar to the training script, with the following differences:</p>
+<p>The script mirrors the training one, with a few differences:</p>
 <ul class="simple">
-<li><p>The time limit <code class="docutils literal notranslate"><span class="pre">-t</span></code> is set lower, since inference is normally faster than training. This will however depend on the size of the video and the number of models used.</p></li>
-<li><p>The requested number of cores <code class="docutils literal notranslate"><span class="pre">n</span></code> and memory <code class="docutils literal notranslate"><span class="pre">--mem</span></code> are higher. This will depend on the requirements of the specific job you are running. It’s best practice to try with a scaled-down version of your data first, to get an idea of the resources needed.</p></li>
-<li><p>The requested GPU is of a specific kind (RTX 5000). This will again depend on the requirements of your job, as the different GPU kinds vary in GPU memory size and compute capabilities (see <a class="reference external" href="https://liveuclac.sharepoint.com/sites/SSC/SitePages/SSC-CPU-and-GPU-Platform-architecture-165449857.aspx">the SWC wiki</a>).</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">./train-script.sh</span></code> line is replaced by the <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">\</span></code> character is used to split the long <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> command into multiple lines for readability. It is not necessary if the command is written on a single line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> and <code class="docutils literal notranslate"><span class="pre">--mem</span></code> are higher; tune these to your specific job, ideally after a scaled-down trial run.</p></li>
+<li><p>The time limit <code class="docutils literal notranslate"><span class="pre">-t</span></code> is lower, since inference is typically faster than training (depends on video length and number of models).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">train</span></code> is replaced by a single <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">track</span></code> call (split across lines with <code class="docutils literal notranslate"><span class="pre">\</span></code> for readability).</p></li>
+<li><p>Paths are absolute (built from <code class="docutils literal notranslate"><span class="pre">$SLP_DIR</span></code>) rather than relative to the training job folder.</p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
-<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Explanation of the sleap-track arguments</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Some important command line arguments are explained below.
-You can view a full list of the available arguments by running <code class="docutils literal notranslate"><span class="pre">sleap-track</span> <span class="pre">--help</span></code>.</p>
-<ul class="simple">
-<li><p class="sd-card-text">The first argument is the path to the video file to be processed.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">-m</span></code> option is used to specify the path to the model configuration file(s) to be used for inference. In this example we use the two models that were trained above.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">--gpu</span></code> option is used to specify the GPU to be used for inference. The <code class="docutils literal notranslate"><span class="pre">auto</span></code> value will automatically select the GPU with the highest percentage of available memory (of the GPUs that are available on the machine/node)</p></li>
-<li><p class="sd-card-text">The options starting with <code class="docutils literal notranslate"><span class="pre">--tracking</span></code> specify parameters used for tracking the detected instances (animals) across frames. See SLEAP’s guide on <a class="reference external" href="https://legacy.sleap.ai/guides/proofreading.html#tracking-method-details">tracking methods</a> for more info.</p></li>
-<li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">-o</span></code> option is used to specify the path to the output file containing the predictions.</p></li>
-<li><p class="sd-card-text">The above script will predict all the frames in the video. You may select specific frames via the <code class="docutils literal notranslate"><span class="pre">--frames</span></code> option. For example: <code class="docutils literal notranslate"><span class="pre">--frames</span> <span class="pre">1-50</span></code> or <code class="docutils literal notranslate"><span class="pre">--frames</span> <span class="pre">1,3,5,7,9</span></code>.</p></li>
-</ul>
-</div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
-<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path></svg></span><span class="sd-summary-text">RGB-to-Grayscale conversion errors during inference</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">If you encounter errors related to <a class="reference external" href="https://github.com/talmolab/sleap/issues/638">RGB-to-Grayscale conversion</a>, you may circumvent them by adding the <code class="docutils literal notranslate"><span class="pre">--batch_size</span> <span class="pre">1</span></code> option to <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> or by running inference on a CPU node (change <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">gpu</span></code> to <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">cpu</span></code> and remove the <code class="docutils literal notranslate"><span class="pre">--gres</span> <span class="pre">gpu:rtx5000:1</span></code> option). That said, both workarounds will make inference slower.</p>
-</div>
-</details><p>You can submit and monitor the inference job in the same way as the training job.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>infer_slurm.sh
+<p>In the <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">track</span></code> call, <code class="docutils literal notranslate"><span class="pre">-i</span></code> is the input video to run inference on (replace this
+with the path to your own video), each <code class="docutils literal notranslate"><span class="pre">-m</span></code> points to a trained model from the training
+step, and <code class="docutils literal notranslate"><span class="pre">-o</span></code> is the output file where the predictions will be saved.</p>
+<p>Using a legacy (TensorFlow) module instead? See <a class="reference internal" href="#legacy-modules"><span class="std std-ref">Legacy (TensorFlow) modules</span></a> for the equivalent inference commands.</p>
+<p>You can submit and monitor the inference job in the same way as the training job.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>infer-slurm.sh
 <span class="gp">$ </span>squeue<span class="w"> </span>--me
 </pre></div>
 </div>
-<p>Upon completion, a <code class="docutils literal notranslate"><span class="pre">labels.v001.slp.predictions.slp</span></code> file will have been created in the job directory.</p>
+<p>Upon completion, a <code class="docutils literal notranslate"><span class="pre">labels.v002.predictions.slp</span></code> file will have been created in the <code class="docutils literal notranslate"><span class="pre">predictions</span></code> directory.</p>
 <p>You can use the SLEAP GUI on your local machine to load and view the predictions:
-<em>File</em> -&gt; <em>Open Project…</em> -&gt; select the <code class="docutils literal notranslate"><span class="pre">labels.v001.slp.predictions.slp</span></code> file.</p>
+<em>File</em> -&gt; <em>Open Project…</em> -&gt; select the <code class="docutils literal notranslate"><span class="pre">labels.v002.predictions.slp</span></code> file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SLEAP CLI commands <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">track</span></code> are aliases for
+<code class="docutils literal notranslate"><span class="pre">sleap-nn</span> <span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">sleap-nn</span> <span class="pre">track</span></code> respectively; the two forms work
+interchangeably. For a full list of arguments, run <code class="docutils literal notranslate"><span class="pre">&lt;command&gt;</span> <span class="pre">--help</span></code>
+(with the SLEAP module loaded) or consult the SLEAP-NN documentation on
+<a class="reference external" href="https://nn.sleap.ai/latest/guides/training/">training</a>,
+<a class="reference external" href="https://nn.sleap.ai/latest/guides/inference/">inference</a> and
+<a class="reference external" href="https://nn.sleap.ai/latest/guides/tracking/">tracking</a>.</p>
+</div>
 </section>
 <section id="the-training-inference-cycle">
 <h2>The training-inference cycle<a class="headerlink" href="#the-training-inference-cycle" title="Link to this heading">#</a></h2>
 <p>Now that you have some predictions, you can keep improving your models by repeating
-the training-inference cycle. The basic steps are:</p>
+the training-inference cycle.</p>
+<p>This predictions file has the same format as a standard SLEAP project file,
+and you can use the GUI (on your local machine) to manually correct the predictions
+or merge them into an existing SLEAP project.</p>
+<p>For example, you can:</p>
 <ul class="simple">
-<li><p>Manually correct some of the predictions: see <a class="reference external" href="https://legacy.sleap.ai/tutorials/assisted-labeling.html">Prediction-assisted labeling</a></p></li>
-<li><p>Merge corrected labels into the initial training set: see <a class="reference external" href="https://legacy.sleap.ai/guides/merging.html">Merging guide</a></p></li>
-<li><p>Save the merged training set as <code class="docutils literal notranslate"><span class="pre">labels.v002.slp</span></code></p></li>
-<li><p>Export a new training job <code class="docutils literal notranslate"><span class="pre">labels.v002.slp.training_job</span></code> (you may reuse the training configurations from <code class="docutils literal notranslate"><span class="pre">v001</span></code>)</p></li>
+<li><p><a class="reference external" href="https://docs.sleap.ai/latest/tutorial/correcting-predictions/">Manually correct</a> some of the predictions</p></li>
+<li><p>Merge corrected labels into the initial training set (<em>File</em> -&gt; <em>Merge into Project…</em>).</p></li>
+<li><p>Save the merged training set under a new name, e.g. <code class="docutils literal notranslate"><span class="pre">labels.v003.slp</span></code></p></li>
+<li><p>Export a new training job <code class="docutils literal notranslate"><span class="pre">labels.v003.slp.training_job</span></code> (you may reuse the training configurations from before)</p></li>
 <li><p>Repeat the training-inference cycle until satisfied</p></li>
 </ul>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<span id="id5"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
 <section id="problems-with-the-sleap-module">
 <h3>Problems with the SLEAP module<a class="headerlink" href="#problems-with-the-sleap-module" title="Link to this heading">#</a></h3>
 <p>In this section, we will describe how to test that the SLEAP module is loaded
@@ -947,7 +920,7 @@ to test the module’s access to the GPU.</p>
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Explain the above command</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">gpu</span></code> requests a node from the ‘gpu’ partition (queue)</p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> requests 1 GPU of any kind</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> requests 1 GPU of any kind. Use <code class="docutils literal notranslate"><span class="pre">--gres=gpu:&lt;type&gt;:1</span></code> to request a specific GPU type (e.g. <code class="docutils literal notranslate"><span class="pre">--gres=gpu:a100:1</span></code>).</p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">--pty</span></code> is short for ‘pseudo-terminal’</p></li>
 <li><p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">-i</span></code> stands for ‘interactive’</p></li>
 </ul>
@@ -957,26 +930,26 @@ on a node of the ‘gpu’ partition, equipped with 1 GPU card.</p>
 </details><p>First, let’s verify that you are indeed on a node equipped with a functional
 GPU, by typing <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi
-<span class="go">Wed Sep 27 10:34:35 2023</span>
-<span class="go">+-----------------------------------------------------------------------------+</span>
-<span class="go">| NVIDIA-SMI 525.125.06   Driver Version: 525.125.06   CUDA Version: 12.0     |</span>
-<span class="go">|-------------------------------+----------------------+----------------------+</span>
-<span class="go">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
-<span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
-<span class="go">|                               |                      |               MIG M. |</span>
-<span class="go">|===============================+======================+======================|</span>
-<span class="go">|   0  NVIDIA GeForce ...  Off  | 00000000:41:00.0 Off |                  N/A |</span>
-<span class="go">|  0%   42C    P8    22W / 240W |      1MiB /  8192MiB |      0%      Default |</span>
-<span class="go">|                               |                      |                  N/A |</span>
-<span class="go">+-------------------------------+----------------------+----------------------+</span>
+<span class="go">Tue May 12 17:02:17 2026</span>
+<span class="go">+-----------------------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |</span>
+<span class="go">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="go">| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                                         |                        |               MIG M. |</span>
+<span class="go">|=========================================+========================+======================|</span>
+<span class="go">|   0  Quadro RTX 5000                On  |   00000000:37:00.0 Off |                  Off |</span>
+<span class="go">| 33%   27C    P8             11W /  230W |       1MiB /  16384MiB |      0%      Default |</span>
+<span class="go">|                                         |                        |                  N/A |</span>
+<span class="go">+-----------------------------------------+------------------------+----------------------+</span>
 
-<span class="go">+-----------------------------------------------------------------------------+</span>
-<span class="go">| Processes:                                                                  |</span>
-<span class="go">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span>
-<span class="go">|        ID   ID                                                   Usage      |</span>
-<span class="go">|=============================================================================|</span>
-<span class="go">|  No running processes found                                                 |</span>
-<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">+-----------------------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                              |</span>
+<span class="go">|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |</span>
+<span class="go">|        ID   ID                                                               Usage      |</span>
+<span class="go">|=========================================================================================|</span>
+<span class="go">|  No running processes found                                                             |</span>
+<span class="go">+-----------------------------------------------------------------------------------------+</span>
 </pre></div>
 </div>
 <p>Your output should look similar to the above. You will be able to see the GPU
@@ -984,74 +957,91 @@ name, temperature, memory usage, etc. If you see an error message instead,
 (even though you are on a GPU node) please contact the SWC Scientific Computing team.</p>
 <p>Next, load the SLEAP module.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>SLEAP
-<span class="go">Loading SLEAP/2024-08-14</span>
-<span class="go">  Loading requirement: cuda/11.8</span>
 </pre></div>
 </div>
-<p>To verify that the module was loaded successfully:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>list
-<span class="go">Currently Loaded Modulefiles:</span>
-<span class="go"> 1) SLEAP/2024-08-14</span>
+<p>Verify that SLEAP is correctly installed and can access the GPU by running
+the built-in diagnostic command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sleap<span class="w"> </span>doctor
 </pre></div>
 </div>
-<p>You can essentially think of the module as a centrally installed conda environment.
-When it is loaded, you should be using a particular Python executable.
-You can verify this by running:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>which<span class="w"> </span>python
-<span class="go">/ceph/apps/ubuntu-20/packages/SLEAP/2024-08-14/bin/python</span>
-</pre></div>
-</div>
-<p>Finally we will verify that the <code class="docutils literal notranslate"><span class="pre">sleap</span></code> python package can be imported and can
-‘see’ the GPU. We will mostly just follow the
-<a class="reference external" href="https://legacy.sleap.ai/installation.html#testing-that-things-are-working">relevant SLEAP instructions</a>.
-First, start a Python interpreter:</p>
+<p>This prints system information, package versions, and confirms whether a GPU
+was detected. Look for the <code class="docutils literal notranslate"><span class="pre">[GPU</span> <span class="pre">/</span> <span class="pre">CUDA]</span></code> section.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></span><span class="sd-summary-text">Verify manually via the Python interpreter</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">doctor</span></code> fails, you can also verify manually by starting a
+Python interpreter and running the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python
 </pre></div>
 </div>
-<p>Next, run the following Python commands:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sleap</span></code> command may take some time to run (more than a minute).
-This is normal. Subsequent imports should be faster.</p>
-</div>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sleap</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sleap</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
-<span class="go">SLEAP: 1.3.3</span>
-<span class="go">TensorFlow: 2.8.4</span>
-<span class="go">Numpy: 1.21.6</span>
-<span class="go">Python: 3.7.12</span>
-<span class="go">OS: Linux-5.4.0-109-generic-x86_64-with-debian-bullseye-sid</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sleap</span><span class="o">.</span><span class="n">system_summary</span><span class="p">()</span>
-<span class="go">GPUs: 1/1 available</span>
-<span class="go">  Device: /physical_device:GPU:0</span>
-<span class="go">         Available: True</span>
-<span class="go">        Initialized: False</span>
-<span class="go">     Memory growth: None</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">))</span>
-<span class="go">[PhysicalDevice(name=&#39;/physical_device:GPU:0&#39;, device_type=&#39;GPU&#39;)]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-<span class="go">&lt;tf.Tensor: shape=(), dtype=string, numpy=b&#39;Hello world!&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;Quadro RTX 5000&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If all is as expected, you can exit the Python interpreter, and then exit the GPU node</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exit</span><span class="p">()</span>
+</div>
+</details><p>When done, exit the GPU node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">exit</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>exit<span class="o">()</span>
-</pre></div>
-</div>
-<p>If you encounter troubles with using the SLEAP module, contact
-Niko Sirmpilatze of the SWC <a class="reference external" href="https://neuroinformatics.dev/">Neuroinformatics Unit</a>.</p>
 <p>To completely exit the HPC cluster, you will need to type <code class="docutils literal notranslate"><span class="pre">exit</span></code> or
 <code class="docutils literal notranslate"><span class="pre">logout</span></code> until you are back to the terminal prompt of your local machine.
 See <a class="reference internal" href="../programming/SSH-SWC-cluster.html"><span class="std std-doc">Set up SSH for the SWC HPC cluster</span></a>
 for more information.</p>
+<p>Using a legacy (TensorFlow) module instead?
+See <a class="reference internal" href="#legacy-modules"><span class="std std-ref">Legacy (TensorFlow) modules</span></a> for the equivalent verification steps.</p>
+<p>If you encounter troubles with using the SLEAP module, contact
+Niko Sirmpilatze of the SWC <a class="reference external" href="https://neuroinformatics.dev/">Neuroinformatics Unit</a>.</p>
+</section>
+</section>
+<section id="legacy-tensorflow-modules">
+<span id="legacy-modules"></span><h2>Legacy (TensorFlow) modules<a class="headerlink" href="#legacy-tensorflow-modules" title="Link to this heading">#</a></h2>
+<p>If you are using a legacy SLEAP module (≤ 1.4.1, TensorFlow backend), the
+CLI uses <code class="docutils literal notranslate"><span class="pre">sleap-train</span></code> and <code class="docutils literal notranslate"><span class="pre">sleap-track</span></code> with JSON config files instead of
+the YAML-based <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">train</span></code> / <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">track</span></code> shown above. See the
+<a class="reference external" href="https://legacy.sleap.ai/">legacy SLEAP documentation</a> for full details;
+the equivalents for the steps in this guide are below.</p>
+<section id="training">
+<h3>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sleap-train<span class="w"> </span>centroid.json<span class="w"> </span>labels.v002.pkg.slp
+sleap-train<span class="w"> </span>centered_instance.json<span class="w"> </span>labels.v002.pkg.slp
+</pre></div>
+</div>
+<p>The exported training job package from legacy SLEAP also includes a
+<code class="docutils literal notranslate"><span class="pre">train-script.sh</span></code> containing these commands, so you can run
+<code class="docutils literal notranslate"><span class="pre">./train-script.sh</span></code> from the SLURM script. See the legacy
+<a class="reference external" href="https://legacy.sleap.ai/guides/remote.html#remote-training">remote training guide</a>
+and <a class="reference external" href="https://legacy.sleap.ai/guides/cli.html">CLI reference</a>.</p>
+</section>
+<section id="inference">
+<h3>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sleap-track<span class="w"> </span>video.mp4<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>models/centroid/training_config.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>models/centered_instance/training_config.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpu<span class="w"> </span>auto<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tracking.tracker<span class="w"> </span>simple<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tracking.similarity<span class="w"> </span>centroid<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>predictions.slp
+</pre></div>
+</div>
+</section>
+<section id="verifying-the-module">
+<h3>Verifying the module<a class="headerlink" href="#verifying-the-module" title="Link to this heading">#</a></h3>
+<p>The verification steps in the <a class="reference internal" href="#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section
+use TensorFlow instead of PyTorch:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sleap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleap</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleap</span><span class="o">.</span><span class="n">system_summary</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For details, see the <a class="reference external" href="https://legacy.sleap.ai/installation.html#testing-that-things-are-working">legacy SLEAP installation guide</a>.</p>
 </section>
 </section>
 </section>
@@ -1097,6 +1087,12 @@ for more information.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-training-inference-cycle">The training-inference cycle</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-the-sleap-module">Problems with the SLEAP module</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-tensorflow-modules">Legacy (TensorFlow) modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference">Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-the-module">Verifying the module</a></li>
 </ul>
 </li>
 </ul>
