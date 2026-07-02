@@ -49,17 +49,24 @@ $ module avail SLEAP
 ...
 ```
 - `SLEAP/2026-05-08` corresponds to [SLEAP v1.6.3](https://docs.sleap.ai/v1.6.3/) (PyTorch backend) — this is the recommended module for all new projects, and what this guide documents.
-- Older modules use the [legacy TensorFlow backend](https://legacy.sleap.ai/). Use these only if you need compatibility with an existing project. 
+- Older modules use the [legacy TensorFlow backend](https://legacy.sleap.ai/). Use these only if you need compatibility with an existing project.
 - Modules dated before `2025-09-30` were built for an older Ubuntu base and are no longer recommended.
 
 To load the recommended PyTorch-based version (the default):
+```{code-block} console
+$ module load SLEAP
+```
 
+To load an older TensorFlow-based version (e.g. `SLEAP/2025-09-30`, which is SLEAP v1.3.4), specify its full name:
+```{code-block} console
+$ module load SLEAP/2025-09-30
+```
 
 To view the modules that are currently loaded:
 
 ```{code-block} console
 $ module list
-Currently Loaded Modulefiles:
+Currently Loaded Modules:
 ...   15) SLEAP/2026-05-08
 ```
 
