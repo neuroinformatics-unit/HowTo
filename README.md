@@ -1,3 +1,4 @@
+The content of this repository has been moved to [the main NIU website](https://github.com/neuroinformatics-unit/neuroinformatics-unit.github.io) and is now available at [neuroinformatics.dev/howto](https://neuroinformatics.dev/howto/index.html)
 # Neuroinformatics Unit HowTo
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/https/howto.neuroinformatics.dev.svg)](https://howto.neuroinformatics.dev)
